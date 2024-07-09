@@ -19,18 +19,10 @@
 
     <!-- css file  -->
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('frontend/assets/css/plugins.css') }}">
-    <link rel="stylesheet" href="{{ asset('frontend/assets/css/owl.carousel.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('frontend/assets/css/owl.theme.default.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('frontend/assets/css/style.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('frontend/assets/css/extra.css') }}">
-    <link rel="stylesheet" href="{{ asset('frontend/assets/css/responsive.css') }}">
-    <link rel="stylesheet" href="{{ asset('frontend/assets/css/cookie-consent.css') }}">
-    <link rel="stylesheet" href="{{ asset('frontend/assets/css/ravamp.css') }}">
+    <link rel="stylesheet" href="{{ asset('/frontend/assets/css/revamp.css') }}">
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="{{ asset(IMG_FAVICON_PATH . $allsettings['favicon']) }}" type="image/x-icon">
-    {{-- toastr --}}
-    <link rel="stylesheet" href="{{ asset('admin/css/toastr.min.css') }}">
+
 
 </head>

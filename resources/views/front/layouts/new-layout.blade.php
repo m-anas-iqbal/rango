@@ -6,21 +6,16 @@
 <body
     class="{{ session()->has('lang_dir') && session()->get('lang_dir') == 'rtl' ? 'direction-rtl' : 'direction-ltr' }}">
     <!-- Preloader Area Start -->
-    <div id="preloader">
+    <div id="preloader" class="d-none">
         <div id="status">
             <img src="{{ asset(IMG_PRELOADER_PATH . $allsettings['preloader']) }}" alt="img" />
         </div>
     </div>
     <!-- Preloader Area End -->
 
-    @include('front.layouts.include.desktop_header')
-
-    @include('front.layouts.include.mobile_header')
-
-    @include('front.layouts.include.mobile_menu')
-
-    @include('front.layouts.include.cart_sidebar_menu')
-
+    <section class="topbar r-bg-red">
+        <h1>hello </h1>
+    </section>
     @yield('content')
     <div id="AddToCompareItemUrl" data-url="{{ route('compare.add') }}"></div>
     <div id="AddToCartIntoSession" data-url="{{ route('add.to.cart') }}"></div>
@@ -30,8 +25,6 @@
     <div id="productImgAsset" data-url="{{ asset(ProductImage()) }}"></div>
 
     @include('front.layouts.include.footer')
-
-    @yield('subscribe_pop_up_modal')
 
     <div class="modal fade common-modal" id="trackOrderModal" tabindex="-1" aria-labelledby="trackOrderModalLabel"
         aria-hidden="true">
