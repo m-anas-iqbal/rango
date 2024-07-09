@@ -1,0 +1,30 @@
+:root {
+    --color-blue: #004bad;
+    --color-red: #c50634;
+    --color-yellow: #d2a807;
+    --color-green: #02c064;
+}
+.r-bg-blue {
+    background-color: var(--color-blue);
+}
+.r-bg-red {
+    background-color: var(--color-red);
+}
+.r-bg-yellow {
+    background-color: var(--color-yellow);
+}
+.r-bg-green {
+    background-color: var(--color-green);
+}
+.r-text-blue {
+    color: var(--color-blue);
+}
+.r-text-red {
+    color: var(--color-red);
+}
+.r-text-yellow {
+    color: var(--color-yellow);
+}
+.r-text-green {
+    color: var(--color-green);
+}
