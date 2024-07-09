@@ -28,3 +28,12 @@
 .r-text-green {
     color: var(--color-green);
 }
+a,
+a:hover {
+    text-decoration: none;
+    color: inherit;
+}
+
+.navbar-brand .logo {
+    width: 120px;
+}
