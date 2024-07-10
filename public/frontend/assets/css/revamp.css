@@ -3,6 +3,7 @@
     --color-red: #c50634;
     --color-yellow: #d2a807;
     --color-green: #02c064;
+    --color-grey : #999;
 }
 .r-bg-blue {
     background-color: var(--color-blue);
@@ -27,6 +28,9 @@
 }
 .r-text-green {
     color: var(--color-green);
+}
+.r-text-grey {
+    color: var(--color-grey);
 }
 a,
 a:hover {
@@ -135,4 +139,43 @@ hr.start-border::before {
 
 .place-content-center {
     place-content: center;
+}
+.fs-13{font-size: 13px;}
+.fs-40{font-size: 40px}
+.fs-32{font-size: 32px}
+.letter-spacing-2{
+    letter-spacing: 2px;
+}
+.underline{
+    border-bottom: 2px solid var(--color-grey);
+    padding-bottom: 5px;
+}
+.underline:hover{
+    border-bottom: 2px solid var(--color-green) ;
+    transition: 3s ease;
+}
+.divider {
+    width: 70px;
+    height: 2px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    background-color: var(--color-green);
+}
+.btn-shop{
+    background-color: var(--color-green);
+    border-radius: 15px;
+    border : 1px solid var(--color-green);
+    color: #fff;
+    width: 150px;
+}
+.btn-shop:hover{
+    background-color: transparent;
+    border-radius: 15px;
+    border : 1px solid var(--color-green);
+    color: var(--color-green);
+    max-width: 150px;
+    transition: 0.5s ease;
+}
+.rounded{
+    border-radius: 15px !important;
 }
