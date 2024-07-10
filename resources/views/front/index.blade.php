@@ -4,5 +4,6 @@
 @section('keywords', isset($keywords) ? $keywords : '')
 
 @section('content')
-    @include('front.home.themeone')
+    {{-- @include('front.home.themeone') --}}
+    @include('front.home.home')
 @endsection

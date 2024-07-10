@@ -14,53 +14,73 @@
     <!-- Preloader Area End -->
 
     <section class="topbar r-bg-red text-white py-2">
-        <div class="d-flex justify-content-between container">
-            <div class="wrap">
+        <div class="d-md-flex justify-content-between container">
+            <div class="wrap text-center">
                 Email: <a href="mailto:info@rangocart.com">info@rangocart.com</a>
                 |
                 Call: <a href="tel:">123 123 1231</a>
             </div>
-            <div class="wrap d-flex gap-4 justify-content-end">
+            <div class="wrap d-flex gap-4 justify-content-center justify-content-md-end mt-2 mt-md-0">
                 <a href=""><i class="fa-brands fa-x-twitter"></i></a>
                 <a href=""><i class="fa-brands fa-facebook-f"></i></a>
                 <a href=""><i class="fa-brands fa-instagram"></i></a>
+                <a href="">My Account</i></a>
             </div>
         </div>
     </section>
-    <section class="navigation">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="#"><img src="{{ asset('frontend/assets/images/logo/logo.png') }}"
-                        class="img-fluid logo" alt="logo rango"></a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <form class="d-flex searchGroup">
-                    <input type="text" placeholder="Search" class="small">
-                    <button class=""><i class="fa-solid fa-magnifying-glass"></i></button>
-                </form>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Categories</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">About</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Contact</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Blog</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+    <section class="navigation container">
+        <div class="d-flex justify-content-between align-items-center">
+            <a class="navbar-brand" href="#"><img src="{{ asset('frontend/assets/images/logo/logo.png') }}"
+                    class="img-fluid logo" alt="logo rango"></a>
+            <button class="btn d-md-none btn-mobile-nav"><i class="fa-solid fa-bars-staggered"></i></button>
+            <form class="searchGroup d-none d-md-flex">
+                <input type="text" placeholder="Search" class="small">
+                <button class=""><i class="fa-solid fa-magnifying-glass"></i></button>
+            </form>
+            <ul class="list-unstyled gap-4 m-0 d-none d-md-flex">
+                <li class="nav-item">
+                    <a class="" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="" href="#">Categories</a>
+                </li>
+                <li class="nav-item">
+                    <a class="" href="#">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="" href="#">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a class="" href="#">Blog</a>
+                </li>
+                <li>
+                    <a href=""><i class="fa-solid fa-cart-shopping r-text-blue fs-4"></i></a>
+                </li>
+            </ul>
+        </div>
+        <div class="mobile-nav">
+            <p class="mobile-close position-absolute end-0 top-0 m-3 fs-1 fw-bold text-danger">✕</p>
+            <ul class="list-unstyled mt-5">
+                <li class="nav-item">
+                    <a class="" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="" href="#">Categories</a>
+                </li>
+                <li class="nav-item">
+                    <a class="" href="#">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="" href="#">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a class="" href="#">Blog</a>
+                </li>
+                <li>
+                    <a href=""><i class="fa-solid fa-cart-shopping r-text-blue fs-4"></i></a>
+                </li>
+            </ul>
+        </div>
     </section>
     @yield('content')
     <div id="AddToCompareItemUrl" data-url="{{ route('compare.add') }}"></div>
@@ -85,8 +105,8 @@
                         @csrf
                         <div class="mb-3">
                             <label for="exampleFormControlInput1" class="form-label">{{ __('Order Number') }}</label>
-                            <input type="text" class="form-control" id="exampleFormControlInput1" name="order_number"
-                                placeholder="{{ __('Enter order number') }}">
+                            <input type="text" class="form-control" id="exampleFormControlInput1"
+                                name="order_number" placeholder="{{ __('Enter order number') }}">
                         </div>
                         <div class="modal-btn-wrap text-end">
                             <button type="submit" class="primary-btn">{{ __('Track') }}</button>
@@ -160,6 +180,26 @@
     @stack('post_script')
     {{-- @include('sweetalert::alert') --}}
 
+    <script>
+        let tl = gsap.timeline()
+        tl.to('.mobile-nav',{
+                left:0,
+                duration:0.5
+            })
+        tl.from('.mobile-nav li',{
+            x:-50,
+            stagger:0.1,
+            opacity:0,
+            duration:0.3
+        })
+        tl.pause()
+        $(".btn-mobile-nav").on('click',function(){
+            tl.play()
+        })
+        $(".mobile-close").on('click',function(){
+            tl.reverse()
+        })
+    </script>
 </body>
 
 </html>

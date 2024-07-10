@@ -33,7 +33,45 @@ a:hover {
     text-decoration: none;
     color: inherit;
 }
-
+input:focus-visible{
+    outline: unset;
+    box-shadow: unset;
+}
 .navbar-brand .logo {
     width: 120px;
+}
+
+form.searchGroup{
+    width: 30vw;
+    border-radius: 40px;
+    border: 1px solid var(--color-blue);
+    padding: 0 10px;
+}
+form.searchGroup input{
+    background-color: transparent;
+    width: 100%;
+    padding: 10px;
+    border: none;
+}
+form.searchGroup button{
+    background-color: transparent;
+    border: none;
+}
+
+.mobile-nav {
+    width: 100vw;
+    height: 100vh;
+    background: #ffffffab;
+    position: fixed;
+    top: 0;
+    left: 100vw;
+    padding: 20px;
+    backdrop-filter: blur(5px);
+}
+
+.mobile-nav li {
+    padding: 5px;
+    font-size: 7vw;
+    font-weight: bold;
+    border-bottom: 1px solid;
 }
