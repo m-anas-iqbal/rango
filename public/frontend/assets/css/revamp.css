@@ -93,6 +93,7 @@ form.searchGroup button {
 }
 .hero-section {
     width: 100%;
+    position: relative;
     height: 75vh;
     background: linear-gradient(
         45deg,
@@ -101,6 +102,28 @@ form.searchGroup button {
         var(--color-green)
     );
 }
+.hero-section .top,.hero-section .bottom{
+    width: 100%;
+    height: 50%;
+    background: white;
+    position: absolute;
+}
+.hero-section .top{top: 0;}
+.hero-section .bottom{bottom: 0;}
+
+.hero-section h2 span{
+    display: inline-block;
+}
+.hero-section .top h2, .hero-section .bottom h2{
+        font-size: 13vw;
+        font-weight: bold;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+}
+.hero-section .top h2{top: 50%;}
+.hero-section .bottom h2{top: -50%;}
+
 .cate_card img {
     right: -52px;
     width: 15vw;
