@@ -1,100 +1,71 @@
-@extends('front.layouts.master')
+@extends('front.layouts.new-layout')
 @section('title', isset($title) ? $title : 'Home')
 @section('description', isset($description) ? $description : '')
 @section('keywords', isset($keywords) ? $keywords : '')
 @section('content')
-    <!-- contact us area start here  -->
-    <div class="contact-us-area section-bottom">
+
+    {{-- breadcrumbs --}}
+    <section id="contact">
         <div class="container">
-            <div class="row">
-                <div class="contact-us-top">
+            <div class="container-fluid">
+                <div class="mt-md-5 mt-3">
                     <div class="row">
 
-                        <div class="col-lg-4 col-md-4 col-sm-6">
-                            <div class="single-contact-info border-0 text-center">
-                                <img class="contact-info-icon"
-                                    src="{{ asset('frontend/assets/images/contact-info-1.png') }}" alt="contact-info" />
-                                <h3 class="contact-info-title">{{ __('Email') }}</h3>
-                                <p class="contact-info-content">
-                                    {{ $allsettings['email'] }}
-
-                                </p>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-4 col-md-4 col-sm-6">
-                            <div class="single-contact-info text-center">
-                                <img class="contact-info-icon"
-                                    src="{{ asset('frontend/assets/images/contact-info-2.png') }}" alt="contact-info" />
-                                <h3 class="contact-info-title">{{ __('Address') }}</h3>
-                                <p class="contact-info-content">
-                                    {{ $allsettings['address'] }} <br />
-                                    {{ $allsettings['state'] }}
-                                    {{ $allsettings['country'] }}
-                                </p>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-4 col-md-4 col-sm-6">
-                            <div class="single-contact-info text-center">
-                                <img class="contact-info-icon"
-                                    src="{{ asset('frontend/assets/images/contact-info-3.png') }}" alt="contact-info" />
-                                <h3 class="contact-info-title">{{ __('Phone') }}</h3>
-                                <p class="contact-info-content">
-                                    {{ $allsettings['call_us'] }}
-                                </p>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-
-                <div class="contact-form-area">
-                    <div class="contct-form-top text-center">
-                        <h2 class="form-title">{{ __('Got any questions?') }}</h2>
-                        <p class="form-subtitle">{{ __('Use the form below to get in touch with the sales team') }}</p>
-                    </div>
-                    <form method="post" action="{{ route('contact.us.store') }}">
-                        @csrf
                         <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <input type="text" class="form-control" id="firstname" name="firstname"
-                                        placeholder="{{ __('First Name') }}" />
+                            <div class="col-md-8">
+                                <h2 class="fs-24">Leave a Message</h2>
+                                <div class="divider"></div>
+                                <div id="form">
+                                    <form action="">
+                                        <div>
+                                            <label for="f_name" class="fs-13 fw-bold mb-2">Full Name:</label>
+                                            <input type="text" class="form-control" name="f_name" id="f_name">
+                                        </div>
+                                        <div class="mt-3">
+                                            <label for="number" class="fs-13 fw-bold mb-2">Phone Number:</label>
+                                            <input type="number" class="form-control" name="number" id="number">
+                                        </div>
+                                        <div class="mt-3">
+                                            <label for="email" class="fs-13 fw-bold mb-2">E-mail:</label>
+                                            <input type="email" class="form-control" name="email" id="email">
+                                        </div>
+                                        <div class="mt-3">
+                                            <label for="message" class="fs-13 fw-bold mb-2">Message:</label>
+                                            <textarea class="form-control" name="message" rows="5" id="message"></textarea>
+                                        </div>
+                                        <div class="mt-3">
+                                            <input type="button" value="Send" class="btn btn-shop fw-bold">
+                                        </div>
+
+
+                                    </form>
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <input type="text" class="form-control" id="lastname" name="lastname"
-                                        placeholder="{{ __('Last Name') }}" />
+                            <div class="col-md-4 gs-5">
+                                <h2 class="fs-24">
+                                    Contact Info
+                                </h2>
+                                <div class="divider"></div>
+                                <div class="mt-md-5 mt-3">
+                                    <a href="tel:123123123" class="fs-13 d-block fw-bold green transition mb-2">+1 123 123 223</a>
+                                    <a href="mailto:info@rangocart.com" class="fs-13 fw-bold green transition underline">info@rangocart.com</a>
                                 </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <input type="email" class="form-control" id="email" name="email"
-                                        placeholder="{{ __('Email Address') }}" />
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <input type="text" class="form-control" id="contact_number" name="contact_number"
-                                        placeholder="{{ __('Contact Number') }}" />
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <textarea class="form-control message-box" id="message" name="message" rows="3"
-                                        placeholder="{{ __('Type Message Here..') }}"></textarea>
-                                </div>
-                                <div class="form-button text-center">
-                                    <button type="submit" class="form-btn">{{ __('Send Message') }}</button>
+                                <div class="socials mt-md-5 mt-3">
+                                    <h5 class="fs-17">Follow Us On:</h5>
+                                    <a href="#" class="mt-3 me-2" target="_blank"><img src="{{asset('frontend/assets/images/socials/facebook.png')}}" alt="" class="img-fluid"></a>
+                                    <a href="#" class="mt-3 me-2" target="_blank"><img src="{{asset('frontend/assets/images/socials/instagram.png')}}" alt="" class="img-fluid"></a>
+                                    <a href="#" class="mt-3 me-2" target="_blank"><img src="{{asset('frontend/assets/images/socials/twitter.png')}}" alt="" class="img-fluid"></a>
+                                    <a href="#" class="mt-3 me-2" target="_blank"><img src="{{asset('frontend/assets/images/socials/pinterest.png')}}" alt="" class="img-fluid"></a>
+                                    <a href="#" class="mt-3 me-2" target="_blank"><img src="{{asset('frontend/assets/images/socials/youtube.png')}}" alt="" class="img-fluid"></a>
+
                                 </div>
                             </div>
                         </div>
-                    </form>
+
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- contact us area end here  -->
+    </section>
+
 @endsection
