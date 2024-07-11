@@ -3,7 +3,23 @@
 @section('description', isset($description) ? $description : '')
 @section('keywords', isset($keywords) ? $keywords : '')
 @section('content')
-
+<section id="breadcrumbs">
+    <div class="container">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="breadcrumbs">
+                        <a href="/" class="link-grey">Home</a>
+                        <img src="https://assets.website-files.com/5badda2935e11303a89a461e/5baf79eb570913b9781a96f2_arrow-right-mini-icon.svg" alt="" class="breadcrumbs-arrow">
+                    <div>
+                        About
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 <section id="about" class="mt-md-5">
    <div class="container">
     <div class="container-fluid">
