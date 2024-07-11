@@ -42,7 +42,7 @@
                     <a class="" href="#">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="" href="#">Categories</a>
+                    <a class="" href="#">Products</a>
                 </li>
                 <li class="nav-item">
                     <a class="" href="#">About</a>
