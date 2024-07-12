@@ -1,24 +1,24 @@
-<footer class="r-bg-yellow">
+<footer class="r-bg-gradient">
     <div class="container">
-        <div class="row align-items-center text-dark py-4">
+        <div class="row align-items-center text-white pt-4">
             <div class="col-md-3">
-                <img src="{{ asset('frontend/assets/images/logo/logo.png') }}" class="img-fluid w-50" alt="">
+                <img src="{{ asset('frontend/assets/images/logo/logo-white.png') }}" class="img-fluid w-50" alt="">
             </div>
             <div class="col-md-6">
                 <ul class="list-unstyled gap-4 m-0 d-md-flex justify-content-center">
-                    <li class="nav-item fw-bold">
+                    <li class="nav-item">
                         <a class="" href="#">Home</a>
                     </li>
-                    <li class="nav-item fw-bold">
+                    <li class="nav-item">
                         <a class="" href="#">Categories</a>
                     </li>
-                    <li class="nav-item fw-bold">
+                    <li class="nav-item">
                         <a class="" href="#">About</a>
                     </li>
-                    <li class="nav-item fw-bold">
+                    <li class="nav-item">
                         <a class="" href="#">Contact</a>
                     </li>
-                    <li class="nav-item fw-bold">
+                    <li class="nav-item">
                         <a class="" href="#">Blog</a>
                     </li>
                 </ul>
@@ -32,7 +32,8 @@
             </div>
         </div>
     </div>
-    <div class="bottom-bar r-bg-red">
+    <hr class="bg-white">
+    <div class="bottom-bar pb-3">
         <div class="container py-1">
             <div class="d-flex align-items-center justify-content-between text-white">
                 <p class="m-0 small">Copyright &copy; - Developed by <a href="https:codexwriter.com"

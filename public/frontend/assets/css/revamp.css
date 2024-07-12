@@ -11,6 +11,26 @@
         var(--color-green)
     );
 }
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: var(--color-red);
+    border-radius: 20px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: var(--color-blue);
+}
 .r-bg-gradient {
     background: var(--gradient);
 }
@@ -295,4 +315,3 @@ hr.start-border::before {
     box-shadow: unset !important;
     transition: 0.3s ease;
 }
-
