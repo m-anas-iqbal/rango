@@ -4,17 +4,23 @@
 @section('keywords', isset($keywords) ? $keywords : '')
 @section('content')
     <!-- breadcrumb area start here  -->
-    <div class="breadcrumb-area">
+    <section id="breadcrumbs">
         <div class="container">
-            <div class="breadcrumb-wrap text-center">
-                <h2 class="page-title">{{__('Blog')}}</h2>
-                <ul class="breadcrumb-pages">
-                    <li class="page-item"><a class="page-item-link" href="{{route('front')}}">{{__('Home')}}</a></li>
-                    <li class="page-item">{{__('Blog')}}</li>
-                </ul>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="breadcrumbs">
+                            <a href="/" class="link-grey">Home</a>
+                            <img src="https://assets.website-files.com/5badda2935e11303a89a461e/5baf79eb570913b9781a96f2_arrow-right-mini-icon.svg" alt="" class="breadcrumbs-arrow">
+                        <div>
+                            Blogs
+                        </div>
+                    </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
+    </section>
     <!-- breadcrumb area end here  -->
 
     <!-- Blog Page area start here  -->

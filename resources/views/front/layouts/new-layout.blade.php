@@ -24,6 +24,8 @@
                 <a href=""><i class="fa-brands fa-x-twitter"></i></a>
                 <a href=""><i class="fa-brands fa-facebook-f"></i></a>
                 <a href=""><i class="fa-brands fa-instagram"></i></a>
+                <a href=""><i class="fa-brands fa-youtube"></i></a>
+                <a href=""><i class="fa-brands fa-pinterest"></i></a>
                 <a href="">My Account</i></a>
             </div>
         </div>
@@ -39,22 +41,22 @@
             </form>
             <ul class="list-unstyled gap-4 m-0 d-none d-md-flex">
                 <li class="nav-item">
-                    <a class="" href="#">Home</a>
+                    <a class="" href="{{route('front')}}">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="" href="#">Products</a>
+                    <a class="" href="{{route('all.product')}}">Products</a>
                 </li>
                 <li class="nav-item">
-                    <a class="" href="#">About</a>
+                    <a class="" href="{{route('about.us')}}">About</a>
                 </li>
                 <li class="nav-item">
-                    <a class="" href="#">Contact</a>
+                    <a class="" href="{{route('contact.us')}}">Contact</a>
                 </li>
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a class="" href="#">Blog</a>
-                </li>
+                </li> --}}
                 <li>
-                    <a href=""><i class="fa-solid fa-cart-shopping r-text-blue fs-4"></i></a>
+                    <a href="{{route('front')}}"><i class="fa-solid fa-cart-shopping r-text-blue fs-4"></i></a>
                 </li>
             </ul>
         </div>
