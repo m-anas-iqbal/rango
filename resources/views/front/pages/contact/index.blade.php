@@ -5,6 +5,23 @@
 @section('content')
 
     {{-- breadcrumbs --}}
+    <section id="breadcrumbs">
+        <div class="container">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="breadcrumbs">
+                            <a href="/" class="link-grey">Home</a>
+                            <img src="https://assets.website-files.com/5badda2935e11303a89a461e/5baf79eb570913b9781a96f2_arrow-right-mini-icon.svg" alt="" class="breadcrumbs-arrow">
+                        <div>
+                            Contact
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
     <section id="contact">
         <div class="container">
             <div class="container-fluid">

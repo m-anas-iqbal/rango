@@ -105,6 +105,7 @@ Route::group(['middleware' => ['is_user']], function () {
         Route::get('/delete', [CartController::class, 'cartDelete'])->name('cart.delete');
         Route::get('/decrease', [CartController::class, 'cartDecrease'])->name('cart.decrease');
         Route::get('/increase', [CartController::class, 'cartIncrease'])->name('cart.increase');
+
     });
     Route::post('buy-now', [BuyNowController::class, 'buyNow'])->name('buy.now');
 

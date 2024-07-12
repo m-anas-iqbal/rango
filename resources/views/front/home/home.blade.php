@@ -81,7 +81,7 @@
 
 <div class="container home_products my-5">
     <div class="d-flex justify-content-between">
-        <h3 class="fw-bold">Stuffed Animals</h3>
+        <h3 class="fw-bold">New Arrivals</h3>
         <a href="" class="fw-bold">See All <i class="fa-solid fa-arrow-right"></i></a>
     </div>
     <hr class="start-border">
@@ -125,7 +125,7 @@
 
 <div class="container home_products my-5">
     <div class="d-flex justify-content-between">
-        <h3 class="fw-bold">Wooden Toys</h3>
+        <h3 class="fw-bold">Featured Products</h3>
         <a href="" class="fw-bold">See All <i class="fa-solid fa-arrow-right"></i></a>
     </div>
     <hr class="start-border">
