@@ -3,7 +3,16 @@
     --color-red: #c50634;
     --color-yellow: #d2a807;
     --color-green: #02c064;
-    --color-grey : #999;
+    --color-grey: #999;
+    --gradient: linear-gradient(
+        45deg,
+        var(--color-red),
+        var(--color-blue),
+        var(--color-green)
+    );
+}
+.r-bg-gradient {
+    background: var(--gradient);
 }
 .r-bg-blue {
     background-color: var(--color-blue);
@@ -32,8 +41,12 @@
 .r-text-grey {
     color: var(--color-grey);
 }
-.transition{ transition: 0.2s ease;}
-.green:hover{color: var(--color-green);}
+.transition {
+    transition: 0.2s ease;
+}
+.green:hover {
+    color: var(--color-green);
+}
 .underline:hover {
     border-bottom: 2px solid var(--color-grey);
     padding-bottom: 5px;
@@ -108,31 +121,43 @@ form.searchGroup button {
         var(--color-green)
     );
 }
-.hero-section .top,.hero-section .bottom{
+.hero-section .top,
+.hero-section .bottom {
     width: 100%;
     height: 50%;
     background: white;
     position: absolute;
 }
-.hero-section .top{top: 0;}
-.hero-section .bottom{bottom: 0;}
+.hero-section .top {
+    top: 0;
+}
+.hero-section .bottom {
+    bottom: 0;
+}
 
-.hero-section h2 span{
+.hero-section h2 span {
     display: inline-block;
 }
-.hero-section .top h2, .hero-section .bottom h2{
-        font-size: 13vw;
-        font-weight: bold;
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%);
+.hero-section .top h2,
+.hero-section .bottom h2 {
+    font-size: 13vw;
+    font-weight: bold;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
 }
-.hero-section .top h2{top: 50%;}
-.hero-section .bottom h2{top: -50%;}
+.hero-section .top h2 {
+    top: 50%;
+}
+.hero-section .bottom h2 {
+    top: -50%;
+}
 
 .cate_card img {
     right: -52px;
     width: 15vw;
+    aspect-ratio: 1;
+    object-fit: contain;
     top: 8vh;
 }
 hr.start-border {
@@ -156,11 +181,11 @@ hr.start-border::before {
     background-position: center, center; /* Center both backgrounds */
     background-repeat: no-repeat, no-repeat; /* No repeat for both backgrounds */
     background-size: cover, cover; /* Cover both backgrounds */
-    min-height: 500px;
+    /* min-height: 500px; */
     background-image: linear-gradient(
             45deg,
-            rgba(229, 241, 0, 0.8),
-            rgba(0, 128, 0, 0.8)
+            rgba(28, 28, 28, 0.8),
+            rgba(215, 215, 215, 0.8)
         ),
         var(--bg-image); /* Combine gradient and image */
     background-blend-mode: multiply; /* Blend the gradient and image */
@@ -169,20 +194,30 @@ hr.start-border::before {
 .place-content-center {
     place-content: center;
 }
-.fs-13{font-size: 13px;}
-.fs-40{font-size: 40px}
-.fs-32{font-size: 32px}
-.fs-24{font-size: 24px;}
-.fs-17{font-size: 17px;}
-.letter-spacing-2{
+.fs-13 {
+    font-size: 13px;
+}
+.fs-40 {
+    font-size: 40px;
+}
+.fs-32 {
+    font-size: 32px;
+}
+.fs-24 {
+    font-size: 24px;
+}
+.fs-17 {
+    font-size: 17px;
+}
+.letter-spacing-2 {
     letter-spacing: 2px;
 }
-.underline{
+.underline {
     border-bottom: 2px solid var(--color-grey);
     padding-bottom: 5px;
 }
-.underline:hover{
-    border-bottom: 2px solid var(--color-green) ;
+.underline:hover {
+    border-bottom: 2px solid var(--color-green);
     transition: 3s ease;
 }
 .divider {
@@ -192,25 +227,25 @@ hr.start-border::before {
     margin-bottom: 15px;
     background-color: var(--color-green);
 }
-.btn-shop{
+.btn-shop {
     background-color: var(--color-green);
     border-radius: 15px;
-    border : 1px solid var(--color-green);
+    border: 1px solid var(--color-green);
     color: #fff;
     width: 150px;
 }
-.btn-shop:hover{
+.btn-shop:hover {
     background-color: transparent;
     border-radius: 15px;
-    border : 1px solid var(--color-green);
+    border: 1px solid var(--color-green);
     color: var(--color-green);
     max-width: 150px;
     transition: 0.5s ease;
 }
-.rounded{
+.rounded {
     border-radius: 15px !important;
 }
-#form .form-control{
+#form .form-control {
     border: 2px solid #e5e5e5;
     border-radius: 24px;
     padding: 10px 15px;
@@ -218,7 +253,7 @@ hr.start-border::before {
     transition: 0.3s ease;
     max-width: 670px;
 }
-#form .form-control:focus{
+#form .form-control:focus {
     border: 2px solid var(--color-green);
     box-shadow: unset !important;
     transition: 0.3s ease;
