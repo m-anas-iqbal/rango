@@ -36,21 +36,21 @@
                                     <form action="">
                                         <div>
                                             <label for="f_name" class="fs-13 fw-bold mb-2">Full Name:</label>
-                                            <input type="text" class="form-control" name="f_name" id="f_name">
+                                            <input type="text" class="form-control max-width-670" name="f_name" id="f_name">
                                         </div>
                                         <div class="mt-3">
                                             <label for="number" class="fs-13 fw-bold mb-2">Phone Number:</label>
-                                            <input type="number" class="form-control" name="number" id="number">
+                                            <input type="number" class="form-control max-width-670" name="number" id="number">
                                         </div>
                                         <div class="mt-3">
                                             <label for="email" class="fs-13 fw-bold mb-2">E-mail:</label>
-                                            <input type="email" class="form-control" name="email" id="email">
+                                            <input type="email" class="form-control max-width-670" name="email" id="email">
                                         </div>
                                         <div class="mt-3">
                                             <label for="message" class="fs-13 fw-bold mb-2">Message:</label>
-                                            <textarea class="form-control" name="message" rows="5" id="message"></textarea>
+                                            <textarea class="form-control max-width-670" name="message" rows="5" id="message"></textarea>
                                         </div>
-                                        <div class="mt-3">
+                                        <div class="my-3">
                                             <input type="button" value="Send" class="btn btn-shop fw-bold">
                                         </div>
 

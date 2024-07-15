@@ -105,7 +105,7 @@ Route::group(['middleware' => ['is_user']], function () {
         Route::get('/delete', [CartController::class, 'cartDelete'])->name('cart.delete');
         Route::get('/decrease', [CartController::class, 'cartDecrease'])->name('cart.decrease');
         Route::get('/increase', [CartController::class, 'cartIncrease'])->name('cart.increase');
-
+        Route::get('/cart', [CartController::class, 'Cart'])->name('cart');
     });
     Route::post('buy-now', [BuyNowController::class, 'buyNow'])->name('buy.now');
 
@@ -134,12 +134,15 @@ Route::group(['middleware' => ['is_user']], function () {
     });
 
     Route::group(['prefix' => 'checkout'], function () {
-        Route::get('', [CheckoutController::class, 'checkoutPage'])->name('checkout');
+        // Route::get('', [CheckoutController::class, 'checkoutPage'])->name('checkout');
         Route::post('order', [CheckoutController::class, 'checkoutOrder'])->name('checkout.order');
         Route::post('guest-order', [CheckoutController::class, 'guestCheckoutOrder'])->name('guest.checkout.order');
         Route::post('get-tax-amount', [CheckoutController::class, 'getTaxAmount'])->name('checkout.get_tax_amount');
         Route::get('thank-you', [CheckoutController::class, 'thankyouPage'])->name('checkout.thankyou_page');
+
+
     });
+    Route::get('checkout', [CheckoutController::class, 'checkout'])->name('checkout');
     Route::group(['prefix' => 'coupon'], function () {
         Route::post('apply', [CouponController::class, 'couponApply'])->name('apply.coupon');
     });

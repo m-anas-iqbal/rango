@@ -158,4 +158,7 @@ class CartController extends Controller
     {
         return currencySymbol()[currency()];
     }
+    public function cart(){
+        return view('front.pages.cart.cart');
+    }
 }
