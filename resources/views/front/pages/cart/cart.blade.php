@@ -28,10 +28,10 @@
             <div class="container-fluid">
                 <div class="row">
 
-                    <div class="col-md-8">
+                    <div class="col-md-8 col-12">
                         <h2 class="fs-32">Cart</h2>
                         <div class="divider"></div>
-                        <table class="table table-striped">
+                        <table class="table table-striped table-responsive w-100">
                             <thead>
                                 <tr class="">
                                     <th>Product</th>
@@ -43,10 +43,10 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td class="d-flex">
+                                    <td class="d-flex align-items-center">
                                         <img src="{{ asset('frontend/assets/images/toys/bear.png') }}" alt=""
                                             class="img-fluid cart-imgs">
-                                        <div class="my-auto cart-desc ms-2">
+                                        <div class="my-auto cart-desc ms-2 d-md-block d-none">
                                             <h5>Lorem, ipsum.</h5>
                                             <p>Lorem ipsum dolor sit amet.</p>
                                         </div>
@@ -74,7 +74,7 @@
                                     <td class="d-flex">
                                         <img src="{{ asset('frontend/assets/images/toys/bear.png') }}" alt=""
                                             class="img-fluid cart-imgs">
-                                        <div class="my-auto cart-desc ms-2">
+                                        <div class="my-auto cart-desc ms-2 d-md-block d-none">
                                             <h5>Lorem, ipsum.</h5>
                                             <p>Lorem ipsum dolor sit amet.</p>
                                         </div>
@@ -103,7 +103,7 @@
                                     <td class="d-flex">
                                         <img src="{{ asset('frontend/assets/images/toys/bear.png') }}" alt=""
                                             class="img-fluid cart-imgs">
-                                        <div class="my-auto cart-desc ms-2">
+                                        <div class="my-auto cart-desc ms-2 d-md-block d-none">
                                             <h5>Lorem, ipsum.</h5>
                                             <p>Lorem ipsum dolor sit amet.</p>
                                         </div>

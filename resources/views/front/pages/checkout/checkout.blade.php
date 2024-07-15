@@ -110,7 +110,7 @@
                         </form>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-4 mt-md-0 mt-3">
                     <h2>Shipping</h2>
                     <div class="divider"></div>
                     <div class="shipping p-3">

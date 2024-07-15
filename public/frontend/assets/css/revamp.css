@@ -390,3 +390,9 @@ hr.start-border::before {
     width: 100%;
     /* margin-top: 15px; */
 }
+@media (max-width : 500px)  {
+    .cart-imgs {
+        max-width: 50px ;
+        max-height: 50px;
+    }
+}
