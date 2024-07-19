@@ -50,7 +50,7 @@
                                             <label for="message" class="fs-13 fw-bold mb-2">Message:</label>
                                             <textarea class="form-control" name="message" rows="5" id="message"></textarea>
                                         </div>
-                                        <div class="mt-3">
+                                        <div class="mt-3 mb-3">
                                             <input type="button" value="Send" class="btn btn-shop fw-bold">
                                         </div>
 

@@ -153,3 +153,7 @@ Route::post('/fail', [SslCommerzPaymentController::class, 'fail']);
 Route::post('/cancel', [SslCommerzPaymentController::class, 'cancel']);
 Route::post('/ipn', [SslCommerzPaymentController::class, 'ipn']);
 //SSLCOMMERZ END
+Route::get('/product-safety-and-certifications', [PageController::class, 'safety'])->name('safety');
+Route::get('/terms-and-conditions', [PageController::class, 'terms'])->name('terms');
+Route::get('/privacy-policy', [PageController::class, 'privacy'])->name('privacy');
+

@@ -20,4 +20,13 @@ class PageController extends Controller
         }
         return abort(404);
     }
+    public function safety(){
+        return view('front.pages.safety');
+    }
+    public function terms(){
+        return view('front.pages.terms-and-conditions');
+    }
+    public function privacy(){
+        return view('front.pages.privacy-policy');
+    }
 }

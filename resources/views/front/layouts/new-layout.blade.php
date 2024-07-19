@@ -75,9 +75,9 @@
                 <li class="nav-item">
                     <a class="" href="#">Contact</a>
                 </li>
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a class="" href="#">Blog</a>
-                </li>
+                </li> --}}
                 <li>
                     <a href=""><i class="fa-solid fa-cart-shopping r-text-blue fs-4"></i></a>
                 </li>

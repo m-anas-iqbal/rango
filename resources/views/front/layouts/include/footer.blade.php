@@ -18,9 +18,9 @@
                     <li class="nav-item">
                         <a class="" href="#">Contact</a>
                     </li>
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                         <a class="" href="#">Blog</a>
-                    </li>
+                    </li> --}}
                 </ul>
             </div>
             <div class="col-md-3">
@@ -28,6 +28,9 @@
                     <a href=""><i class="fa-brands fa-x-twitter"></i></a>
                     <a href=""><i class="fa-brands fa-facebook-f"></i></a>
                     <a href=""><i class="fa-brands fa-instagram"></i></a>
+                    <a href=""><i class="fa-brands fa-youtube"></i></a>
+                    <a href=""><i class="fa-brands fa-pinterest"></i></a>
+
                 </div>
             </div>
         </div>
@@ -39,9 +42,11 @@
                 <p class="m-0 small">Copyright &copy; - Developed by <a href="https:codexwriter.com"
                         class="fw-bold">Codexwriter</a></p>
                 <div class="wrap">
-                    <a href="" class="small">Privacy Policy</a>
+                    <a href="{{route('privacy')}}" class="small">Privacy Policy</a>
                     |
-                    <a href="" class="small">Terms & Conditions</a>
+                    <a href="{{route('terms')}}" class="small">Terms & Conditions</a>
+                    |
+                    <a href="{{route('safety')}}" class="small">Product Safety and Certification</a>
                 </div>
             </div>
         </div>
