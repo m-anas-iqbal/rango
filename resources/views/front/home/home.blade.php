@@ -34,7 +34,7 @@
 </div>
 <div class="container cate_card my-5">
     <div class="row">
-        <div class="col-md-6 p-4">
+        {{-- <div class="col-md-6 p-4">
             <div class="card p-5 r-bg-red rounded-20px">
                 <h1 class="fw-bold py-3 text-white">Wooden Toys</h1>
                 <img src="{{ asset('frontend/assets/images/toys/wooden.png') }}"
@@ -54,31 +54,20 @@
                 <img src="{{ asset('frontend/assets/images/toys/toy.png') }}"
                     class="position-absolute translate-middle-y" alt="">
             </div>
-        </div>
-        <div class="col-md-6 p-4">
-            <div class="card p-5 r-bg-yellow rounded-20px">
-                <h1 class="fw-bold py-3 text-white">Category 4</h1>
-                <img src="{{ asset('frontend/assets/images/toys/car.png') }}"
-                    class="position-absolute translate-middle-y" alt="">
+        </div> --}}
+
+        @foreach (Category_Des_Icon() as $item)
+            <div class="col-md-6 p-4">
+                <a class="card p-5 r-bg-green rounded-20px" href="{{ route('category.product', $item->id) }}">
+                    <h1 class="fw-bold py-3 text-white">{{ langConverter($item->en_Category_Name, $item->fr_Category_Name) }}</h1>
+                    <img src="{{ $item->Category_Icon }}"
+                        class="position-absolute translate-middle-y" alt="{{ $item->fr_Category_Name }}">
+                </a>
             </div>
-        </div>
-        <div class="col-md-6 p-4">
-            <div class="card p-5 r-bg-blue rounded-20px">
-                <h1 class="fw-bold py-3 text-white">Category 5</h1>
-                <img src="{{ asset('frontend/assets/images/toys/doll.png') }}"
-                    class="position-absolute translate-middle-y" alt="">
-            </div>
-        </div>
-        <div class="col-md-6 p-4">
-            <div class="card p-5 r-bg-red rounded-20px">
-                <h1 class="fw-bold py-3 text-white">Category 6</h1>
-                <img src="{{ asset('frontend/assets/images/toys/horse.png') }}"
-                    class="position-absolute translate-middle-y" alt="">
-            </div>
-        </div>
+        @endforeach
     </div>
 </div>
-
+@if ($allsettings['new_arrival'] == ACTIVE)
 <div class="container home_products my-5">
     <div class="d-flex justify-content-between">
         <h3 class="fw-bold">New Arrivals</h3>
@@ -87,42 +76,80 @@
     <hr class="start-border">
     <div class="product-items">
         <div class="row">
-            <div class="col-md-3 p-3">
-                <div class="card text-center p-3 shadow rounded-10px border-0">
-                    <img src="{{ asset('frontend/assets/images/toys/bear.png') }}" class="img-fluid" alt="">
-                    <h4 class="w-fit mx-auto">Teddy Bear</h4>
-                    <div class="price-label w-fit small r-bg-green rounded-pill mx-auto py-1 px-2 text-white">$24 USD
-                    </div>
+            @foreach ($new_arrivals as $product)
+                <div class="col-md-3 p-3">
+                    <DIV class="card text-center p-3 shadow rounded-10px border-0">
+                        <img src="{{ asset(ProductImage() . $product->Primary_Image) }}" class="img-fluid" alt="{{ __('product') }}">
+                        <h4 class="w-fit mx-auto"><a class="product-link"
+                            href="{{ route('single.product', $product->en_Product_Slug) }}">{{ langConverter($product->en_Product_Name, $product->fr_Product_Name) }}</a></h4>
+                        <div class="price-label w-fit small r-bg-green rounded-pill mx-auto py-1 px-2 text-white">
+                            <span class="regular-price">
+                                {{ currencyConverter($product->Price) }}</span>
+                            <span class="price">
+                                {{ currencyConverter($product->Discount_Price) }}</span>
+                        </div>
+                    </DIV>
+                    <input type="hidden" name="quantity" value="1" id="product_quantity">
+                    <a href="javascript:void(0)" title="{{ __('Add To Cart') }}" class="add-cart addCart"
+                                    data-id="{{ $product->id }}">{{ __('Add To Cart') }} <i
+                                        class="icon fas fa-plus-circle"></i></a>
                 </div>
-            </div>
-            <div class="col-md-3 p-3">
-                <div class="card text-center p-3 shadow rounded-10px border-0">
-                    <img src="{{ asset('frontend/assets/images/toys/bear.png') }}" class="img-fluid" alt="">
-                    <h4 class="w-fit mx-auto">Teddy Bear</h4>
-                    <div class="price-label w-fit small r-bg-green rounded-pill mx-auto py-1 px-2 text-white">$24 USD
+            @endforeach
+            {{-- <div class="col-md-3 p-3">
+                <DIV class="card text-center p-3 shadow rounded-10px border-0">
+                    <img src="{{ asset(ProductImage() . $product->Primary_Image) }}" class="img-fluid" alt="{{ __('product') }}">
+                    <h4 class="w-fit mx-auto"><a class="product-link"
+                        href="{{ route('single.product', $product->en_Product_Slug) }}">{{ langConverter($product->en_Product_Name, $product->fr_Product_Name) }}</a></h4>
+                    <div class="price-label w-fit small r-bg-green rounded-pill mx-auto py-1 px-2 text-white">
+                        <span class="regular-price">
+                            {{ currencyConverter($product->Price) }}</span>
+                        <span class="price">
+                            {{ currencyConverter($product->Discount_Price) }}</span>
                     </div>
-                </div>
-            </div>
-            <div class="col-md-3 p-3">
-                <div class="card text-center p-3 shadow rounded-10px border-0">
-                    <img src="{{ asset('frontend/assets/images/toys/bear.png') }}" class="img-fluid" alt="">
-                    <h4 class="w-fit mx-auto">Teddy Bear</h4>
-                    <div class="price-label w-fit small r-bg-green rounded-pill mx-auto py-1 px-2 text-white">$24 USD
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 p-3">
-                <div class="card text-center p-3 shadow rounded-10px border-0">
-                    <img src="{{ asset('frontend/assets/images/toys/bear.png') }}" class="img-fluid" alt="">
-                    <h4 class="w-fit mx-auto">Teddy Bear</h4>
-                    <div class="price-label w-fit small r-bg-green rounded-pill mx-auto py-1 px-2 text-white">$24 USD
-                    </div>
-                </div>
-            </div>
+                </DIV>
+                <input type="hidden" name="quantity" value="1" id="product_quantity">
+                <a href="javascript:void(0)" title="{{ __('Add To Cart') }}" class="add-cart addCart"
+                                data-id="{{ $product->id }}">{{ __('Add To Cart') }} <i
+                                    class="icon fas fa-plus-circle"></i></a>
+            </div> --}}
+
         </div>
     </div>
 </div>
-
+@endif
+@if ($allsettings['best_selling'] == ACTIVE)
+<div class="container home_products my-5">
+    <div class="d-flex justify-content-between">
+        <h3 class="fw-bold">BEST SELLING</h3>
+        <a href="" class="fw-bold">See All <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+    <hr class="start-border">
+    <div class="product-items">
+        <div class="row">
+            @foreach ($best_sellings as $product)
+            <div class="col-md-3 p-3">
+                <DIV class="card text-center p-3 shadow rounded-10px border-0">
+                    <img src="{{ asset(ProductImage() . $product->Primary_Image) }}" class="img-fluid" alt="{{ __('product') }}">
+                    <h4 class="w-fit mx-auto"><a class="product-link"
+                        href="{{ route('single.product', $product->en_Product_Slug) }}">{{ langConverter($product->en_Product_Name, $product->fr_Product_Name) }}</a></h4>
+                    <div class="price-label w-fit small r-bg-green rounded-pill mx-auto py-1 px-2 text-white">
+                        <span class="regular-price">
+                            {{ currencyConverter($product->Price) }}</span>
+                        <span class="price">
+                            {{ currencyConverter($product->Discount_Price) }}</span>
+                    </div>
+                </DIV>
+                <input type="hidden" name="quantity" value="1" id="product_quantity">
+                <a href="javascript:void(0)" title="{{ __('Add To Cart') }}" class="add-cart addCart"
+                                data-id="{{ $product->id }}">{{ __('Add To Cart') }} <i
+                                    class="icon fas fa-plus-circle"></i></a>
+            </div>
+        @endforeach
+        </div>
+    </div>
+</div>
+@endif
+@if ($allsettings['featured_items'] == ACTIVE)
 <div class="container home_products my-5">
     <div class="d-flex justify-content-between">
         <h3 class="fw-bold">Featured Products</h3>
@@ -131,45 +158,29 @@
     <hr class="start-border">
     <div class="product-items">
         <div class="row">
+            @foreach ($featured_products as $product)
             <div class="col-md-3 p-3">
-                <div class="card text-center p-3 shadow rounded-10px border-0">
-                    <img src="{{ asset('frontend/assets/images/toys/wooden.png') }}" class="img-fluid"
-                        alt="">
-                    <h4 class="w-fit mx-auto">Wooden toy</h4>
-                    <div class="price-label w-fit small r-bg-green rounded-pill mx-auto py-1 px-2 text-white">$24 USD
+                <DIV class="card text-center p-3 shadow rounded-10px border-0">
+                    <img src="{{ asset(ProductImage() . $product->Primary_Image) }}" class="img-fluid" alt="{{ __('product') }}">
+                    <h4 class="w-fit mx-auto"><a class="product-link"
+                        href="{{ route('single.product', $product->en_Product_Slug) }}">{{ langConverter($product->en_Product_Name, $product->fr_Product_Name) }}</a></h4>
+                    <div class="price-label w-fit small r-bg-green rounded-pill mx-auto py-1 px-2 text-white">
+                        <span class="regular-price">
+                            {{ currencyConverter($product->Price) }}</span>
+                        <span class="price">
+                            {{ currencyConverter($product->Discount_Price) }}</span>
                     </div>
-                </div>
+                </DIV>
+                <input type="hidden" name="quantity" value="1" id="product_quantity">
+                <a href="javascript:void(0)" title="{{ __('Add To Cart') }}" class="add-cart addCart"
+                                data-id="{{ $product->id }}">{{ __('Add To Cart') }} <i
+                                    class="icon fas fa-plus-circle"></i></a>
             </div>
-            <div class="col-md-3 p-3">
-                <div class="card text-center p-3 shadow rounded-10px border-0">
-                    <img src="{{ asset('frontend/assets/images/toys/wooden.png') }}" class="img-fluid"
-                        alt="">
-                    <h4 class="w-fit mx-auto">Wooden toy</h4>
-                    <div class="price-label w-fit small r-bg-green rounded-pill mx-auto py-1 px-2 text-white">$24 USD
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 p-3">
-                <div class="card text-center p-3 shadow rounded-10px border-0">
-                    <img src="{{ asset('frontend/assets/images/toys/wooden.png') }}" class="img-fluid"
-                        alt="">
-                    <h4 class="w-fit mx-auto">Wooden toy</h4>
-                    <div class="price-label w-fit small r-bg-green rounded-pill mx-auto py-1 px-2 text-white">$24 USD
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 p-3">
-                <div class="card text-center p-3 shadow rounded-10px border-0">
-                    <img src="{{ asset('frontend/assets/images/toys/wooden.png') }}" class="img-fluid"
-                        alt="">
-                    <h4 class="w-fit mx-auto">Wooden toy</h4>
-                    <div class="price-label w-fit small r-bg-green rounded-pill mx-auto py-1 px-2 text-white">$24 USD
-                    </div>
-                </div>
-            </div>
+        @endforeach
         </div>
     </div>
 </div>
+@endif
 
 <div class="parallax d-grid place-content-center r-bg-red text-white py-5"
     style="--bg-image: url('https://t3.ftcdn.net/jpg/03/23/24/82/360_F_323248211_HNMfkovpijljYs15WasG0XPCTYY2TKrb.jpg');">
