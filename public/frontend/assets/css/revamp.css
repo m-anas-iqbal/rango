@@ -302,16 +302,97 @@ hr.start-border::before {
     margin-left: 10px;
     opacity: 0.2;
 }
-#form .form-control {
+#form .form-control, #form .form-select{
     border: 2px solid #e5e5e5;
     border-radius: 24px;
     padding: 10px 15px;
     background-color: #f7f7f7;
     transition: 0.3s ease;
-    max-width: 670px;
+
 }
-#form .form-control:focus {
+.max-width-670{max-width: 670px;}
+#form .form-control:focus, #form .form-select:focus {
     border: 2px solid var(--color-green);
     box-shadow: unset !important;
     transition: 0.3s ease;
+}
+.cart-imgs{
+    max-width: 100px;
+}
+.cart-desc h5{
+    font-size: 14px;
+    font-weight: 600;
+    margin: 0;
+}
+.cart-desc p{
+    font-size: 12px;
+    font-weight: 500;
+    margin-bottom: 0;
+}
+.cart_price{
+    font-size: 18px;
+    font-weight: 600;
+}
+.vertical-middle{
+    display: table-cell;
+    vertical-align: middle;
+}
+#input{
+    max-width: 150px;
+}
+.shipping{
+    background-color: #f2f2f2;
+}
+.shipping ul li{
+    background-color: #f2f2f2;
+}
+.total{
+    margin: 15px 0px;
+    background-color: #f2f2f2;
+}
+.total ul li{
+    background-color: #f2f2f2;
+}
+.button {
+    position: relative;
+    min-width: 240px;
+    /* margin: 0 2em; */
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    text-align: center;
+    cursor: pointer;
+}
+.button span {
+    position: relative;
+    z-index: 2;
+    display: block;
+    padding: 1.25em 0.5em 1.35em 0.5em;
+}
+.button02 {
+    background: linear-gradient(135deg, var(--color-blue), var(--color-green), var(--color-red), var(--color-yellow));
+    background-size: 300% auto;
+    transition: 0.5s;
+}
+.button02:hover {
+    background-position: 100% 0;
+}
+.btn:focus{
+    box-shadow: unset !important;
+    border: 0px !important;
+}
+.input_label{
+    background-color: #f2f2f2;
+    padding: 15px;
+    width: 100%;
+    /* margin-top: 15px; */
+}
+@media (max-width : 500px)  {
+    .cart-imgs {
+        max-width: 50px ;
+        max-height: 50px;
+    }
 }

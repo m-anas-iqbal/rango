@@ -500,7 +500,7 @@ class CheckoutController extends Controller
             }
             $data['success'] = true;
         }
-        // mail 
+        // mail
         $this->orderConfirmMail($order);
         return $data;
     }
@@ -626,4 +626,8 @@ class CheckoutController extends Controller
         $data['keywords'] = __('Order Track');
         return view('front.pages.checkout.order-track', $data);
     }
+    public function checkout(){
+        return view('front.pages.checkout.checkout');
+    }
 }
+
