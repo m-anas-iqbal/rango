@@ -7,16 +7,16 @@
             <div class="col-md-6">
                 <ul class="list-unstyled gap-4 m-0 d-md-flex justify-content-center">
                     <li class="nav-item">
-                        <a class="" href="#">Home</a>
+                        <a class="" href="{{route('front')}}">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="" href="#">Categories</a>
+                        <a class="" href="{{route('all.product')}}">Categories</a>
                     </li>
                     <li class="nav-item">
-                        <a class="" href="#">About</a>
+                        <a class="" href="{{route('about.us')}}">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="" href="#">Contact</a>
+                        <a class="" href="{{route('contact.us')}}">Contact</a>
                     </li>
                     {{-- <li class="nav-item">
                         <a class="" href="#">Blog</a>
@@ -42,8 +42,8 @@
                 <p class="m-0 small">Copyright &copy; - Developed by <a href="https:codexwriter.com"
                         class="fw-bold">Codexwriter</a></p>
                 <div class="wrap">
-                    <a href="{{route('privacy')}}" class="small">Privacy Policy</a>
-                    |
+                    {{-- <a href="{{route('privacy')}}" class="small">Privacy Policy</a> --}}
+                    {{-- | --}}
                     <a href="{{route('terms')}}" class="small">Terms & Conditions</a>
                     |
                     <a href="{{route('safety')}}" class="small">Product Safety and Certification</a>

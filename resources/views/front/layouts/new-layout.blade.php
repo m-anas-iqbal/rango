@@ -32,7 +32,7 @@
     </section>
     <section class="navigation container">
         <div class="d-flex justify-content-between align-items-center">
-            <a class="navbar-brand" href="#"><img src="{{ asset('frontend/assets/images/logo/logo.png') }}"
+            <a class="navbar-brand" href="{{route('front')}}"><img src="{{ asset('frontend/assets/images/logo/logo.png') }}"
                     class="img-fluid logo" alt="logo rango"></a>
             <button class="btn d-md-none btn-mobile-nav"><i class="fa-solid fa-bars-staggered"></i></button>
             <form class="searchGroup d-none d-md-flex">
@@ -56,7 +56,7 @@
                     <a class="" href="#">Blog</a>
                 </li> --}}
                 <li>
-                    <a href="{{route('front')}}"><i class="fa-solid fa-cart-shopping r-text-blue fs-4"></i></a>
+                    <a href="{{route('cart')}}"><i class="fa-solid fa-cart-shopping r-text-blue fs-4"></i></a>
                 </li>
             </ul>
         </div>
@@ -64,16 +64,16 @@
             <p class="mobile-close position-absolute end-0 top-0 m-3 fs-1 fw-bold text-danger">✕</p>
             <ul class="list-unstyled mt-5">
                 <li class="nav-item">
-                    <a class="" href="#">Home</a>
+                    <a class="" href="{{route('front')}}">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="" href="#">Categories</a>
+                    <a class="" href="{{route('all.product')}}">Categories</a>
                 </li>
                 <li class="nav-item">
-                    <a class="" href="#">About</a>
+                    <a class="" href="{{route('about.us')}}">About</a>
                 </li>
                 <li class="nav-item">
-                    <a class="" href="#">Contact</a>
+                    <a class="" href="{{route('contact.us')}}">Contact</a>
                 </li>
                 {{-- <li class="nav-item">
                     <a class="" href="#">Blog</a>

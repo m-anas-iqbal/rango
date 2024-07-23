@@ -14,7 +14,7 @@
                             <img src="https://assets.website-files.com/5badda2935e11303a89a461e/5baf79eb570913b9781a96f2_arrow-right-mini-icon.svg" alt="" class="breadcrumbs-arrow">
 
                         <div>
-                            Product Safety and certifications
+                            Terms and Conditions
                         </div>
                     </div>
                     </div>
@@ -26,13 +26,66 @@
         <div class="container">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-md-12 text-center">
-                        <h2 class="text-uppercase">Product Safety and Certifications</h2>
-                        <p>At RANGO CART, we prioritize the safety and well-being of children by ensuring that all our toys, both wooden and plastic, meet the highest safety standards and certifications required in the USA and Canada. Our commitment to quality and safety begins with strict adherence to regulatory guidelines and standards set by both countries. In the USA, our toys comply with the Consumer Product Safety Improvement Act (CPSIA), which mandates stringent safety requirements for children's products. This includes testing for lead and other hazardous substances, ensuring that all our toys are free from harmful chemicals. Additionally, we adhere to the ASTM F963-17 standard, which covers the safety specifications for toy safety. This standard encompasses various aspects such as mechanical and physical properties, flammability, and labeling requirements.</p>
-                        <p>In Canada, our products comply with the Canada Consumer Product Safety Act (CCPSA) and the specific regulations under the Toys Regulations (SOR/2011-17). These regulations are designed to prevent risks such as choking, ingestion, and exposure to hazardous substances. To ensure compliance, our toys undergo rigorous testing for mechanical and physical properties, flammability, toxic elements, and chemical composition. This includes tests for phthalates, which are commonly found in plastic toys and are strictly regulated to ensure they do not exceed the permissible limits.</p>
-                        <p>Our wooden toys are crafted from high-quality, non-toxic materials, and we use water-based paints and finishes that are safe for children. These materials are not only environmentally friendly but also comply with the standards set by the Forest Stewardship Council (FSC), ensuring sustainable sourcing. For plastic toys, we use BPA-free plastics that meet the safety standards outlined by both the CPSIA and CCPSA, ensuring they are free from harmful chemicals and safe for prolonged use by children.</p>
-                        <p>To further demonstrate our commitment to safety, we conduct regular audits and inspections of our manufacturing processes to ensure continuous compliance with these standards. We also work closely with independent third-party laboratories that are accredited by the CPSC (Consumer Product Safety Commission) in the USA and Health Canada to conduct rigorous safety testing on our products before they reach the market.</p>
-                        <p>By obtaining and maintaining these certifications, RANGO CART guarantees that our toys are not only enjoyable and educational but also safe for children to use. Parents can have peace of mind knowing that when they choose RANGO CART, they are choosing toys that meet the highest safety standards in the industry. Our dedication to quality and safety reflects our mission to provide high-quality, eco-friendly educational toys that promote learning and creativity in children while ensuring their safety at every step.</p>
+                    <div class="col-md-12">
+                        <h2 class="text-uppercase">Terms and Conditions</h2>
+                        <small><i><strong>Effective Date: July 1, 2024</strong></i></small>
+                        <p>At Rango Cart, we are committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our physical store or our website (www.rangocart.com) and use our services. Please read this privacy policy carefully.</p>
+                        <h3 class="my-4">1. Information We Collect</h3>
+                        <div class="ms-3">
+                                <h4>1.1 Personal Information</h4>
+                            <p>We may collect personal information that you voluntarily provide to us when you register on the website, place an order, subscribe to our newsletter, respond to a survey, fill out a form, or visit our physical store. This information may include:</p>
+                            <ul>
+                                <li>Name</li>
+                                <li>Email address</li>
+                                <li>Mailing address</li>
+                                <li>Phone number</li>
+                                <li>Payment information (credit/debit card details)</li>
+                            </ul>
+
+                            <h4>1.2 Non-Personal Information</h4>
+                            <p>We may collect non-personal information about you whenever you interact with our website. Non-personal information may include:</p>
+                            <p><em><strong>Browser name</strong></em></p>
+                            <p>The type of computer and technical information about your means of connection to our website, such as the operating system and the Internet service providers utilized, and other similar information.</p>
+
+                            <h4>1.3 Cookies</h4>
+                            <p>Our website may use "cookies" to enhance the user experience. Your web browser places cookies on your hard drive for record-keeping purposes and sometimes to track information about you. You can choose to set your web browser to refuse cookies or to alert you when cookies are being sent. If you do so, note that some parts of the website may not function properly.</p>
+
+                        </div>
+
+
+                        <h3 class="my-4">2. How We Use Your Information</h3>
+                        <div class="ms-3">
+                            <h4>2.1 To Process Transactions</h4>
+                            <p>We may use the information you provide about yourself when placing an order to process that order. We do not share this information with outside parties except to the extent necessary to provide the service.</p>
+
+                            <h4>2.2 To Improve Customer Service</h4>
+                            <p>Your information helps us to more effectively respond to your customer service requests and support needs.</p>
+
+                            <h4>2.3 To Personalize User Experience</h4>
+                            <p>We may use information in the aggregate to understand how our users as a group use the services and resources provided on our website.</p>
+
+                            <h4>2.4 To Send Periodic Emails</h4>
+                            <p>The email address you provide for order processing may be used to send you information and updates pertaining to your order, in addition to receiving occasional company news, updates, related product or service information, etc.</p>
+
+                        </div>
+                        <h3 class="my-4">3. Disclosure of Your Information</h3>
+                        <ul>
+                            <li><strong>Service Providers:</strong> We may share your information with third-party service providers that assist us with various tasks, such as payment processing, shipping, data analysis, and marketing.</li>
+                            <li><strong>Legal Obligations:</strong> We may disclose your information if required by law or in response to valid requests by public authorities.</li>
+                            <li><strong>Business Transfers:</strong> In the event of a merger, acquisition, or sale of all or a portion of our assets, your information may be transferred as part of that transaction.</li>
+                        </ul>
+
+                        <h3 class="my-4">4. Data Security</h3>
+                        <p>We use various security measures to protect your personal information. However, no method of transmission over the internet or electronic storage is 100% secure, and we cannot guarantee absolute security. However, we adopt appropriate data collection, storage, and processing practices and security measures to protect against unauthorized access, alteration, disclosure, or destruction of your personal information, username, password, transaction information, and data stored on our website.</p>
+
+                        <h3 class="my-4">5. Your Rights</h3>
+                        <p>You have the right to access, correct, or delete your personal information. You can update your preferences or opt-out of certain communications by contacting us at <a href="mailto:info@rangocart.com">info@rangocart.com</a>.</p>
+
+                        <h3 class="my-4">6. Changes to This Privacy Policy </h3>
+                        <p>We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on our Site. You are advised to review this Privacy Policy periodically for any changes.</p>
+
+                        <h3 class="my-4">7. Contact Us</h3>
+                        <p>If you have any questions about this Privacy Policy, please contact us at <a href="mailto:info@rangocart.com">info@rangocart.com</a>, and we will make every effort to resolve your concerns.</p>
                     </div>
                 </div>
             </div>
