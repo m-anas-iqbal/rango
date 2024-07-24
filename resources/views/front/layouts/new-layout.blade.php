@@ -35,9 +35,9 @@
             <a class="navbar-brand" href="{{route('front')}}"><img src="{{ asset('frontend/assets/images/logo/logo.png') }}"
                     class="img-fluid logo" alt="logo rango"></a>
             <button class="btn d-md-none btn-mobile-nav"><i class="fa-solid fa-bars-staggered"></i></button>
-            <form class="searchGroup d-none d-md-flex">
+            <form  action="{{ route('category.search') }}" method="get" class="searchGroup d-none d-md-flex">
                 <input type="text" placeholder="Search" class="small">
-                <button class=""><i class="fa-solid fa-magnifying-glass"></i></button>
+                <button type="submit" class=""><i class="fa-solid fa-magnifying-glass"></i></button>
             </form>
             <ul class="list-unstyled gap-4 m-0 d-none d-md-flex">
                 <li class="nav-item">

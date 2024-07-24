@@ -34,37 +34,18 @@
 </div>
 <div class="container cate_card my-5">
     <div class="row">
-        {{-- <div class="col-md-6 p-4">
-            <div class="card p-5 r-bg-red rounded-20px">
-                <h1 class="fw-bold py-3 text-white">Wooden Toys</h1>
-                <img src="{{ asset('frontend/assets/images/toys/wooden.png') }}"
-                    class="position-absolute translate-middle-y" alt="">
-            </div>
-        </div>
-        <div class="col-md-6 p-4">
-            <div class="card p-5 r-bg-blue rounded-20px">
-                <h1 class="fw-bold py-3 text-white">Stuffed Animals</h1>
-                <img src="{{ asset('frontend/assets/images/toys/bear.png') }}"
-                    class="position-absolute translate-middle-y" alt="">
-            </div>
-        </div>
-        <div class="col-md-6 p-4">
-            <div class="card p-5 r-bg-green rounded-20px">
-                <h1 class="fw-bold py-3 text-white">Category 3</h1>
-                <img src="{{ asset('frontend/assets/images/toys/toy.png') }}"
-                    class="position-absolute translate-middle-y" alt="">
-            </div>
-        </div> --}}
+      @forelse (Category_Des_Icon() as $item)
+      <div class="col-md-6 p-4">
+          <a class="card p-5 r-bg-green rounded-20px" href="{{ route('category.product', $item->id) }}">
+              <h1 class="fw-bold py-3 text-white">{{ langConverter($item->en_Category_Name, $item->fr_Category_Name) }}</h1>
+              <img src="{{ $item->Category_Icon }}"
+                  class="position-absolute translate-middle-y" alt="{{ $item->fr_Category_Name }}">
+          </a>
+      </div>
+      @empty
 
-        @foreach (Category_Des_Icon() as $item)
-            <div class="col-md-6 p-4">
-                <a class="card p-5 r-bg-green rounded-20px" href="{{ route('category.product', $item->id) }}">
-                    <h1 class="fw-bold py-3 text-white">{{ langConverter($item->en_Category_Name, $item->fr_Category_Name) }}</h1>
-                    <img src="{{ $item->Category_Icon }}"
-                        class="position-absolute translate-middle-y" alt="{{ $item->fr_Category_Name }}">
-                </a>
-            </div>
-        @endforeach
+      @endforelse
+
     </div>
 </div>
 @if ($allsettings['new_arrival'] == ACTIVE)
@@ -76,7 +57,7 @@
     <hr class="start-border">
     <div class="product-items">
         <div class="row">
-            @foreach ($new_arrivals as $product)
+            @forelse ($new_arrivals as $product)
                 <div class="col-md-3 p-3">
                     <DIV class="card text-center p-3 shadow rounded-10px border-0">
                         <img src="{{ asset(ProductImage() . $product->Primary_Image) }}" class="img-fluid" alt="{{ __('product') }}">
@@ -94,7 +75,9 @@
                                     data-id="{{ $product->id }}">{{ __('Add To Cart') }} <i
                                         class="icon fas fa-plus-circle"></i></a>
                 </div>
-            @endforeach
+                @empty
+
+                @endforelse
             {{-- <div class="col-md-3 p-3">
                 <DIV class="card text-center p-3 shadow rounded-10px border-0">
                     <img src="{{ asset(ProductImage() . $product->Primary_Image) }}" class="img-fluid" alt="{{ __('product') }}">
@@ -126,7 +109,7 @@
     <hr class="start-border">
     <div class="product-items">
         <div class="row">
-            @foreach ($best_sellings as $product)
+           @forelse ($best_sellings as $product)
             <div class="col-md-3 p-3">
                 <DIV class="card text-center p-3 shadow rounded-10px border-0">
                     <img src="{{ asset(ProductImage() . $product->Primary_Image) }}" class="img-fluid" alt="{{ __('product') }}">
@@ -144,7 +127,9 @@
                                 data-id="{{ $product->id }}">{{ __('Add To Cart') }} <i
                                     class="icon fas fa-plus-circle"></i></a>
             </div>
-        @endforeach
+         @empty
+
+      @endforelse
         </div>
     </div>
 </div>
@@ -158,7 +143,7 @@
     <hr class="start-border">
     <div class="product-items">
         <div class="row">
-            @foreach ($featured_products as $product)
+           @forelse ($featured_products as $product)
             <div class="col-md-3 p-3">
                 <DIV class="card text-center p-3 shadow rounded-10px border-0">
                     <img src="{{ asset(ProductImage() . $product->Primary_Image) }}" class="img-fluid" alt="{{ __('product') }}">
@@ -176,7 +161,9 @@
                                 data-id="{{ $product->id }}">{{ __('Add To Cart') }} <i
                                     class="icon fas fa-plus-circle"></i></a>
             </div>
-        @endforeach
+         @empty
+
+      @endforelse
         </div>
     </div>
 </div>

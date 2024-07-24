@@ -1,6 +1,25 @@
 <div class="product-list">
     <div class="row">
-        @foreach($filters as $product)
+        @forelse ($filters as $product)
+
+                        <div class="col-md-3 p-3">
+                            <div class="card text-center p-3 shadow rounded-10px border-0">
+                                <img src="{{ asset(ProductImage() . $product->Primary_Image) }}" alt="product" class="img-fluid" >
+                                <h4 class="w-fit mx-auto"><a class="product-link"
+                                    href="{{ route('single.product', $product->en_Product_Slug) }}">{{ langConverter($product->en_Product_Name, $product->fr_Product_Name) }}</a></h4>
+                                <div class="d-flex justify-content-center">
+
+                                    <input type="hidden" name="quantity" value="1"
+                                        id="product_quantity">
+                                    <div class="price-label w-fit small r-bg-green rounded-pill  py-1 px-2 text-white">{{ currencyConverter($product->Price) }}</div>
+                                    <a href="javascript:void(0)" title="{{ __('Add to cart') }}"
+                                    data-id="{{ $product->id }}"
+                                     class="add-cart addCart ms-2 r-bg-blue price-label w-fit small r-bg-green rounded-pill  py-1 px-3 text-white">{{ __('Add To Cart') }}</a>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+        {{-- @forelse($filters as $product)
             <div class="col-lg-3 col-md-4 col-sm-6">
                 <div class="single-grid-product">
                     <div class="product-top">
@@ -23,7 +42,7 @@
                         </ul>
                     </div>
                     <div class="product-info text-center">
-                        @foreach($product->product_tags as $ppt)
+                        @forelse($product->product_tags as $ppt)
                             <h4 class="product-catagory">{{$ppt->tag}}</h4>
                         @endforeach
                         <input type="hidden" name="quantity" value="1" id="product_quantity">
@@ -38,7 +57,7 @@
                     </div>
                 </div>
             </div>
-        @endforeach
+        @endforeach --}}
     </div>
 </div>
 <script src="{{asset('frontend/assets/js/common.js')}}"></script>
