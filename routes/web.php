@@ -109,6 +109,7 @@ Route::group(['middleware' => ['is_user']], function () {
     });
     Route::post('buy-now', [BuyNowController::class, 'buyNow'])->name('buy.now');
 
+    Route::get('searchBarSuggestion', [ProductController::class, 'searchBarSuggestion'])->name('searchBarSuggestion');
     Route::group(['prefix' => 'product'], function () {
         Route::get('single/{slug}', [ProductController::class, 'singleProduct'])->name('single.product');
         Route::get('all', [ProductController::class, 'allProduct'])->name('all.product');

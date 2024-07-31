@@ -23,7 +23,7 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('/frontend/assets/css/revamp.css') }}">
-
+    <link rel="stylesheet" href="{{ asset('frontend/assets/dist/css/suggestion-box.min.css') }}">
     <!-- Favicon -->
     <link rel="shortcut icon" href="{{ asset(IMG_FAVICON_PATH . $allsettings['favicon']) }}" type="image/x-icon">
 

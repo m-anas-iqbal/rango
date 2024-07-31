@@ -96,6 +96,45 @@ class ProductController extends Controller
         return 'something wrong';
     }
 
+    public function searchBarSuggestion(Request $request)
+    {
+        if (empty($request->search)) {
+            return json_encode(['results' => []]);
+        }
+            if ($request->search) {
+                $filters = Product::where('en_Product_Name', 'LIKE', "%{$request->search}%")->get();
+
+        $url= "en_Product_Name";
+            }
+            if ($request->search && count($filters)==0) {
+                $filters = Category::where('en_Category_Name', 'LIKE', "%{$request->search}%")->get();
+
+        $url= "en_Category_Name";
+            }
+            if (count($filters)>0) {
+                $suggestions = [];
+                $i = 0;
+                foreach ($filters as $result) {
+                    $suggestions[$i]['suggestion'] = $result->$url;
+                    if ($url =="en_Product_Name") {
+                        $suggestions[$i]['url'] = route('single.product', ['slug' => $result->en_Product_Slug]);
+                    }else {
+                        $suggestions[$i]['url'] = route('category.product', ['id' => $result->id]);
+                    }
+                    // $suggestions[$i]['url'] = "selected.php?selected={$result}";
+                    $i++;
+                }
+
+                if (count($suggestions)) {
+                    $results = ['results' => $suggestions];
+                }
+            return json_encode($results);
+            }
+
+
+
+
+    }
     public function productFiltering(Request $request)
     {
 
