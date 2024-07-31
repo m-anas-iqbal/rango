@@ -57,7 +57,7 @@
                     <a class="" href="#">Blog</a>
                 </li> --}}
                 <li>
-                    <a href="{{route('cart')}}"><i class="fa-solid fa-cart-shopping r-text-blue fs-4"></i></a>
+                    <a href="{{route('cart.content')}}"><i class="fa-solid fa-cart-shopping r-text-blue fs-4"></i></a>
                 </li>
             </ul>
         </div>
