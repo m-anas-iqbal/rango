@@ -15,5 +15,5 @@ yarn-error.log
 /.vscode
 /public/uploaded_files
 composer.lock
-/storage/installed
+
 *.zip
