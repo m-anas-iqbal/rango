@@ -84,9 +84,11 @@ class CartController extends Controller
         $data['description'] = $seo->description;
         $data['keywords'] = $seo->keywords;
         if ($content->count()) {
-            return view('front.pages.cart.cart_content', $data);
+            // return view('front.pages.cart.cart_content', $data);
+            return view('front.pages.cart.cart', $data);
         }
-        return view('front.pages.cart.empty-cart', $data);
+        // return view('front.pages.cart.empty-cart', $data);
+        return view('front.pages.cart.cart', $data);
     }
     public function cartDelete(Request $request)
     {
@@ -158,7 +160,7 @@ class CartController extends Controller
     {
         return currencySymbol()[currency()];
     }
-    public function cart(){
-        return view('front.pages.cart.cart');
-    }
+    // public function cart(){
+    //     return view('front.pages.cart.cart');
+    // }
 }

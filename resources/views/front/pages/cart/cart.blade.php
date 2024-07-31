@@ -41,7 +41,90 @@
                                     <th>Action</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody id="cart_ajax_load">
+                                @php
+                                    $total = 0;
+                                @endphp
+                                @foreach ($content as $item)
+                                    <tr class="cart-page-item">
+                                        <td>
+                                            <div class="single-grid-product m-0">
+                                                <div class="product-top">
+                                                    <a href="{{ route('single.product', $item->options->slug ?? '') }}"><img
+                                                            class="product-thumbnal"
+                                                            src="{{ asset(ProductImage() . $item->options->image) }}"
+                                                            alt="cart"></a>
+                                                    <div class="product-flags">
+                                                        <span
+                                                            class="product-flag sale">{{ $item->options->item_tag }}</span>
+                                                        <span
+                                                            class="product-flag discount">-{{ $item->options->discount_parcent }}%</span>
+                                                    </div>
+                                                </div>
+                                                <div class="product-info text-center">
+                                                    <h3 class="product-name">
+                                                        <a class="product-link"
+                                                            href="{{ route('single.product', $item->options->slug ?? '') }}">{{ $item->name }}</a>
+                                                    </h3>
+                                                    @if ($item->options->color)
+                                                        <div class="variable-single-item color-switch">
+                                                            <div class="product-variable-color">
+                                                                <label>
+                                                                    <input name="modal-product-color"
+                                                                        class="color-select" type="radio">
+                                                                    <span
+                                                                        style="background:{{ $item->options->color }};"></span>
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    @endif
+                                                    @if ($item->options->size)
+                                                        <ul class="size-switch">
+                                                            <li class="single-size active">
+                                                                {{ $item->options->size }}</li>
+                                                        </ul>
+                                                    @endif
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="product-price text-center">
+                                                <h4 class="regular-price">
+                                                    {{ currencyConverter($item->weight) }}
+                                                </h4>
+                                                <h3 class="price ">
+                                                    <span
+                                                        class="mainPrice">{{ currencyConverter($item->price) }}</span>
+                                                </h3>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="cart-quantity input-group">
+                                                <div class="increase-btn dec qtybutton btn qty_decrease"
+                                                    data-id="{{ $item->rowId }}">-</div>
+                                                <input class="qty-input cart-plus-minus-box qty_value"
+                                                    type="text" name="qtybutton" id="qty_value"
+                                                    value="{{ $item->qty }}" readonly />
+                                                <div class="increase-btn inc qtybutton btn qty_increase"
+                                                    data-id="{{ $item->rowId }}">+</div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <h1 class="cart-table-item-total SubTotalAmount">
+                                                {{ currencyConverter($item->subtotal) }}
+                                            </h1>
+                                        </td>
+                                        <td>
+                                            <button class="delet-btn deleteItemCart"
+                                                title="{{ __('Delete Item') }}" data-id="{{ $item->rowId }}">
+                                                <img src="{{ asset('frontend/assets/images/close.svg') }}"
+                                                    alt="close" />
+                                            </button>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                            {{-- <tbody>
                                 <tr>
                                     <td class="d-flex align-items-center">
                                         <img src="{{ asset('frontend/assets/images/toys/bear.png') }}" alt=""
@@ -128,7 +211,7 @@
                                     <td class="my-auto vertical-middle text-center"><a href="#"><i class="fa fa-trash"></i></a></td>
 
                                 </tr>
-                            </tbody>
+                            </tbody> --}}
                         </table>
                     </div>
                     <div class="col-md-4">
@@ -139,19 +222,19 @@
                                 <li class="list-group-item">
                                     <div class="d-flex justify-content-between">
                                         <p class="fw-bold mb-0">Sub Total : </p>
-                                        <p class="fw-bold mb-0"><span>$25.00</span></p>
+                                        <p class="fw-bold mb-0"><span class="totalAmount">{{ currencyConverter(subtotal()) }}</span></p>
                                     </div>
                                 </li>
                                 <li class="list-group-item">
                                     <div class="d-flex justify-content-between">
                                         <p class="fw-bold mb-0">Sales Tax : </p>
-                                        <p class="fw-bold mb-0"><span>$3.00</span></p>
+                                        <p class="fw-bold mb-0"><span>$0.00</span></p>
                                     </div>
                                 </li>
                                 <li class="list-group-item">
                                     <div class="d-flex justify-content-between">
                                         <p class="fw-bold mb-0">Shipping : </p>
-                                        <p class="fw-bold mb-0"><span>$10.00</span></p>
+                                        <p class="fw-bold mb-0"><span>$0.00</span></p>
                                     </div>
                                 </li>
                             </ul>
@@ -163,19 +246,26 @@
                                 <li class="list-group-item">
                                     <div class="d-flex justify-content-between">
                                         <p class="fw-bold mb-0"> Total : </p>
-                                        <p class="fw-bold mb-0"><span>$37.00</span></p>
+                                        <p class="fw-bold mb-0"><span class="cart-page-final-total totalAmount ">{{ currencyConverter(subtotal()) }}</span></p>
                                     </div>
                                 </li>
                             </ul>
                         </div>
                         <div class="checkout">
-                            <button class="button button02 w-100"><span>Checkout</span></button>
+                            {{-- <button class="button button02 w-100"><span>Checkout</span></button> --}}
+
+                                <a href="{{ route('checkout') }}"
+                                    class="button button02 w-100 form-btn proceed-to-checkout-btn">{{ __('Proceed To Checkout') }}</a>
 
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
+    <div id="CartDeleteFromSession" data-url="{{ route('cart.delete') }}"></div>
+    <div id="CartIncrementFromSession" data-url="{{ route('cart.increase') }}"></div>
+    <div id="CartDecrementFromSession" data-url="{{ route('cart.decrease') }}"></div>
     </section>
     <script>
         function increment() {
