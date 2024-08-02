@@ -325,7 +325,7 @@
                                             @endif
                                         @endforeach
 
-                                        {{-- @if (env('COD_STATUS') == '1')
+                                        @if (env('COD_STATUS') == '1')
                                             <div class="form-group">
                                                 <div class="form-check card-check">
                                                     <input class="form-check-input" type="radio" name="payment"
@@ -338,7 +338,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        @endif --}}
+                                        @endif
 
                                         <div class="form-group form-check terms-agree">
                                             <input type="checkbox" class="form-check-input" id="agree"

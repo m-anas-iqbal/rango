@@ -215,32 +215,8 @@
                         </table>
                     </div>
                     <div class="col-md-4">
-                        <h2>Shipping</h2>
+                        <h2>Proceed To Checkout</h2>
                         <div class="divider"></div>
-                        <div class="shipping p-3">
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item">
-                                    <div class="d-flex justify-content-between">
-                                        <p class="fw-bold mb-0">Sub Total : </p>
-                                        <p class="fw-bold mb-0"><span class="totalAmount">{{ currencyConverter(subtotal()) }}</span></p>
-                                    </div>
-                                </li>
-                                <li class="list-group-item">
-                                    <div class="d-flex justify-content-between">
-                                        <p class="fw-bold mb-0">Sales Tax : </p>
-                                        <p class="fw-bold mb-0"><span>$0.00</span></p>
-                                    </div>
-                                </li>
-                                <li class="list-group-item">
-                                    <div class="d-flex justify-content-between">
-                                        <p class="fw-bold mb-0">Shipping : </p>
-                                        <p class="fw-bold mb-0"><span>$0.00</span></p>
-                                    </div>
-                                </li>
-                            </ul>
-
-
-                        </div>
                         <div class="total">
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item">
@@ -255,7 +231,7 @@
                             {{-- <button class="button button02 w-100"><span>Checkout</span></button> --}}
 
                                 <a href="{{ route('checkout') }}"
-                                    class="button button02 w-100 form-btn proceed-to-checkout-btn">{{ __('Proceed To Checkout') }}</a>
+                                    class="button button02 w-100 form-btn proceed-to-checkout-btn">{{ __('Go') }}</a>
 
                         </div>
                     </div>
