@@ -26,7 +26,30 @@
                 <a href=""><i class="fa-brands fa-instagram"></i></a>
                 <a href=""><i class="fa-brands fa-youtube"></i></a>
                 <a href=""><i class="fa-brands fa-pinterest"></i></a>
-                <a href="">My Account</i></a>
+                @if (Auth::user())
+                <li class="single-item user-area">
+                    <div class="account-switcher">
+                        <a class="single-btn user-btn" href="javascript:void(0)"><i
+                                class="btn-icon flaticon-user"></i></a>
+                        <ul class="account-list">
+                            @if (Auth::user()->is_admin == ACTIVE)
+                                <li class="single-lang"><a class="lang-text"
+                                        href="{{ route('admin.dashboard') }}">{{ __('Dashboard') }}</a>
+                                </li>
+                            @else
+                                <li class="single-lang"><a class="lang-text"
+                                        href="{{ route('user.profile') }}">{{ __('Profile') }}</a>
+                                </li>
+                            @endif
+                            <li class="single-lang"><a class="lang-text"
+                                    href="{{ route('user.logout') }}">{{ __('Logout') }}</a></li>
+                        </ul>
+                    </div>
+                </li>
+            @else
+
+            <a href="{{ route("login") }}">My Account</i></a>
+            @endif
             </div>
         </div>
     </section>

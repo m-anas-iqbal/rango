@@ -1,21 +1,8 @@
-@extends('front.layouts.master')
+@extends('front.layouts.new-layout')
 @section('title', isset($title) ? $title : 'Home')
 @section('description', isset($description) ? $description : '')
 @section('keywords', isset($keywords) ? $keywords : '')
 @section('content')
-    <!-- breadcrumb area start here  -->
-    <div class="breadcrumb-area">
-        <div class="container">
-            <div class="breadcrumb-wrap text-center">
-                <h2 class="page-title">{{ __('Forget Password')}}</h2>
-                <ul class="breadcrumb-pages">
-                    <li class="page-item"><a class="page-item-link" href="{{route('front')}}">{{ __('Home')}}</a></li>
-                    <li class="page-item">{{ __('Forget Password')}}</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <!-- breadcrumb area end here  -->
 
     <!-- about us area start here  -->
     <div class="sign-in-page section">
