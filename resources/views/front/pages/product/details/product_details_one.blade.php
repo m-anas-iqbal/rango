@@ -4,18 +4,22 @@
 @section('keywords', isset($keywords) ? $keywords : '')
 @section('content')
     <!-- breadcrumb area start here  -->
-    <div class="breadcrumb-area">
+    <section id="breadcrumbs">
         <div class="container">
-            <div class="breadcrumb-wrap text-center">
-                <h2 class="page-title">{{ langConverter($products->en_Product_Name, $products->fr_Product_Name) }}</h2>
-                <ul class="breadcrumb-pages">
-                    <li class="page-item"><a class="page-item-link" href="{{ route('front') }}">{{ __('Home') }}</a>
-                    </li>
-                    <li class="page-item">{{ __('Product Single Page') }}</li>
-                </ul>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="breadcrumbs">
+                            <a href="{{ route('front') }}" class="link-grey">{{ __('Home') }}</a>
+                            <img src="https://assets.website-files.com/5badda2935e11303a89a461e/5baf79eb570913b9781a96f2_arrow-right-mini-icon.svg"
+                                alt="" class="breadcrumbs-arrow">
+                            <div class="page-item">{{ __('Product Single Page') }}</div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
+    </section>
     <!-- breadcrumb area end here  -->
 
     <!-- product-single-area start here  -->
@@ -24,7 +28,33 @@
             <div class="product-single-details">
                 <div class="row">
                     <div class="col-lg-6">
-                        <div class="product-single-left">
+                        <div class="imagesSection">
+                            <div class="product-thumbnail-image p-3">
+                                @foreach (['Primary_Image', 'Image4', 'Image3', 'Image5', 'Image2'] as $image)
+                                    @if ($products->$image)
+                                        <div class="main-img-wrap p-3">
+                                            <img class="img-fluid w-100 h-100 object-fit-contain"
+                                                src="{{ asset(ProductImage() . $products->$image) }}"
+                                                alt="{{ __('product') }}" />
+                                        </div>
+                                    @endif
+                                @endforeach
+                            </div>
+                            <div class="product-images">
+                                @foreach (['Primary_Image', 'Image4', 'Image3', 'Image5', 'Image2'] as $image)
+                                    @if ($products->$image)
+                                        <div class="p-1 wrap">
+                                            <div class="border border-dark p-2 rounded h-100 w-100">
+                                                <img class="img-fluid w-100 h-100 object-fit-contain"
+                                                    src="{{ asset(ProductImage() . $products->$image) }}"
+                                                    alt="{{ __('product') }}" />
+                                            </div>
+                                        </div>
+                                    @endif
+                                @endforeach
+                            </div>
+                        </div>
+                        {{-- <div class="product-single-left">
                             <div class="product-thumbnail-image">
                                 <ul class="product-thumb-silide slider slider-nav">
 
@@ -89,31 +119,44 @@
 
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
-                    <div class="col-lg-6">
+                    <div class="col-lg-6 py-3">
                         <div class="product-single-right">
                             <div class="product-info">
-                                @foreach ($products->product_tags as $ppt)
+                                {{-- @foreach ($products->product_tags as $ppt)
                                     <h4 class="product-catagory">{{ $ppt->tag }}</h4>
-                                @endforeach
+                                @endforeach --}}
 
-                                <h3 class="product-name">
+                                <h3 class="product-name fw-bold text-capitalize ">
                                     {{ langConverter($products->en_Product_Name, $products->fr_Product_Name) }}</h3>
+                                <hr>
                                 <!-- This is server side code. User can not modify it. -->
-                                {!! productReview($products->id) !!}
+                                {{-- {!! productReview($products->id) !!} --}}
 
                                 <div class="product-price">
                                     @if (currencyConverter($products->Price) == currencyConverter($products->Discount_Price))
                                         <span class="price">{{ currencyConverter($products->Discount_Price) }}</span>
                                     @else
-                                        <span class="price">{{ currencyConverter($products->Discount_Price) }}</span>
-                                        <span class="regular-price">{{ currencyConverter($products->Price) }}</span>
+                                        <span
+                                            class="price fw-bold fs-3">{{ currencyConverter($products->Discount_Price) }}</span>
+                                        <span
+                                            class="regular-price text-danger text-decoration-line-through fw-bold fs-5">{{ currencyConverter($products->Price) }}</span>
                                     @endif
                                 </div>
+                                <div class="product-size-area">
+                                    <h6 class="size-title">{{ __('Type:') }} {{ productTypeText($products->id) }}</h6>
+                                    <ul class="size-switch list-unstyled">
+                                        @foreach ($products->sizes as $item)
+                                            <input type="hidden" class="sizeValue" name="productSize"
+                                                value="{{ $item->id }}">
+                                            <li class="single-size activeSize" data-size="{{ $item->id }}">
+                                                {{ $item->Size }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
 
-                                <p class="note-text">{{ langConverter($products->en_About, $products->fr_About) }}
-                                </p>
+                                <p class="note-text m-0">{{ langConverter($products->en_About, $products->fr_About) }}</p>
 
                                 <div class="product-color-area">
                                     <div class="variable-single-item color-switch">
@@ -130,73 +173,69 @@
                                     </div>
                                 </div>
 
-                                <div class="product-size-area">
-                                    <h4 class="size-title">{{ __('Type:') }} {{ productTypeText($products->id) }}
-                                    </h4>
-                                    <ul class="size-switch">
-                                        @foreach ($products->sizes as $item)
-                                            <input type="hidden" class="sizeValue" name="productSize"
-                                                value="{{ $item->id }}">
-                                            <li class="single-size activeSize" data-size="{{ $item->id }}">
-                                                {{ $item->Size }}</li>
-                                        @endforeach
-                                    </ul>
-                                </div>
+
 
                                 <div class="prdouct-btn-wrapper d-flex align-items-center">
-                                    <div class="cart-plus-minus">
-                                        <div class="dec qtybutton btn">-</div>
-                                        <input class="cart-plus-minus-box" type="text" name="qtybutton"
+                                    <div class="cart-plus-minus d-flex align-items-center">
+                                        <div class="dec qtybutton btn fs-5 fw-bold"><i class="fa-solid fa-minus"></i></div>
+                                        <input class="cart-plus-minus-box w-25" type="text" name="qtybutton"
                                             id="product_quantity" value="1" readonly />
-                                        <div class="inc qtybutton btn">{{ __('+') }}</div>
+                                        <div class="inc qtybutton btn fs-5 fw-bold"><i class="fa-solid fa-plus"></i></div>
                                     </div>
                                     <a class="product-btn MyWishList" data-id="{{ $products->id }}"
                                         title="{{ __('Add To Wishlist') }}"><i class="icon flaticon-like"></i></a>
                                     <a class="product-btn CompareList" data-id="{{ $products->id }}"
                                         title="{{ __('Add To Compare') }}"><i class="icon flaticon-bar-chart"></i></a>
                                 </div>
-                                <div class="product-bottom-button d-flex">
-                                    <a href="javascript:void(0)" class="primary-btn buyNow"
+                                <div class="product-bottom-button d-flex gap-2 my-2">
+                                    <a href="javascript:void(0)" class="btn btn-primary r-bg-blue buyNow"
                                         data-id="{{ $products->id }}">{{ __('Buy Now') }}</a>
                                     <a href="javascript:void(0)" title="{{ __('Add To Cart') }}"
-                                        class="add-cart addCart" data-id="{{ $products->id }}">{{ __('Add To Cart') }}
+                                        class="add-cart btn btn-success r-bg-green border-0 addCart"
+                                        data-id="{{ $products->id }}">{{ __('Add To Cart') }}
                                         <i class="icon fas fa-plus-circle"></i></a>
                                 </div>
                             </div>
                             <div class="product-right-bottom">
-                                <ul class="features">
-                                    <li class="single-feature"><img class="icon"
-                                            src="{{ asset('frontend/assets/images/delivery-van-icon.svg') }}"
-                                            alt="icon" /><strong
-                                            class="feature-title">{{ __('Estimated Delivery:') }}</strong><span
-                                            class="feature-text">{{ allsetting()['estimating_delivery'] }}</span></li>
-                                    <li class="single-feature"><img class="icon"
-                                            src="{{ asset('frontend/assets/images/shipping-return.svg') }}"
-                                            alt="icon" /><strong
-                                            class="feature-title">{{ __('Shipping Charge:') }}</strong><span
-                                            class="feature-text">{{ __('On all orders over') }}
+                                <ul class="features list-unstyled">
+                                    <li class="single-feature">
+                                        <strong class="feature-title"><i
+                                                class="fa-solid fa-truck-fast r-text-yellow aspect-1 w-20px text-center"></i>
+                                            {{ __('Estimated Delivery:') }}
+                                        </strong><span
+                                            class="feature-text">{{ allsetting()['estimating_delivery'] }}</span>
+                                    </li>
+                                    <li class="single-feature">
+                                        <strong class="feature-title"><i
+                                                class="fa-solid fa-coins r-text-yellow aspect-1 w-20px text-center"></i>
+                                            {{ __('Shipping Charge:') }}
+                                        </strong><span class="feature-text">{{ __('On all orders over') }}
                                             {{ currencyConverter(allsetting()['shipping_charge']) }}</span>
                                     </li>
                                 </ul>
 
                                 @if ($allsettings['news_letter_status'] == '1')
                                     <div class="guarantee-checkout-area">
-                                        <h3 class="guarantee-title">{{ $allsettings['news_letter_title'] }}</h3>
+                                        <h5 class="guarantee-title fw-bold">{{ $allsettings['news_letter_title'] }}</h5>
                                         <img src="{{ asset(IMG_FOOTER_PATH . $allsettings['news_letter_img']) }}"
                                             alt="payment-method-image" />
                                     </div>
                                 @endif
 
-                                <div class="share-area mt-30">
-                                    <h3 class="share-title">{{ __('SHARE:') }}</h3>
-                                    <ul class="social-media a2a_kit">
-                                        <li class="media-item"><a class="media-link facebook a2a_button_facebook"
+                                <div class="share-area mt-2">
+                                    <h5 class="share-title fw-bold">{{ __('SHARE:') }}</h5>
+                                    <ul class="social-media a2a_kit list-unstyled d-flex gap-3">
+                                        <li class="media-item"><a
+                                                class="media-link r-text-blue facebook a2a_button_facebook"
                                                 href="javascript:void(0)"><i class="fab fa-facebook-f"></i></a></li>
-                                        <li class="media-item"><a class="media-link twitter a2a_button_twitter"
+                                        <li class="media-item"><a
+                                                class="media-link r-text-blue twitter a2a_button_twitter"
                                                 href="javascript:void(0)"><i class="fab fa-twitter"></i></a></li>
-                                        <li class="media-item"><a class="media-link linkedin a2a_button_linkedin"
+                                        <li class="media-item"><a
+                                                class="media-link r-text-blue linkedin a2a_button_linkedin"
                                                 href="javascript:void(0)"><i class="fab fa-linkedin-in"></i></a></li>
-                                        <li class="media-item"><a class="media-link pinterest a2a_button_pinterest"
+                                        <li class="media-item"><a
+                                                class="media-link r-text-blue pinterest a2a_button_pinterest"
                                                 href="javascript:void(0)"><i class="fab fa-pinterest-p"></i></a></li>
                                     </ul>
                                     <script async src="https://static.addtoany.com/menu/page.js"></script>
@@ -207,28 +246,29 @@
                 </div>
             </div>
 
-            <div class="product-bottom-info mt-50">
+            <div class="product-bottom-info mt-5">
                 <div class="nav-tabs-menu">
                     <ul class="nav nav-tabs" id="ProductTab" role="tablist">
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link active" id="Description-tab" data-bs-toggle="tab"
+                            <button class="nav-link text-dark active" id="Description-tab" data-bs-toggle="tab"
                                 data-bs-target="#Description" type="button" role="tab" aria-controls="Description"
                                 aria-selected="true">
                                 {{ __('Description') }}</button>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="Reviews-tab" data-bs-toggle="tab" data-bs-target="#Reviews"
-                                type="button" role="tab" aria-controls="Reviews" aria-selected="false">
+                            <button class="nav-link text-dark" id="Reviews-tab" data-bs-toggle="tab"
+                                data-bs-target="#Reviews" type="button" role="tab" aria-controls="Reviews"
+                                aria-selected="false">
                                 {{ __('Reviews') }}</button>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="Shipping-Return-tab" data-bs-toggle="tab"
+                            <button class="nav-link text-dark" id="Shipping-Return-tab" data-bs-toggle="tab"
                                 data-bs-target="#Shipping-Return" type="button" role="tab"
                                 aria-controls="Shipping-Return" aria-selected="false">
                                 {{ __('Shipping & Return') }}</button>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="Additional-Information-tab" data-bs-toggle="tab"
+                            <button class="nav-link text-dark" id="Additional-Information-tab" data-bs-toggle="tab"
                                 data-bs-target="#Additional-Information" type="button" role="tab"
                                 aria-controls="Additional-Information" aria-selected="false">
                                 {{ __('Additional Information') }}</button>
@@ -238,14 +278,14 @@
 
                 <div class="tab-content" id="ProductTabContent">
 
-                    <div class="tab-pane fade show active" id="Description" role="tabpanel"
+                    <div class="tab-pane p-2 fade show active" id="Description" role="tabpanel"
                         aria-labelledby="Description-tab">
                         <div class="product-description">
                             {!! langConverter($products->en_Description, $products->fr_Description) !!}
                         </div>
                     </div>
 
-                    <div class="tab-pane fade" id="Reviews" role="tabpanel" aria-labelledby="Reviews-tab">
+                    <div class="tab-pane p-2 fade" id="Reviews" role="tabpanel" aria-labelledby="Reviews-tab">
                         <div class="product-reviews">
                             <div class="review-top">
                                 <div class="review-top-left">
@@ -287,13 +327,13 @@
                             </div>
                         </div>
                     </div>
-                    <div class="tab-pane fade" id="Shipping-Return" role="tabpanel"
+                    <div class="tab-pane p-2 fade" id="Shipping-Return" role="tabpanel"
                         aria-labelledby="Shipping-Return-tab">
                         <div class="shipping-return-area">
                             {!! langConverter($products->en_ShippingReturn, $products->fr_ShippingReturn) !!}
                         </div>
                     </div>
-                    <div class="tab-pane fade" id="Additional-Information" role="tabpanel"
+                    <div class="tab-pane p-2 fade" id="Additional-Information" role="tabpanel"
                         aria-labelledby="Additional-Information-tab">
                         {!! langConverter($products->en_AdditionalInformation, $products->fr_AdditionalInformation) !!}
                     </div>
@@ -309,8 +349,8 @@
             <div class="section-header-area">
                 <div class="row">
                     <div class="col-md-6">
-                        <h3 class="sub-title">{{ __('Similar Products') }}</h3>
-                        <h2 class="section-title">{{ __('Related Products') }}</h2>
+                        <h5 class="sub-title fw-bold">{{ __('Similar Products') }}</h5>
+                        <h5 class="section-title fw-bold">{{ __('Related Products') }}</h5>
                     </div>
                     <div class="col-md-6 align-self-end text-md-end">
                         <a href="{{ route('all.product') }}" class="see-btn">{{ __('See All') }}</a>
@@ -369,9 +409,27 @@
                         </div>
                     </div>
                 @empty
-                    <h1>{{ __('No related product found!') }}</h1>
+                    {{-- <h1>{{ __('No related product found!') }}</h1> --}}
                 @endforelse
             </div>
         </div>
     </div>
+    <script>
+        $(document).ready(function() {
+            $('.product-thumbnail-image').slick({
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                arrows: false,
+                fade: true,
+                asNavFor: '.product-images'
+            });
+            $('.product-images').slick({
+                slidesToShow: 4,
+                slidesToScroll: 1,
+                asNavFor: '.product-thumbnail-image',
+                dots: false,
+                focusOnSelect: true
+            });
+        });
+    </script>
 @endsection

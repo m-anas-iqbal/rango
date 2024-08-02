@@ -1,15 +1,17 @@
 <!-- Js file  -->
-<script src="{{ asset('frontend/assets/js/jquery-3.6.0.min.js') }}"></script>
+
 <script src="{{ asset('frontend/assets/js/bootstrap.min.js') }}"></script>
 <script src="{{ asset('frontend/assets/js/common.js') }}"></script>
 <script src="{{ asset('frontend/assets/dist/js/suggestion-box.min.js') }}"></script>
 <script src="{{ asset('frontend/assets/js/pages/wishlist.js') }}"></script>
 <script src="{{ asset('frontend/assets/js/pages/cart.js') }}"></script>
 <script src="{{ asset('frontend/assets/js/pages/checkout.js') }}"></script>
+
+
 <script>
-     $(document).ready(function () {
+    $(document).ready(function() {
         var suggestionBox = $('#searchBar').suggestionBox({
-            url: '{{ route("searchBarSuggestion") }}',
+            url: '{{ route('searchBarSuggestion') }}',
             results: 10
         });
     });
