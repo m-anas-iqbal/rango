@@ -15,69 +15,77 @@
 
     <section class="topbar r-bg-red text-white py-2">
         <div class="d-md-flex justify-content-between container">
-            <div class="wrap text-center">
+            <div class="wrap text-center small">
                 Email: <a href="mailto:info@rangocart.com">info@rangocart.com</a>
                 |
                 Call: <a href="tel:">123 123 1231</a>
             </div>
-            <div class="wrap d-flex gap-4 justify-content-center justify-content-md-end mt-2 mt-md-0">
+            <div class="wrap d-flex gap-3 justify-content-center justify-content-md-end mt-2 mt-md-0">
                 <a href=""><i class="fa-brands fa-x-twitter"></i></a>
                 <a href=""><i class="fa-brands fa-facebook-f"></i></a>
                 <a href=""><i class="fa-brands fa-instagram"></i></a>
                 <a href=""><i class="fa-brands fa-youtube"></i></a>
                 <a href=""><i class="fa-brands fa-pinterest"></i></a>
                 @if (Auth::user())
-                    <div class="account-switcher">
-                        <a class="single-btn user-btn" href="javascript:void(0)">{{ Auth::user()->name }}</a>
-                        <ul class="account-list">
+                    <div class="dropdown">
+                        <button class="bg-transparent text-white border-0 dropdown-toggle" type="button"
+                            id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                            Hello <b>{{ explode(' ', Auth::user()->name)[0] }}</b>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                             @if (Auth::user()->is_admin == ACTIVE)
-                                <li class="single-lang"><a class="lang-text"
+                                <li class="single-lang dropdown-item"><a class="lang-text"
                                         href="{{ route('admin.dashboard') }}">{{ __('Dashboard') }}</a>
                                 </li>
                             @else
-                                <li class="single-lang"><a class="lang-text"
+                                <li class="single-lang dropdown-item"><a class="lang-text"
                                         href="{{ route('user.profile') }}">{{ __('Profile') }}</a>
                                 </li>
                             @endif
-                            <li class="single-lang"><a class="lang-text"
+                            <li class="single-lang dropdown-item"><a class="lang-text"
                                     href="{{ route('user.logout') }}">{{ __('Logout') }}</a></li>
                         </ul>
                     </div>
-            @else
+                    <div class="account-switcher">
 
-            <a href="{{ route("login") }}">My Account</a>
-            @endif
+
+                    </div>
+                @else
+                    <a href="{{ route('login') }}">My Account</a>
+                @endif
             </div>
         </div>
     </section>
     <section class="navigation container">
         <div class="d-flex justify-content-between align-items-center">
-            <a class="navbar-brand" href="{{route('front')}}"><img src="{{ asset('frontend/assets/images/logo/logo.png') }}"
-                    class="img-fluid logo" alt="logo rango"></a>
+            <a class="navbar-brand" href="{{ route('front') }}"><img
+                    src="{{ asset('frontend/assets/images/logo/logo.png') }}" class="img-fluid logo"
+                    alt="logo rango"></a>
             <button class="btn d-md-none btn-mobile-nav"><i class="fa-solid fa-bars-staggered"></i></button>
             <div class="searchGroup d-none d-md-flex">
                 {{-- <form  action="{{ route('category.search') }}" method="get" class="searchGroup d-none d-md-flex"> --}}
                 <input type="text" placeholder="Search" id="searchBar" class="small">
-                <button  class=""><i class="fa-solid fa-magnifying-glass"></i></button>
+                <button class=""><i class="fa-solid fa-magnifying-glass"></i></button>
             </div>
             <ul class="list-unstyled gap-4 m-0 d-none d-md-flex">
                 <li class="nav-item">
-                    <a class="" href="{{route('front')}}">Home</a>
+                    <a class="" href="{{ route('front') }}">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="" href="{{route('all.product')}}">Products</a>
+                    <a class="" href="{{ route('all.product') }}">Products</a>
                 </li>
                 <li class="nav-item">
-                    <a class="" href="{{route('about.us')}}">About</a>
+                    <a class="" href="{{ route('about.us') }}">About</a>
                 </li>
                 <li class="nav-item">
-                    <a class="" href="{{route('contact.us')}}">Contact</a>
+                    <a class="" href="{{ route('contact.us') }}">Contact</a>
                 </li>
                 {{-- <li class="nav-item">
                     <a class="" href="#">Blog</a>
                 </li> --}}
                 <li>
-                    <a href="{{route('cart.content')}}"><i class="fa-solid fa-cart-shopping r-text-blue fs-4"></i></a>
+                    <a href="{{ route('cart.content') }}"><i
+                            class="fa-solid fa-cart-shopping r-text-blue fs-4"></i></a>
                 </li>
             </ul>
         </div>
@@ -85,16 +93,16 @@
             <p class="mobile-close position-absolute end-0 top-0 m-3 fs-1 fw-bold text-danger">✕</p>
             <ul class="list-unstyled mt-5">
                 <li class="nav-item">
-                    <a class="" href="{{route('front')}}">Home</a>
+                    <a class="" href="{{ route('front') }}">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="" href="{{route('all.product')}}">Categories</a>
+                    <a class="" href="{{ route('all.product') }}">Categories</a>
                 </li>
                 <li class="nav-item">
-                    <a class="" href="{{route('about.us')}}">About</a>
+                    <a class="" href="{{ route('about.us') }}">About</a>
                 </li>
                 <li class="nav-item">
-                    <a class="" href="{{route('contact.us')}}">Contact</a>
+                    <a class="" href="{{ route('contact.us') }}">Contact</a>
                 </li>
                 {{-- <li class="nav-item">
                     <a class="" href="#">Blog</a>
@@ -205,23 +213,41 @@
 
     <script>
         let tl = gsap.timeline()
-        tl.to('.mobile-nav',{
-                left:0,
-                duration:0.5
-            })
-        tl.from('.mobile-nav li',{
-            x:-50,
-            stagger:0.1,
-            opacity:0,
-            duration:0.3
+        tl.to('.mobile-nav', {
+            left: 0,
+            duration: 0.5
+        })
+        tl.from('.mobile-nav li', {
+            x: -50,
+            stagger: 0.1,
+            opacity: 0,
+            duration: 0.3
         })
         tl.pause()
-        $(".btn-mobile-nav").on('click',function(){
+        $(".btn-mobile-nav").on('click', function() {
             tl.play()
         })
-        $(".mobile-close").on('click',function(){
+        $(".mobile-close").on('click', function() {
             tl.reverse()
         })
+    </script>
+    <script>
+        $(document).ready(function() {
+            // Access CSS variables
+            var root = getComputedStyle(document.documentElement);
+            var colors = [
+                root.getPropertyValue('--color-blue').trim(),
+                root.getPropertyValue('--color-red').trim(),
+                root.getPropertyValue('--color-green').trim(),
+                root.getPropertyValue('--color-yellow').trim()
+            ];
+
+            // Loop through each card and apply the colors in sequence
+            $('.cat_card').each(function(index) {
+                var color = colors[index % colors.length];
+                $(this).css('background-color', color); // Apply color to the card
+            });
+        });
     </script>
 </body>
 

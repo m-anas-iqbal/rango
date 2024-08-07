@@ -432,3 +432,8 @@ hr.start-border::before {
         max-height: 50px;
     }
 }
+.card.product_card img {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+}

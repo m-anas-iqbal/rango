@@ -27,7 +27,7 @@
         <div class="container">
             <div class="product-single-details">
                 <div class="row">
-                    <div class="col-lg-6">
+                    <div class="col-lg-6 p-0">
                         <div class="imagesSection">
                             <div class="product-thumbnail-image p-3">
                                 @foreach (['Primary_Image', 'Image4', 'Image3', 'Image5', 'Image2'] as $image)
