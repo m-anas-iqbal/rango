@@ -178,7 +178,7 @@ if (!function_exists('BlogImage')) {
 if (!function_exists('Category')) {
     function Category()
     {
-        return Category::where('en_Description', null)->orWhere('Category_Icon', null)->get();
+        return Category::get();
     }
 }
 if (!function_exists('Category_Des_Icon')) {
@@ -232,6 +232,13 @@ if (!function_exists('ProductImage')) {
     function ProductImage()
     {
         return 'uploaded_files/product_image/';
+    }
+}
+
+if (!function_exists('CategoryImage')) {
+    function CategoryImage()
+    {
+        return 'uploaded_files/category_image/';
     }
 }
 

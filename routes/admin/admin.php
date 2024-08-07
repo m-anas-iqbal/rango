@@ -136,10 +136,11 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'is_admin', 'en.loca
 
     Route::group(['prefix' => 'product'], function () {
         Route::get('', [ProductController::class, 'product'])->name('product')->middleware(['permission:product-list|product-create|product-edit|product-delete']);
-        Route::get('/create', [ProductController::class, 'productCreate'])->name('product.create')->middleware(['permission:product-create']);
-        Route::get('/physical/create', [ProductController::class, 'physicalProductCreate'])->name('physical.product.create')->middleware(['permission:product-create']);
-        Route::get('/digital/create', [ProductController::class, 'digitalProductCreate'])->name('digital.product.create')->middleware(['permission:product-create']);
-        Route::get('/license/create', [ProductController::class, 'licenseProductCreate'])->name('license.product.create')->middleware(['permission:product-create']);
+        Route::get('/create', [ProductController::class, 'physicalProductCreate'])->name('product.create')->middleware(['permission:product-create']);
+        // Route::get('/create', [ProductController::class, 'productCreate'])->name('product.create')->middleware(['permission:product-create']);
+        // Route::get('/physical/create', [ProductController::class, 'physicalProductCreate'])->name('physical.product.create')->middleware(['permission:product-create']);
+        // Route::get('/digital/create', [ProductController::class, 'digitalProductCreate'])->name('digital.product.create')->middleware(['permission:product-create']);
+        // Route::get('/license/create', [ProductController::class, 'licenseProductCreate'])->name('license.product.create')->middleware(['permission:product-create']);
         Route::get('/affiliate/create', [ProductController::class, 'affiliateProductCreate'])->name('affiliate.product.create')->middleware(['permission:product-create']);
         Route::post('/create', [ProductController::class, 'productStore'])->name('product.store')->middleware(['permission:product-create', 'isDemo']);
         Route::get('/edit/{product_type}/{id}', [ProductController::class, 'productEdit'])->name('product.edit')->middleware(['permission:product-edit']);

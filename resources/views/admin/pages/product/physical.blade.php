@@ -30,11 +30,9 @@
                             <form enctype="multipart/form-data" method="POST" action="{{ route('admin.product.store') }}">
                                 @csrf
                                 <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-md-12">
                                         <div class="form-vertical__item bg-style">
-                                            <div class="item-top mb-30">
-                                                <h2>{{ langString('en', false) . ':' }}</h2>
-                                            </div>
+                                          
                                             <input type="hidden" name="product_type" value="{{ PRODUCT_PHYSICAL }}">
                                             <div class="input__group mb-25">
                                                 <label for="en-product-name">{{ __('Product Name') }}</label>
@@ -54,7 +52,7 @@
                                                     <span class="text-danger">{{ $message }}</span>
                                                 @enderror
                                             </div>
-                                            <div class="input__group mb-25">
+                                            {{-- <div class="input__group mb-25">
                                                 <label for="exampleInputEmail1">{{ __('Brand Name') }}</label>
                                                 <select class="form-control" id="en_brand_name" name="en_brand_name">
                                                     @foreach (Brnad() as $item)
@@ -65,7 +63,7 @@
                                                 @error('en_brand_name')
                                                     <span class="text-danger">{{ $message }}</span>
                                                 @enderror
-                                            </div>
+                                            </div> --}}
                                             <div class="input__group mb-25">
                                                 <label for="exampleInputEmail1">{{ __('Category Name') }}</label>
                                                 <select class="form-control" id="en_category_name" name="en_category_name">
@@ -79,7 +77,7 @@
                                                     <span class="text-danger">{{ $message }}</span>
                                                 @enderror
                                             </div>
-                                            <div class="input__group mb-25">
+                                            {{-- <div class="input__group mb-25">
                                                 <label for="exampleInputEmail1">{{ __('Item Tag') }}</label>
                                                 <select class="form-control" id="item_teg" name="item_teg">
                                                     <option value="">{{ __('---Select item---') }}</option>
@@ -90,9 +88,9 @@
                                                 @error('item_teg')
                                                     <span class="text-danger">{{ $message }}</span>
                                                 @enderror
-                                            </div>
+                                            </div> --}}
 
-                                            <div class="input__group mb-25">
+                                            {{-- <div class="input__group mb-25">
                                                 <label for="select2Multiple">{{ __('Product Tag') }}</label>
                                                 <select class="select2-multiple form-control tag_two" name="product_tag[]"
                                                     multiple="multiple">
@@ -103,10 +101,10 @@
                                                 @error('product_tag')
                                                     <span class="text-danger">{{ $message }}</span>
                                                 @enderror
-                                            </div>
+                                            </div> --}}
 
 
-                                            <div class="input__group mb-25">
+                                            {{-- <div class="input__group mb-25">
                                                 <label for="select2Multiple">{{ __('Product Color') }}</label>
                                                 <select class="select2-multiple form-control tag_two" name="color[]"
                                                     multiple="multiple">
@@ -117,9 +115,9 @@
                                                 @error('color')
                                                     <span class="text-danger">{{ $message }}</span>
                                                 @enderror
-                                            </div>
+                                            </div> --}}
 
-                                            <div class="input__group mb-25">
+                                            {{-- <div class="input__group mb-25">
                                                 <label for="select2Multiple">{{ __('Product Size') }}</label>
                                                 <select class="select2-multiple form-control tag_one" name="size[]"
                                                     multiple="multiple">
@@ -130,7 +128,7 @@
                                                 @error('size')
                                                     <span class="text-danger">{{ $message }}</span>
                                                 @enderror
-                                            </div>
+                                            </div> --}}
                                             <div class="input__group mb-25">
                                                 <label for="qty">{{ __('Quantity') }}</label>
                                                 <input type="text" class="form-control" id="qty" name="qty"
@@ -165,13 +163,13 @@
                                                 @enderror
                                             </div>
 
-                                            <div class="input__group mb-25">
+                                            {{-- <div class="input__group mb-25">
                                                 <label for="en_about">{{ __('About') }}</label>
                                                 <textarea name="en_about" id="en_about" class="form-control" placeholder="About">{{ old('en_about') }}</textarea>
                                                 @error('en_about')
                                                     <span class="text-danger">{{ $message }}</span>
                                                 @enderror
-                                            </div>
+                                            </div> --}}
 
                                             <div class="input__group mb-25">
                                                 <label for="en_description">{{ __('Description') }}</label>
@@ -181,7 +179,7 @@
                                                 @enderror
                                             </div>
 
-                                            <div class="input__group mb-25">
+                                            {{-- <div class="input__group mb-25">
                                                 <label for="en_shippingreturn">{{ __('Shipping Return') }}</label>
                                                 <textarea name="en_shippingreturn" id="summernote2" class="form-control" placeholder="Shipping Return">{{ old('en_shippingreturn') }}</textarea>
                                                 @error('en_shippingreturn')
@@ -195,7 +193,7 @@
                                                 @error('en_additionalinformation')
                                                     <span class="text-danger">{{ $message }}</span>
                                                 @enderror
-                                            </div>
+                                            </div> --}}
                                             <div class="input__group mb-25">
                                                 <label for="primary_image">{{ __('Primary Image') }}</label>
                                                 <input type="file" class="form-control putImage1" name="primary_image"
@@ -302,7 +300,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    {{-- <div class="col-md-6">
                                         <div class="form-vertical__item bg-style">
                                             <div class="item-top mb-30">
                                                 <h2>{{ langString('fr', false) . ':' }}</h2>
@@ -357,7 +355,7 @@
                                             </div>
 
                                         </div>
-                                    </div>
+                                    </div> --}}
                                 </div>
                             </form>
                         </div>

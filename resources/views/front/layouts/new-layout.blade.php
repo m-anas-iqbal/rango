@@ -27,10 +27,8 @@
                 <a href=""><i class="fa-brands fa-youtube"></i></a>
                 <a href=""><i class="fa-brands fa-pinterest"></i></a>
                 @if (Auth::user())
-                <li class="single-item user-area">
                     <div class="account-switcher">
-                        <a class="single-btn user-btn" href="javascript:void(0)"><i
-                                class="btn-icon flaticon-user"></i></a>
+                        <a class="single-btn user-btn" href="javascript:void(0)">{{ Auth::user()->name }}</a>
                         <ul class="account-list">
                             @if (Auth::user()->is_admin == ACTIVE)
                                 <li class="single-lang"><a class="lang-text"
@@ -45,10 +43,9 @@
                                     href="{{ route('user.logout') }}">{{ __('Logout') }}</a></li>
                         </ul>
                     </div>
-                </li>
             @else
 
-            <a href="{{ route("login") }}">My Account</i></a>
+            <a href="{{ route("login") }}">My Account</a>
             @endif
             </div>
         </div>

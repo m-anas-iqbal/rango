@@ -15,14 +15,14 @@ class CreateHomepagesTable extends Migration
     {
         Schema::create('homepages', function (Blueprint $table) {
             $table->id();
-            $table->string('Location');
-            $table->string('en_Title');
-            $table->text('en_Description_One');
+            $table->string('Location')->nullable();
+            $table->string('en_Title')->nullable();
+            $table->text('en_Description_One')->nullable();
             $table->text('en_Description_Two')->nullable();
             $table->string('image')->nullable();
 
-            $table->string('fr_Title');
-            $table->text('fr_Description_One');
+            $table->string('fr_Title')->nullable();
+            $table->text('fr_Description_One')->nullable();
             $table->text('fr_Description_Two')->nullable();
             $table->timestamps();
         });

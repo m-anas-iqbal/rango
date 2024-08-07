@@ -33,25 +33,32 @@
                                             @csrf
                                             <input type="hidden" name="id" value="{{$edit->id}}">
                                             <div class="input__group mb-25">
-                                                <label>{{ __('Category Name '.langString('en'))}}</label>
+                                                <label>{{ __('Category Name ')}}</label>
                                                 <input type="text" id="en_category_name" name="en_category_name" value="{{$edit->en_Category_Name}}" placeholder="Name (English)">
                                             </div>
-                                            <div class="input__group mb-25">
+                                            {{-- <div class="input__group mb-25">
                                                 <label>{{ __('Category Name '.langString('fr'))}}</label>
                                                 <input type="text" id="fr_category_name" name="fr_category_name" value="{{$edit->fr_Category_Name}}" placeholder="Name (Arabic)">
+                                            </div> --}}
+
+                                            <div class="input__group mb-25">
+                                                <label for="exampleInputEmail1">{{ __('Image') }}</label>
+                                                <input type="file" class="form-control putImage2" name="icon_class"
+                                                    id="image_two">
+                                                <img class="admin_image"
+                                                    src="{{ asset(CategoryImage() . $edit->Category_Icon) }}"
+                                                    id="target2" />
                                             </div>
                                             <div class="input__group mb-25">
-                                                <label>{{ __('Icon Class')}}</label>
-                                                <input type="text" id="icon_class" name="icon_class" value="{{$edit->Category_Icon}}" placeholder="Icon">
-                                            </div>
-                                            <div class="input__group mb-25">
-                                                <label>{{__('Description '.langString('en'))}}</label>
+                                                <label>{{__('Description')}}</label>
                                                 <textarea name="en_description" id="en_description" placeholder="Description (English)">{{$edit->en_Description}}</textarea>
                                             </div>
-                                            <div class="input__group mb-25">
+
+                                            {{-- <div class="input__group mb-25">
                                                 <label>{{__('Description '.langString('fr'))}}</label>
                                                 <textarea name="fr_description" id="fr_description" placeholder="Description (Arabic)">{{$edit->fr_Description}}</textarea>
-                                            </div>
+                                            </div> --}}
+
                                             <div class="input__button">
                                                 <button type="submit" class="btn btn-blue">{{ __('Update')}}</button>
                                             </div>

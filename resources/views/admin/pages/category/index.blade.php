@@ -36,7 +36,7 @@
                             <th>{{ __('Category Name')}}</th>
                             <th>{{ __('Category Slug')}}</th>
                             <th>{{ __('Description')}}</th>
-                            <th>{{ __('Icon')}}</th>
+                            <th>{{ __('Image')}}</th>
                             <th>{{ __('Status')}}</th>
                             <th>{{ __('Action')}}</th>
                         </tr>

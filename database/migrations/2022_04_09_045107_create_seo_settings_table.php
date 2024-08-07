@@ -15,10 +15,10 @@ class CreateSeoSettingsTable extends Migration
     {
         Schema::create('seo_settings', function (Blueprint $table) {
             $table->id();
-            $table->string('slug');
-            $table->text('title');
-            $table->text('description');
-            $table->text('keywords');
+            $table->string('slug')->nullable();
+            $table->text('title')->nullable();
+            $table->text('description')->nullable();
+            $table->text('keywords')->nullable();
             $table->timestamps();
         });
     }

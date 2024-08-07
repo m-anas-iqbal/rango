@@ -21,14 +21,14 @@ class CreateProductsTable extends Migration
             $table->unsignedBigInteger('Brand_Id')->index()->nullable();
             $table->foreign('Brand_Id')->references('id')->on('brands')->onDelete('cascade');
 
-            $table->string('en_Product_Name');
-            $table->string('fr_Product_Name');
+            $table->string('en_Product_Name')->nullable();
+            $table->string('fr_Product_Name')->nullable();
 
-            $table->string('en_Product_Slug',191);
-            $table->string('fr_Product_Slug',191);
+            $table->string('en_Product_Slug',191)->nullable();
+            $table->string('fr_Product_Slug',191)->nullable();
 
-            $table->longText('en_About');
-            $table->longText('fr_About');
+            $table->longText('en_About')->nullable();
+            $table->longText('fr_About')->nullable();
 
 
             $table->string('ItemTag')->nullable();
@@ -39,7 +39,7 @@ class CreateProductsTable extends Migration
             $table->decimal('Sold')->default(0);
 
 
-            $table->string('Primary_Image');
+            $table->string('Primary_Image')->nullable();
             $table->string('Image2')->nullable();
             $table->string('Image3')->nullable();
             $table->string('Image4')->nullable();
@@ -52,14 +52,14 @@ class CreateProductsTable extends Migration
             $table->boolean('On_Sale')->default(1);
             $table->boolean('Status')->default(1);
 
-            $table->longText('en_Description');
-            $table->longText('fr_Description');
+            $table->longText('en_Description')->nullable();
+            $table->longText('fr_Description')->nullable();
 
-            $table->longText('en_ShippingReturn');
-            $table->longText('fr_ShippingReturn');
+            $table->longText('en_ShippingReturn')->nullable();
+            $table->longText('fr_ShippingReturn')->nullable();
 
-            $table->longText('en_AdditionalInformation');
-            $table->longText('fr_AdditionalInformation');
+            $table->longText('en_AdditionalInformation')->nullable();
+            $table->longText('fr_AdditionalInformation')->nullable();
             $table->string('Voucher');
 
             $table->timestamps();

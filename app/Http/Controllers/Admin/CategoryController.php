@@ -50,9 +50,13 @@ class CategoryController extends Controller
                     return Str::limit($data->en_Description, 10);
                 })
                 ->editColumn('Category_Icon', function ($data) {
-                    return $data->Category_Icon;
+                    $url = asset(CategoryImage() . $data->Category_Icon);
+                    return '<img src=' . $url . ' border="0" width="50" class="img-rounded" align="center" />';
                 })
-                ->rawColumns(['action', 'Category_Name', 'Category_Slug', 'Status', 'Description'])
+                // ->editColumn('Category_Icon', function ($data) {
+                //     return $data->Category_Icon;
+                // })
+                ->rawColumns(['action', 'Category_Name', 'Category_Slug', 'Status',  'Category_Icon', 'Description'])
                 ->make(true);
         }
         $data['title'] = __('Category List');
@@ -67,15 +71,18 @@ class CategoryController extends Controller
 
     public function categoryStore(CategoryRequest $request)
     {
+        if (!empty($request->icon_class)) {
+            $icon_class = fileUpload($request['icon_class'], CategoryImage());
+        }
         $category = Category::create([
             'en_Category_Name' => $request->en_category_name,
             'en_Description' => $request->en_description,
             'en_Category_Slug' => $this->slugify($request->en_category_name),
-            'fr_Category_Name' => $request->fr_category_name,
-            'fr_Description' => $request->fr_description,
-            'fr_Category_Slug' => $this->slugify($request->fr_category_name),
+            // 'fr_Category_Name' => $request->fr_category_name,
+            // 'fr_Description' => $request->fr_description,
+            // 'fr_Category_Slug' => $this->slugify($request->fr_category_name),
 
-            'Category_Icon' => $request->icon_class,
+            'Category_Icon' => $icon_class,
         ]);
         if ($category) {
             return redirect()->route('admin.category')->with('success', __('Successfully Stored !'));
@@ -88,19 +95,24 @@ class CategoryController extends Controller
         $data['edit'] = Category::where('id', $id)->first();
         return view('admin.pages.category.edit', $data);
     }
-    public function categoryUpdate(Request $request)
+    public function categoryUpdate(CategoryRequest $request)
     {
         $id = $request->id;
         $cat = Category::whereid($id)->first();
+        if (!empty($request->icon_class)) {
+            $icon_class = fileUpload($request['icon_class'], CategoryImage());
+        } else {
+            $icon_class = $cat->icon_class;
+        }
         $update = $cat->update([
             'en_Category_Name' => is_null($request->en_category_name) ? $cat->en_Category_Name : $request->en_category_name,
             'en_Description' => is_null($request->en_description) ? $cat->en_Description : $request->en_description,
             'en_Category_Slug' => is_null($request->en_category_name) ? $cat->en_Category_Slug : $this->slugify($request->en_category_name),
-            'fr_Category_Name' => is_null($request->fr_category_name) ? $cat->fr_Category_Name : $request->fr_category_name,
-            'fr_Description' => is_null($request->fr_description) ? $cat->fr_Description : $request->fr_description,
-            'fr_Category_Slug' => is_null($request->fr_category_name) ? $cat->fr_Category_Slug : $this->slugify($request->fr_category_name),
+            // 'fr_Category_Name' => is_null($request->fr_category_name) ? $cat->fr_Category_Name : $request->fr_category_name,
+            // 'fr_Description' => is_null($request->fr_description) ? $cat->fr_Description : $request->fr_description,
+            // 'fr_Category_Slug' => is_null($request->fr_category_name) ? $cat->fr_Category_Slug : $this->slugify($request->fr_category_name),
 
-            'Category_Icon' => is_null($request->icon_class) ? null : $request->icon_class,
+            'Category_Icon' => $icon_class,
         ]);
         if ($update) {
             return redirect()->route('admin.category')->with('success', __('Successfully Updated!'));

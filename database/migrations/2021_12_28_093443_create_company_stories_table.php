@@ -16,8 +16,8 @@ class CreateCompanyStoriesTable extends Migration
         Schema::create('company_stories', function (Blueprint $table) {
             $table->id();
             $table->integer('Year');
-            $table->text('en_Description');
-            $table->text('fr_Description');
+            $table->text('en_Description')->nullable();
+            $table->text('fr_Description')->nullable();
             $table->timestamps();
         });
     }

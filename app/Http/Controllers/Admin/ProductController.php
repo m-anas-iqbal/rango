@@ -54,9 +54,9 @@ class ProductController extends Controller
                 ->editColumn('Category', function ($data) {
                     return $data->category->en_Category_Name;
                 })
-                ->editColumn('Brand', function ($data) {
-                    return $data->brand->en_BrandName;
-                })
+                // ->editColumn('Brand', function ($data) {
+                //     return $data->brand->en_BrandName;
+                // })
                 ->editColumn('Price', function ($data) {
                     $dp = $data->Discount_Price;
                     $p = $data->Price;
@@ -73,17 +73,17 @@ class ProductController extends Controller
                         return '<span class="status blocked">' . $active . '</span>';
                     }
                 })
-                ->editColumn('type', function ($data) {
-                    if ($data->type == PRODUCT_PHYSICAL) {
-                        return __('Physical');
-                    } elseif ($data->type == PRODUCT_DIGITAL) {
-                        return __('Digital');
-                    } elseif ($data->type == PRODUCT_LICENSE) {
-                        return __('License');
-                    } elseif ($data->type == PRODUCT_AFFILIATE) {
-                        return __('Affiliate');
-                    }
-                })
+                // ->editColumn('type', function ($data) {
+                //     if ($data->type == PRODUCT_PHYSICAL) {
+                //         return __('Physical');
+                //     } elseif ($data->type == PRODUCT_DIGITAL) {
+                //         return __('Digital');
+                //     } elseif ($data->type == PRODUCT_LICENSE) {
+                //         return __('License');
+                //     } elseif ($data->type == PRODUCT_AFFILIATE) {
+                //         return __('Affiliate');
+                //     }
+                // })
                 ->rawColumns(['action', 'PrimaryImage', 'Category', 'Price', 'Status'])
                 ->addIndexColumn()
                 ->make(true);
@@ -188,40 +188,41 @@ class ProductController extends Controller
         $data['on_sale'] = checkBoxValue($request->on_sale);
         $data['on_arrival'] = checkBoxValue($request->on_arrival);
 
-        if ($request->product_type == PRODUCT_PHYSICAL) {
+        // if ($request->product_type == PRODUCT_PHYSICAL) {
             $create_product = $this->physicalProductAdd($data);
-        } elseif ($request->product_type == PRODUCT_DIGITAL) {
-            if ($request->digital_type == 'file') {
-                if (!empty($request->digital_file)) {
-                    $data['digital_file'] = fileUpload($request['digital_file'], PRODUCT_DIGITAL_PRODUCT);
-                    $data['digital_link'] = null;
-                } else {
-                    return redirect()->back()->with('error', __('File is  required'));
-                }
-            } else {
-                $data['digital_file'] = null;
-                $data['digital_link'] = $request->digital_link;
-            }
-            $create_product = $this->digitalProductAdd($data);
-        } elseif ($request->product_type == PRODUCT_LICENSE) {
-            $data['license_name'] = $request->license_name;
-            $data['license_key'] = $request->license_key;
-            if ($request->digital_type == 'file') {
-                if (!empty($request->digital_file)) {
-                    $data['digital_file'] = fileUpload($request['digital_file'], PRODUCT_DIGITAL_PRODUCT);
-                    $data['digital_link'] = null;
-                } else {
-                    return redirect()->back()->with('error', __('File is  required'));
-                }
-            } else {
-                $data['digital_file'] = null;
-                $data['digital_link'] = $request->digital_link;
-            }
-            $create_product = $this->licenseProductAdd($data);
-        } elseif ($request->product_type == PRODUCT_AFFILIATE) {
-            $data['affiliate_link'] = $request->affiliate_link;
-            $create_product = $this->affiliateProductAdd($data);
-        }
+        // }
+        // elseif ($request->product_type == PRODUCT_DIGITAL) {
+        //     if ($request->digital_type == 'file') {
+        //         if (!empty($request->digital_file)) {
+        //             $data['digital_file'] = fileUpload($request['digital_file'], PRODUCT_DIGITAL_PRODUCT);
+        //             $data['digital_link'] = null;
+        //         } else {
+        //             return redirect()->back()->with('error', __('File is  required'));
+        //         }
+        //     } else {
+        //         $data['digital_file'] = null;
+        //         $data['digital_link'] = $request->digital_link;
+        //     }
+        //     $create_product = $this->digitalProductAdd($data);
+        // } elseif ($request->product_type == PRODUCT_LICENSE) {
+        //     $data['license_name'] = $request->license_name;
+        //     $data['license_key'] = $request->license_key;
+        //     if ($request->digital_type == 'file') {
+        //         if (!empty($request->digital_file)) {
+        //             $data['digital_file'] = fileUpload($request['digital_file'], PRODUCT_DIGITAL_PRODUCT);
+        //             $data['digital_link'] = null;
+        //         } else {
+        //             return redirect()->back()->with('error', __('File is  required'));
+        //         }
+        //     } else {
+        //         $data['digital_file'] = null;
+        //         $data['digital_link'] = $request->digital_link;
+        //     }
+        //     $create_product = $this->licenseProductAdd($data);
+        // } elseif ($request->product_type == PRODUCT_AFFILIATE) {
+        //     $data['affiliate_link'] = $request->affiliate_link;
+        //     $create_product = $this->affiliateProductAdd($data);
+        // }
 
         if ($create_product['success'] == true) {
             return redirect()->route('admin.product')->with('success', __('Successfully Product Created!'));
@@ -235,23 +236,23 @@ class ProductController extends Controller
         $product = Product::create([
             'en_Product_Name' => $data['en_product_name'],
             'en_Product_Slug' => $data['en_product_slug'],
-            'Brand_Id' => $data['en_brand_name'],
+            // 'Brand_Id' => $data['en_brand_name'],
             'Category_Id' => $data['en_category_name'],
             'Price' => $data['price'],
             'Discount' => $data['discount'],
             'Discount_Price' => $data['discount_price'],
-            'en_About' => $data['en_about'],
+            // 'en_About' => $data['en_about'],
             'en_Description' => $data['en_description'],
-            'en_ShippingReturn' => $data['en_shippingreturn'],
-            'en_AdditionalInformation' => $data['en_additionalinformation'],
-            'fr_Product_Name' => $data['fr_product_name'],
-            'fr_Product_Slug' => $data['fr_product_slug'],
-            'fr_About' => $data['fr_about'],
-            'fr_Description' => $data['fr_description'],
-            'fr_ShippingReturn' => $data['fr_shippingreturn'],
-            'fr_AdditionalInformation' => $data['fr_additionalinformation'],
+            // 'en_ShippingReturn' => $data['en_shippingreturn'],
+            // 'en_AdditionalInformation' => $data['en_additionalinformation'],
+            // 'fr_Product_Name' => $data['fr_product_name'],
+            // 'fr_Product_Slug' => $data['fr_product_slug'],
+            // 'fr_About' => $data['fr_about'],
+            // 'fr_Description' => $data['fr_description'],
+            // 'fr_ShippingReturn' => $data['fr_shippingreturn'],
+            // 'fr_AdditionalInformation' => $data['fr_additionalinformation'],
             'Quantity' => $data['qty'] ?? 0,
-            'ItemTag' => $data['item_teg'],
+            // 'ItemTag' => $data['item_teg'],
             'Primary_Image' => $data['primary_image'],
             'Image2' => $data['img_two'] ?? null,
             'Image3' => $data['img_three'] ?? null,
@@ -266,22 +267,22 @@ class ProductController extends Controller
             'Voucher' => $this->generateRandomString(6),
         ]);
         if (!empty($product)) {
-            if (isset($data['product_tag'])) {
-                foreach ($data['product_tag'] as $rpt) {
-                    ProductTag::create([
-                        'tag' => $rpt,
-                        'product_id' => $product->id,
-                    ]);
-                }
-            }
-            if (isset($data['color'])) {
-                $colorsid = $data['color'];
-                $product->colors()->sync($colorsid);
-            }
-            if (isset($data['size'])) {
-                $sizeid = $data['size'];
-                $product->sizes()->sync($sizeid);
-            }
+        //     if (isset($data['product_tag'])) {
+        //         foreach ($data['product_tag'] as $rpt) {
+        //             ProductTag::create([
+        //                 'tag' => $rpt,
+        //                 'product_id' => $product->id,
+        //             ]);
+        //         }
+        //     }
+        //     if (isset($data['color'])) {
+        //         $colorsid = $data['color'];
+        //         $product->colors()->sync($colorsid);
+        //     }
+        //     if (isset($data['size'])) {
+        //         $sizeid = $data['size'];
+        //         $product->sizes()->sync($sizeid);
+        //     }
 
             $result['success'] = true;
         }
@@ -461,6 +462,7 @@ class ProductController extends Controller
         }
         return redirect()->route('admin.product')->with('error', __('Does Not Delete!'));
     }
+
     public function productActive($id)
     {
         $inactive = Product::find($id)->update(['Status' => 1]);
@@ -482,19 +484,19 @@ class ProductController extends Controller
     {
         $data['title'] = __('Product Edit');
         $data['product'] = Product::with('brand', 'category', 'colors', 'sizes', 'product_tags')->where('id', $id)->first();
-        $data['colors'] = Color::latest()->get();
-        $data['sizes'] = Size::latest()->get();
-        $data['tags'] = ProductTagList::get();
-        $data['item_tags'] = ItemTag::get();
-        if ($product_type == 'physical') {
+        // $data['colors'] = Color::latest()->get();
+        // $data['sizes'] = Size::latest()->get();
+        // $data['tags'] = ProductTagList::get();
+        // $data['item_tags'] = ItemTag::get();
+        // if ($product_type == 'physical') {
             return $this->physicalProductEditView($data);
-        } elseif ($product_type == 'digital') {
-            return $this->digitalProductEditView($data);
-        } elseif ($product_type == 'license') {
-            return $this->licenseProductEditView($data);
-        } else {
-            return $this->affiliateProductEditView($data);
-        }
+        // } elseif ($product_type == 'digital') {
+        //     return $this->digitalProductEditView($data);
+        // } elseif ($product_type == 'license') {
+        //     return $this->licenseProductEditView($data);
+        // } else {
+        //     return $this->affiliateProductEditView($data);
+        // }
     }
 
     public function physicalProductEditView($data)
@@ -571,42 +573,42 @@ class ProductController extends Controller
         $data['on_sale'] = checkBoxValue($request->on_sale);
         $data['on_arrival'] = checkBoxValue($request->on_arrival);
 
-        if ($product->type == PRODUCT_PHYSICAL) {
+        // if ($product->type == PRODUCT_PHYSICAL) {
             $update = $this->physicalProductUpdate($data, $product);
-        } elseif ($product->type == PRODUCT_DIGITAL) {
-            if ($product->digital_type == 'file') {
-                if (!empty($request->digital_file)) {
-                    $data['digital_file'] = fileUpload($request['digital_file'], PRODUCT_DIGITAL_PRODUCT);
-                    $data['digital_link'] = null;
-                } else {
-                    $data['digital_file'] = $product->digital_file;
-                    $data['digital_link'] = null;
-                }
-            } else {
-                $data['digital_file'] = null;
-                $data['digital_link'] = is_null($request->digital_link) ? $product->digital_link : $request->digital_link;
-            }
-            $update = $this->digitalProductUpdate($data, $product);
-        } elseif ($product->type == PRODUCT_LICENSE) {
-            $data['license_name'] = is_null($request->license_name) ? $product->license_name : $request->license_name;
-            $data['license_key'] = is_null($request->license_key) ? $product->license_link : $request->license_key;
-            if ($product->digital_type == 'file') {
-                if (!empty($request->digital_file)) {
-                    $data['digital_file'] = fileUpload($request['digital_file'], PRODUCT_DIGITAL_PRODUCT);
-                    $data['digital_link'] = null;
-                } else {
-                    $data['digital_file'] = $product->digital_file;
-                    $data['digital_link'] = null;
-                }
-            } else {
-                $data['digital_file'] = null;
-                $data['digital_link'] = is_null($request->digital_link) ? $product->digital_link : $request->digital_link;
-            }
-            $update = $this->licenseProductUpdate($data, $product);
-        } elseif ($product->type == PRODUCT_AFFILIATE) {
-            $data['affiliate_link'] = is_null($request->affiliate_link) ? $product->affiliate_link : $request->affiliate_link;
-            $update = $this->affiliateProductUpdate($data, $product);
-        }
+        // } elseif ($product->type == PRODUCT_DIGITAL) {
+        //     if ($product->digital_type == 'file') {
+        //         if (!empty($request->digital_file)) {
+        //             $data['digital_file'] = fileUpload($request['digital_file'], PRODUCT_DIGITAL_PRODUCT);
+        //             $data['digital_link'] = null;
+        //         } else {
+        //             $data['digital_file'] = $product->digital_file;
+        //             $data['digital_link'] = null;
+        //         }
+        //     } else {
+        //         $data['digital_file'] = null;
+        //         $data['digital_link'] = is_null($request->digital_link) ? $product->digital_link : $request->digital_link;
+        //     }
+        //     $update = $this->digitalProductUpdate($data, $product);
+        // } elseif ($product->type == PRODUCT_LICENSE) {
+        //     $data['license_name'] = is_null($request->license_name) ? $product->license_name : $request->license_name;
+        //     $data['license_key'] = is_null($request->license_key) ? $product->license_link : $request->license_key;
+        //     if ($product->digital_type == 'file') {
+        //         if (!empty($request->digital_file)) {
+        //             $data['digital_file'] = fileUpload($request['digital_file'], PRODUCT_DIGITAL_PRODUCT);
+        //             $data['digital_link'] = null;
+        //         } else {
+        //             $data['digital_file'] = $product->digital_file;
+        //             $data['digital_link'] = null;
+        //         }
+        //     } else {
+        //         $data['digital_file'] = null;
+        //         $data['digital_link'] = is_null($request->digital_link) ? $product->digital_link : $request->digital_link;
+        //     }
+        //     $update = $this->licenseProductUpdate($data, $product);
+        // } elseif ($product->type == PRODUCT_AFFILIATE) {
+        //     $data['affiliate_link'] = is_null($request->affiliate_link) ? $product->affiliate_link : $request->affiliate_link;
+        //     $update = $this->affiliateProductUpdate($data, $product);
+        // }
 
         if ($update['success'] == true) {
             return redirect()->route('admin.product')->with('success', __('Successfully Updated!'));
@@ -620,22 +622,22 @@ class ProductController extends Controller
 
         $update = $product->update([
             'en_Product_Name' => is_null($data['en_product_name']) ? $product->en_Product_Name : $data['en_product_name'],
-            'Brand_Id' => is_null($data['en_brand_name']) ? $product->Brand_Id : $data['en_brand_name'],
+            // 'Brand_Id' => is_null($data['en_brand_name']) ? $product->Brand_Id : $data['en_brand_name'],
             'Category_Id' => is_null($data['en_category_name']) ? $product->Category_Id : $data['en_category_name'],
             'Price' => is_null($data['price']) ? $product->Price : $data['price'],
             'Discount' => is_null($data['discount']) ? $product->Discount : $data['discount'],
             'Discount_Price' => is_null($data['discount_price']) ? $product->Discount_Price : $data['discount_price'],
-            'en_About' => is_null($data['en_about']) ? $product->en_About : $data['en_about'],
+            // 'en_About' => is_null($data['en_about']) ? $product->en_About : $data['en_about'],
             'en_Description' => is_null($data['en_description']) ? $product->en_Description : $data['en_description'],
-            'en_ShippingReturn' => is_null($data['en_shippingreturn']) ? $product->en_ShippingReturn : $data['en_shippingreturn'],
-            'en_AdditionalInformation' => is_null($data['en_additionalinformation']) ? $product->en_AdditionalInformation : $data['en_additionalinformation'],
-            'fr_Product_Name' => is_null($data['fr_product_name']) ? $product->fr_Product_Name : $data['fr_product_name'],
-            'fr_About' => is_null($data['fr_about']) ? $product->fr_About : $data['fr_about'],
-            'fr_Description' => is_null($data['fr_description']) ? $product->fr_Description : $data['fr_description'],
-            'fr_ShippingReturn' => is_null($data['fr_shippingreturn']) ? $product->fr_ShippingReturn : $data['fr_shippingreturn'],
-            'fr_AdditionalInformation' => is_null($data['fr_additionalinformation']) ? $product->fr_AdditionalInformation : $data['fr_additionalinformation'],
+            // 'en_ShippingReturn' => is_null($data['en_shippingreturn']) ? $product->en_ShippingReturn : $data['en_shippingreturn'],
+            // 'en_AdditionalInformation' => is_null($data['en_additionalinformation']) ? $product->en_AdditionalInformation : $data['en_additionalinformation'],
+            // 'fr_Product_Name' => is_null($data['fr_product_name']) ? $product->fr_Product_Name : $data['fr_product_name'],
+            // 'fr_About' => is_null($data['fr_about']) ? $product->fr_About : $data['fr_about'],
+            // 'fr_Description' => is_null($data['fr_description']) ? $product->fr_Description : $data['fr_description'],
+            // 'fr_ShippingReturn' => is_null($data['fr_shippingreturn']) ? $product->fr_ShippingReturn : $data['fr_shippingreturn'],
+            // 'fr_AdditionalInformation' => is_null($data['fr_additionalinformation']) ? $product->fr_AdditionalInformation : $data['fr_additionalinformation'],
             'Quantity' => is_null($data['qty']) ? $product->Quantity : $data['qty'],
-            'ItemTag' => is_null($data['item_teg']) ? $product->ItemTag : $data['item_teg'],
+            // 'ItemTag' => is_null($data['item_teg']) ? $product->ItemTag : $data['item_teg'],
             'Primary_Image' => $data['primary_image'],
             'Image2' => $data['img_two'],
             'Image3' => $data['img_three'],
@@ -649,28 +651,28 @@ class ProductController extends Controller
             'New_Arrival' => $data['on_arrival'],
         ]);
         if (!empty($update)) {
-            if (isset($data['product_tag'])) {
-                ProductTag::where('product_id', $product->id)->delete();
-                foreach ($data['product_tag'] as $rpt) {
-                    ProductTag::create([
-                        'tag' => $rpt,
-                        'product_id' => $product->id,
-                    ]);
-                }
-            }
+            // if (isset($data['product_tag'])) {
+            //     ProductTag::where('product_id', $product->id)->delete();
+            //     foreach ($data['product_tag'] as $rpt) {
+            //         ProductTag::create([
+            //             'tag' => $rpt,
+            //             'product_id' => $product->id,
+            //         ]);
+            //     }
+            // }
 
-            $pr = Product::find($product->id);
-            if (isset($data['color'])) {
-                DB::table('color_product')->where('Product_Id', $product->id)->delete();
-                $colorsid = $data['color'];
-                $pr->colors()->syncWithoutDetaching($colorsid);
-            }
+            // $pr = Product::find($product->id);
+            // if (isset($data['color'])) {
+            //     DB::table('color_product')->where('Product_Id', $product->id)->delete();
+            //     $colorsid = $data['color'];
+            //     $pr->colors()->syncWithoutDetaching($colorsid);
+            // }
 
-            if (isset($data['size'])) {
-                DB::table('size_product')->where('Product_Id', $product->id)->delete();
-                $sizeid = $data['size'];
-                $pr->sizes()->syncWithoutDetaching($sizeid);
-            }
+            // if (isset($data['size'])) {
+            //     DB::table('size_product')->where('Product_Id', $product->id)->delete();
+            //     $sizeid = $data['size'];
+            //     $pr->sizes()->syncWithoutDetaching($sizeid);
+            // }
 
             $result['success'] = true;
         }

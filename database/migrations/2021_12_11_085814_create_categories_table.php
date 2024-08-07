@@ -15,10 +15,10 @@ class CreateCategoriesTable extends Migration
     {
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
-            $table->string('en_Category_Name');
-            $table->string('fr_Category_Name');
-            $table->string('en_Category_Slug');
-            $table->string('fr_Category_Slug');
+            $table->string('en_Category_Name')->nullable();
+            $table->string('fr_Category_Name')->nullable();
+            $table->string('en_Category_Slug')->nullable();
+            $table->string('fr_Category_Slug')->nullable();
             $table->string('Category_Icon')->nullable();
             $table->string('en_Description')->nullable();
             $table->string('fr_Description')->nullable();

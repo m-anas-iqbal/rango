@@ -23,18 +23,18 @@
                     data: 'Category',
                     name: 'Category'
                 },
-                {
-                    data: 'Brand',
-                    name: 'Brand'
-                },
+                // {
+                //     data: 'Brand',
+                //     name: 'Brand'
+                // },
                 {
                     data: 'Price',
                     name: 'Price'
                 },
-                {
-                    data: 'type',
-                    name: 'type'
-                },
+                // {
+                //     data: 'type',
+                //     name: 'type'
+                // },
                 {
                     data: 'Status',
                     name: 'Status'

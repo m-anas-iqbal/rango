@@ -29,11 +29,8 @@
                             <form enctype="multipart/form-data" method="POST" action="{{ route('admin.product.update') }}">
                                 @csrf
                                 <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-md-12">
                                         <div class="form-vertical__item bg-style">
-                                            <div class="item-top mb-30">
-                                                <h2>{{ langString('en', false) . ':' }}</h2>
-                                            </div>
                                             <input type="hidden" name="product_type" value="{{ PRODUCT_PHYSICAL }}">
                                             <input type="hidden" name="id" value="{{ $product->id }}">
                                             <div class="input__group mb-25">
@@ -42,7 +39,7 @@
                                                     name="en_product_name" value="{{ $product->en_Product_Name }}"
                                                     placeholder="{{ __('Name') }}">
                                             </div>
-                                            <div class="input__group mb-25">
+                                            {{-- <div class="input__group mb-25">
                                                 <label for="exampleInputEmail1">{{ __('Brand Name') }}</label>
                                                 <select class="form-control" id="en_brand_name" name="en_brand_name">
                                                     <option value="">{{ __('---SELECT A BRAND---') }}</option>
@@ -52,11 +49,11 @@
                                                             {{ $item->en_BrandName }}</option>
                                                     @endforeach
                                                 </select>
-                                            </div>
+                                            </div> --}}
                                             <div class="input__group mb-25">
                                                 <label for="exampleInputEmail1">{{ __('Category Name') }}</label>
                                                 <select class="form-control" id="en_category_name" name="en_category_name">
-                                                    <option value="">{{ __('---SELECT A CATEGORY---') }}</option>
+                                                    {{-- <option value="">{{ __('---SELECT A CATEGORY---') }}</option> --}}
                                                     @foreach (Category() as $item)
                                                         <option value="{{ $item->id }}"
                                                             {{ $item->id == $product->Category_Id ? 'selected' : '' }}>
@@ -64,7 +61,7 @@
                                                     @endforeach
                                                 </select>
                                             </div>
-                                            <div class="input__group mb-25">
+                                            {{-- <div class="input__group mb-25">
                                                 <label for="exampleInputEmail1">{{ __('Item Tag') }}</label>
                                                 <select class="form-control" id="item_teg" name="item_teg">
                                                     <option>{{ __('---Select item---') }}</option>
@@ -74,8 +71,8 @@
                                                             {{ $it->name }}</option>
                                                     @endforeach
                                                 </select>
-                                            </div>
-                                            <div class="input__group mb-25">
+                                            </div> --}}
+                                            {{-- <div class="input__group mb-25">
                                                 <label for="select2Multiple">{{ __('Product Tag') }}</label>
                                                 <select class="select2-multiple form-control tag_two" name="product_tag[]"
                                                     multiple="multiple">
@@ -86,8 +83,8 @@
                                                             {{ $tag->name }}</option>
                                                     @endforeach
                                                 </select>
-                                            </div>
-                                            <div class="input__group mb-25">
+                                            </div> --}}
+                                            {{-- <div class="input__group mb-25">
                                                 <label for="select2Multiple">{{ __('Product Color') }}</label>
                                                 <select class="select2-multiple form-control tag_two" name="color[]"
                                                     multiple="multiple">
@@ -97,9 +94,9 @@
                                                             {{ $item->Name }}</option>
                                                     @endforeach
                                                 </select>
-                                            </div>
+                                            </div> --}}
 
-                                            <div class="input__group mb-25">
+                                            {{-- <div class="input__group mb-25">
                                                 <label for="select2Multiple">{{ __('Product Size') }}</label>
                                                 <select class="select2-multiple form-control tag_one" name="size[]"
                                                     multiple="multiple">
@@ -109,7 +106,7 @@
                                                             {{ $item->Size }}</option>
                                                     @endforeach
                                                 </select>
-                                            </div>
+                                            </div> --}}
                                             <div class="input__group mb-25">
                                                 <label for="exampleInputEmail1">{{ __('Quantity') }}</label>
                                                 <input type="text" class="form-control" id="qty" name="qty"
@@ -133,24 +130,24 @@
                                                     name="discount_price" readonly>
                                             </div>
 
-                                            <div class="input__group mb-25">
+                                            {{-- <div class="input__group mb-25">
                                                 <label for="exampleInputEmail1">{{ __('About') }}</label>
                                                 <textarea name="en_about" id="en_about" class="form-control">{!! $product->en_About !!}</textarea>
-                                            </div>
+                                            </div> --}}
 
                                             <div class="input__group mb-25">
                                                 <label for="exampleInputEmail1">{{ __('Description') }}</label>
                                                 <textarea name="en_description" id="summernote" class="form-control">{!! $product->en_Description !!}</textarea>
                                             </div>
 
-                                            <div class="input__group mb-25">
+                                            {{-- <div class="input__group mb-25">
                                                 <label for="exampleInputEmail1">{{ __('ShippingReturn') }}</label>
                                                 <textarea name="en_shippingreturn" id="summernote2" class="form-control">{!! $product->en_ShippingReturn !!}</textarea>
-                                            </div>
-                                            <div class="input__group mb-25">
+                                            </div> --}}
+                                            {{-- <div class="input__group mb-25">
                                                 <label for="exampleInputEmail1">{{ __('AdditionalInformation') }}</label>
                                                 <textarea name="en_additionalinformation" id="summernote3" class="form-control">{!! $product->en_AdditionalInformation !!}</textarea>
-                                            </div>
+                                            </div> --}}
                                             <div class="input__group mb-25">
                                                 <label for="exampleInputEmail1">{{ __('Primary Image') }}</label>
                                                 <input type="file" class="form-control putImage1" name="primary_image"
@@ -243,7 +240,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    {{-- <div class="col-md-6">
                                         <div class="form-vertical__item bg-style">
                                             <div class="item-top mb-30">
                                                 <h2>{{ langString('fr', false) . ':' }}</h2>
@@ -271,7 +268,7 @@
                                             </div>
 
                                         </div>
-                                    </div>
+                                    </div> --}}
                                 </div>
                             </form>
                         </div>

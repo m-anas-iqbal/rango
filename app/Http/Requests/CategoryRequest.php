@@ -25,7 +25,8 @@ class CategoryRequest extends FormRequest
     {
         return [
             'en_category_name'=>'required',
-            'fr_category_name'=>'required',
+            'icon_class'=>'nullable|image',
+            // 'fr_category_name'=>'required',
         ];
     }
 }

@@ -38,7 +38,7 @@
       <div class="col-md-6 p-4">
           <a class="card p-5 r-bg-green rounded-20px" href="{{ route('category.product', $item->id) }}">
               <h1 class="fw-bold py-3 text-white">{{ langConverter($item->en_Category_Name, $item->fr_Category_Name) }}</h1>
-              <img src="{{ $item->Category_Icon }}"
+              <img src="{{asset(CategoryImage() . $item->Category_Icon) }}"
                   class="position-absolute translate-middle-y" alt="{{ langConverter($item->en_Category_Name, $item->fr_Category_Name) }}">
           </a>
       </div>
