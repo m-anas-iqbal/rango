@@ -112,6 +112,23 @@
                                                 <input type="text" class="form-control" id="qty" name="qty"
                                                     value="{{ $product->Quantity }}">
                                             </div>
+
+                                            <div class="input__group mb-25">
+                                                <label for="size">{{ __('Size') }}</label>
+                                                <input type="number" step="0.01" min="0.01" class="form-control" id="size"
+                                                    name="size" value="{{ old('size') }}"  value="{{ $product->Quantity }}" placeholder="Size">
+                                                @error('size')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+                                            <div class="input__group mb-25">
+                                                <label for="weight">{{ __('Weight') }}</label>
+                                                <input type="number" step="0.01" min="0.01" class="form-control" id="weight"
+                                                    name="weight" value="{{ old('weight') }}"  value="{{ $product->Quantity }}" placeholder="Weight">
+                                                @error('weight')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </div>
                                             <div class="input__group mb-25">
                                                 <label for="exampleInputEmail1">{{ __('Price') }}</label>
                                                 <input type="text" class="form-control" id="price" name="price"

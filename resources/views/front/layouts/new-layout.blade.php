@@ -21,11 +21,11 @@
                 Call: <a href="tel:">123 123 1231</a>
             </div>
             <div class="wrap d-flex gap-4 justify-content-center justify-content-md-end mt-2 mt-md-0">
-                <a href=""><i class="fa-brands fa-x-twitter"></i></a>
-                <a href=""><i class="fa-brands fa-facebook-f"></i></a>
-                <a href=""><i class="fa-brands fa-instagram"></i></a>
-                <a href=""><i class="fa-brands fa-youtube"></i></a>
-                <a href=""><i class="fa-brands fa-pinterest"></i></a>
+                <a href="{{getSocialLink()->Twitter}}"><i class="fa-brands fa-x-twitter"></i></a>
+                <a href="{{getSocialLink()->Facebook}}"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="{{getSocialLink()->Instagram}}"><i class="fa-brands fa-instagram"></i></a>
+                <a href="{{getSocialLink()->Linkedin}}"><i class="fa-brands fa-youtube"></i></a>
+                <a href="{{getSocialLink()->Skype}}"><i class="fa-brands fa-pinterest"></i></a>
                 @if (Auth::user())
                     <div class="account-switcher">
                         <a class="single-btn user-btn" href="javascript:void(0)">{{ Auth::user()->name }}</a>

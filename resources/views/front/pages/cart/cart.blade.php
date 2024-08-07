@@ -229,9 +229,11 @@
                         </div>
                         <div class="checkout">
                             {{-- <button class="button button02 w-100"><span>Checkout</span></button> --}}
+                            @if(count($content)>0)
+                    <a href="{{ route('checkout') }}"
+                            class="button button02 w-100 form-btn proceed-to-checkout-btn">{{ __('Go') }}</a>
 
-                                <a href="{{ route('checkout') }}"
-                                    class="button button02 w-100 form-btn proceed-to-checkout-btn">{{ __('Go') }}</a>
+                            @endif
 
                         </div>
                     </div>
