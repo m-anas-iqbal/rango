@@ -32,7 +32,7 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-vertical__item bg-style">
-                                          
+
                                             <input type="hidden" name="product_type" value="{{ PRODUCT_PHYSICAL }}">
                                             <div class="input__group mb-25">
                                                 <label for="en-product-name">{{ __('Product Name') }}</label>
@@ -138,8 +138,24 @@
                                                 @enderror
                                             </div>
                                             <div class="input__group mb-25">
+                                                <label for="size">{{ __('Size') }}</label>
+                                                <input type="number" step="0.01" min="0.01" class="form-control" id="size"
+                                                    name="size" value="{{ old('size') }}" placeholder="Size">
+                                                @error('size')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+                                            <div class="input__group mb-25">
+                                                <label for="weight">{{ __('Weight') }}</label>
+                                                <input type="number" step="0.01" min="0.01" class="form-control" id="weight"
+                                                    name="weight" value="{{ old('weight') }}" placeholder="Weight">
+                                                @error('weight')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+                                            <div class="input__group mb-25">
                                                 <label for="price">{{ __('Price') }}</label>
-                                                <input type="number" min="0" class="form-control" id="price"
+                                                <input type="number" step="0.01" min="0.01" class="form-control" id="price"
                                                     name="price" value="{{ old('price') }}" placeholder="Price">
                                                 @error('price')
                                                     <span class="text-danger">{{ $message }}</span>
@@ -147,7 +163,7 @@
                                             </div>
                                             <div class="input__group mb-25">
                                                 <label for="discount">{{ __('Discount (in Percentage)') }}</label>
-                                                <input type="number" class="form-control" id="discount"
+                                                <input type="number" step="0.01" class="form-control" id="discount"
                                                     name="discount" value="{{ old('discount') ?? 0 }}"
                                                     placeholder="Discount">
                                                 @error('discount')
@@ -156,7 +172,7 @@
                                             </div>
                                             <div class="input__group mb-25">
                                                 <label for="discount_price">{{ __('Discount Price') }}</label>
-                                                <input type="number" class="form-control" id="discount_price"
+                                                <input type="number" step="0.01" class="form-control" id="discount_price"
                                                     name="discount_price" value="{{ old('discount_price') }}" readonly>
                                                 @error('discount_price')
                                                     <span class="text-danger">{{ $message }}</span>
