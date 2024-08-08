@@ -69,11 +69,11 @@
                                 </div>
                                 <div class="socials mt-md-5 mt-3">
                                     <h5 class="fs-17">Follow Us On:</h5>
-                                    <a href="#" class="mt-3 me-2" target="_blank"><img src="{{asset('frontend/assets/images/socials/facebook.png')}}" alt="" class="img-fluid"></a>
-                                    <a href="#" class="mt-3 me-2" target="_blank"><img src="{{asset('frontend/assets/images/socials/instagram.png')}}" alt="" class="img-fluid"></a>
-                                    <a href="#" class="mt-3 me-2" target="_blank"><img src="{{asset('frontend/assets/images/socials/twitter.png')}}" alt="" class="img-fluid"></a>
-                                    <a href="#" class="mt-3 me-2" target="_blank"><img src="{{asset('frontend/assets/images/socials/pinterest.png')}}" alt="" class="img-fluid"></a>
-                                    <a href="#" class="mt-3 me-2" target="_blank"><img src="{{asset('frontend/assets/images/socials/youtube.png')}}" alt="" class="img-fluid"></a>
+                                    <a href="{{getSocialLink()->Facebook}}" class="mt-3 me-2" target="_blank"><img src="{{asset('frontend/assets/images/socials/facebook.png')}}" alt="" class="img-fluid"></a>
+                                    <a href="{{getSocialLink()->Instagram}}" class="mt-3 me-2" target="_blank"><img src="{{asset('frontend/assets/images/socials/instagram.png')}}" alt="" class="img-fluid"></a>
+                                    <a href="{{getSocialLink()->Twitter}}" class="mt-3 me-2" target="_blank"><img src="{{asset('frontend/assets/images/socials/twitter.png')}}" alt="" class="img-fluid"></a>
+                                    <a href="{{getSocialLink()->Skype}}" class="mt-3 me-2" target="_blank"><img src="{{asset('frontend/assets/images/socials/pinterest.png')}}" alt="" class="img-fluid"></a>
+                                    <a href="{{getSocialLink()->Linkedin}}" class="mt-3 me-2" target="_blank"><img src="{{asset('frontend/assets/images/socials/youtube.png')}}" alt="" class="img-fluid"></a>
 
                                 </div>
                             </div>

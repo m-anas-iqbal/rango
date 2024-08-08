@@ -34,52 +34,74 @@
 </div>
 <div class="container cate_card my-5">
     <div class="row">
-      @forelse (Category_Des_Icon() as $item)
-      <div class="col-md-6 p-4">
-          <a class="card p-5 r-bg-green rounded-20px" href="{{ route('category.product', $item->id) }}">
-              <h1 class="fw-bold py-3 text-white">{{ langConverter($item->en_Category_Name, $item->fr_Category_Name) }}</h1>
-              <img src="{{asset(CategoryImage() . $item->Category_Icon) }}"
-                  class="position-absolute translate-middle-y" alt="{{ langConverter($item->en_Category_Name, $item->fr_Category_Name) }}">
-          </a>
-      </div>
-      @empty
-
-      @endforelse
+        @forelse (Category_Des_Icon() as $item)
+            <div class="col-md-6 p-4">
+                <a class="card p-5 cat_card rounded-20px" href="{{ route('category.product', $item->id) }}">
+                    <h1 class="fw-bold py-3 text-white">
+                        {{ langConverter($item->en_Category_Name, $item->fr_Category_Name) }}</h1>
+                    <img src="{{ asset(CategoryImage() . $item->Category_Icon) }}"
+                        class="position-absolute translate-middle-y"
+                        alt="{{ langConverter($item->en_Category_Name, $item->fr_Category_Name) }}">
+                </a>
+            </div>
+        @empty
+        @endforelse
 
     </div>
 </div>
 @if ($allsettings['new_arrival'] == ACTIVE)
-<div class="container home_products my-5">
-    <div class="d-flex justify-content-between">
-        <h3 class="fw-bold">New Arrivals</h3>
-        <a href="" class="fw-bold">See All <i class="fa-solid fa-arrow-right"></i></a>
-    </div>
-    <hr class="start-border">
-    <div class="product-items">
-        <div class="row">
-            @forelse ($new_arrivals as $product)
-                <div class="col-md-3 p-3">
-                    <DIV class="card text-center p-3 shadow rounded-10px border-0">
-                        <img src="{{ asset(ProductImage() . $product->Primary_Image) }}" class="img-fluid" alt="{{ __('product') }}">
-                        <h4 class="w-fit mx-auto"><a class="product-link"
-                            href="{{ route('single.product', $product->en_Product_Slug) }}">{{ langConverter($product->en_Product_Name, $product->fr_Product_Name) }}</a></h4>
-                        <div class="price-label w-fit small r-bg-green rounded-pill mx-auto py-1 px-2 text-white">
-                            <span class="regular-price">
-                                {{ currencyConverter($product->Price) }}</span>
-                            <span class="price">
-                                {{ currencyConverter($product->Discount_Price) }}</span>
+    <div class="container home_products my-5">
+        <div class="d-flex justify-content-between">
+            <h3 class="fw-bold">New Arrivals</h3>
+            <a href="" class="fw-bold">See All <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+        <hr class="start-border">
+        <div class="product-items">
+            <div class="row">
+                @forelse ($new_arrivals as $product)
+                    <div class="col-md-3 p-3">
+                        <div class="card product_card text-center p-3 shadow rounded-10px border-0">
+                            <a class="product-link" href="{{ route('single.product', $product->en_Product_Slug) }}">
+                                <img src="{{ asset(ProductImage() . $product->Primary_Image) }}"
+                                    class="img-fluid shadow rounded" alt="{{ __('product') }}">
+                                <h5 class="w-fit mx-auto fw-bold mt-2 mb-0">
+                                    {{ langConverter($product->en_Product_Name, $product->fr_Product_Name) }}
+                                </h5>
+                            </a>
+                            {{-- <div class="price-label w-fit small r-bg-green rounded-pill mx-auto py-1 px-2 text-white">
+                                <span class="regular-price">
+                                    {{ currencyConverter($product->Price) }}</span>
+                                <span class="price">
+                                    {{ currencyConverter($product->Discount_Price) }}</span>
+                            </div> --}}
+                            @if (currencyConverter($product->Price) == currencyConverter($product->Discount_Price))
+                                <span
+                                    class="price fw-bold fs-4">{{ currencyConverter($product->Discount_Price) }}</span>
+                            @else
+                                <div class="d-flex justify-content-center gap-2 align-items-end">
+                                    <span
+                                        class="price fw-bold fs-4">{{ currencyConverter($product->Discount_Price) }}</span>
+                                    <span
+                                        class="regular-price text-danger text-decoration-line-through fw-bold fs-6">{{ currencyConverter($product->Price) }}</span>
+                                </div>
+                            @endif
+                            <hr>
+                            <div class="d-flex justify-content-center gap-3">
+                                <input type="hidden" name="quantity" value="1" id="product_quantity">
+                                <a href="javascript:void(0)" title="{{ __('Add to cart') }}"
+                                    data-id="{{ $product->id }}"
+                                    class="add-cart addCart price-label w-fit small r-bg-green rounded-pill py-1 px-3 text-white">{{ __('Add To Cart') }}</a>
+                                <a
+                                    href="javascript:void(0)"class="price-label w-fit small r-bg-red rounded-pill  py-1 px-2 text-white"><i
+                                        class="fa-solid fa-heart"></i></a>
+                            </div>
                         </div>
-                    </DIV>
-                    <input type="hidden" name="quantity" value="1" id="product_quantity">
-                    <a href="javascript:void(0)" title="{{ __('Add To Cart') }}" class="add-cart addCart"
-                                    data-id="{{ $product->id }}">{{ __('Add To Cart') }} <i
-                                        class="icon fas fa-plus-circle"></i></a>
-                </div>
-                @empty
 
+                    </div>
+                @empty
                 @endforelse
-            {{-- <div class="col-md-3 p-3">
-                <DIV class="card text-center p-3 shadow rounded-10px border-0">
+                {{-- <div class="col-md-3 p-3">
+                <div class="card product_card text-center p-3 shadow rounded-10px border-0">
                     <img src="{{ asset(ProductImage() . $product->Primary_Image) }}" class="img-fluid" alt="{{ __('product') }}">
                     <h4 class="w-fit mx-auto"><a class="product-link"
                         href="{{ route('single.product', $product->en_Product_Slug) }}">{{ langConverter($product->en_Product_Name, $product->fr_Product_Name) }}</a></h4>
@@ -89,84 +111,112 @@
                         <span class="price">
                             {{ currencyConverter($product->Discount_Price) }}</span>
                     </div>
-                </DIV>
+                </div>
                 <input type="hidden" name="quantity" value="1" id="product_quantity">
                 <a href="javascript:void(0)" title="{{ __('Add To Cart') }}" class="add-cart addCart"
                                 data-id="{{ $product->id }}">{{ __('Add To Cart') }} <i
                                     class="icon fas fa-plus-circle"></i></a>
             </div> --}}
 
+            </div>
         </div>
     </div>
-</div>
 @endif
 @if ($allsettings['best_selling'] == ACTIVE)
-<div class="container home_products my-5">
-    <div class="d-flex justify-content-between">
-        <h3 class="fw-bold">BEST SELLING</h3>
-        <a href="" class="fw-bold">See All <i class="fa-solid fa-arrow-right"></i></a>
-    </div>
-    <hr class="start-border">
-    <div class="product-items">
-        <div class="row">
-           @forelse ($best_sellings as $product)
-            <div class="col-md-3 p-3">
-                <DIV class="card text-center p-3 shadow rounded-10px border-0">
-                    <img src="{{ asset(ProductImage() . $product->Primary_Image) }}" class="img-fluid" alt="{{ __('product') }}">
-                    <h4 class="w-fit mx-auto"><a class="product-link"
-                        href="{{ route('single.product', $product->en_Product_Slug) }}">{{ langConverter($product->en_Product_Name, $product->fr_Product_Name) }}</a></h4>
-                    <div class="price-label w-fit small r-bg-green rounded-pill mx-auto py-1 px-2 text-white">
-                        <span class="regular-price">
-                            {{ currencyConverter($product->Price) }}</span>
-                        <span class="price">
-                            {{ currencyConverter($product->Discount_Price) }}</span>
+    <div class="container home_products my-5">
+        <div class="d-flex justify-content-between">
+            <h3 class="fw-bold">BEST SELLING</h3>
+            <a href="" class="fw-bold">See All <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+        <hr class="start-border">
+        <div class="product-items">
+            <div class="row">
+                @forelse ($best_sellings as $product)
+                    <div class="col-md-3 p-3">
+                        <div class="card product_card text-center p-3 shadow rounded-10px border-0">
+                            <a class="product-link" href="{{ route('single.product', $product->en_Product_Slug) }}">
+                                <img src="{{ asset(ProductImage() . $product->Primary_Image) }}"
+                                    class="img-fluid shadow rounded" alt="{{ __('product') }}">
+                                <h5 class="w-fit mx-auto fw-bold mt-2 mb-0">
+                                    {{ langConverter($product->en_Product_Name, $product->fr_Product_Name) }}
+                                </h5>
+                            </a>
+                            @if (currencyConverter($product->Price) == currencyConverter($product->Discount_Price))
+                                <span
+                                    class="price fw-bold fs-4">{{ currencyConverter($product->Discount_Price) }}</span>
+                            @else
+                                <div class="d-flex justify-content-center gap-2 align-items-end">
+                                    <span
+                                        class="price fw-bold fs-4">{{ currencyConverter($product->Discount_Price) }}</span>
+                                    <span
+                                        class="regular-price text-danger text-decoration-line-through fw-bold fs-6">{{ currencyConverter($product->Price) }}</span>
+                                </div>
+                            @endif
+                            <hr>
+                            <div class="d-flex justify-content-center gap-3">
+                                <input type="hidden" name="quantity" value="1" id="product_quantity">
+                                <a href="javascript:void(0)" title="{{ __('Add to cart') }}"
+                                    data-id="{{ $product->id }}"
+                                    class="add-cart addCart price-label w-fit small r-bg-green rounded-pill py-1 px-3 text-white">{{ __('Add To Cart') }}</a>
+                                <a
+                                    href="javascript:void(0)"class="price-label w-fit small r-bg-red rounded-pill  py-1 px-2 text-white"><i
+                                        class="fa-solid fa-heart"></i></a>
+                            </div>
+                        </div>
                     </div>
-                </DIV>
-                <input type="hidden" name="quantity" value="1" id="product_quantity">
-                <a href="javascript:void(0)" title="{{ __('Add To Cart') }}" class="add-cart addCart"
-                                data-id="{{ $product->id }}">{{ __('Add To Cart') }} <i
-                                    class="icon fas fa-plus-circle"></i></a>
+                @empty
+                @endforelse
             </div>
-         @empty
-
-      @endforelse
         </div>
     </div>
-</div>
 @endif
 @if ($allsettings['featured_items'] == ACTIVE)
-<div class="container home_products my-5">
-    <div class="d-flex justify-content-between">
-        <h3 class="fw-bold">Featured Products</h3>
-        <a href="" class="fw-bold">See All <i class="fa-solid fa-arrow-right"></i></a>
-    </div>
-    <hr class="start-border">
-    <div class="product-items">
-        <div class="row">
-           @forelse ($featured_products as $product)
-            <div class="col-md-3 p-3">
-                <DIV class="card text-center p-3 shadow rounded-10px border-0">
-                    <img src="{{ asset(ProductImage() . $product->Primary_Image) }}" class="img-fluid" alt="{{ __('product') }}">
-                    <h4 class="w-fit mx-auto"><a class="product-link"
-                        href="{{ route('single.product', $product->en_Product_Slug) }}">{{ langConverter($product->en_Product_Name, $product->fr_Product_Name) }}</a></h4>
-                    <div class="price-label w-fit small r-bg-green rounded-pill mx-auto py-1 px-2 text-white">
-                        <span class="regular-price">
-                            {{ currencyConverter($product->Price) }}</span>
-                        <span class="price">
-                            {{ currencyConverter($product->Discount_Price) }}</span>
+    <div class="container home_products my-5">
+        <div class="d-flex justify-content-between">
+            <h3 class="fw-bold">Featured Products</h3>
+            <a href="" class="fw-bold">See All <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+        <hr class="start-border">
+        <div class="product-items">
+            <div class="row">
+                @forelse ($featured_products as $product)
+                    <div class="col-md-3 p-3">
+                        <div class="card product_card text-center p-3 shadow rounded-10px border-0">
+                            <a class="product-link" href="{{ route('single.product', $product->en_Product_Slug) }}">
+                                <img src="{{ asset(ProductImage() . $product->Primary_Image) }}"
+                                    class="img-fluid shadow rounded" alt="{{ __('product') }}">
+                                <h5 class="w-fit mx-auto fw-bold mt-2 mb-0">
+                                    {{ langConverter($product->en_Product_Name, $product->fr_Product_Name) }}
+                                </h5>
+                            </a>
+                            @if (currencyConverter($product->Price) == currencyConverter($product->Discount_Price))
+                                <span
+                                    class="price fw-bold fs-4">{{ currencyConverter($product->Discount_Price) }}</span>
+                            @else
+                                <div class="d-flex justify-content-center gap-2 align-items-end">
+                                    <span
+                                        class="price fw-bold fs-4">{{ currencyConverter($product->Discount_Price) }}</span>
+                                    <span
+                                        class="regular-price text-danger text-decoration-line-through fw-bold fs-6">{{ currencyConverter($product->Price) }}</span>
+                                </div>
+                            @endif
+                            <hr>
+                            <div class="d-flex justify-content-center gap-3">
+                                <input type="hidden" name="quantity" value="1" id="product_quantity">
+                                <a href="javascript:void(0)" title="{{ __('Add to cart') }}"
+                                    data-id="{{ $product->id }}"
+                                    class="add-cart addCart price-label w-fit small r-bg-green rounded-pill py-1 px-3 text-white">{{ __('Add To Cart') }}</a>
+                                <a
+                                    href="javascript:void(0)"class="price-label w-fit small r-bg-red rounded-pill  py-1 px-2 text-white"><i
+                                        class="fa-solid fa-heart"></i></a>
+                            </div>
+                        </div>
                     </div>
-                </DIV>
-                <input type="hidden" name="quantity" value="1" id="product_quantity">
-                <a href="javascript:void(0)" title="{{ __('Add To Cart') }}" class="add-cart addCart"
-                                data-id="{{ $product->id }}">{{ __('Add To Cart') }} <i
-                                    class="icon fas fa-plus-circle"></i></a>
+                @empty
+                @endforelse
             </div>
-         @empty
-
-      @endforelse
         </div>
     </div>
-</div>
 @endif
 
 <div class="parallax d-grid place-content-center r-bg-red text-white py-5"

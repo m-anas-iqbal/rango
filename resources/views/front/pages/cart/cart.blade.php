@@ -70,8 +70,8 @@
                                                         <div class="variable-single-item color-switch">
                                                             <div class="product-variable-color">
                                                                 <label>
-                                                                    <input name="modal-product-color"
-                                                                        class="color-select" type="radio">
+                                                                    <input name="modal-product-color" class="color-select"
+                                                                        type="radio">
                                                                     <span
                                                                         style="background:{{ $item->options->color }};"></span>
                                                                 </label>
@@ -93,8 +93,7 @@
                                                     {{ currencyConverter($item->weight) }}
                                                 </h4>
                                                 <h3 class="price ">
-                                                    <span
-                                                        class="mainPrice">{{ currencyConverter($item->price) }}</span>
+                                                    <span class="mainPrice">{{ currencyConverter($item->price) }}</span>
                                                 </h3>
                                             </div>
                                         </td>
@@ -102,9 +101,8 @@
                                             <div class="cart-quantity input-group">
                                                 <div class="increase-btn dec qtybutton btn qty_decrease"
                                                     data-id="{{ $item->rowId }}">-</div>
-                                                <input class="qty-input cart-plus-minus-box qty_value"
-                                                    type="text" name="qtybutton" id="qty_value"
-                                                    value="{{ $item->qty }}" readonly />
+                                                <input class="qty-input cart-plus-minus-box qty_value" type="text"
+                                                    name="qtybutton" id="qty_value" value="{{ $item->qty }}" readonly />
                                                 <div class="increase-btn inc qtybutton btn qty_increase"
                                                     data-id="{{ $item->rowId }}">+</div>
                                             </div>
@@ -115,8 +113,8 @@
                                             </h1>
                                         </td>
                                         <td>
-                                            <button class="delet-btn deleteItemCart"
-                                                title="{{ __('Delete Item') }}" data-id="{{ $item->rowId }}">
+                                            <button class="delet-btn deleteItemCart" title="{{ __('Delete Item') }}"
+                                                data-id="{{ $item->rowId }}">
                                                 <img src="{{ asset('frontend/assets/images/close.svg') }}"
                                                     alt="close" />
                                             </button>
@@ -222,16 +220,19 @@
                                 <li class="list-group-item">
                                     <div class="d-flex justify-content-between">
                                         <p class="fw-bold mb-0"> Total : </p>
-                                        <p class="fw-bold mb-0"><span class="cart-page-final-total totalAmount ">{{ currencyConverter(subtotal()) }}</span></p>
+                                        <p class="fw-bold mb-0"><span
+                                                class="cart-page-final-total totalAmount ">{{ currencyConverter(subtotal()) }}</span>
+                                        </p>
                                     </div>
                                 </li>
                             </ul>
                         </div>
                         <div class="checkout">
                             {{-- <button class="button button02 w-100"><span>Checkout</span></button> --}}
-
+                            @if (count($content) > 0)
                                 <a href="{{ route('checkout') }}"
-                                    class="button button02 w-100 form-btn proceed-to-checkout-btn">{{ __('Go') }}</a>
+                                    class="button button02 w-100 form-btn proceed-to-checkout-btn btn">{{ __('Go') }}</a>
+                            @endif
 
                         </div>
                     </div>
@@ -239,16 +240,17 @@
             </div>
         </div>
 
-    <div id="CartDeleteFromSession" data-url="{{ route('cart.delete') }}"></div>
-    <div id="CartIncrementFromSession" data-url="{{ route('cart.increase') }}"></div>
-    <div id="CartDecrementFromSession" data-url="{{ route('cart.decrease') }}"></div>
+        <div id="CartDeleteFromSession" data-url="{{ route('cart.delete') }}"></div>
+        <div id="CartIncrementFromSession" data-url="{{ route('cart.increase') }}"></div>
+        <div id="CartDecrementFromSession" data-url="{{ route('cart.decrease') }}"></div>
     </section>
     <script>
         function increment() {
-      document.getElementById('input').stepUp();
-   }
-   function decrement() {
-      document.getElementById('input').stepDown();
-   }
+            document.getElementById('input').stepUp();
+        }
+
+        function decrement() {
+            document.getElementById('input').stepDown();
+        }
     </script>
-    @endsection
+@endsection

@@ -25,7 +25,7 @@
     <link rel="stylesheet" href="{{ asset('/frontend/assets/css/revamp.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/assets/dist/css/suggestion-box.min.css') }}">
     <!-- Favicon -->
-    <link rel="shortcut icon" href="{{ asset(IMG_FAVICON_PATH . $allsettings['favicon']) }}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ asset('frontend/assets/images/logo/logo.png') }}" type="image/x-icon">
 
     <script src="{{ asset('frontend/assets/js/jquery-3.6.0.min.js') }}"></script>
     {{-- slick --}}

@@ -7,7 +7,7 @@
     </div>
     <div class="sidebar__brand">
         <a href="{{ route('admin.dashboard') }}">
-            <img src="{{ asset(IMG_LOGO_PATH . $allsettings['footer_logo']) }}" alt="icon">
+            <img src="{{ asset('frontend/assets/images/logo/logo.png') }}" alt="icon">
         </a>
     </div>
     <ul id="sidebar-menu" class="sidebar__menu">
@@ -300,6 +300,14 @@
                     </li>
                 </ul>
             </li>
+        @endcanany
+        @canany(['cms-list'])
+        <li class="{{ isset($submenu) && $submenu == 'content_social_link' ? 'mm-active' : '' }}">
+            <a href="{{ route('admin.social.link') }}">
+                <i class="fa fa-circle"></i>
+                <span>{{ __('Social Link') }}</span>
+            </a>
+        </li>
         @endcanany
         {{-- @canany(['cms-list'])
             <li class="{{ isset($menu) && $menu == 'site_content' ? 'mm-active' : '' }}">
