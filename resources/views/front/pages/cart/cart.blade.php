@@ -45,6 +45,7 @@
                                 @php
                                     $total = 0;
                                 @endphp
+                                {{-- @dd($content) --}}
                                 @foreach ($content as $item)
                                     <tr class="cart-page-item">
                                         <td>
@@ -54,47 +55,29 @@
                                                             class="product-thumbnal"
                                                             src="{{ asset(ProductImage() . $item->options->image) }}"
                                                             alt="cart"></a>
-                                                    <div class="product-flags">
-                                                        <span
-                                                            class="product-flag sale">{{ $item->options->item_tag }}</span>
-                                                        <span
-                                                            class="product-flag discount">-{{ $item->options->discount_parcent }}%</span>
-                                                    </div>
+
                                                 </div>
                                                 <div class="product-info text-center">
                                                     <h3 class="product-name">
                                                         <a class="product-link"
                                                             href="{{ route('single.product', $item->options->slug ?? '') }}">{{ $item->name }}</a>
                                                     </h3>
-                                                    @if ($item->options->color)
-                                                        <div class="variable-single-item color-switch">
-                                                            <div class="product-variable-color">
-                                                                <label>
-                                                                    <input name="modal-product-color" class="color-select"
-                                                                        type="radio">
-                                                                    <span
-                                                                        style="background:{{ $item->options->color }};"></span>
-                                                                </label>
-                                                            </div>
-                                                        </div>
-                                                    @endif
-                                                    @if ($item->options->size)
-                                                        <ul class="size-switch">
-                                                            <li class="single-size active">
-                                                                {{ $item->options->size }}</li>
-                                                        </ul>
-                                                    @endif
                                                 </div>
                                             </div>
                                         </td>
                                         <td>
                                             <div class="product-price text-center">
-                                                <h4 class="regular-price">
-                                                    {{ currencyConverter($item->weight) }}
-                                                </h4>
-                                                <h3 class="price ">
-                                                    <span class="mainPrice">{{ currencyConverter($item->price) }}</span>
-                                                </h3>
+                                                @if (currencyConverter($item->price) == currencyConverter($item->options->discount_price))
+                                <span
+                                    class="price fw-bold fs-4">{{ currencyConverter($item->options->discount_price) }}</span>
+                            @else
+                                <div class="d-flex justify-content-center gap-2 align-items-end">
+                                    <span
+                                        class="price fw-bold fs-4">{{ currencyConverter($item->price) }}</span>
+                                    <span
+                                        class="regular-price text-danger text-decoration-line-through fw-bold fs-6">{{ currencyConverter($item->options->discount_price) }}</span>
+                                </div>
+                            @endif
                                             </div>
                                         </td>
                                         <td>
@@ -228,7 +211,6 @@
                             </ul>
                         </div>
                         <div class="checkout">
-                            {{-- <button class="button button02 w-100"><span>Checkout</span></button> --}}
                             @if (count($content) > 0)
                                 <a href="{{ route('checkout') }}"
                                     class="button button02 w-100 form-btn proceed-to-checkout-btn btn">{{ __('Go') }}</a>

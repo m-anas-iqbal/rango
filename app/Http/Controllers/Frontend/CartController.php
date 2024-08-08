@@ -18,6 +18,7 @@ class CartController extends Controller
     public function addToCart(Request $request)
     {
         if ($request->ajax()) {
+            // return Cart::destroy();
             $product = Product::with('colors', 'sizes',)
                 ->where('id', $request->product_id)
                 ->first();
@@ -35,32 +36,31 @@ class CartController extends Controller
                     return response()->json([$tc, $ta, $cd]);
                 }
             }
-            $color_id = DB::table('color_product')->where('Product_Id', $request->product_id)->where('Color_Id', $request->color_id)->count();
-            $size_id = DB::table('size_product')->where('Product_Id', $request->product_id)->where('Size_Id', $request->size_id)->count();
-            if ($color_id == 0) {
-                $color_id = null;
-            }
-            if ($size_id == 0) {
-                $size_id = null;
-            }
-            $color_name = Color::where('id', $request->color_id)->first();
-            $size_name = Size::where('id', $request->size_id)->first();
+            // $color_id = DB::table('color_product')->where('Product_Id', $request->product_id)->where('Color_Id', $request->color_id)->count();
+            // $size_id = DB::table('size_product')->where('Product_Id', $request->product_id)->where('Size_Id', $request->size_id)->count();
+            // if ($color_id == 0) {
+            //     $color_id = null;
+            // }
+            // if ($size_id == 0) {
+            //     $size_id = null;
+            // }
+            // $color_name = Color::where('id', $request->color_id)->first();
+            // $size_name = Size::where('id', $request->size_id)->first();
 
             $cart = Cart::add([
                 'id' => $request->product_id,
                 'name' => $product->en_Product_Name,
                 'qty' => $request->quantity,
                 'price' => $product->Discount_Price,
-                'weight' => $product->Price,
+                'weight' => $product->weight,
                 'options' =>
                 [
-                    'size' => $size_id == 0 ? $size_id : $size_name->Size,
-                    'color' => $color_id == 0 ? $color_id : $color_name->ColorCode,
                     'image' => $product->Primary_Image,
                     'slug' => $product->en_Product_Slug,
-                    'discount_price' => $product->Discount_Price,
-                    'item_tag' => $product->ItemTag,
-                    'discount_parcent' => $product->Discount,
+                    'discount_price' => $product->Price,
+                    'size' => $product->area,
+                    // 'discount_price' => $product->Discount_Price,
+                    // 'discount_parcent' => $product->Discount,
                     'voucher' => $product->Voucher,
                 ]
             ]);
@@ -73,6 +73,7 @@ class CartController extends Controller
                 $tc = Cart::count();
                 return response()->json([$tc, $ta, $cd]);
             }
+            // unset($_SESSION);
         }
     }
     public function cartContent()
@@ -92,7 +93,7 @@ class CartController extends Controller
     }
     public function cartDelete(Request $request)
     {
-        // return response()->json($request->all());
+        // return response()->json($request->all());name
         Session::forget('CouponAmount');
         Session::forget('couponCode');
 
