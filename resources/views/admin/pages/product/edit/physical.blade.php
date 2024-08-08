@@ -114,17 +114,17 @@
                                             </div>
 
                                             <div class="input__group mb-25">
-                                                <label for="size">{{ __('Size') }}</label>
+                                                <label for="size">{{ __('Size  (cm)') }}</label>
                                                 <input type="number" step="0.01" min="0.01" class="form-control" id="size"
-                                                    name="size" value="{{ old('size') }}"  value="{{ $product->Quantity }}" placeholder="Size">
+                                                    name="size" value="{{ old('size') }}"  value="{{ $product->area }}" placeholder="Size">
                                                 @error('size')
                                                     <span class="text-danger">{{ $message }}</span>
                                                 @enderror
                                             </div>
                                             <div class="input__group mb-25">
-                                                <label for="weight">{{ __('Weight') }}</label>
+                                                <label for="weight">{{ __('Weight (KG)') }}</label>
                                                 <input type="number" step="0.01" min="0.01" class="form-control" id="weight"
-                                                    name="weight" value="{{ old('weight') }}"  value="{{ $product->Quantity }}" placeholder="Weight">
+                                                    name="weight" value="{{ old('weight') }}"  value="{{ $product->weight }}" placeholder="Weight">
                                                 @error('weight')
                                                     <span class="text-danger">{{ $message }}</span>
                                                 @enderror
@@ -141,7 +141,7 @@
                                                     value="{{ $product->Discount }}">
                                             </div>
                                             <div class="input__group mb-25">
-                                                <label for="exampleInputEmail1">{{ __('Discount Price') }}</label>
+                                                <label for="exampleInputEmail1">{{ __('After Discount Price') }}</label>
                                                 <input type="text" class="form-control"
                                                     value="{{ $product->Discount_Price }}" id="discount_price"
                                                     name="discount_price" readonly>
