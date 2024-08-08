@@ -1,4 +1,4 @@
-@extends('front.layouts.master')
+@extends('front.layouts.new-layout')
 @section('title', isset($title) ? $title : 'Home')
 @section('description', isset($description) ? $description : '')
 @section('keywords', isset($keywords) ? $keywords : '')
@@ -130,7 +130,7 @@
 
                                 <h3 class="product-name fw-bold text-capitalize ">
                                     {{ langConverter($products->en_Product_Name, $products->fr_Product_Name) }}</h3>
-                                <hr>
+
                                 <!-- This is server side code. User can not modify it. -->
                                 {{-- {!! productReview($products->id) !!} --}}
 
