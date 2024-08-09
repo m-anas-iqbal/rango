@@ -36,12 +36,12 @@
                             <span>{{ __('Add Admin') }}</span>
                         </a>
                     </li>
-                    <li class="{{ isset($submenu) && $submenu == 'roles' ? 'mm-active' : '' }}">
+                    {{-- <li class="{{ isset($submenu) && $submenu == 'roles' ? 'mm-active' : '' }}">
                         <a href="{{ route('admin.role_list') }}">
                             <i class="fa fa-circle"></i>
                             <span>{{ __('Roles') }}</span>
                         </a>
-                    </li>
+                    </li> --}}
                 </ul>
             </li>
         @endcanany

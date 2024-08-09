@@ -33,10 +33,10 @@ class SocialLinkController extends Controller
                 })
                 ->editColumn('Skype', function ($data) {
                     if ($data->Skype) {
-                        $btn = '<a href="' . $data->Skype . '" target= _blank class="btn btn-success small">Skype</a>';
+                        $btn = '<a href="' . $data->Skype . '" target= _blank class="btn btn-success small">Pinterest</a>';
                         return $btn;
                     } else {
-                        $btn = '<a href="' . $data->Skype . '" target= _blank class="btn btn-success small disabled">Skype</a>';
+                        $btn = '<a href="' . $data->Skype . '" target= _blank class="btn btn-success small disabled">Pinterest</a>';
                         return $btn;
                     }
                 })
@@ -51,10 +51,10 @@ class SocialLinkController extends Controller
                 })
                 ->editColumn('Linkedin', function ($data) {
                     if ($data->Linkedin) {
-                        $btn = '<a href="' . $data->Linkedin . '" target= _blank class="btn btn-success small">Linkedin</a>';
+                        $btn = '<a href="' . $data->Linkedin . '" target= _blank class="btn btn-success small">Youtube</a>';
                         return $btn;
                     } else {
-                        $btn = '<a href="' . $data->Linkedin . '" target= _blank class="btn btn-success small disabled">Linkedin</a>';
+                        $btn = '<a href="' . $data->Linkedin . '" target= _blank class="btn btn-success small disabled">Youtube</a>';
                         return $btn;
                     }
                 })
