@@ -437,3 +437,49 @@ hr.start-border::before {
     aspect-ratio: 1;
     object-fit: cover;
 }
+.count_checkout {
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin: -15px;
+    border-radius: 50%;
+    height: 20px;
+    width: 20px;
+    text-align: center;
+    line-height: 20px;
+}
+.cart_icon .badge{
+    padding: 0px !important;
+}
+.qtybutton .fa-minus {
+    background-color: var(--color-red);
+    /* padding: 10px; */
+    color: #fff;
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+    line-height: 32px;
+    font-size: 12px;
+}
+.qtybutton .fa-plus{
+    background-color: var(--color-green);
+    /* padding: 10px; */
+    color: #fff;
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+    line-height: 32px;
+    font-size: 12px;
+}
+.social-media li{
+    background-color: var(--color-red);
+    height: 30px;
+    width: 30px;
+    line-height: 30px;
+    color: #fff !important;
+    text-align: center;
+    border-radius: 50%;
+}
+.social-media li a{
+    color: #fff !important;
+}

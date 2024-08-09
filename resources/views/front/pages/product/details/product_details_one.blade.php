@@ -1,4 +1,4 @@
-@extends('front.layouts.master')
+@extends('front.layouts.new-layout')
 @section('title', isset($title) ? $title : 'Home')
 @section('description', isset($description) ? $description : '')
 @section('keywords', isset($keywords) ? $keywords : '')
@@ -23,7 +23,7 @@
     <!-- breadcrumb area end here  -->
 
     <!-- product-single-area start here  -->
-    <div class="product-single-area section-top">
+    <div class="product-single-area section-top mt-5">
         <div class="container">
             <div class="product-single-details">
                 <div class="row">
@@ -32,7 +32,7 @@
                             <div class="product-thumbnail-image p-3">
                                 @foreach (['Primary_Image', 'Image4', 'Image3', 'Image5', 'Image2'] as $image)
                                     @if ($products->$image)
-                                        <div class="main-img-wrap p-3">
+                                        <div class="main-img-wrap ">
                                             <img class="img-fluid w-100 h-100 object-fit-contain"
                                                 src="{{ asset(ProductImage() . $products->$image) }}"
                                                 alt="{{ __('product') }}" />
@@ -130,11 +130,11 @@
 
                                 <h3 class="product-name fw-bold text-capitalize ">
                                     {{ langConverter($products->en_Product_Name, $products->fr_Product_Name) }}</h3>
-                                <hr>
+
                                 <!-- This is server side code. User can not modify it. -->
                                 {{-- {!! productReview($products->id) !!} --}}
 
-                                <div class="product-price">
+                                <div class="product-price mt-3">
                                     @if (currencyConverter($products->Price) == currencyConverter($products->Discount_Price))
                                         <span class="price">{{ currencyConverter($products->Discount_Price) }}</span>
                                     @else
@@ -145,7 +145,7 @@
                                     @endif
                                 </div>
                                 <div class="product-size-area">
-                                    <h6 class="size-title">{{ __('Type:') }} {{ productTypeText($products->id) }}</h6>
+                                    {{-- <h6 class="size-title">{{ __('Type:') }} {{ productTypeText($products->id) }}</h6> --}}
                                     <ul class="size-switch list-unstyled">
                                         @foreach ($products->sizes as $item)
                                             <input type="hidden" class="sizeValue" name="productSize"
@@ -178,7 +178,7 @@
                                 <div class="prdouct-btn-wrapper d-flex align-items-center">
                                     <div class="cart-plus-minus d-flex align-items-center">
                                         <div class="dec qtybutton btn fs-5 fw-bold"><i class="fa-solid fa-minus"></i></div>
-                                        <input class="cart-plus-minus-box w-25" type="text" name="qtybutton"
+                                        <input class="cart-plus-minus-box w-25 form-control text-center" type="text" name="qtybutton"
                                             id="product_quantity" value="1" readonly />
                                         <div class="inc qtybutton btn fs-5 fw-bold"><i class="fa-solid fa-plus"></i></div>
                                     </div>
@@ -187,41 +187,53 @@
                                     <a class="product-btn CompareList" data-id="{{ $products->id }}"
                                         title="{{ __('Add To Compare') }}"><i class="icon flaticon-bar-chart"></i></a>
                                 </div>
-                                <div class="product-bottom-button d-flex gap-2 my-2">
+                                {{-- <div class="product-bottom-button d-flex gap-2 my-2">
                                     <a href="javascript:void(0)" class="btn btn-primary r-bg-blue buyNow"
                                         data-id="{{ $products->id }}">{{ __('Buy Now') }}</a>
                                     <a href="javascript:void(0)" title="{{ __('Add To Cart') }}"
                                         class="add-cart btn btn-success r-bg-green border-0 addCart"
                                         data-id="{{ $products->id }}">{{ __('Add To Cart') }}
                                         <i class="icon fas fa-plus-circle"></i></a>
-                                </div>
+                                </div> --}}
                             </div>
-                            <div class="product-right-bottom">
+                            <div class="product-right-bottom mt-3">
                                 <ul class="features list-unstyled">
-                                    <li class="single-feature">
-                                        <strong class="feature-title"><i
-                                                class="fa-solid fa-truck-fast r-text-yellow aspect-1 w-20px text-center"></i>
+                                    <li class="single-feature mb-2">
+                                        <strong class="feature-title"><img src="{{asset('frontend/assets/images/delivery.png')}}" alt="" class="img-fluid">
                                             {{ __('Estimated Delivery:') }}
                                         </strong><span
                                             class="feature-text">{{ allsetting()['estimating_delivery'] }}</span>
                                     </li>
-                                    <li class="single-feature">
-                                        <strong class="feature-title"><i
-                                                class="fa-solid fa-coins r-text-yellow aspect-1 w-20px text-center"></i>
+                                    <li class="single-feature mb-2">
+                                        <strong class="feature-title"><img src="{{asset('frontend/assets/images/coin.png')}}" alt="" class="img-fluid">
                                             {{ __('Shipping Charge:') }}
                                         </strong><span class="feature-text">{{ __('On all orders over') }}
                                             {{ currencyConverter(allsetting()['shipping_charge']) }}</span>
                                     </li>
+                                    <li class="single-feature">
+                                        <strong class="feature-title"><img src="{{asset('frontend/assets/images/shield.png')}}" alt="" class="img-fluid">
+                                            Safe and Secure Checkout
+                                        </strong>
+                                        {{-- <span class="feature-text">{{ __('') }}
+                                            {{ currencyConverter(allsetting()['shipping_charge']) }}</span> --}}
+                                    </li>
                                 </ul>
 
-                                @if ($allsettings['news_letter_status'] == '1')
+                                {{-- @if ($allsettings['news_letter_status'] == '1')
                                     <div class="guarantee-checkout-area">
                                         <h5 class="guarantee-title fw-bold">{{ $allsettings['news_letter_title'] }}</h5>
-                                        <img src="{{ asset(IMG_FOOTER_PATH . $allsettings['news_letter_img']) }}"
+                                        <img src="{{asset('frontend/assets/images/paypal.png')}}"
                                             alt="payment-method-image" />
                                     </div>
-                                @endif
-
+                                @endif --}}
+                                <div class="product-bottom-button my-2">
+                                    <a href="javascript:void(0)" class="btn btn-primary my-2 r-bg-blue buyNow d-block"
+                                        data-id="{{ $products->id }}">{{ __('Buy Now') }}</a>
+                                    <a href="javascript:void(0)" title="{{ __('Add To Cart') }}"
+                                        class="add-cart btn btn-success r-bg-green border-0 addCart d-block"
+                                        data-id="{{ $products->id }}">{{ __('Add To Cart') }}
+                                        <i class="icon fas fa-plus-circle"></i></a>
+                                </div>
                                 <div class="share-area mt-2">
                                     <h5 class="share-title fw-bold">{{ __('SHARE:') }}</h5>
                                     <ul class="social-media a2a_kit list-unstyled d-flex gap-3">
@@ -241,6 +253,7 @@
                                     <script async src="https://static.addtoany.com/menu/page.js"></script>
                                 </div>
                             </div>
+
                         </div>
                     </div>
                 </div>
