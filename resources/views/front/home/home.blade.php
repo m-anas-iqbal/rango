@@ -123,7 +123,7 @@
 @if ($allsettings['best_selling'] == ACTIVE)
     <div class="container home_products my-5">
         <div class="d-flex justify-content-between">
-            <h3 class="fw-bold">BEST SELLING</h3>
+            <h3 class="fw-bold">Best Selling</h3>
             <a href="" class="fw-bold">See All <i class="fa-solid fa-arrow-right"></i></a>
         </div>
         <hr class="start-border">
