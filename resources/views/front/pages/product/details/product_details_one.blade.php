@@ -23,7 +23,7 @@
     <!-- breadcrumb area end here  -->
 
     <!-- product-single-area start here  -->
-    <div class="product-single-area section-top">
+    <div class="product-single-area section-top mt-5">
         <div class="container">
             <div class="product-single-details">
                 <div class="row">
@@ -32,7 +32,7 @@
                             <div class="product-thumbnail-image p-3">
                                 @foreach (['Primary_Image', 'Image4', 'Image3', 'Image5', 'Image2'] as $image)
                                     @if ($products->$image)
-                                        <div class="main-img-wrap p-3">
+                                        <div class="main-img-wrap ">
                                             <img class="img-fluid w-100 h-100 object-fit-contain"
                                                 src="{{ asset(ProductImage() . $products->$image) }}"
                                                 alt="{{ __('product') }}" />
@@ -134,7 +134,7 @@
                                 <!-- This is server side code. User can not modify it. -->
                                 {{-- {!! productReview($products->id) !!} --}}
 
-                                <div class="product-price">
+                                <div class="product-price mt-3">
                                     @if (currencyConverter($products->Price) == currencyConverter($products->Discount_Price))
                                         <span class="price">{{ currencyConverter($products->Discount_Price) }}</span>
                                     @else
@@ -145,7 +145,7 @@
                                     @endif
                                 </div>
                                 <div class="product-size-area">
-                                    <h6 class="size-title">{{ __('Type:') }} {{ productTypeText($products->id) }}</h6>
+                                    {{-- <h6 class="size-title">{{ __('Type:') }} {{ productTypeText($products->id) }}</h6> --}}
                                     <ul class="size-switch list-unstyled">
                                         @foreach ($products->sizes as $item)
                                             <input type="hidden" class="sizeValue" name="productSize"
@@ -178,7 +178,7 @@
                                 <div class="prdouct-btn-wrapper d-flex align-items-center">
                                     <div class="cart-plus-minus d-flex align-items-center">
                                         <div class="dec qtybutton btn fs-5 fw-bold"><i class="fa-solid fa-minus"></i></div>
-                                        <input class="cart-plus-minus-box w-25" type="text" name="qtybutton"
+                                        <input class="cart-plus-minus-box w-25 form-control text-center" type="text" name="qtybutton"
                                             id="product_quantity" value="1" readonly />
                                         <div class="inc qtybutton btn fs-5 fw-bold"><i class="fa-solid fa-plus"></i></div>
                                     </div>
@@ -187,41 +187,53 @@
                                     <a class="product-btn CompareList" data-id="{{ $products->id }}"
                                         title="{{ __('Add To Compare') }}"><i class="icon flaticon-bar-chart"></i></a>
                                 </div>
-                                <div class="product-bottom-button d-flex gap-2 my-2">
+                                {{-- <div class="product-bottom-button d-flex gap-2 my-2">
                                     <a href="javascript:void(0)" class="btn btn-primary r-bg-blue buyNow"
                                         data-id="{{ $products->id }}">{{ __('Buy Now') }}</a>
                                     <a href="javascript:void(0)" title="{{ __('Add To Cart') }}"
                                         class="add-cart btn btn-success r-bg-green border-0 addCart"
                                         data-id="{{ $products->id }}">{{ __('Add To Cart') }}
                                         <i class="icon fas fa-plus-circle"></i></a>
-                                </div>
+                                </div> --}}
                             </div>
-                            <div class="product-right-bottom">
+                            <div class="product-right-bottom mt-3">
                                 <ul class="features list-unstyled">
-                                    <li class="single-feature">
-                                        <strong class="feature-title"><i
-                                                class="fa-solid fa-truck-fast r-text-yellow aspect-1 w-20px text-center"></i>
+                                    <li class="single-feature mb-2">
+                                        <strong class="feature-title"><img src="{{asset('frontend/assets/images/delivery.png')}}" alt="" class="img-fluid">
                                             {{ __('Estimated Delivery:') }}
                                         </strong><span
                                             class="feature-text">{{ allsetting()['estimating_delivery'] }}</span>
                                     </li>
-                                    <li class="single-feature">
-                                        <strong class="feature-title"><i
-                                                class="fa-solid fa-coins r-text-yellow aspect-1 w-20px text-center"></i>
+                                    <li class="single-feature mb-2">
+                                        <strong class="feature-title"><img src="{{asset('frontend/assets/images/coin.png')}}" alt="" class="img-fluid">
                                             {{ __('Shipping Charge:') }}
                                         </strong><span class="feature-text">{{ __('On all orders over') }}
                                             {{ currencyConverter(allsetting()['shipping_charge']) }}</span>
                                     </li>
+                                    <li class="single-feature">
+                                        <strong class="feature-title"><img src="{{asset('frontend/assets/images/shield.png')}}" alt="" class="img-fluid">
+                                            Safe and Secure Checkout
+                                        </strong>
+                                        {{-- <span class="feature-text">{{ __('') }}
+                                            {{ currencyConverter(allsetting()['shipping_charge']) }}</span> --}}
+                                    </li>
                                 </ul>
 
-                                @if ($allsettings['news_letter_status'] == '1')
+                                {{-- @if ($allsettings['news_letter_status'] == '1')
                                     <div class="guarantee-checkout-area">
                                         <h5 class="guarantee-title fw-bold">{{ $allsettings['news_letter_title'] }}</h5>
-                                        <img src="{{ asset(IMG_FOOTER_PATH . $allsettings['news_letter_img']) }}"
+                                        <img src="{{asset('frontend/assets/images/paypal.png')}}"
                                             alt="payment-method-image" />
                                     </div>
-                                @endif
-
+                                @endif --}}
+                                <div class="product-bottom-button my-2">
+                                    <a href="javascript:void(0)" class="btn btn-primary my-2 r-bg-blue buyNow d-block"
+                                        data-id="{{ $products->id }}">{{ __('Buy Now') }}</a>
+                                    <a href="javascript:void(0)" title="{{ __('Add To Cart') }}"
+                                        class="add-cart btn btn-success r-bg-green border-0 addCart d-block"
+                                        data-id="{{ $products->id }}">{{ __('Add To Cart') }}
+                                        <i class="icon fas fa-plus-circle"></i></a>
+                                </div>
                                 <div class="share-area mt-2">
                                     <h5 class="share-title fw-bold">{{ __('SHARE:') }}</h5>
                                     <ul class="social-media a2a_kit list-unstyled d-flex gap-3">
@@ -241,6 +253,7 @@
                                     <script async src="https://static.addtoany.com/menu/page.js"></script>
                                 </div>
                             </div>
+
                         </div>
                     </div>
                 </div>
@@ -359,55 +372,38 @@
             </div>
             <div class="row">
                 @forelse($similar_product as $product)
-                    <div class="col-lg-3 col-md-4 col-sm-6">
-                        <div class="single-grid-product">
-                            <div class="product-top">
-                                <a href="{{ route('single.product', $product->en_Product_Slug) }}"><img
-                                        class="product-thumbnal"
-                                        src="{{ asset(ProductImage() . $product->Primary_Image) }}" alt="product" /></a>
-                                <div class="product-flags">
-                                    @if ($product->ItemTag)
-                                        <span class="product-flag sale">{{ $product->ItemTag }}</span>
-                                    @endif
-                                    @if ($product->Discount)
-                                        <span
-                                            class="product-flag discount">{{ __('-') }}{{ $product->Discount }}</span>
-                                    @endif
-                                </div>
-                                <ul class="prdouct-btn-wrapper">
-                                    <li class="single-product-btn">
-                                        <a class="addToWishlist product-btn MyWishList" data-id="{{ $products->id }}"
-                                            href="javascript:void(0)" title="{{ __('Add To Compare') }}"><i
-                                                class="icon flaticon-bar-chart"></i></a>
-                                    </li>
-                                    <li class="single-product-btn">
-                                        <a class="addCompare product-btn CompareList" data-id="{{ $products->id }}"
-                                            href="javascript:void(0)" title="{{ __('Add To Wishlist') }}"><i
-                                                class="icon flaticon-like"></i></a>
-                                    </li>
-                                </ul>
+                <div class="col-md-3 p-3">
+                    <div class="card product_card text-center p-3 shadow rounded-10px border-0">
+                        <a class="product-link" href="{{ route('single.product', $product->en_Product_Slug) }}">
+                            <img src="{{ asset(ProductImage() . $product->Primary_Image) }}"
+                                class="img-fluid shadow rounded" alt="{{ __('product') }}">
+                            <h5 class="w-fit mx-auto fw-bold mt-2 mb-0">
+                                {{ langConverter($product->en_Product_Name, $product->fr_Product_Name) }}
+                            </h5>
+                        </a>
+                        @if (currencyConverter($product->Price) == currencyConverter($product->Discount_Price))
+                            <span
+                                class="price fw-bold fs-4">{{ currencyConverter($product->Discount_Price) }}</span>
+                        @else
+                            <div class="d-flex justify-content-center gap-2 align-items-end">
+                                <span
+                                    class="price fw-bold fs-4">{{ currencyConverter($product->Discount_Price) }}</span>
+                                <span
+                                    class="regular-price text-danger text-decoration-line-through fw-bold fs-6">{{ currencyConverter($product->Price) }}</span>
                             </div>
-
-
-                            <div class="product-info text-center">
-                                @foreach ($product->product_tags as $ppt)
-                                    <h4 class="product-catagory">{{ $ppt->tag }}</h4>
-                                @endforeach
-                                <h3 class="product-name"><a class="product-link"
-                                        href="{{ route('single.product', $product->en_Product_Slug) }}">{{ langConverter($product->en_Product_Name, $product->fr_Product_Name) }}</a>
-                                </h3>
-                                <!-- This is server side code. User can not modify it. -->
-                                {!! productReview($product->id) !!}
-                                <div class="product-price">
-                                    <span class="regular-price">{{ currencyConverter($product->Price) }}</span>
-                                    <span class="price">{{ currencyConverter($product->Discount_Price) }}</span>
-                                </div>
-                                <a href="javascript:void(0)" title="{{ __('Add To Cart') }}" class="add-cart addCart"
-                                    data-id="{{ $products->id }}">{{ __('Add To Cart') }} <i
-                                        class="icon fas fa-plus-circle"></i></a>
-                            </div>
+                        @endif
+                        <hr>
+                        <div class="d-flex justify-content-center gap-3">
+                            <input type="hidden" name="quantity" value="1" id="product_quantity">
+                            <a href="javascript:void(0)" title="{{ __('Add to cart') }}"
+                                data-id="{{ $product->id }}"
+                                class="add-cart addCart price-label w-fit small r-bg-green rounded-pill py-1 px-3 text-white">{{ __('Add To Cart') }}</a>
+                            <a
+                                href="javascript:void(0)"class="price-label w-fit small r-bg-red rounded-pill  py-1 px-2 text-white"><i
+                                    class="fa-solid fa-heart"></i></a>
                         </div>
                     </div>
+                </div>
                 @empty
                     {{-- <h1>{{ __('No related product found!') }}</h1> --}}
                 @endforelse

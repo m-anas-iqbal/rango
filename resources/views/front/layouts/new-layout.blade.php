@@ -84,7 +84,7 @@
                     <a class="" href="#">Blog</a>
                 </li> --}}
                 <li>
-                    <a href="{{ route('cart.content') }}" class="position-relative cart_icon"><span class="badge bg-success count_checkout">{{ Cart::count() }}</span><i
+                    <a href="{{ route('cart.content') }}" class="position-relative cart_icon"><span class="badge bg-success count_checkout totalCountItem">{{ Cart::count() }}</span><i
                             class="fa-solid fa-cart-shopping r-text-blue fs-4"></i></a>
                 </li>
             </ul>
@@ -114,7 +114,6 @@
         </div>
     </section>
     @yield('content')
-    <div id="AddToCompareItemUrl" data-url="{{ route('compare.add') }}"></div>
     <div id="AddToCartIntoSession" data-url="{{ route('add.to.cart') }}"></div>
     <div id="productWishlistUrl" data-url="{{ route('wishlist.add') }}"></div>
     <div id="currency-price-url" data-url="{{ route('currency_price') }}"></div>
@@ -209,7 +208,7 @@
     {{-- include file --}}
     @include('front.layouts.include.script')
     @stack('post_script')
-    {{-- @include('sweetalert::alert') --}}
+    @include('sweetalert::alert')
 
     <script>
         let tl = gsap.timeline()

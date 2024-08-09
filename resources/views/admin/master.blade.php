@@ -19,7 +19,7 @@
     </div>
     @include('admin.includes.logout_modal')
     @include('admin.includes.script')
-    @include('sweetalert::alert')
+    {{-- @include('sweetalert::alert') --}}
     <script>
         toastr.options = {
             "closeButton": false,

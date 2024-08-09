@@ -26,12 +26,8 @@
 </div>
 
 @include('components.frontend.counter')
-<div class="py-5 r-bg-blue text-white parallax"
-    style="--bg-image:url('https://www.proglobalevents.com/wp-content/uploads/bigstock-People-Planning-Concept-Entre-327380749-1-1024x576.jpg')">
-    <div class="container py-5">
+
         @yield('counter')
-    </div>
-</div>
 <div class="container cate_card my-5">
     <div class="row">
         @forelse (Category_Des_Icon() as $item)
