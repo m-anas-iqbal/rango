@@ -68,70 +68,70 @@
         });
     });
 
-    $('.CompareList').on('click', function () {
-        let product_id = $(this).attr("data-id");
-        $.ajax({
-            url: $('#AddToCompareItemUrl').data('url'),
-            method: 'get',
-            data: {
-                product_id: product_id,
-            },
-            success: function (data) {
-                if (data.status === 0) {
-                    const Toast = Swal.mixin({
-                        toast: true,
-                        position: 'bottom-end',
-                        showConfirmButton: false,
-                        timer: 3000,
-                        timerProgressBar: true,
-                        didOpen: (toast) => {
-                            toast.addEventListener('mouseenter', Swal.stopTimer)
-                            toast.addEventListener('mouseleave', Swal.resumeTimer)
-                        }
-                    })
-                    Toast.fire({
-                        icon: 'warning',
-                        title: data.message
-                    })
-                }
-                else if (data.status === 1) {
-                    $('.CompareCuntFromController').html(data.compare_count + " Items");
-                    const Toast = Swal.mixin({
-                        toast: true,
-                        position: 'bottom-end',
-                        showConfirmButton: false,
-                        timer: 3000,
-                        timerProgressBar: true,
-                        didOpen: (toast) => {
-                            toast.addEventListener('mouseenter', Swal.stopTimer)
-                            toast.addEventListener('mouseleave', Swal.resumeTimer)
-                        }
-                    })
-                    Toast.fire({
-                        icon: 'success',
-                        title: data.message
-                    })
-                }
-                else {
-                    const Toast = Swal.mixin({
-                        toast: true,
-                        position: 'bottom-end',
-                        showConfirmButton: false,
-                        timer: 3000,
-                        timerProgressBar: true,
-                        didOpen: (toast) => {
-                            toast.addEventListener('mouseenter', Swal.stopTimer)
-                            toast.addEventListener('mouseleave', Swal.resumeTimer)
-                        }
-                    })
-                    Toast.fire({
-                        icon: 'error',
-                        title: 'Something went wrong!'
-                    })
-                }
-            },
-        });
-    });
+    // $('.CompareList').on('click', function () {
+    //     let product_id = $(this).attr("data-id");
+    //     $.ajax({
+    //         url: $('#AddToCompareItemUrl').data('url'),
+    //         method: 'get',
+    //         data: {
+    //             product_id: product_id,
+    //         },
+    //         success: function (data) {
+    //             if (data.status === 0) {
+    //                 const Toast = Swal.mixin({
+    //                     toast: true,
+    //                     position: 'bottom-end',
+    //                     showConfirmButton: false,
+    //                     timer: 3000,
+    //                     timerProgressBar: true,
+    //                     didOpen: (toast) => {
+    //                         toast.addEventListener('mouseenter', Swal.stopTimer)
+    //                         toast.addEventListener('mouseleave', Swal.resumeTimer)
+    //                     }
+    //                 })
+    //                 Toast.fire({
+    //                     icon: 'warning',
+    //                     title: data.message
+    //                 })
+    //             }
+    //             else if (data.status === 1) {
+    //                 $('.CompareCuntFromController').html(data.compare_count + " Items");
+    //                 const Toast = Swal.mixin({
+    //                     toast: true,
+    //                     position: 'bottom-end',
+    //                     showConfirmButton: false,
+    //                     timer: 3000,
+    //                     timerProgressBar: true,
+    //                     didOpen: (toast) => {
+    //                         toast.addEventListener('mouseenter', Swal.stopTimer)
+    //                         toast.addEventListener('mouseleave', Swal.resumeTimer)
+    //                     }
+    //                 })
+    //                 Toast.fire({
+    //                     icon: 'success',
+    //                     title: data.message
+    //                 })
+    //             }
+    //             else {
+    //                 const Toast = Swal.mixin({
+    //                     toast: true,
+    //                     position: 'bottom-end',
+    //                     showConfirmButton: false,
+    //                     timer: 3000,
+    //                     timerProgressBar: true,
+    //                     didOpen: (toast) => {
+    //                         toast.addEventListener('mouseenter', Swal.stopTimer)
+    //                         toast.addEventListener('mouseleave', Swal.resumeTimer)
+    //                     }
+    //                 })
+    //                 Toast.fire({
+    //                     icon: 'error',
+    //                     title: 'Something went wrong!'
+    //                 })
+    //             }
+    //         },
+    //     });
+    // });
 
     //add to cart
     $('.addCart').on('click', function () {
@@ -173,6 +173,7 @@
                     $('.totalAmount').html(currencyPrice(data[1]));
                     let Img = $('#productImgAsset').data('url');
                     let obj = data[2];
+                    $this.parent().find('.qty_value').val(data[0])
                     let bodyData = '';
                     let bodyArray = [];
                     let i = 1;
@@ -252,6 +253,7 @@
                     $('.totalAmount').html(currencyPrice(data[1]));
                     let Img = $('#productImgAsset').data('url');
                     let obj = data[2];
+                    $this.parent().find('.qty_value').val(data[0])
                     let bodyData = '';
                     let bodyArray = [];
                     let i = 1;
@@ -314,6 +316,7 @@
                 $('.totalCountItem').html(data[0]);
                 $('.totalAmount').html(currencyPrice(data[1]));
                 let Img = $('#productImgAsset').data('url');
+                $this.parent().find('.qty_value').val(data[0])
                 let obj = data[2];
                 let bodyData = '';
                 let bodyArray = [];

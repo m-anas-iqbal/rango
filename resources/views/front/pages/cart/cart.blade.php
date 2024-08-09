@@ -84,7 +84,7 @@
                                             <div class="cart-quantity input-group">
                                                 <div class="increase-btn dec qtybutton btn qty_decrease"
                                                     data-id="{{ $item->rowId }}">-</div>
-                                                <input class="qty-input cart-plus-minus-box qty_value" type="text"
+                                                <input class="qty-input cart-plus-minus-box qty_value " type="text"
                                                     name="qtybutton" id="qty_value" value="{{ $item->qty }}" readonly />
                                                 <div class="increase-btn inc qtybutton btn qty_increase"
                                                     data-id="{{ $item->rowId }}">+</div>

@@ -40,62 +40,62 @@
             sizeid = $(this).attr("data-size");
         });
         //add to cart
-        $('.addCart').on('click', function () {
+        // $('.addCart').on('click', function () {
 
-            var $this = $(this);
-            let product_id = $(this).attr("data-id");
-            let quantity = $('#product_quantity').val();
-            let colorSelector = document.querySelector('input[name="productColor"]:checked');
+        //     var $this = $(this);
+        //     let product_id = $(this).attr("data-id");
+        //     let quantity = $('#product_quantity').val();
+        //     let colorSelector = document.querySelector('input[name="productColor"]:checked');
 
-            let color;
-            let size;
+        //     let color;
+        //     let size;
 
-            if (colorSelector) {
-                color = colorSelector.value
-            } else {
-                color = null;
-            }
-            if (sizeid) {
-                size = sizeid
-            } else {
-                size = null;
-            }
+        //     if (colorSelector) {
+        //         color = colorSelector.value
+        //     } else {
+        //         color = null;
+        //     }
+        //     if (sizeid) {
+        //         size = sizeid
+        //     } else {
+        //         size = null;
+        //     }
 
-            var totalAmount = $('.totalAmount');
+        //     var totalAmount = $('.totalAmount');
 
-            $this.each(function () {
-                $.ajax({
-                    url: $('#AddToCartIntoSession').data('url'),
-                    method: "POST",
-                    data: {
-                        product_id: product_id,
-                        quantity: quantity,
-                        color_id: color,
-                        size_id: size,
-                        _token: _token,
-                    },
-                    success: function (data) {
-                        $('.totalCountItem').html(data[0]);
-                        $('.totalAmount').html(data[1]);
-                        const Toast = Swal.mixin({
-                            toast: true,
-                            position: 'bottom-end',
-                            showConfirmButton: false,
-                            timer: 3000,
-                            timerProgressBar: true,
-                            didOpen: (toast) => {
-                                toast.addEventListener('mouseenter', Swal.stopTimer)
-                                toast.addEventListener('mouseleave', Swal.resumeTimer)
-                            }
-                        })
-                        Toast.fire({
-                            icon: 'success',
-                            title: 'Product Cart Successfully'
-                        })
-                    }
-                });
+        //     $this.each(function () {
+        //         $.ajax({
+        //             url: $('#AddToCartIntoSession').data('url'),
+        //             method: "POST",
+        //             data: {
+        //                 product_id: product_id,
+        //                 quantity: quantity,
+        //                 color_id: color,
+        //                 size_id: size,
+        //                 _token: _token,
+        //             },
+        //             success: function (data) {
+        //                 $('.totalCountItem').html(data[0]);
+        //                 $('.totalAmount').html(data[1]);
+        //                 const Toast = Swal.mixin({
+        //                     toast: true,
+        //                     position: 'bottom-end',
+        //                     showConfirmButton: false,
+        //                     timer: 3000,
+        //                     timerProgressBar: true,
+        //                     didOpen: (toast) => {
+        //                         toast.addEventListener('mouseenter', Swal.stopTimer)
+        //                         toast.addEventListener('mouseleave', Swal.resumeTimer)
+        //                     }
+        //                 })
+        //                 Toast.fire({
+        //                     icon: 'success',
+        //                     title: 'Product Cart Successfully'
+        //                 })
+        //             }
+        //         });
 
-            })
-        });
+        //     })
+        // });
     });
 })(jQuery)

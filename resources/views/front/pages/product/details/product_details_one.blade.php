@@ -372,55 +372,38 @@
             </div>
             <div class="row">
                 @forelse($similar_product as $product)
-                    <div class="col-lg-3 col-md-4 col-sm-6">
-                        <div class="single-grid-product">
-                            <div class="product-top">
-                                <a href="{{ route('single.product', $product->en_Product_Slug) }}"><img
-                                        class="product-thumbnal"
-                                        src="{{ asset(ProductImage() . $product->Primary_Image) }}" alt="product" /></a>
-                                <div class="product-flags">
-                                    @if ($product->ItemTag)
-                                        <span class="product-flag sale">{{ $product->ItemTag }}</span>
-                                    @endif
-                                    @if ($product->Discount)
-                                        <span
-                                            class="product-flag discount">{{ __('-') }}{{ $product->Discount }}</span>
-                                    @endif
-                                </div>
-                                <ul class="prdouct-btn-wrapper">
-                                    <li class="single-product-btn">
-                                        <a class="addToWishlist product-btn MyWishList" data-id="{{ $products->id }}"
-                                            href="javascript:void(0)" title="{{ __('Add To Compare') }}"><i
-                                                class="icon flaticon-bar-chart"></i></a>
-                                    </li>
-                                    <li class="single-product-btn">
-                                        <a class="addCompare product-btn CompareList" data-id="{{ $products->id }}"
-                                            href="javascript:void(0)" title="{{ __('Add To Wishlist') }}"><i
-                                                class="icon flaticon-like"></i></a>
-                                    </li>
-                                </ul>
+                <div class="col-md-3 p-3">
+                    <div class="card product_card text-center p-3 shadow rounded-10px border-0">
+                        <a class="product-link" href="{{ route('single.product', $product->en_Product_Slug) }}">
+                            <img src="{{ asset(ProductImage() . $product->Primary_Image) }}"
+                                class="img-fluid shadow rounded" alt="{{ __('product') }}">
+                            <h5 class="w-fit mx-auto fw-bold mt-2 mb-0">
+                                {{ langConverter($product->en_Product_Name, $product->fr_Product_Name) }}
+                            </h5>
+                        </a>
+                        @if (currencyConverter($product->Price) == currencyConverter($product->Discount_Price))
+                            <span
+                                class="price fw-bold fs-4">{{ currencyConverter($product->Discount_Price) }}</span>
+                        @else
+                            <div class="d-flex justify-content-center gap-2 align-items-end">
+                                <span
+                                    class="price fw-bold fs-4">{{ currencyConverter($product->Discount_Price) }}</span>
+                                <span
+                                    class="regular-price text-danger text-decoration-line-through fw-bold fs-6">{{ currencyConverter($product->Price) }}</span>
                             </div>
-
-
-                            <div class="product-info text-center">
-                                @foreach ($product->product_tags as $ppt)
-                                    <h4 class="product-catagory">{{ $ppt->tag }}</h4>
-                                @endforeach
-                                <h3 class="product-name"><a class="product-link"
-                                        href="{{ route('single.product', $product->en_Product_Slug) }}">{{ langConverter($product->en_Product_Name, $product->fr_Product_Name) }}</a>
-                                </h3>
-                                <!-- This is server side code. User can not modify it. -->
-                                {!! productReview($product->id) !!}
-                                <div class="product-price">
-                                    <span class="regular-price">{{ currencyConverter($product->Price) }}</span>
-                                    <span class="price">{{ currencyConverter($product->Discount_Price) }}</span>
-                                </div>
-                                <a href="javascript:void(0)" title="{{ __('Add To Cart') }}" class="add-cart addCart"
-                                    data-id="{{ $products->id }}">{{ __('Add To Cart') }} <i
-                                        class="icon fas fa-plus-circle"></i></a>
-                            </div>
+                        @endif
+                        <hr>
+                        <div class="d-flex justify-content-center gap-3">
+                            <input type="hidden" name="quantity" value="1" id="product_quantity">
+                            <a href="javascript:void(0)" title="{{ __('Add to cart') }}"
+                                data-id="{{ $product->id }}"
+                                class="add-cart addCart price-label w-fit small r-bg-green rounded-pill py-1 px-3 text-white">{{ __('Add To Cart') }}</a>
+                            <a
+                                href="javascript:void(0)"class="price-label w-fit small r-bg-red rounded-pill  py-1 px-2 text-white"><i
+                                    class="fa-solid fa-heart"></i></a>
                         </div>
                     </div>
+                </div>
                 @empty
                     {{-- <h1>{{ __('No related product found!') }}</h1> --}}
                 @endforelse
