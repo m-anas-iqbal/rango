@@ -144,16 +144,11 @@
                                             class="regular-price text-danger text-decoration-line-through fw-bold fs-5">{{ currencyConverter($products->Price) }}</span>
                                     @endif
                                 </div>
-                                <div class="product-size-area">
-                                    {{-- <h6 class="size-title">{{ __('Type:') }} {{ productTypeText($products->id) }}</h6> --}}
-                                    <ul class="size-switch list-unstyled">
-                                        @foreach ($products->sizes as $item)
-                                            <input type="hidden" class="sizeValue" name="productSize"
-                                                value="{{ $item->id }}">
-                                            <li class="single-size activeSize" data-size="{{ $item->id }}">
-                                                {{ $item->Size }}</li>
-                                        @endforeach
-                                    </ul>
+                                <div class="product-size-area mt-3">
+                                    <p class="mb-1"><strong>Size : </strong>{{$products->area}} cm</p>
+                                </div>
+                                <div class="product-size-weight">
+                                    <p><strong>Weight : </strong>{{$products->weight}} kg</p>
                                 </div>
 
                                 <p class="note-text m-0">{{ langConverter($products->en_About, $products->fr_About) }}</p>
@@ -426,6 +421,10 @@
                 dots: false,
                 focusOnSelect: true
             });
+
+            $('.product-description div').css('width', '100%');
+            $('.product-description div').css('margin', '0%');
+
         });
     </script>
 @endsection
