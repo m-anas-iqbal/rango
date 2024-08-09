@@ -308,6 +308,10 @@
                 <span>{{ __('Social Link') }}</span>
             </a>
         </li>
+        <li class="{{ isset($submenu) && $submenu == 'special_offer' ? 'mm-active' : '' }}">
+            <a href="{{ route('admin.theme.special.offer') }}">{{ __('Offer') }}
+                ({{ __('Home two') }})</a>
+        </li>
         @endcanany
         {{-- @canany(['cms-list'])
             <li class="{{ isset($menu) && $menu == 'site_content' ? 'mm-active' : '' }}">

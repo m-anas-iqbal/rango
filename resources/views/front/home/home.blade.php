@@ -49,6 +49,7 @@
 
     </div>
 </div>
+{{-- @dd(ACTIVE) --}}
 @if ($allsettings['new_arrival'] == ACTIVE)
     <div class="container home_products my-5">
         <div class="d-flex justify-content-between">
@@ -58,6 +59,7 @@
         <hr class="start-border">
         <div class="product-items">
             <div class="row">
+                {{-- @dd($new_arrivals) --}}
                 @forelse ($new_arrivals as $product)
                     <div class="col-md-3 p-3">
                         <div class="card product_card text-center p-3 shadow rounded-10px border-0">
