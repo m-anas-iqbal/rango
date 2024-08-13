@@ -414,6 +414,7 @@ hr.start-border::before {
     width: 100%;
     /* margin-top: 15px; */
 }
+<<<<<<< HEAD
 .product-thumbnail-image .main-img-wrap {
     aspect-ratio: 1 !important;
     border: 1px solid;
@@ -427,6 +428,13 @@ hr.start-border::before {
     font-weight: bold;
 }
 @media (max-width: 500px) {
+=======
+.cat_card h1 {
+    font-size: 25px;
+}
+
+@media (max-width : 500px)  {
+>>>>>>> 121b3aa083714b3c5af69ce777530eca783a4a70
     .cart-imgs {
         max-width: 50px;
         max-height: 50px;
