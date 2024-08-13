@@ -483,3 +483,6 @@ hr.start-border::before {
 .social-media li a{
     color: #fff !important;
 }
+.cat_card h1 {
+    font-size: 25px;
+}
