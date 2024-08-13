@@ -27,8 +27,11 @@
             <div class="col-md-8 mx-auto text-center">
                 <h4 class="r-text-green fs-13 fw-bold letter-spacing-2">All You Need is Fun!</h4>
                 <h2 class="fs-40 text-dark my-3 text-uppercase">Introducing Rango Cart</h2>
-                <p class="r-text-grey mb-3">We started RANGO CART with the goal of creating fun and educational toys that children will love. We believe that playtime should be both enjoyable and enriching, which is why we put so much effort into designing our products.</p>
-                <a href="" class="fs-13 fw-bold underline">More About Us</a>
+                <p class="r-text-grey">We started RANGO CART with the goal of creating fun and educational toys that children will love. We believe that playtime should be both enjoyable and enriching, which is why we put so much effort into designing our products.</p>
+                <p class="r-text-grey mb-3">
+                    RANGO CART is an innovative educational toy store dedicated to offering high-quality, eco-friendly toys that are affordable for everyone. Our mission is driven by the belief that every child deserves the opportunity to learn and have fun. Our product range is designed to make children smarter by focusing on STEM learning, mathematical and English language skills, creativity, logical thinking, brain development, and cognitive understanding.
+                </p>
+                <a href="#made_for" class="fs-13 fw-bold underline">More About Us</a>
             </div>
         </div>
     </div>
@@ -64,9 +67,10 @@
         <div class="container-fluid">
             <div class="row mb-5">
                 <div class="col-md-6 my-auto">
-                    <h2 class="fs-32">Beautifully Designed</h2>
+                    <h2 class="fs-32">Our Mission</h2>
                     <div class="divider"></div>
-                    <p>At <span class="r-text-red">RANGO CART</span>, our mission is to inspire creativity and curiosity in children through our toys. We believe that every child has the potential to learn and grow, and we strive to create products that encourage this growth.</p>
+                    <p>At <span class="r-text-red">RANGO CART</span>, our mission is to inspire creativity and curiosity in children through our toys. We believe that every child has the potential to learn and grow, and we strive to create products that encourage this growth.
+                    </p>
                     <a href="#" class="btn btn-shop mt-md-3 mt-2">Shop Now</a>
                 </div>
                 <div class="col-md-6">
@@ -76,9 +80,11 @@
                     <img src="{{asset('frontend/assets/images/about/img3.jpeg')}}" alt="" class="img-fluid rounded">
                 </div>
                 <div class="col-md-6 my-auto">
-                    <h2 class="fs-32 text-capitalize">Unlock Creativity and endless adventures</h2>
+                    <h2 class="fs-32 text-capitalize">Our Vision and Team</h2>
                     <div class="divider"></div>
-                    <p>Our team at <span class="r-text-red">RANGO CART</span> is made up of passionate individuals who are dedicated to creating the best toys for children. We have designers, engineers, and play experts who work together to ensure that our products are both fun and educational.</p>
+                    <p>At <span class="r-text-red">RANGO CART</span> we envision a world where every parent is confident in their choice of toys for their children—where every toy enables a child to discover the joy of learning through play. By offering high-quality, eco-friendly educational toys that challenge young minds, spark creativity, and promote physical development, we aim to foster a generation of curious, innovative, and confident learners. Our dedication to excellence ensures that playtime is not only fun but also a purposeful and powerful tool for cognitive and emotional growth, making education accessible and enjoyable for all.
+                    </p>
+                    <p>Our team at RANGO CART is made up of passionate individuals who are dedicated to creating the best toys for children. We have designers, engineers, and play experts who work together to ensure that our products are both fun and educational.</p>
                     <a href="" class="fs-13 fw-bold underline">Explore Our Toys <img src="{{asset('frontend/assets/images/about/arrow.svg')}}" alt=""></a>
 
                 </div>
