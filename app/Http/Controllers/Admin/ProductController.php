@@ -138,6 +138,7 @@ class ProductController extends Controller
 
     public function productStore(ProductRequest $request)
     {
+        // dd($request->all());
         $data = $request->except([
             'primary_image',
             'image_two',
@@ -233,9 +234,10 @@ class ProductController extends Controller
     public function physicalProductAdd($data)
     {
         $result  = ['success' => false];
+        // dd($data);
         $product = Product::create([
             'en_Product_Name' => $data['en_product_name'],
-            'en_Product_Slug' => $data['en_product_slug'],
+            'en_Product_Slug' => $this->slugify($data['en_product_slug']),
             // 'Brand_Id' => $data['en_brand_name'],
             'Category_Id' => $data['en_category_name'],
             'Price' => $data['price'],
@@ -252,7 +254,7 @@ class ProductController extends Controller
             // 'fr_ShippingReturn' => $data['fr_shippingreturn'],
             // 'fr_AdditionalInformation' => $data['fr_additionalinformation'],
             'Quantity' => $data['qty'] ?? 0,
-            'area' => $data['area'] ?? 0,
+            'area' => $data['size'] ?? 0,
             'weight' => $data['weight'] ?? 0,
             // 'ItemTag' => $data['item_teg'],
             'Primary_Image' => $data['primary_image'],
@@ -640,7 +642,7 @@ class ProductController extends Controller
             // 'fr_AdditionalInformation' => is_null($data['fr_additionalinformation']) ? $product->fr_AdditionalInformation : $data['fr_additionalinformation'],
             'Quantity' => is_null($data['qty']) ? $product->Quantity : $data['qty'],
 
-            'area' => is_null($data['area']) ? $product->area : $data['area'],
+            'area' => is_null($data['size']) ? $product->area : $data['area'],
             'weight' => is_null($data['weight']) ? $product->weight : $data['weight'],
             // 'ItemTag' => is_null($data['item_teg']) ? $product->ItemTag : $data['item_teg'],
             'Primary_Image' => $data['primary_image'],

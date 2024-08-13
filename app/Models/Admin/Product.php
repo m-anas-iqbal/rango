@@ -14,6 +14,8 @@ class Product extends Model
         'Category_Id',
         'Brand_Id',
         'en_Product_Name',
+        'weight',
+        'area',
         'en_Product_Slug',
         'fr_Product_Name',
         'fr_Product_Slug',

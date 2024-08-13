@@ -437,7 +437,7 @@
                             <li class="list-group-item">
                                 <div class="d-flex justify-content-between">
                                     <p class="fw-bold mb-0">Sub Total : </p>
-                                    <p class="fw-bold mb-0"><span>{{ currencyConverter(tax_amount(\Cart::subtotal())) }}</span></p>
+                                    <p class="fw-bold mb-0"><span>{{ currencyConverter(\Cart::subtotal()) }}</span></p>
                                 </div>
                             </li>
                             <li class="list-group-item">
@@ -449,7 +449,7 @@
                             <li class="list-group-item">
                                 <div class="d-flex justify-content-between">
                                     <p class="fw-bold mb-0">Shipping : </p>
-                                    <p class="fw-bold mb-0"><span id="delivery-charge-curr"></span></p>
+                                    <p class="fw-bold mb-0"><span id="delivery-charge-curr">{{ allsetting()['shipping_charge'] }}</span></p>
                                 </div>
                             </li>
                             {{-- <li class="list-group-item">

@@ -556,44 +556,44 @@ if (!function_exists('reviewRating')) {
         $review = ProductReview::whereId($review_id)->first();
         $html = '';
         if ($review->rating == 1) {
-            $html =  '<ul class="product-review">
-                    <li class="review-item active"><i class="flaticon-star"></i></li>
-                    <li class="review-item"><i class="flaticon-star"></i></li>
-                    <li class="review-item"><i class="flaticon-star"></i></li>
-                    <li class="review-item"><i class="flaticon-star"></i></li>
-                    <li class="review-item"><i class="flaticon-star"></i></li>
+            $html =  '<ul class="product-review list-unstyled d-flex">
+                    <li class="review-item active"><i class="fa-solid fa-star"></i></li>
+                    <li class="review-item"><i class="fa-solid fa-star"></i></li>
+                    <li class="review-item"><i class="fa-solid fa-star"></i></li>
+                    <li class="review-item"><i class="fa-solid fa-star"></i></li>
+                    <li class="review-item"><i class="fa-solid fa-star"></i></li>
                 </ul>';
         } elseif ($review->rating == 2) {
-            $html =  '<ul class="product-review">
-                    <li class="review-item active"><i class="flaticon-star"></i></li>
-                    <li class="review-item active"><i class="flaticon-star"></i></li>
-                    <li class="review-item"><i class="flaticon-star"></i></li>
-                    <li class="review-item"><i class="flaticon-star"></i></li>
-                    <li class="review-item"><i class="flaticon-star"></i></li>
+            $html =  '<ul class="product-review list-unstyled d-flex">
+                    <li class="review-item active"><i class="fa-solid fa-star"></i></li>
+                    <li class="review-item active"><i class="fa-solid fa-star"></i></li>
+                    <li class="review-item"><i class="fa-solid fa-star"></i></li>
+                    <li class="review-item"><i class="fa-solid fa-star"></i></li>
+                    <li class="review-item"><i class="fa-solid fa-star"></i></li>
                 </ul>';
         } elseif ($review->rating == 3) {
-            $html =  '<ul class="product-review">
-                    <li class="review-item active"><i class="flaticon-star"></i></li>
-                    <li class="review-item active"><i class="flaticon-star"></i></li>
-                    <li class="review-item active"><i class="flaticon-star"></i></li>
-                    <li class="review-item"><i class="flaticon-star"></i></li>
-                    <li class="review-item"><i class="flaticon-star"></i></li>
+            $html =  '<ul class="product-review list-unstyled d-flex">
+                    <li class="review-item active"><i class="fa-solid fa-star"></i></li>
+                    <li class="review-item active"><i class="fa-solid fa-star"></i></li>
+                    <li class="review-item active"><i class="fa-solid fa-star"></i></li>
+                    <li class="review-item"><i class="fa-solid fa-star"></i></li>
+                    <li class="review-item"><i class="fa-solid fa-star"></i></li>
                 </ul>';
         } elseif ($review->rating == 4) {
-            $html =  '<ul class="product-review">
-                    <li class="review-item active"><i class="flaticon-star"></i></li>
-                    <li class="review-item active"><i class="flaticon-star"></i></li>
-                    <li class="review-item active"><i class="flaticon-star"></i></li>
-                    <li class="review-item active"><i class="flaticon-star"></i></li>
-                    <li class="review-item"><i class="flaticon-star"></i></li>
+            $html =  '<ul class="product-review list-unstyled d-flex">
+                    <li class="review-item active"><i class="fa-solid fa-star"></i></li>
+                    <li class="review-item active"><i class="fa-solid fa-star"></i></li>
+                    <li class="review-item active"><i class="fa-solid fa-star"></i></li>
+                    <li class="review-item active"><i class="fa-solid fa-star"></i></li>
+                    <li class="review-item"><i class="fa-solid fa-star"></i></li>
                 </ul>';
         } elseif ($review->rating == 5) {
-            $html =  '<ul class="product-review">
-                    <li class="review-item active"><i class="flaticon-star"></i></li>
-                    <li class="review-item active"><i class="flaticon-star"></i></li>
-                    <li class="review-item active"><i class="flaticon-star"></i></li>
-                    <li class="review-item active"><i class="flaticon-star"></i></li>
-                    <li class="review-item active"><i class="flaticon-star"></i></li>
+            $html =  '<ul class="product-review list-unstyled d-flex">
+                    <li class="review-item active"><i class="fa-solid fa-star"></i></li>
+                    <li class="review-item active"><i class="fa-solid fa-star"></i></li>
+                    <li class="review-item active"><i class="fa-solid fa-star"></i></li>
+                    <li class="review-item active"><i class="fa-solid fa-star"></i></li>
+                    <li class="review-item active"><i class="fa-solid fa-star"></i></li>
                 </ul>';
         }
 
@@ -608,52 +608,52 @@ if (!function_exists('productReview')) {
         $review = ProductReview::where('product_id', $product_id)->avg('rating');
         $html = '';
         if (round($review) == 1) {
-            $html =  '<ul class="product-review">
-                    <li class="review-item active"><i class="flaticon-star"></i></li>
-                    <li class="review-item"><i class="flaticon-star"></i></li>
-                    <li class="review-item"><i class="flaticon-star"></i></li>
-                    <li class="review-item"><i class="flaticon-star"></i></li>
-                    <li class="review-item"><i class="flaticon-star"></i></li>
+            $html =  '<ul class="product-review list-unstyled d-flex">
+                    <li class="review-item active"><i class="fa-solid fa-star"></i></li>
+                    <li class="review-item"><i class="fa-solid fa-star"></i></li>
+                    <li class="review-item"><i class="fa-solid fa-star"></i></li>
+                    <li class="review-item"><i class="fa-solid fa-star"></i></li>
+                    <li class="review-item"><i class="fa-solid fa-star"></i></li>
                 </ul>';
         } elseif (round($review) == 2) {
-            $html =  '<ul class="product-review">
-                    <li class="review-item active"><i class="flaticon-star"></i></li>
-                    <li class="review-item active"><i class="flaticon-star"></i></li>
-                    <li class="review-item"><i class="flaticon-star"></i></li>
-                    <li class="review-item"><i class="flaticon-star"></i></li>
-                    <li class="review-item"><i class="flaticon-star"></i></li>
+            $html =  '<ul class="product-review list-unstyled d-flex">
+                    <li class="review-item active"><i class="fa-solid fa-star"></i></li>
+                    <li class="review-item active"><i class="fa-solid fa-star"></i></li>
+                    <li class="review-item"><i class="fa-solid fa-star"></i></li>
+                    <li class="review-item"><i class="fa-solid fa-star"></i></li>
+                    <li class="review-item"><i class="fa-solid fa-star"></i></li>
                 </ul>';
         } elseif (round($review) == 3) {
-            $html =  '<ul class="product-review">
-                    <li class="review-item active"><i class="flaticon-star"></i></li>
-                    <li class="review-item active"><i class="flaticon-star"></i></li>
-                    <li class="review-item active"><i class="flaticon-star"></i></li>
-                    <li class="review-item"><i class="flaticon-star"></i></li>
-                    <li class="review-item"><i class="flaticon-star"></i></li>
+            $html =  '<ul class="product-review list-unstyled d-flex">
+                    <li class="review-item active"><i class="fa-solid fa-star"></i></li>
+                    <li class="review-item active"><i class="fa-solid fa-star"></i></li>
+                    <li class="review-item active"><i class="fa-solid fa-star"></i></li>
+                    <li class="review-item"><i class="fa-solid fa-star"></i></li>
+                    <li class="review-item"><i class="fa-solid fa-star"></i></li>
                 </ul>';
         } elseif (round($review) == 4) {
-            $html =  '<ul class="product-review">
-                    <li class="review-item active"><i class="flaticon-star"></i></li>
-                    <li class="review-item active"><i class="flaticon-star"></i></li>
-                    <li class="review-item active"><i class="flaticon-star"></i></li>
-                    <li class="review-item active"><i class="flaticon-star"></i></li>
-                    <li class="review-item"><i class="flaticon-star"></i></li>
+            $html =  '<ul class="product-review list-unstyled d-flex">
+                    <li class="review-item active"><i class="fa-solid fa-star"></i></li>
+                    <li class="review-item active"><i class="fa-solid fa-star"></i></li>
+                    <li class="review-item active"><i class="fa-solid fa-star"></i></li>
+                    <li class="review-item active"><i class="fa-solid fa-star"></i></li>
+                    <li class="review-item"><i class="fa-solid fa-star"></i></li>
                 </ul>';
         } elseif (round($review) == 5) {
-            $html =  '<ul class="product-review">
-                    <li class="review-item active"><i class="flaticon-star"></i></li>
-                    <li class="review-item active"><i class="flaticon-star"></i></li>
-                    <li class="review-item active"><i class="flaticon-star"></i></li>
-                    <li class="review-item active"><i class="flaticon-star"></i></li>
-                    <li class="review-item active"><i class="flaticon-star"></i></li>
+            $html =  '<ul class="product-review list-unstyled d-flex">
+                    <li class="review-item active"><i class="fa-solid fa-star"></i></li>
+                    <li class="review-item active"><i class="fa-solid fa-star"></i></li>
+                    <li class="review-item active"><i class="fa-solid fa-star"></i></li>
+                    <li class="review-item active"><i class="fa-solid fa-star"></i></li>
+                    <li class="review-item active"><i class="fa-solid fa-star"></i></li>
                 </ul>';
         } else {
-            $html =  '<ul class="product-review">
-                    <li class="review-item"><i class="flaticon-star"></i></li>
-                    <li class="review-item"><i class="flaticon-star"></i></li>
-                    <li class="review-item"><i class="flaticon-star"></i></li>
-                    <li class="review-item"><i class="flaticon-star"></i></li>
-                    <li class="review-item"><i class="flaticon-star"></i></li>
+            $html =  '<ul class="product-review list-unstyled d-flex">
+                    <li class="review-item"><i class="fa-solid fa-star"></i></li>
+                    <li class="review-item"><i class="fa-solid fa-star"></i></li>
+                    <li class="review-item"><i class="fa-solid fa-star"></i></li>
+                    <li class="review-item"><i class="fa-solid fa-star"></i></li>
+                    <li class="review-item"><i class="fa-solid fa-star"></i></li>
                 </ul>';
         }
 

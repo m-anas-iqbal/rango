@@ -45,7 +45,7 @@
                                                     value="{{ $edit->Twitter }}" placeholder="{{ __('Twitter') }}">
                                             </div>
                                             <div class="input__group mb-25">
-                                                <label for="exampleInputEmail1">{{ __('Linkedin') }}</label>
+                                                <label for="exampleInputEmail1">{{ __('Youtube') }}</label>
                                                 <input type="text" class="form-control" id="linkedin" name="linkedin"
                                                     value="{{ $edit->Linkedin }}" placeholder="{{ __('Linkedin') }}">
                                             </div>

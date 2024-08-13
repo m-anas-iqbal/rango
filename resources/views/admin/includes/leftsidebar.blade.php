@@ -36,12 +36,12 @@
                             <span>{{ __('Add Admin') }}</span>
                         </a>
                     </li>
-                    <li class="{{ isset($submenu) && $submenu == 'roles' ? 'mm-active' : '' }}">
+                    {{-- <li class="{{ isset($submenu) && $submenu == 'roles' ? 'mm-active' : '' }}">
                         <a href="{{ route('admin.role_list') }}">
                             <i class="fa fa-circle"></i>
                             <span>{{ __('Roles') }}</span>
                         </a>
-                    </li>
+                    </li> --}}
                 </ul>
             </li>
         @endcanany
@@ -307,6 +307,10 @@
                 <i class="fa fa-circle"></i>
                 <span>{{ __('Social Link') }}</span>
             </a>
+        </li>
+        <li class="{{ isset($submenu) && $submenu == 'special_offer' ? 'mm-active' : '' }}">
+            <a href="{{ route('admin.theme.special.offer') }}">{{ __('Offer') }}
+                ({{ __('Home two') }})</a>
         </li>
         @endcanany
         {{-- @canany(['cms-list'])

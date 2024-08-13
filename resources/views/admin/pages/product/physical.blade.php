@@ -138,7 +138,7 @@
                                                 @enderror
                                             </div>
                                             <div class="input__group mb-25">
-                                                <label for="size">{{ __('Size') }}</label>
+                                                <label for="size">{{ __('Size (cm)') }}</label>
                                                 <input type="number" step="0.01" min="0.01" class="form-control" id="size"
                                                     name="size" value="{{ old('size') }}" placeholder="Size">
                                                 @error('size')
@@ -146,7 +146,7 @@
                                                 @enderror
                                             </div>
                                             <div class="input__group mb-25">
-                                                <label for="weight">{{ __('Weight') }}</label>
+                                                <label for="weight">{{ __('Weight (KG)') }}</label>
                                                 <input type="number" step="0.01" min="0.01" class="form-control" id="weight"
                                                     name="weight" value="{{ old('weight') }}" placeholder="Weight">
                                                 @error('weight')
@@ -171,7 +171,7 @@
                                                 @enderror
                                             </div>
                                             <div class="input__group mb-25">
-                                                <label for="discount_price">{{ __('Discount Price') }}</label>
+                                                <label for="discount_price">{{ __('After Discount Price') }}</label>
                                                 <input type="number" step="0.01" class="form-control" id="discount_price"
                                                     name="discount_price" value="{{ old('discount_price') }}" readonly>
                                                 @error('discount_price')
