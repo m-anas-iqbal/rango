@@ -393,9 +393,7 @@ hr.start-border::before {
     width: 100%;
     /* margin-top: 15px; */
 }
-.cat_card h1 {
-    font-size: 25px;
-}
+
 
 @media (max-width : 500px)  {
     .cart-imgs {
