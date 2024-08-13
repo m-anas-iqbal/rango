@@ -24,6 +24,17 @@
             </div>
         </div>
     </section>
+    <section class="text-center my-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2>{{$category_m->en_Category_Name }}</h2>
+                    <p class="mb-0">{{$category_m->en_Description }}</p>
+                    <hr>
+                </div>
+            </div>
+        </div>
+    </section>
 <!-- Product Area Start -->
 
 {{-- @dd($products) --}}
