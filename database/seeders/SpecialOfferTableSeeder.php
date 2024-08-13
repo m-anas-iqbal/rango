@@ -18,7 +18,7 @@ class SpecialOfferTableSeeder extends Seeder
             'image' => 'offer-image.png',
             'en_title' => 'SPECTIAL OFFER',
             'fr_title' => 'SPECTIAL OFFER',
-            'category_id' => '1',
+            'category_id' => '3',
             'discount' => '50',
             'url' => 'www.sadekurrahman.com',
             'status' => '1',
