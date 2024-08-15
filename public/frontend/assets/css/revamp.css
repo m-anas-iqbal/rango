@@ -190,10 +190,10 @@ input:focus-visible {
 
 .cate_card img {
     right: -52px;
-    width: 15vw;
+    width: 10vw;
     aspect-ratio: 1;
     object-fit: contain;
-    top: 8vh;
+    top: 6vh;
 }
 hr.start-border {
     position: relative;
@@ -484,5 +484,29 @@ hr.start-border::before {
     color: #fff !important;
 }
 .cat_card h1 {
-    font-size: 25px;
+    font-size: 20px;
+}
+.newsletter {
+    background-color: #ffffff00;
+    color: #fff;
+    padding: 15px;
+    border-radius: 40px;
+    &:focus{
+        box-shadow: unset;
+        background-color: #ffffff00;
+        color: #fff;
+    }
+
+}
+.btn-newsletter{
+    background-color: var(--color-yellow);
+    border-radius: 40px;
+    color: #fff;
+    padding: 15px 25px;
+    margin-left: 15px;
+    &:focus{
+        box-shadow: unset !important;
+        background-color: var(--color-yellow);
+        color: #fff;
+    }
 }
