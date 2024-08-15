@@ -222,8 +222,9 @@
     <div class="container p-5 text-center">
         <h2>Subscribe To Newsletter</h2>
         <p>Subscribe to our newsletter and get first hand information about new product launches, ecxiting offers and discout vouchers</p>
-        <form action="" id="newsletter" class="d-flex">
-            <input type="email" class="form-control newsletter" placeholder = "Subscribe...">
+        <form action="{{ route("subscribe") }}" id="newsletter" method="POST" class="d-flex">
+            @csrf
+            <input type="email" required class="form-control newsletter" name="subscribe" placeholder = "Subscribe...">
             <button type="submit" class="btn btn-newsletter" >Subscribe</button>
         </form>
     </div>

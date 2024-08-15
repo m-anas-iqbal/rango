@@ -255,7 +255,7 @@
                 </ul>
             </li>
         @endcanany --}}
-        {{-- @canany(['crm-list'])
+        @canany(['crm-list'])
             <li class="{{ isset($menu) && $menu == 'cms' ? 'mm-active' : '' }}">
                 <a class="has-arrow" href="#">
                     <i class="fas fa-blog"></i>
@@ -276,15 +276,15 @@
                     </li>
                 </ul>
             </li>
-        @endcanany --}}
-        @canany(['cms-list'])
+        @endcanany
+        {{-- @canany(['cms-list'])
             <li class="{{ isset($submenu) && $submenu == 'contact_us' ? 'mm-active' : '' }}">
                 <a href="{{ route('admin.contact.us.index') }}">
                     <i class="fa fa-circle"></i>
                     <span>{{ __('Contact Us') }}</span>
                 </a>
             </li>
-        @endcanany
+        @endcanany --}}
         @canany(['user-list'])
             <li class="{{ isset($menu) && $menu == 'users' ? 'mm-active' : '' }}">
                 <a class="has-arrow" href="#">

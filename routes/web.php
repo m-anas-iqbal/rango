@@ -30,7 +30,7 @@ Route::group(['middleware' => ['is_user']], function () {
     Route::get('/theme-set/{theme}', [HomeController::class, 'theme_set']);
     Route::get('locale/{lang}', [HomeController::class, 'localeSwitch'])->name('locale.switch');
     Route::get('currency/{amount}', [HomeController::class, 'currencySwitch'])->name('currency.switch');
-    Route::post('subscribe', [SubscribeController::class, 'subscribe'])->name('subscribe');
+    Route::post('subscribe', [SubscribeController::class, 'subscribeStore'])->name('subscribe');
 
     //session value store get and delete
     Route::get('do_not_subscribe', [SubscribeSessionController::class, 'doNotSubscribe'])->name('do.not.subscribe');
