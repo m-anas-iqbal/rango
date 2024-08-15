@@ -309,8 +309,8 @@
             </a>
         </li>
         <li class="{{ isset($submenu) && $submenu == 'special_offer' ? 'mm-active' : '' }}">
-            <a href="{{ route('admin.theme.special.offer') }}">{{ __('Offer') }}
-                ({{ __('Home two') }})</a>
+
+            <a href="{{ route('admin.theme.special.offer') }}"> <i class="fa fa-circle"></i>{{ __('Special Offer') }}</a>
         </li>
         @endcanany
         {{-- @canany(['cms-list'])
