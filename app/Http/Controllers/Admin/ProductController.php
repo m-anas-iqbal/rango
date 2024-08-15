@@ -183,6 +183,11 @@ class ProductController extends Controller
             // return redirect()->back()->with('error', __('Image is  required'));
         }
 
+        if (!empty($request->video)) {
+            $data['video'] = videoUpload($request['video'], ProductVideo());
+        } else {
+            // return redirect()->back()->with('error', __('Video is  required'));
+        }
         $data['status'] = checkBoxValue($request->status);
         $data['feature'] = checkBoxValue($request->feature);
         $data['best_sale'] = checkBoxValue($request->best_sale);
@@ -262,6 +267,8 @@ class ProductController extends Controller
             'Image3' => $data['img_three'] ?? null,
             'Image4' => $data['img_four'] ?? null,
             'Image5' => $data['img_five'] ?? null,
+            'video' =>  $data['video'] ?? null,
+
 
             'Status' => $data['status'],
             'Featured_Product' => $data['feature'],
@@ -570,6 +577,11 @@ class ProductController extends Controller
         } else {
             $data['img_five'] = $product->Image5;
         }
+        if (!empty($request->video)) {
+            $data['video'] = videoUpload($request['video'], ProductVideo());
+        } else {
+            $data['video'] = $product->video;
+        }
 
         $data['status'] = checkBoxValue($request->status);
         $data['feature'] = checkBoxValue($request->feature);
@@ -642,7 +654,8 @@ class ProductController extends Controller
             // 'fr_AdditionalInformation' => is_null($data['fr_additionalinformation']) ? $product->fr_AdditionalInformation : $data['fr_additionalinformation'],
             'Quantity' => is_null($data['qty']) ? $product->Quantity : $data['qty'],
 
-            'area' => is_null($data['size']) ? $product->area : $data['area'],
+            'video' => is_null($data['video']) ? $product->video : $data['video'],
+            'area' => is_null($data['size']) ? $product->area : $data['size'],
             'weight' => is_null($data['weight']) ? $product->weight : $data['weight'],
             // 'ItemTag' => is_null($data['item_teg']) ? $product->ItemTag : $data['item_teg'],
             'Primary_Image' => $data['primary_image'],

@@ -116,7 +116,7 @@
                                             <div class="input__group mb-25">
                                                 <label for="size">{{ __('Size  (cm)') }}</label>
                                                 <input type="number" step="0.01" min="0.01" class="form-control" id="size"
-                                                    name="size" value="{{ old('size') }}"  value="{{ $product->area }}" placeholder="Size">
+                                                    name="size"  value="{{ $product->area }}" placeholder="Size">
                                                 @error('size')
                                                     <span class="text-danger">{{ $message }}</span>
                                                 @enderror
@@ -124,7 +124,7 @@
                                             <div class="input__group mb-25">
                                                 <label for="weight">{{ __('Weight (KG)') }}</label>
                                                 <input type="number" step="0.01" min="0.01" class="form-control" id="weight"
-                                                    name="weight" value="{{ old('weight') }}"  value="{{ $product->weight }}" placeholder="Weight">
+                                                    name="weight"  value="{{ $product->weight }}" placeholder="Weight">
                                                 @error('weight')
                                                     <span class="text-danger">{{ $message }}</span>
                                                 @enderror
@@ -206,6 +206,17 @@
                                                     id="target5" />
                                             </div>
 
+                                            <div class="input__group mb-25">
+                                                <label for="video">{{ __('Video') }}</label>
+                                                <input type="file" class="form-control video" accept="video/*" name="video"
+                                                    id="video">
+                                                    <div class="embed-responsive embed-responsive-16by9">
+                                                        <video src="{{ asset(ProductVideo() . $product->video) }}" height="120" width="300" class="embed-responsive-item" preload="" controls id="targetvideo"></video>
+                                                    </div>
+                                                @error('video')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </div>
                                             <div class="input__group mb-25">
                                                 <div class="custom-control custom-switch">
                                                     <input type="checkbox" value="1"

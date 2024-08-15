@@ -87,6 +87,18 @@
         reader.readAsDataURL(src.files[0]);
     });
 
+    $('.video').on('change', function () {
+        var src = this;
+        var target = document.getElementById('targetvideo');
+        target.style.width = '300px';
+        target.style.height = '120px';
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            $('#targetvideo').attr('src', e.target.result);
+        }
+        reader.readAsDataURL(src.files[0]);
+    });
     $(document).on('click', '.delete', function (event) {
         event.preventDefault();
         const url = $(this).attr('href');
