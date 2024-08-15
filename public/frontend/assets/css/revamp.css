@@ -190,10 +190,10 @@ input:focus-visible {
 
 .cate_card img {
     right: -52px;
-    width: 15vw;
+    width: 10vw;
     aspect-ratio: 1;
     object-fit: contain;
-    top: 8vh;
+    top: 6vh;
 }
 hr.start-border {
     position: relative;
