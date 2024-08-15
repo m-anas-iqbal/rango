@@ -11,8 +11,8 @@
                 <p class="small">Discover a world of fun and adventure with our wide range of toys for all ages! From
                     educational toys to the latest action figures, we've got something special for every child. Shop now
                     and bring joy home!</p>
-                <a href="" class="btn btn-outline-light">New Arrivals</a>
-                <a href="" class="btn btn-outline-light">Shop Now</a>
+                <a href="#newArrivals" class="btn btn-outline-light">New Arrivals</a>
+                <a href="{{route('all.product')}}" class="btn btn-outline-light">Shop Now</a>
             </div>
             <div class="col-md-6">
                 <img src="{{ asset('frontend/assets/images/hero.svg') }}" class="img-fluid" alt="">
@@ -47,7 +47,7 @@
 </div>
 {{-- @dd(ACTIVE) --}}
 @if ($allsettings['new_arrival'] == ACTIVE)
-    <div class="container home_products my-5">
+    <div class="container home_products my-5" id="newArrivals">
         <div class="d-flex justify-content-between">
             <h3 class="fw-bold">New Arrivals</h3>
             {{-- <a href="" class="fw-bold">See All <i class="fa-solid fa-arrow-right"></i></a> --}}
