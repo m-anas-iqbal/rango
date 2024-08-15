@@ -429,4 +429,11 @@
 
         });
     </script>
+    <script>
+        document.querySelectorAll('p').forEach(p => {
+    if (p.innerHTML.trim() === '' || p.innerHTML.trim() === "<o:p>&nbsp;</o:p>") {
+        p.remove();
+    }
+});
+    </script>
 @endsection
