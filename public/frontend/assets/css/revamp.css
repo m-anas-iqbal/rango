@@ -486,3 +486,27 @@ hr.start-border::before {
 .cat_card h1 {
     font-size: 20px;
 }
+.newsletter {
+    background-color: #ffffff00;
+    color: #fff;
+    padding: 15px;
+    border-radius: 40px;
+    &:focus{
+        box-shadow: unset;
+        background-color: #ffffff00;
+        color: #fff;
+    }
+
+}
+.btn-newsletter{
+    background-color: var(--color-yellow);
+    border-radius: 40px;
+    color: #fff;
+    padding: 15px 25px;
+    margin-left: 15px;
+    &:focus{
+        box-shadow: unset !important;
+        background-color: var(--color-yellow);
+        color: #fff;
+    }
+}

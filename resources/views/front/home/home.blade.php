@@ -220,10 +220,12 @@
 <div class="parallax d-grid place-content-center r-bg-red text-white py-5"
     style="--bg-image: url('https://t3.ftcdn.net/jpg/03/23/24/82/360_F_323248211_HNMfkovpijljYs15WasG0XPCTYY2TKrb.jpg');">
     <div class="container p-5 text-center">
-        <h2>Blah bla bla</h2>
-        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officia quam autem excepturi suscipit eum nisi,
-            nihil voluptatem, natus laudantium aspernatur possimus. Numquam cum dolor illum.</p>
-        <button class="btn btn-outline-light">Read More</button>
+        <h2>Subscribe To Newsletter</h2>
+        <p>Subscribe to our newsletter and get first hand information about new product launches, ecxiting offers and discout vouchers</p>
+        <form action="" id="newsletter" class="d-flex">
+            <input type="email" class="form-control newsletter" placeholder = "Subscribe...">
+            <button type="submit" class="btn btn-newsletter" >Subscribe</button>
+        </form>
     </div>
 </div>
 
