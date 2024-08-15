@@ -27,7 +27,13 @@ class ContactUsController extends Controller
                     return $btn;
                 })
                 ->addColumn('Name', function ($data) {
-                    return $data->FirstName . ' ' . $data->LastName;
+                    return $data->FirstName;
+                })
+                ->addColumn('image', function ($data) {
+                    if ($data->LastName == 'contact') {
+                        '<img src="' . $data->LastName. '" height="100" class="img-fluid" alt=""/>';
+                    }
+                    return  'not found';
                 })
                 ->editColumn('Email', function ($data) {
                     return $data->Email;
@@ -39,7 +45,7 @@ class ContactUsController extends Controller
                     return Str::limit($data->Message, 25);
                 })
 
-                ->rawColumns(['action', 'FirstName', 'LastName', 'Email', 'ContactNumber', 'Message'])
+                ->rawColumns(['action', 'FirstName', 'LastName','image', 'Email', 'ContactNumber', 'Message'])
                 ->make(true);
         }
         $data['title'] = __('Contact List');
