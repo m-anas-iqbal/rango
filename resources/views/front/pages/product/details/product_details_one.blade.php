@@ -133,9 +133,7 @@
 
                                 <!-- This is server side code. User can not modify it. -->
                                 {{-- {!! productReview($products->id) !!} --}}
-                                <div class="description_p">
-                                    <p> {!! langConverter($products->en_Description, $products->fr_Description) !!}</p>
-                                </div>
+
                                 <div class="product-price mt-3">
                                     @if (currencyConverter($products->Price) == currencyConverter($products->Discount_Price))
                                         <span class="price">{{ currencyConverter($products->Discount_Price) }}</span>
@@ -145,6 +143,9 @@
                                         <span
                                             class="regular-price text-danger text-decoration-line-through fw-bold fs-5">{{ currencyConverter($products->Price) }}</span>
                                     @endif
+                                </div>
+                                <div class="description_p">
+                                    <p> {!! langConverter($products->en_Description, $products->fr_Description) !!}</p>
                                 </div>
                                 <div class="product-size-area mt-3">
                                     <p class="mb-1"><strong>Size : </strong>{{$products->area}} cm</p>
