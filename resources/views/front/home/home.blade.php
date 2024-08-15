@@ -6,7 +6,7 @@
     <div class="center h-100 container">
         <div class="row h-100 align-items-center">
             <div class="col-md-6 text-white content">
-                <h5 class="fw-bold small">Your One-Stop Shop for Toys!</h5>
+                <h5 class="fw-bold small">Smart Toys, Smarter Kids!</h5>
                 <h1 class="fw-bold">RANGO CART</h1>
                 <p class="small">Discover a world of fun and adventure with our wide range of toys for all ages! From
                     educational toys to the latest action figures, we've got something special for every child. Shop now
@@ -50,7 +50,7 @@
     <div class="container home_products my-5">
         <div class="d-flex justify-content-between">
             <h3 class="fw-bold">New Arrivals</h3>
-            <a href="" class="fw-bold">See All <i class="fa-solid fa-arrow-right"></i></a>
+            {{-- <a href="" class="fw-bold">See All <i class="fa-solid fa-arrow-right"></i></a> --}}
         </div>
         <hr class="start-border">
         <div class="product-items">
@@ -124,7 +124,7 @@
     <div class="container home_products my-5">
         <div class="d-flex justify-content-between">
             <h3 class="fw-bold">Best Selling</h3>
-            <a href="" class="fw-bold">See All <i class="fa-solid fa-arrow-right"></i></a>
+            {{-- <a href="" class="fw-bold">See All <i class="fa-solid fa-arrow-right"></i></a> --}}
         </div>
         <hr class="start-border">
         <div class="product-items">
@@ -172,7 +172,7 @@
     <div class="container home_products my-5">
         <div class="d-flex justify-content-between">
             <h3 class="fw-bold">Featured Products</h3>
-            <a href="" class="fw-bold">See All <i class="fa-solid fa-arrow-right"></i></a>
+            {{-- <a href="" class="fw-bold">See All <i class="fa-solid fa-arrow-right"></i></a> --}}
         </div>
         <hr class="start-border">
         <div class="product-items">
