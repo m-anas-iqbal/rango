@@ -30,6 +30,11 @@
                     <div class="col-lg-6 p-0">
                         <div class="imagesSection">
                             <div class="product-thumbnail-image p-3">
+                                @if($products->video)
+                                <div class="embed-responsive embed-responsive-16by9">
+                                    <video src="{{ asset(ProductVideo() . $products->video) }}" height="120" width="300" class="embed-responsive-item" preload="" controls id="targetvideo"></video>
+                                </div>
+                                @endif
                                 @foreach (['Primary_Image', 'Image4', 'Image3', 'Image5', 'Image2'] as $image)
                                     @if ($products->$image)
                                         <div class="main-img-wrap ">
@@ -376,6 +381,7 @@
                                 {{ langConverter($product->en_Product_Name, $product->fr_Product_Name) }}
                             </h5>
                         </a>
+
                         @if (currencyConverter($product->Price) == currencyConverter($product->Discount_Price))
                             <span
                                 class="price fw-bold fs-4">{{ currencyConverter($product->Discount_Price) }}</span>

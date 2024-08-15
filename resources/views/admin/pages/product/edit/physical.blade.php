@@ -207,6 +207,17 @@
                                             </div>
 
                                             <div class="input__group mb-25">
+                                                <label for="video">{{ __('Video') }}</label>
+                                                <input type="file" class="form-control video" accept="video/*" name="video"
+                                                    id="video">
+                                                    <div class="embed-responsive embed-responsive-16by9">
+                                                        <video src="{{ asset(ProductVideo() . $product->video) }}" height="120" width="300" class="embed-responsive-item" preload="" controls id="targetvideo"></video>
+                                                    </div>
+                                                @error('video')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+                                            <div class="input__group mb-25">
                                                 <div class="custom-control custom-switch">
                                                     <input type="checkbox" value="1"
                                                         {{ $product->Status == 1 ? 'checked' : '' }} name="status"
