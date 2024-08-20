@@ -160,4 +160,5 @@ Route::post('/ipn', [SslCommerzPaymentController::class, 'ipn']);
 Route::get('/product-safety-and-certifications', [PageController::class, 'safety'])->name('safety');
 Route::get('/terms-and-conditions', [PageController::class, 'terms'])->name('terms');
 Route::get('/privacy-policy', [PageController::class, 'privacy'])->name('privacy');
+Route::get('/return-refund-policies', [PageController::class, 'return'])->name('return');
 
