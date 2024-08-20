@@ -111,7 +111,7 @@
         </div>
         <hr class="start-border">
         <div class="product-items">
-            <div class="row">
+            <div class="row bestSelling position-relative">
                 @forelse ($best_sellings as $product)
                     <div class="col-md-3 p-3">
                         <div class="card product_card text-center p-3 shadow rounded-10px border-0">
@@ -159,7 +159,7 @@
         </div>
         <hr class="start-border">
         <div class="product-items">
-            <div class="row">
+            <div class="row featured position-relative">
                 @forelse ($featured_products as $product)
                     <div class="col-md-3 p-3">
                         <div class="card product_card text-center p-3 shadow rounded-10px border-0">
@@ -204,12 +204,13 @@
     style="--bg-image: url('https://t3.ftcdn.net/jpg/03/23/24/82/360_F_323248211_HNMfkovpijljYs15WasG0XPCTYY2TKrb.jpg');">
     <div class="container p-5 text-center">
         <h2>Subscribe To Newsletter</h2>
-        <p>Subscribe to our newsletter and get first hand information about new product launches, ecxiting offers and discout vouchers</p>
+        <p>Sign up for Rango Cart emails or follow the Rango Cart Instagram page to receive activity ideas, helpful child development info, free giveaways announcements, exciting deals, and latest product updates </p>
         <form action="{{ route("subscribe") }}" id="newsletter" method="POST" class="d-flex">
             @csrf
             <input type="email" required class="form-control newsletter" name="subscribe" placeholder = "Subscribe...">
             <button type="submit" class="btn btn-newsletter" >Subscribe</button>
         </form>
+        <p class="text-center fs-16 fw-bold mt-2">Follow Us On Instagram <a href="https://www.instagram.com/rango_cart/" target="_blank">Rango Cart</a></p>
     </div>
 </div>
 
@@ -277,9 +278,83 @@
   infinite: true,
   speed: 300,
   slidesToShow: 4,
-  slidesToScroll: 4,
-  prevArrow: '<button class="slide-arrow"><i class="fa-solid fa-arrow-left"></i></button>',
-  nextArrow: '<button class="slide-arrow"><i class="fa-solid fa-arrow-right"></i></button>',
+  slidesToScroll: 1,
+  prevArrow: '<button class="slide-arrow btn prev"><i class="fa-solid fa-less-than"></i></button>',
+  nextArrow: '<button class="slide-arrow btn next"><i class="fa-solid fa-greater-than"></i></button>',
+
+  responsive: [
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 3,
+        infinite: false,
+        dots: false
+      }
+    },
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 2
+      }
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1
+      }
+    }
+  ]
+});
+
+
+$('.bestSelling').slick({
+  dots: false,
+  infinite: true,
+  speed: 300,
+  slidesToShow: 4,
+  slidesToScroll: 1,
+  prevArrow: '<button class="slide-arrow btn prev"><i class="fa-solid fa-less-than"></i></button>',
+  nextArrow: '<button class="slide-arrow btn next"><i class="fa-solid fa-greater-than"></i></button>',
+
+  responsive: [
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 3,
+        infinite: false,
+        dots: false
+      }
+    },
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 2
+      }
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1
+      }
+    }
+  ]
+});
+
+
+$('.featured').slick({
+  dots: false,
+  infinite: true,
+  speed: 300,
+  slidesToShow: 4,
+  slidesToScroll: 1,
+  prevArrow: '<button class="slide-arrow btn prev"><i class="fa-solid fa-less-than"></i></button>',
+  nextArrow: '<button class="slide-arrow btn next"><i class="fa-solid fa-greater-than"></i></button>',
 
   responsive: [
     {

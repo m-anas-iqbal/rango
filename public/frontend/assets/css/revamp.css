@@ -510,3 +510,34 @@ hr.start-border::before {
         color: #fff;
     }
 }
+.prev {
+    position: absolute;
+    top: 50%;
+    left: -5%;
+    font-size: 20px;
+    color: #fff;
+    transform: translateY(-50%);
+    width: fit-content;
+    background-color: var(--color-blue);
+    border-radius: 50%;
+    padding: 7px 15px;
+    & :hover{
+        color: #fff;
+    }
+}
+.next {
+    position: absolute;
+    top: 50%;
+    right: -5%;
+    font-size: 20px;
+    color: #fff;
+    transform: translateY(-50%);
+    width: fit-content;
+    background-color: var(--color-blue);
+    border-radius: 50%;
+    padding: 7px 15px;
+    & :hover{
+        color: #fff;
+    }
+}
+

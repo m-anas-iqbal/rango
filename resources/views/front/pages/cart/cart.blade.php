@@ -35,6 +35,8 @@
                             <thead>
                                 <tr class="">
                                     <th>Product</th>
+                                    <th colspan="2">Product Name</th>
+
                                     <th>Price</th>
                                     <th>Quantity</th>
                                     <th>Total</th>
@@ -48,22 +50,25 @@
                                 {{-- @dd($content) --}}
                                 @foreach ($content as $item)
                                     <tr class="cart-page-item">
-                                        <td>
+                                        <td colspan="2">
                                             <div class="single-grid-product m-0">
-                                                <div class="product-top">
+                                                <div class="product-top text-start">
                                                     <a href="{{ route('single.product', $item->options->slug ?? '') }}"><img
-                                                            class="product-thumbnal"
+                                                            class="product-thumbnal img-fluid w-50"
                                                             src="{{ asset(ProductImage() . $item->options->image) }}"
-                                                            alt="cart"></a>
+                                                            alt="cart" ></a>
 
                                                 </div>
-                                                <div class="product-info text-center">
-                                                    <h3 class="product-name">
+
+                                            </div>
+                                        </td>
+                                        <td>
+                                             <div class="product-info text-center">
+                                                    <p class="product-name">
                                                         <a class="product-link"
                                                             href="{{ route('single.product', $item->options->slug ?? '') }}">{{ $item->name }}</a>
-                                                    </h3>
+                                                    </p>
                                                 </div>
-                                            </div>
                                         </td>
                                         <td>
                                             <div class="product-price text-center">

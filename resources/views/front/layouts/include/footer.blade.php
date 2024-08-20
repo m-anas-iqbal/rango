@@ -45,11 +45,9 @@
     <div class="bottom-bar pb-3">
         <div class="container py-1">
             <div class="d-flex align-items-center justify-content-between text-white">
-                <p class="m-0 small">Copyright &copy; - Developed by <a href="https:codexwriter.com"
+                <p class="m-0 small">Copyright &copy; 2024 RANGO CART™ - All Rights Reserved. Developed by <a href="https:codexwriter.com"
                         class="fw-bold">Codexwriter</a></p>
                 <div class="wrap">
-                    {{-- <a href="{{route('privacy')}}" class="small">Privacy Policy</a> --}}
-                    {{-- | --}}
                     <a href="{{route('terms')}}" class="small">Terms & Conditions</a>
                     |
                     <a href="{{route('safety')}}" class="small">Product Safety and Certification</a>
