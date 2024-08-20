@@ -57,7 +57,7 @@
             <div class="row">
                 {{-- @dd($new_arrivals) --}}
                 @forelse ($new_arrivals as $product)
-                    <div class="col-md-3 p-3">
+                    <div class="col-md-3 p-3 newArrivls">
                         <div class="card product_card text-center p-3 shadow rounded-10px border-0">
                             <a class="product-link" href="{{ route('single.product', $product->en_Product_Slug) }}">
                                 <img src="{{ asset(ProductImage() . $product->Primary_Image) }}"
@@ -98,23 +98,7 @@
                     </div>
                 @empty
                 @endforelse
-                {{-- <div class="col-md-3 p-3">
-                <div class="card product_card text-center p-3 shadow rounded-10px border-0">
-                    <img src="{{ asset(ProductImage() . $product->Primary_Image) }}" class="img-fluid" alt="{{ __('product') }}">
-                    <h4 class="w-fit mx-auto"><a class="product-link"
-                        href="{{ route('single.product', $product->en_Product_Slug) }}">{{ langConverter($product->en_Product_Name, $product->fr_Product_Name) }}</a></h4>
-                    <div class="price-label w-fit small r-bg-green rounded-pill mx-auto py-1 px-2 text-white">
-                        <span class="regular-price">
-                            {{ currencyConverter($product->Price) }}</span>
-                        <span class="price">
-                            {{ currencyConverter($product->Discount_Price) }}</span>
-                    </div>
-                </div>
-                <input type="hidden" name="quantity" value="1" id="product_quantity">
-                <a href="javascript:void(0)" title="{{ __('Add To Cart') }}" class="add-cart addCart"
-                                data-id="{{ $product->id }}">{{ __('Add To Cart') }} <i
-                                    class="icon fas fa-plus-circle"></i></a>
-            </div> --}}
+
 
             </div>
         </div>
@@ -124,7 +108,6 @@
     <div class="container home_products my-5">
         <div class="d-flex justify-content-between">
             <h3 class="fw-bold">Best Selling</h3>
-            {{-- <a href="" class="fw-bold">See All <i class="fa-solid fa-arrow-right"></i></a> --}}
         </div>
         <hr class="start-border">
         <div class="product-items">
@@ -287,4 +270,43 @@
         opacity: 0,
         ease: "slow(0.7,0.7,false)",
     }, 'anim_center')
+</script>
+<script>
+    $('.newArrivls').slick({
+  dots: true,
+  infinite: false,
+  speed: 300,
+  slidesToShow: 4,
+  slidesToScroll: 4,
+  responsive: [
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 3,
+        infinite: true,
+        dots: true
+      }
+    },
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 2
+      }
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1
+      }
+    }
+    // You can unslick at a given breakpoint now by adding:
+    // settings: "unslick"
+    // instead of a settings object
+  ]
+});
+
+
 </script>

@@ -38,7 +38,7 @@ class HomeController extends Controller
             $all_products = Product::with('category')->latest();
             $data['products'] = $all_products->where('Status', ACTIVE)->limit(allsetting('home_products_page'))->get();
             // dd($data['products']);
-            $data['new_arrivals'] = Product::with('category')->where('New_Arrival', ACTIVE)->where('Status', ACTIVE)->limit(allsetting('home_products_page'))->get();
+            $data['new_arrivals'] = Product::with('category')->where('New_Arrival', ACTIVE)->where('Status', ACTIVE)->get();
             $data['best_sellings'] = Product::with('category')->where('Best_Selling', ACTIVE)->where('Status', ACTIVE)->limit(allsetting('home_products_page'))->get();
             // $data['on_sales'] = $all_products->where('On_Sale', ACTIVE)->limit(allsetting('home_products_page'))->get();
             $data['featured_products'] =Product::with('category')->where('Featured_Product', ACTIVE)->where('Status', ACTIVE)->limit(allsetting('home_products_page'))->get();
