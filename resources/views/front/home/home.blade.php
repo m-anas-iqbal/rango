@@ -54,10 +54,10 @@
         </div>
         <hr class="start-border">
         <div class="product-items">
-            <div class="row">
+            <div class="row newArrivls">
                 {{-- @dd($new_arrivals) --}}
                 @forelse ($new_arrivals as $product)
-                    <div class="col-md-3 p-3 newArrivls">
+                    <div class="col-md-3 p-3 ">
                         <div class="card product_card text-center p-3 shadow rounded-10px border-0">
                             <a class="product-link" href="{{ route('single.product', $product->en_Product_Slug) }}">
                                 <img src="{{ asset(ProductImage() . $product->Primary_Image) }}"
