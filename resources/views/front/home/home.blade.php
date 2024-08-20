@@ -54,7 +54,7 @@
         </div>
         <hr class="start-border">
         <div class="product-items">
-            <div class="row newArrivls">
+            <div class="row newArrivls position-relative">
                 {{-- @dd($new_arrivals) --}}
                 @forelse ($new_arrivals as $product)
                     <div class="col-md-3 p-3 ">
@@ -273,19 +273,22 @@
 </script>
 <script>
     $('.newArrivls').slick({
-  dots: true,
-  infinite: false,
+  dots: false,
+  infinite: true,
   speed: 300,
   slidesToShow: 4,
   slidesToScroll: 4,
+  prevArrow: '<button class="slide-arrow"><i class="fa-solid fa-arrow-left"></i></button>',
+  nextArrow: '<button class="slide-arrow"><i class="fa-solid fa-arrow-right"></i></button>',
+
   responsive: [
     {
       breakpoint: 1024,
       settings: {
         slidesToShow: 3,
         slidesToScroll: 3,
-        infinite: true,
-        dots: true
+        infinite: false,
+        dots: false
       }
     },
     {
@@ -302,9 +305,6 @@
         slidesToScroll: 1
       }
     }
-    // You can unslick at a given breakpoint now by adding:
-    // settings: "unslick"
-    // instead of a settings object
   ]
 });
 
