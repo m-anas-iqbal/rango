@@ -365,7 +365,7 @@
             <div class="section-header-area">
                 <div class="row">
                     <div class="col-md-6">
-                        <h5 class="sub-title fw-bold">{{ __('Similar Products') }}</h5>
+                        {{-- <h5 class="sub-title fw-bold">{{ __('Similar Products') }}</h5> --}}
                         <h5 class="section-title fw-bold">{{ __('Related Products') }}</h5>
                     </div>
                     <div class="col-md-6 align-self-end text-md-end">
