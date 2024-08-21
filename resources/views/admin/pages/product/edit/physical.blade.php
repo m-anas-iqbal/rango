@@ -167,56 +167,51 @@
                                             </div> --}}
                                             <div class="input__group mb-25">
                                                 <label for="exampleInputEmail1">{{ __('Primary Image') }}</label>
-                                                <input type="file" class="form-control putImage1" name="primary_image"
-                                                    id="primary_image">
-                                                <img class="admin_image"
-                                                    src="{{ asset(ProductImage() . $product->Primary_Image) }}"
-                                                    id="target1" />
+                                                <input type="file" class="form-control putImage1" name="primary_image" id="primary_image" onchange="previewImage(this, '#target1')">
+                                                <img class="admin_image" src="{{ asset(ProductImage() . $product->Primary_Image) }}" id="target1" />
+                                                <button type="button" class="btn d-flex text-danger" onclick="removeMedia('{{ $product->id }}', 'Primary_Image', '#target1', '#primary_image')"><i class="fa-solid fa-trash"></i></button>
                                             </div>
+
                                             <div class="input__group mb-25">
                                                 <label for="exampleInputEmail1">{{ __('Image 2') }}</label>
-                                                <input type="file" class="form-control putImage2" name="image_two"
-                                                    id="image_two">
-                                                <img class="admin_image"
-                                                    src="{{ asset(ProductImage() . $product->Image2) }}"
-                                                    id="target2" />
+                                                <input type="file" class="form-control putImage2" name="image_two" id="image_two" onchange="previewImage(this, '#target2')">
+                                                <img class="admin_image" src="{{ asset(ProductImage() . $product->Image2) }}" id="target2" />
+                                                <button type="button" class="btn d-flex text-danger" onclick="removeMedia('{{ $product->id }}', 'Image2', '#target2', '#image_two')"><i class="fa-solid fa-trash"></i></button>
                                             </div>
+
                                             <div class="input__group mb-25">
                                                 <label for="exampleInputEmail1">{{ __('Image Gallery Image') }}</label>
-                                                <input type="file" class="form-control putImage3" name="image_three"
-                                                    id="image_three">
-                                                <img class="admin_image"
-                                                    src="{{ asset(ProductImage() . $product->Image3) }}"
-                                                    id="target3" />
+                                                <input type="file" class="form-control putImage3" name="image_three" id="image_three" onchange="previewImage(this, '#target3')">
+                                                <img class="admin_image" src="{{ asset(ProductImage() . $product->Image3) }}" id="target3" />
+                                                <button type="button" class="btn d-flex text-danger" onclick="removeMedia('{{ $product->id }}', 'Image3', '#target3', '#image_three')"><i class="fa-solid fa-trash"></i></button>
                                             </div>
+
                                             <div class="input__group mb-25">
                                                 <label for="exampleInputEmail1">{{ __('Image 3') }}</label>
-                                                <input type="file" class="form-control putImage4" name="image_four"
-                                                    id="image_four">
-                                                <img class="admin_image"
-                                                    src="{{ asset(ProductImage() . $product->Image4) }}"
-                                                    id="target4" />
+                                                <input type="file" class="form-control putImage4" name="image_four" id="image_four" onchange="previewImage(this, '#target4')">
+                                                <img class="admin_image" src="{{ asset(ProductImage() . $product->Image4) }}" id="target4" />
+                                                <button type="button" class="btn d-flex text-danger" onclick="removeMedia('{{ $product->id }}', 'Image4', '#target4', '#image_four')"><i class="fa-solid fa-trash"></i></button>
                                             </div>
+
                                             <div class="input__group mb-25">
                                                 <label for="exampleInputEmail1">{{ __('Image 4') }}</label>
-                                                <input type="file" class="form-control putImage5" name="image_five"
-                                                    id="image_five">
-                                                <img class="admin_image"
-                                                    src="{{ asset(ProductImage() . $product->Image5) }}"
-                                                    id="target5" />
+                                                <input type="file" class="form-control putImage5" name="image_five" id="image_five" onchange="previewImage(this, '#target5')">
+                                                <img class="admin_image" src="{{ asset(ProductImage() . $product->Image5) }}" id="target5" />
+                                                <button type="button" class="btn d-flex text-danger" onclick="removeMedia('{{ $product->id }}', 'Image5', '#target5', '#image_five')"><i class="fa-solid fa-trash"></i></button>
                                             </div>
 
                                             <div class="input__group mb-25">
                                                 <label for="video">{{ __('Video') }}</label>
-                                                <input type="file" class="form-control video" accept="video/*" name="video"
-                                                    id="video">
-                                                    <div class="embed-responsive embed-responsive-16by9">
-                                                        <video src="{{ asset(ProductVideo() . $product->video) }}" height="120" width="300" class="embed-responsive-item" preload="" controls id="targetvideo"></video>
-                                                    </div>
+                                                <input type="file" class="form-control video" accept="video/*" name="video" id="video">
+                                                <div class="embed-responsive embed-responsive-16by9">
+                                                    <video src="{{ asset(ProductVideo() . $product->video) }}" height="120" width="300" class="embed-responsive-item" preload="" controls id="targetvideo"></video>
+                                                </div>
+                                                <button type="button" class="btn d-flex text-danger" onclick="removeMedia('{{ $product->id }}', 'video', '#targetvideo', '#video')">Remove Video</button>
                                                 @error('video')
                                                     <span class="text-danger">{{ $message }}</span>
                                                 @enderror
                                             </div>
+
                                             <div class="input__group mb-25">
                                                 <div class="custom-control custom-switch">
                                                     <input type="checkbox" value="1"
@@ -356,4 +351,42 @@
             $('.dropdown-toggle').dropdown();
         });
     </script>
+    <script>
+        function removeMedia(productId, fieldName, targetSelector, inputSelector) {
+            $.ajax({
+                url: '{{ route("product.remove.media") }}',
+                type: 'POST',
+                data: {
+                    _token: '{{ csrf_token() }}',
+                    product_id: productId,
+                    field: fieldName
+                },
+                success: function(response) {
+                    console.log(response);
+
+                    if(response.success) {
+                        $(targetSelector).attr('src', '');  // Clear the preview (image/video)
+                        $(inputSelector).val('');  // Clear the file input
+                    }
+                    //  else {
+                    //     alert('Error removing media.');
+                    // }
+                },
+                // error: function() {
+                //     alert('Failed to remove media.');
+                // }
+            });
+        }
+
+        function previewImage(input, targetSelector) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $(targetSelector).attr('src', e.target.result);
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
+
 @endpush
