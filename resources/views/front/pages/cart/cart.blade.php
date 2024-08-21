@@ -33,172 +33,74 @@
                         <div class="divider"></div>
                         <table class="table table-striped table-responsive w-100">
                             <thead>
-                                <tr class="">
-                                    <th>Product</th>
-                                    <th colspan="2">Product Name</th>
-
-                                    <th>Price</th>
-                                    <th>Quantity</th>
-                                    <th>Total</th>
-                                    <th>Action</th>
+                                <tr>
+                                    <th scope="col" style="width: 10%;">Product</th>
+                                    <th scope="col" colspan="2" style="width: 30%;">Product Name</th>
+                                    <th scope="col" style="width: 10%;">Price</th>
+                                    <th scope="col" style="width: 20%;">Quantity</th>
+                                    <th scope="col" style="width: 15%;">Total</th>
+                                    <th scope="col" style="width: 15%;">Action</th>
                                 </tr>
                             </thead>
                             <tbody id="cart_ajax_load">
                                 @php
                                     $total = 0;
                                 @endphp
-                                {{-- @dd($content) --}}
                                 @foreach ($content as $item)
-                                    <tr class="cart-page-item">
-                                        <td colspan="2">
+                                    <tr class="cart-page-item align-middle">
+                                        <td style="width: 10%;">
                                             <div class="single-grid-product m-0">
                                                 <div class="product-top text-start">
-                                                    <a href="{{ route('single.product', $item->options->slug ?? '') }}"><img
-                                                            class="product-thumbnal img-fluid w-50"
+                                                    <a href="{{ route('single.product', $item->options->slug ?? '') }}">
+                                                        <img class="product-thumbnail img-fluid w-100 rounded-3"
                                                             src="{{ asset(ProductImage() . $item->options->image) }}"
-                                                            alt="cart" ></a>
-
+                                                            alt="cart">
+                                                    </a>
                                                 </div>
-
                                             </div>
                                         </td>
-                                        <td>
-                                             <div class="product-info text-center">
-                                                    <p class="product-name">
-                                                        <a class="product-link"
-                                                            href="{{ route('single.product', $item->options->slug ?? '') }}">{{ $item->name }}</a>
-                                                    </p>
-                                                </div>
+                                        <td colspan="2" style="width: 30%;">
+                                            <div class="product-info text-start">
+                                                <p class="product-name m-0">
+                                                    <a class="product-link"
+                                                        href="{{ route('single.product', $item->options->slug ?? '') }}">{{ $item->name }}</a>
+                                                </p>
+                                            </div>
                                         </td>
-                                        <td>
-                                            <div class="product-price text-center">
+                                        <td style="width: 10%;">
+                                            <div class="product-price">
                                                 @if (currencyConverter($item->price) == currencyConverter($item->options->discount_price))
-                                <span
-                                    class="price fw-bold fs-4">{{ currencyConverter($item->options->discount_price) }}</span>
-                            @else
-                                <div class="d-flex justify-content-center gap-2 align-items-end">
-                                    <span
-                                        class="price fw-bold fs-4">{{ currencyConverter($item->price) }}</span>
-                                    <span
-                                        class="regular-price text-danger text-decoration-line-through fw-bold fs-6">{{ currencyConverter($item->options->discount_price) }}</span>
-                                </div>
-                            @endif
+                                                    <span class="price fw-bold fs-4">{{ currencyConverter($item->options->discount_price) }}</span>
+                                                @else
+                                                    <div>
+                                                        <span class="price fw-bold fs-6">{{ currencyConverter($item->price) }}</span>
+                                                        {{-- <span class="regular-price text-danger text-decoration-line-through fw-bold fs-6">{{ currencyConverter($item->options->discount_price) }}</span> --}}
+                                                    </div>
+                                                @endif
                                             </div>
                                         </td>
-                                        <td>
+                                        <td style="width: 20%;">
                                             <div class="cart-quantity input-group">
-                                                <div class="increase-btn dec qtybutton btn qty_decrease"
-                                                    data-id="{{ $item->rowId }}">-</div>
-                                                <input class="qty-input cart-plus-minus-box qty_value " type="text"
-                                                    name="qtybutton" id="qty_value" value="{{ $item->qty }}" readonly />
-                                                <div class="increase-btn inc qtybutton btn qty_increase"
-                                                    data-id="{{ $item->rowId }}">+</div>
+                                                <button class="btn btn-outline-secondary qty_decrease" data-id="{{ $item->rowId }}">-</button>
+                                                <input class="qty-input form-control text-center" type="text" value="{{ $item->qty }}" readonly />
+                                                <button class="btn btn-outline-secondary qty_increase" data-id="{{ $item->rowId }}">+</button>
                                             </div>
                                         </td>
-                                        <td>
-                                            <h1 class="cart-table-item-total SubTotalAmount">
+                                        <td style="width: 15%;">
+                                            <h6 class="cart-table-item-total SubTotalAmount fw-bold">
                                                 {{ currencyConverter($item->subtotal) }}
-                                            </h1>
+                                            </h6>
                                         </td>
-                                        <td>
-                                            <button class="delet-btn deleteItemCart" title="{{ __('Delete Item') }}"
-                                                data-id="{{ $item->rowId }}">
-                                                <img src="{{ asset('frontend/assets/images/close.svg') }}"
-                                                    alt="close" />
+                                        <td style="width: 15%;">
+                                            <button class="btn deleteItemCart" title="{{ __('Delete Item') }}" data-id="{{ $item->rowId }}">
+                                                <i class="fa-solid fa-trash r-text-red fs-3"></i>
                                             </button>
                                         </td>
                                     </tr>
                                 @endforeach
                             </tbody>
-                            {{-- <tbody>
-                                <tr>
-                                    <td class="d-flex align-items-center">
-                                        <img src="{{ asset('frontend/assets/images/toys/bear.png') }}" alt=""
-                                            class="img-fluid cart-imgs">
-                                        <div class="my-auto cart-desc ms-2 d-md-block d-none">
-                                            <h5>Lorem, ipsum.</h5>
-                                            <p>Lorem ipsum dolor sit amet.</p>
-                                        </div>
-                                    </td>
-                                    <td class="my-auto vertical-middle">
-                                        <div class="cart_price">
-                                            $25
-                                        </div>
-                                    </td>
-                                    <td class="vertical-middle">
-                                        <div class="d-flex">
-                                            <button class="btn" onclick="decrement()"><i class="fa-solid fa-circle-minus"></i></button>
-                                            <input type="number" id="input" class="form-control" disabled  max="100" min="1">
-                                            <button class="btn" onclick="increment()"><i class="fa-solid fa-circle-plus"></i></button>
-                                        </div>
-                                    </td>
-                                    <td class="my-auto vertical-middle">
-                                        <div class="cart_price">
-                                            $25
-                                        </div>
-                                    </td>
-                                    <td class="my-auto vertical-middle text-center"><a href="#"><i class="fa fa-trash"></i></a></td>
-                                </tr>
-                                <tr>
-                                    <td class="d-flex">
-                                        <img src="{{ asset('frontend/assets/images/toys/bear.png') }}" alt=""
-                                            class="img-fluid cart-imgs">
-                                        <div class="my-auto cart-desc ms-2 d-md-block d-none">
-                                            <h5>Lorem, ipsum.</h5>
-                                            <p>Lorem ipsum dolor sit amet.</p>
-                                        </div>
-                                    </td>
-                                    <td class="my-auto vertical-middle">
-                                        <div class="cart_price">
-                                            $25
-                                        </div>
-                                    </td>
-                                    <td class="vertical-middle">
-                                        <div class="d-flex">
-                                            <button class="btn" onclick="decrement()"><i class="fa-solid fa-circle-minus"></i></button>
-                                            <input type="number" id="input" class="form-control" disabled  max="100" min="1">
-                                            <button class="btn" onclick="increment()"><i class="fa-solid fa-circle-plus"></i></button>
-                                        </div>
-                                    </td>
-                                    <td class="my-auto vertical-middle">
-                                        <div class="cart_price">
-                                            $25
-                                        </div>
-                                    </td>
-                                    <td class="my-auto vertical-middle text-center"><a href="#"><i class="fa fa-trash"></i></a></td>
-
-                                </tr>
-                                <tr>
-                                    <td class="d-flex">
-                                        <img src="{{ asset('frontend/assets/images/toys/bear.png') }}" alt=""
-                                            class="img-fluid cart-imgs">
-                                        <div class="my-auto cart-desc ms-2 d-md-block d-none">
-                                            <h5>Lorem, ipsum.</h5>
-                                            <p>Lorem ipsum dolor sit amet.</p>
-                                        </div>
-                                    </td>
-                                    <td class="my-auto vertical-middle">
-                                        <div class="cart_price">
-                                            $25
-                                        </div>
-                                    </td>
-                                    <td class="vertical-middle">
-                                        <div class="d-flex">
-                                            <button class="btn" onclick="decrement()"><i class="fa-solid fa-circle-minus"></i></button>
-                                            <input type="number" id="input" class="form-control" disabled  max="100" min="1">
-                                            <button class="btn" onclick="increment()"><i class="fa-solid fa-circle-plus"></i></button>
-                                        </div>
-                                    </td>
-                                    <td class="my-auto vertical-middle">
-                                        <div class="cart_price">
-                                            $25
-                                        </div>
-                                    </td>
-                                    <td class="my-auto vertical-middle text-center"><a href="#"><i class="fa fa-trash"></i></a></td>
-
-                                </tr>
-                            </tbody> --}}
                         </table>
+
                     </div>
                     <div class="col-md-4">
                         <h2>Proceed To Checkout</h2>

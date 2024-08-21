@@ -210,7 +210,7 @@
             <input type="email" required class="form-control newsletter" name="subscribe" placeholder = "Subscribe...">
             <button type="submit" class="btn btn-newsletter" >Subscribe</button>
         </form>
-        <p class="text-center fs-16 fw-bold mt-2">Follow Us On Instagram <a href="https://www.instagram.com/rango_cart/" target="_blank">Rango Cart</a></p>
+        <p class="text-center fs-16 fw-bold mt-2">Follow Us On Instagram <a href="https://www.instagram.com/rango_cart/" target="_blank" class="r-text-yellow text-underline">Rango Cart</a></p>
     </div>
 </div>
 

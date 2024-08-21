@@ -18,7 +18,7 @@
             <div class="wrap text-center small">
                 Email: <a href="mailto:info@rangocart.com">info@rangocart.com</a>
                 |
-                Call: <a href="tel:">123 123 1231</a>
+                Call: <a href="tel:+1 (437) 985-3601">+1 (437) 985-3601</a>
             </div>
             <div class="wrap d-flex gap-4 justify-content-center justify-content-md-end mt-2 mt-md-0">
                 <a href="{{getSocialLink()->Twitter}}"><i class="fa-brands fa-x-twitter"></i></a>

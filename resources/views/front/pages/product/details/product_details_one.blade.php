@@ -230,8 +230,8 @@
                                     </div>
                                 @endif --}}
                                 <div class="product-bottom-button my-2">
-                                    <a href="javascript:void(0)" class="btn btn-primary my-2 r-bg-blue buyNow d-block"
-                                        data-id="{{ $products->id }}">{{ __('Buy Now') }}</a>
+                                    {{-- <a href="javascript:void(0)" class="btn btn-primary my-2 r-bg-blue buyNow d-block"
+                                        data-id="{{ $products->id }}">{{ __('Buy Now') }}</a> --}}
                                     <a href="javascript:void(0)" title="{{ __('Add To Cart') }}"
                                         class="add-cart btn btn-success r-bg-green border-0 addCart d-block"
                                         data-id="{{ $products->id }}">{{ __('Add To Cart') }}
@@ -421,14 +421,19 @@
                 slidesToScroll: 1,
                 arrows: false,
                 fade: true,
-                asNavFor: '.product-images'
+                asNavFor: '.product-images',
+                prevArrow: false,
+                nextArrow: false,
             });
             $('.product-images').slick({
                 slidesToShow: 4,
                 slidesToScroll: 1,
                 asNavFor: '.product-thumbnail-image',
                 dots: false,
-                focusOnSelect: true
+                focusOnSelect: true,
+                prevArrow: false,
+                nextArrow: false,
+
             });
 
             $('.product-description div').css('width', '100%');
