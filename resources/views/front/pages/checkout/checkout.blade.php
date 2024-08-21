@@ -34,13 +34,13 @@
                         <form method="post" {{-- action="{{ auth()->check() ? route('checkout.order') : route('guest.checkout.order') }}" --}} action="{{ route('checkout.order') }}"
                             id="paymentForm">
                             @csrf
-                            <div class="row">
+                            <div class="row mt-3">
                                 @if (!auth()->check())
                                     <div class="col-lg-12 mb-3">
                                         <div
                                             class="checkout-page-login-box d-flex justify-content-between align-items-center mb-30">
                                             <h2 class="mb-0 text-capitalize fw-bold">Returning buyer? Please login:</h2>
-                                            <button type="button" class="primary-btn" data-bs-toggle="modal"
+                                            <button type="button" class="primary-btn btn btn-primary" data-bs-toggle="modal"
                                                 data-bs-target="#loginModal">Login</button>
                                         </div>
                                     </div>
@@ -194,7 +194,7 @@
                                                     </div>
                                                 </div>
                                             @else
-                                                @if ($payment->slug == 'stripe')
+                                                {{-- @if ($payment->slug == 'stripe')
                                                     <div class="form-group">
                                                         <div class="form-check card-check">
                                                             <input class="form-check-input" type="radio"
@@ -226,7 +226,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                @endif
+                                                @endif --}}
                                                 {{-- @if ($payment->slug == 'sslcommerz')
                                                     <div class="form-group">
                                                         <div class="form-check card-check">
@@ -249,8 +249,8 @@
                                                             <label class="form-check-label"
                                                                 for="paypal">{{ $payment->name }}</label>
                                                             <div class="input-icon">
-                                                                <img src="{{ asset(IMG_PAYMENT_GATEWAY . $payment->image) }}"
-                                                                    alt="paypal" />
+                                                                {{-- <img src="{{ asset(IMG_PAYMENT_GATEWAY . $payment->image) }}"
+                                                                    alt="paypal" /> --}}
                                                             </div>
                                                         </div>
                                                     </div>
@@ -325,7 +325,7 @@
                                             @endif
                                         @endforeach
 
-                                        @if (env('COD_STATUS') == '1')
+                                        {{-- @if (env('COD_STATUS') == '1')
                                             <div class="form-group">
                                                 <div class="form-check card-check">
                                                     <input class="form-check-input" type="radio" name="payment"
@@ -338,7 +338,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        @endif
+                                        @endif --}}
 
                                         <div class="form-group form-check terms-agree">
                                             <input type="checkbox" class="form-check-input" id="agree"
@@ -350,11 +350,11 @@
                                         </div>
                                         @if (auth()->check())
                                             <button type="submit" id="payButton"
-                                                class="checkout-btn form-btn">{{ __('Place Order') }}</button>
+                                                class="checkout-btn form-btn button button02 w-100 form-btn proceed-to-checkout-btn btn mb-3">{{ __('Place Order') }}</button>
                                             <button type="button" id="payButtonN"
-                                                class="checkout-btn form-btn d-none buy_now">{{ __('Place Order') }}</button>
+                                                class="checkout-btn form-btn d-none buy_now button button02 w-100 form-btn proceed-to-checkout-btn mb-3 btn">{{ __('Place Order') }}</button>
                                         @else
-                                            <button type="button" class="checkout-btn" data-bs-toggle="modal"
+                                            <button type="button" class="checkout-btn button button02 w-100 form-btn proceed-to-checkout-btn btn mb-3" data-bs-toggle="modal"
                                                 data-bs-target="#loginModal">{{ __('Place Order') }}</button>
                                         @endif
 
@@ -384,7 +384,7 @@
                         </form>
                     </div>
                 </div>
-                <div class="col-lg-6 col-md-6">
+                <div class="col-lg-6 col-md-6 mt-3">
                     <div class="cart-summary">
                         {{-- <div class="summary-top d-flex"> --}}
                             {{-- <h2>{{ __('Cart Summary') }}</h2> --}}
@@ -459,8 +459,8 @@
                                 </div>
                             </li> --}}
                         </ul>
-                        <div class="total-amount">
-                            <h3>
+                        <div class="total-amount text-center text-white mt-3 button02 p-3 rounded-3">
+                            <h3 class="fs-2 mb-0">
                                 {{ __('Total Cost') }}
                                 <span class="float-right" id="total-cost-curr">
                                     {{ currencyConverter(\Cart::subtotal() + allsetting()['shipping_charge'] + tax_amount(\Cart::subtotal()) - Session::get('CouponAmount')) }}

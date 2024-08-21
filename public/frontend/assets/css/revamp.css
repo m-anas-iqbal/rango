@@ -551,3 +551,6 @@ hr.start-border::before {
 .text-underline{
     text-decoration: underline;
 }
+.checkout-form .form-group, .checkout-form .form-select{
+    margin-top: 10px;
+}
