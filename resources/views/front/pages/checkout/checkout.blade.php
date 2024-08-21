@@ -25,7 +25,7 @@
     </div>
 </section>
 <!-- checkout page area start here  -->
-<section class="page-content section">
+<section class="page-content section mt-3">
     <div class="checkout">
         <div class="container">
             <div class="row">
@@ -350,11 +350,11 @@
                                         </div>
                                         @if (auth()->check())
                                             <button type="submit" id="payButton"
-                                                class="checkout-btn form-btn button button02 w-100 form-btn proceed-to-checkout-btn btn mb-3">{{ __('Place Order') }}</button>
+                                                class="checkout-btn form-btn button button02 text-white w-100 form-btn proceed-to-checkout-btn btn my-3">{{ __('Place Order') }}</button>
                                             <button type="button" id="payButtonN"
-                                                class="checkout-btn form-btn d-none buy_now button button02 w-100 form-btn proceed-to-checkout-btn mb-3 btn">{{ __('Place Order') }}</button>
+                                                class="checkout-btn form-btn d-none buy_now button button02 text-white w-100 form-btn proceed-to-checkout-btn my-3 btn">{{ __('Place Order') }}</button>
                                         @else
-                                            <button type="button" class="checkout-btn button button02 w-100 form-btn proceed-to-checkout-btn btn mb-3" data-bs-toggle="modal"
+                                            <button type="button" class="checkout-btn button button02 text-white w-100 form-btn proceed-to-checkout-btn btn my-3" data-bs-toggle="modal"
                                                 data-bs-target="#loginModal">{{ __('Place Order') }}</button>
                                         @endif
 
