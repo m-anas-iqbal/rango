@@ -368,13 +368,13 @@
                         $(targetSelector).attr('src', '');  // Clear the preview (image/video)
                         $(inputSelector).val('');  // Clear the file input
                     }
-                    //  else {
-                    //     alert('Error removing media.');
-                    // }
+                     else {
+                        alert('Error removing media.');
+                    }
                 },
-                // error: function() {
-                //     alert('Failed to remove media.');
-                // }
+                error: function() {
+                    alert('Failed to remove media.');
+                }
             });
         }
 
