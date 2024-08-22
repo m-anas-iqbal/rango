@@ -31,11 +31,11 @@
             </div>
             <div class="col-md-3">
                 <div class="wrap d-flex gap-4 justify-content-center">
-                    <a href="{{getSocialLink()->Twitter}}"><i class="fa-brands fa-x-twitter"></i></a>
-                    <a href="{{getSocialLink()->Facebook}}"><i class="fa-brands fa-facebook-f"></i></a>
-                    <a href="{{getSocialLink()->Instagram}}"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="{{getSocialLink()->Linkedin}}"><i class="fa-brands fa-youtube"></i></a>
-                    <a href="{{getSocialLink()->Skype}}"><i class="fa-brands fa-pinterest"></i></a>
+                    <a href="{{getSocialLink()->Twitter}}" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="{{getSocialLink()->Facebook}}" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="{{getSocialLink()->Instagram}}" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="{{getSocialLink()->Linkedin}}" target="_blank"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="{{getSocialLink()->Skype}}" target="_blank"><i class="fa-brands fa-pinterest"></i></a>
 
                 </div>
             </div>
