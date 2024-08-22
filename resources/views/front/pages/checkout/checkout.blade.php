@@ -173,7 +173,7 @@
                                     @enderror
                                 </div>
                             </div>
-                            <div class="payment-method">
+                            <div class="payment-method mt-5">
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <h2 class="checkout-title">{{ __('Payment Method') }}</h2>
@@ -346,18 +346,18 @@
                                             <label class="form-check-label"
                                                 for="agree">{{ __('By clicking the button you agree to our') }}
                                                 <a
-                                                    href="{{ route('terms.conditions') }}">{{ __('Terms & Conditions') }}</a></label>
+                                                    href="{{ route('terms') }}" class="fw-bold">{{ __('Terms & Conditions') }}</a></label>
                                         </div>
                                         @if (auth()->check())
                                             <button type="submit" id="payButton"
                                                 class="checkout-btn form-btn button button02 text-white w-100 form-btn proceed-to-checkout-btn btn my-3">{{ __('Place Order') }}</button>
                                             <button type="button" id="payButtonN"
-                                                class="checkout-btn form-btn d-none buy_now button button02 text-white w-100 form-btn proceed-to-checkout-btn my-3 btn">{{ __('Place Order') }}</button>
+                                                class="checkout-btn form-btn d-none buy_now button button02 text-white w-100 form-btn proceed-to-checkout-btn my-3 btn ">{{ __('Place Order') }}</button>
                                         @else
-                                            <button type="button" class="checkout-btn button button02 text-white w-100 form-btn proceed-to-checkout-btn btn my-3" data-bs-toggle="modal"
+                                            <button type="button" id = "payButton_modal" class=" checkout-btn button button02 text-white w-100 form-btn proceed-to-checkout-btn btn my-3" data-bs-toggle="modal"
                                                 data-bs-target="#loginModal">{{ __('Place Order') }}</button>
                                         @endif
-
+                                        <p id="error_msg" style="color: red; display : none"></p>
                                     </div>
                                 </div>
                             </div>
@@ -480,8 +480,27 @@
 <div id="get-tax-amount" data-url="{{ route('checkout.get_tax_amount') }}"></div>
 <!-- checkout page area end here  -->
 @push('post_script')
+<script>
+
+    setTimeout(function() {
+        let totalCost = $('#total-cost-curr').html();
+    let threshold = 50;
+    totalCost = totalCost.replace('$', '');
+    console.log(totalCost)
+    if(totalCost < threshold){
+        $('#payButton_modal, #payButton, #payButtonN').addClass('disabled');
+        $('#error_msg').css('display', "block")
+        $('#error_msg').html('Shipping is available for orders over CAD 50. Please add more items to your cart to proceed with shipping.')
+    }
+    else{
+        $('#payButton_modal, #payButton, #payButtonN').remove('disabled');
+        $('#error_msg').html('')
+    }
+            }, 3000);
+</script>
     <script src="https://js.stripe.com/v3/"></script>
     <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
     <script src="{{ asset('frontend/assets/js/pages/checkout.js') }}"></script>
+
 @endpush
 @endsection

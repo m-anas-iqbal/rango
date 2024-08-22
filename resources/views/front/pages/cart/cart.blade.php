@@ -60,7 +60,7 @@
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td colspan="2" class="d-md-block d-none" style="width: 30%;">
+                                            <td colspan="2" class="d-md-table-cell d-none" style="width: 30%;">
                                                 <div class="product-info text-start">
                                                     <p class="product-name m-0">
                                                         <a class="product-link"
