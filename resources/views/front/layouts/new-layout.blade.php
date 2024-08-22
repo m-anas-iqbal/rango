@@ -121,7 +121,8 @@
                     <a class="" href="#">Blog</a>
                 </li> --}}
                 <li>
-                    <a href=""><i class="fa-solid fa-cart-shopping r-text-blue fs-4"></i></a>
+                    <a href="{{ route('cart.content') }}" class="position-relative cart_icon"><span class="badge bg-success count_checkout totalCountItem">{{ Cart::count() }}</span><i
+                        class="fa-solid fa-cart-shopping r-text-blue fs-4"></i></a>
                 </li>
             </ul>
         </div>

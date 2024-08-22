@@ -563,4 +563,16 @@ hr.start-border::before {
         object-fit: contain;
         top: 1vh;
     }
+    .count_checkout {
+        position: absolute;
+        right: 0;
+        top: 0;
+        margin: -3px -15px;
+        border-radius: 50%;
+        height: 20px;
+        width: 20px;
+        text-align: center;
+        line-height: 20px;
+        font-size: 14px;
+    }
 }
