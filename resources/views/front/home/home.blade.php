@@ -62,7 +62,7 @@
                             <a class="product-link" href="{{ route('single.product', $product->en_Product_Slug) }}">
                                 <img src="{{ asset(ProductImage() . $product->Primary_Image) }}"
                                     class="img-fluid shadow rounded" alt="{{ __('product') }}">
-                                <h5 class="w-fit mx-auto fw-bold mt-2 mb-0">
+                                <h5 class="w-fit mx-auto fw-bold mt-3 mb-0 fs-6">
                                     {{ langConverter($product->en_Product_Name, $product->fr_Product_Name) }}
                                 </h5>
                             </a>
@@ -118,7 +118,7 @@
                             <a class="product-link" href="{{ route('single.product', $product->en_Product_Slug) }}">
                                 <img src="{{ asset(ProductImage() . $product->Primary_Image) }}"
                                     class="img-fluid shadow rounded" alt="{{ __('product') }}">
-                                <h5 class="w-fit mx-auto fw-bold mt-2 mb-0">
+                                <h5 class="w-fit mx-auto fw-bold mt-3 mb-0 fs-6">
                                     {{ langConverter($product->en_Product_Name, $product->fr_Product_Name) }}
                                 </h5>
                             </a>
@@ -166,7 +166,7 @@
                             <a class="product-link" href="{{ route('single.product', $product->en_Product_Slug) }}">
                                 <img src="{{ asset(ProductImage() . $product->Primary_Image) }}"
                                     class="img-fluid shadow rounded" alt="{{ __('product') }}">
-                                <h5 class="w-fit mx-auto fw-bold mt-2 mb-0">
+                                <h5 class="w-fit mx-auto fw-bold mt-3 mb-0 fs-6">
                                     {{ langConverter($product->en_Product_Name, $product->fr_Product_Name) }}
                                 </h5>
                             </a>
