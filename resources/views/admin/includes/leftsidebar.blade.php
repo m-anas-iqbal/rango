@@ -5,9 +5,11 @@
             <i class="fa fa-close"></i>
         </button>
     </div>
-    <div class="sidebar__brand">
+    <div class="sidebar__brand my-5">
         <a href="{{ route('admin.dashboard') }}">
-            <img src="{{ asset('frontend/assets/images/logo/logo.png') }}" alt="icon">
+            <h2 class="text-white fs-2">
+                Rango Cart
+            </h2>
         </a>
     </div>
     <ul id="sidebar-menu" class="sidebar__menu">

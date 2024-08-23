@@ -33,7 +33,7 @@
         @forelse (Category_Des_Icon() as $item)
             <div class="col-md-6 p-4">
                 <a class="card p-5 cat_card rounded-20px" href="{{ route('category.product', $item->id) }}">
-                    <h1 class="fw-bold py-3 text-white">
+                    <h1 class="fw-bold py-3 text-white mb-0">
                         {{ langConverter($item->en_Category_Name, $item->fr_Category_Name) }}</h1>
                     <img src="{{ asset(CategoryImage() . $item->Category_Icon) }}"
                         class="position-absolute translate-middle-y"
@@ -205,10 +205,10 @@
     <div class="container p-5 text-center">
         <h2>Subscribe To Newsletter</h2>
         <p>Sign up for Rango Cart emails or follow the Rango Cart Instagram page to receive activity ideas, helpful child development info, free giveaways announcements, exciting deals, and latest product updates </p>
-        <form action="{{ route("subscribe") }}" id="newsletter" method="POST" class="d-flex">
+        <form action="{{ route("subscribe") }}" id="newsletter" method="POST" class="d-md-flex">
             @csrf
             <input type="email" required class="form-control newsletter" name="subscribe" placeholder = "Subscribe...">
-            <button type="submit" class="btn btn-newsletter" >Subscribe</button>
+            <button type="submit" class="btn btn-newsletter mt-2 mt-md-0" >Subscribe</button>
         </form>
         <p class="text-center fs-16 fw-bold mt-2">Follow Us On Instagram <a href="https://www.instagram.com/rango_cart/" target="_blank" class="r-text-yellow text-underline">Rango Cart</a></p>
     </div>
@@ -221,12 +221,12 @@
                 class="img-fluid rounded">
         </div>
         <div class="col-md-6 my-auto">
-            <h2 class="fs-32 text-capitalize">Unlock Creativity and endless adventures</h2>
+            <h2 class="fs-32 text-capitalize mt-md-0 mt-3">Unlock Creativity and endless adventures</h2>
             <div class="divider"></div>
             <p>Our team at <span class="r-text-red">RANGO CART</span> is made up of passionate individuals who are
                 dedicated to creating the best toys for children. We have designers, engineers, and play experts who
                 work together to ensure that our products are both fun and educational.</p>
-            <a href="" class="fs-13 fw-bold underline">Explore Our Toys <img
+            <a href="{{route('all.product')}}" class="fs-13 fw-bold underline">Explore Our Toys <img
                     src="{{ asset('frontend/assets/images/about/arrow.svg') }}" alt=""></a>
 
         </div>
@@ -279,8 +279,8 @@
   speed: 300,
   slidesToShow: 4,
   slidesToScroll: 1,
-  prevArrow: '<button class="slide-arrow btn prev"><i class="fa-solid fa-less-than"></i></button>',
-  nextArrow: '<button class="slide-arrow btn next"><i class="fa-solid fa-greater-than"></i></button>',
+  prevArrow: '<button class="slide-arrow btn prev d-md-block d-none"><i class="fa-solid fa-less-than"></i></button>',
+  nextArrow: '<button class="slide-arrow btn next d-md-block d-none"><i class="fa-solid fa-greater-than"></i></button>',
 
   responsive: [
     {
@@ -316,8 +316,8 @@ $('.bestSelling').slick({
   speed: 300,
   slidesToShow: 4,
   slidesToScroll: 1,
-  prevArrow: '<button class="slide-arrow btn prev"><i class="fa-solid fa-less-than"></i></button>',
-  nextArrow: '<button class="slide-arrow btn next"><i class="fa-solid fa-greater-than"></i></button>',
+  prevArrow: '<button class="slide-arrow btn prev d-md-block d-none"><i class="fa-solid fa-less-than"></i></button>',
+  nextArrow: '<button class="slide-arrow btn next d-md-block d-none"><i class="fa-solid fa-greater-than"></i></button>',
 
   responsive: [
     {
@@ -353,8 +353,8 @@ $('.featured').slick({
   speed: 300,
   slidesToShow: 4,
   slidesToScroll: 1,
-  prevArrow: '<button class="slide-arrow btn prev"><i class="fa-solid fa-less-than"></i></button>',
-  nextArrow: '<button class="slide-arrow btn next"><i class="fa-solid fa-greater-than"></i></button>',
+  prevArrow: '<button class="slide-arrow btn prev d-md-block d-none"><i class="fa-solid fa-less-than"></i></button>',
+  nextArrow: '<button class="slide-arrow btn next d-md-block d-none"><i class="fa-solid fa-greater-than"></i></button>',
 
   responsive: [
     {

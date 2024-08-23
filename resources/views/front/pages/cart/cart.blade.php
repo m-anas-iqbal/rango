@@ -31,75 +31,77 @@
                     <div class="col-md-8 col-12">
                         <h2 class="fs-32">Cart</h2>
                         <div class="divider"></div>
-                        <table class="table table-striped table-responsive w-100">
-                            <thead>
-                                <tr>
-                                    <th scope="col" style="width: 10%;">Product</th>
-                                    <th scope="col" colspan="2" style="width: 30%;">Product Name</th>
-                                    <th scope="col" style="width: 10%;">Price</th>
-                                    <th scope="col" style="width: 20%;">Quantity</th>
-                                    <th scope="col" style="width: 15%;">Total</th>
-                                    <th scope="col" style="width: 15%;">Action</th>
-                                </tr>
-                            </thead>
-                            <tbody id="cart_ajax_load">
-                                @php
-                                    $total = 0;
-                                @endphp
-                                @foreach ($content as $item)
-                                    <tr class="cart-page-item align-middle">
-                                        <td style="width: 10%;">
-                                            <div class="single-grid-product m-0">
-                                                <div class="product-top text-start">
-                                                    <a href="{{ route('single.product', $item->options->slug ?? '') }}">
-                                                        <img class="product-thumbnail img-fluid w-100 rounded-3"
-                                                            src="{{ asset(ProductImage() . $item->options->image) }}"
-                                                            alt="cart">
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td colspan="2" style="width: 30%;">
-                                            <div class="product-info text-start">
-                                                <p class="product-name m-0">
-                                                    <a class="product-link"
-                                                        href="{{ route('single.product', $item->options->slug ?? '') }}">{{ $item->name }}</a>
-                                                </p>
-                                            </div>
-                                        </td>
-                                        <td style="width: 10%;">
-                                            <div class="product-price">
-                                                @if (currencyConverter($item->price) == currencyConverter($item->options->discount_price))
-                                                    <span class="price fw-bold fs-4">{{ currencyConverter($item->options->discount_price) }}</span>
-                                                @else
-                                                    <div>
-                                                        <span class="price fw-bold fs-6">{{ currencyConverter($item->price) }}</span>
-                                                        {{-- <span class="regular-price text-danger text-decoration-line-through fw-bold fs-6">{{ currencyConverter($item->options->discount_price) }}</span> --}}
-                                                    </div>
-                                                @endif
-                                            </div>
-                                        </td>
-                                        <td style="width: 20%;">
-                                            <div class="cart-quantity input-group">
-                                                <button class="btn btn-outline-secondary qty_decrease" data-id="{{ $item->rowId }}">-</button>
-                                                <input class="qty-input form-control text-center" type="text" value="{{ $item->qty }}" readonly />
-                                                <button class="btn btn-outline-secondary qty_increase" data-id="{{ $item->rowId }}">+</button>
-                                            </div>
-                                        </td>
-                                        <td style="width: 15%;">
-                                            <h6 class="cart-table-item-total SubTotalAmount fw-bold">
-                                                {{ currencyConverter($item->subtotal) }}
-                                            </h6>
-                                        </td>
-                                        <td style="width: 15%;">
-                                            <button class="btn deleteItemCart" title="{{ __('Delete Item') }}" data-id="{{ $item->rowId }}">
-                                                <i class="fa-solid fa-trash r-text-red fs-3"></i>
-                                            </button>
-                                        </td>
+                        <div class="table-responsive">
+                            <table class="table table-striped w-100">
+                                <thead>
+                                    <tr>
+                                        <th scope="col" >Product</th>
+                                        <th scope="col" class="d-md-block d-none" > Name</th>
+                                        <th scope="col" >Price</th>
+                                        <th scope="col" >Quantity</th>
+                                        <th scope="col" >Total</th>
+                                        <th scope="col" >Action</th>
                                     </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody id="cart_ajax_load">
+                                    @php
+                                        $total = 0;
+                                    @endphp
+                                    @foreach ($content as $item)
+                                        <tr class="cart-page-item align-middle">
+                                            <td >
+                                                <div class="single-grid-product m-0">
+                                                    <div class="product-top text-start">
+                                                        <a href="{{ route('single.product', $item->options->slug ?? '') }}">
+                                                            <img class="product-thumbnail img-fluid w-100 rounded-3" style="max-width: 100px"
+                                                                src="{{ asset(ProductImage() . $item->options->image) }}"
+                                                                alt="cart">
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td  class="d-md-table-cell d-none">
+                                                <div class="product-info text-start">
+                                                    <p class="product-name m-0">
+                                                        <a class="product-link"
+                                                            href="{{ route('single.product', $item->options->slug ?? '') }}">{{ $item->name }}</a>
+                                                    </p>
+                                                </div>
+                                            </td>
+                                            <td >
+                                                <div class="product-price">
+                                                    @if (currencyConverter($item->price) == currencyConverter($item->options->discount_price))
+                                                        <span class="price fw-bold fs-4">{{ currencyConverter($item->options->discount_price) }}</span>
+                                                    @else
+                                                        <div>
+                                                            <span class="price fw-bold fs-6">{{ currencyConverter($item->price) }}</span>
+                                                            {{-- <span class="regular-price text-danger text-decoration-line-through fw-bold fs-6">{{ currencyConverter($item->options->discount_price) }}</span> --}}
+                                                        </div>
+                                                    @endif
+                                                </div>
+                                            </td>
+                                            <td  id="qty_td">
+                                                <div class="cart-quantity input-group">
+                                                    <button class="btn btn-outline-secondary qty_decrease" data-id="{{ $item->rowId }}">-</button>
+                                                    <input class="qty-input form-control text-center" type="text" value="{{ $item->qty }}" readonly />
+                                                    <button class="btn btn-outline-secondary qty_increase" data-id="{{ $item->rowId }}">+</button>
+                                                </div>
+                                            </td>
+                                            <td >
+                                                <h6 class="cart-table-item-total SubTotalAmount fw-bold">
+                                                    {{ currencyConverter($item->subtotal) }}
+                                                </h6>
+                                            </td>
+                                            <td >
+                                                <button class="btn deleteItemCart" title="{{ __('Delete Item') }}" data-id="{{ $item->rowId }}">
+                                                    <i class="fa-solid fa-trash r-text-red fs-3"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
 
                     </div>
                     <div class="col-md-4">
@@ -142,4 +144,16 @@
             document.getElementById('input').stepDown();
         }
     </script>
+    {{-- <script>
+function adjustWidth() {
+    const element = document.getElementById('qty_td');
+    if (window.innerWidth < 500) {
+        element.style.width = '30%';
+    } else {
+        element.style.width = '20%%';
+    }
+}
+window.addEventListener('resize', adjustWidth);
+adjustWidth();
+    </script> --}}
 @endsection

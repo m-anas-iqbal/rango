@@ -878,4 +878,32 @@ class ProductController extends Controller
         }
         return $randomString;
     }
+    public function removeMedia(Request $request)
+        {
+            $product = Product::find($request->product_id);
+            $field = $request->field;
+
+            if ($product && $field && $product->$field) {
+                // Determine the storage path based on the field type
+                $path = $field == 'video' ? ProductVideo() : ProductImage();
+                $mediaPath = public_path($path . $product->$field);
+
+                // Delete the file from the storage
+                // if (File::exists($mediaPath)) {
+                //     File::delete($mediaPath);
+                // }
+
+                if (file_exists($path . $mediaPath)) {
+                    unlink($path . $mediaPath);
+                }
+                // Set the field to null in the database
+                $product->$field = null;
+                $product->save();
+
+                return response()->json(['success' => true]);
+            }
+
+            return response()->json(['success' => false]);
+        }
+
 }

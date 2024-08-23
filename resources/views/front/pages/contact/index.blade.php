@@ -49,7 +49,7 @@
                                         </div>
 
                                         <div class="mt-3">
-                                            <label for="file" class="fs-13 fw-bold mb-2">File:</label>
+                                            <label for="file" class="fs-13 fw-bold mb-2">Share Image:</label>
                                             <input type="file" class="form-control max-width-670" name="file" id="file">
                                         </div>
 
@@ -71,7 +71,7 @@
                                 </h2>
                                 <div class="divider"></div>
                                 <div class="mt-md-5 mt-3">
-                                    <a href="tel:123123123" class="fs-13 d-block fw-bold green transition mb-2">+1 123 123 223</a>
+                                    <a href="tel:+1 (437) 985-3601" class="fs-13 d-block fw-bold green transition mb-2">+1 (437) 985-3601</a>
                                     <a href="mailto:info@rangocart.com" class="fs-13 fw-bold green transition underline">info@rangocart.com</a>
                                 </div>
                                 <div class="socials mt-md-5 mt-3">

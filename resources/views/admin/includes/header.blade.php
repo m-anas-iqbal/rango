@@ -13,8 +13,8 @@
                     <div class="header__navbar__right">
                         <ul class="header__menu">
                             <li>
-                                <a href="#" class="btn btn-dropdown user-profile" data-bs-toggle="dropdown">
-                                    <img src="{{!is_null(Auth::user()->image) ? asset(AdminProfilePicture().Auth::user()->image) : Avatar::create(Auth::user()->name)->toBase64()}}" alt="{{__('icon')}}">
+                                <a href="#" class="btn btn-dropdown bg-white rounded-circle p-3  lh-1 user-profile text-primary" data-bs-toggle="dropdown">
+                                    <i class="fa-solid fa-user fs-6"></i>
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li>
