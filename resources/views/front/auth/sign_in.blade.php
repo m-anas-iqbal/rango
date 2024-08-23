@@ -18,14 +18,14 @@
                             @csrf
                             <div class="form-group mb-2">
                                 <input type="email" class="form-control" placeholder="{{ __('Email') }}" name="email"
-                                    value="{{ env('APP_DEMO') == true ? 'user1@gmail.com' : old('email') }}" required="">
+                                    value="" required="">
                                 @error('email')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
                             <div class="form-group mb-2">
                                 <input type="password" class="form-control" placeholder="{{ __('Password') }}"
-                                    name="password" value="{{ env('APP_DEMO') == true ? '123456' : '' }}" required="">
+                                    name="password" value="" required="">
                                 @error('password')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror

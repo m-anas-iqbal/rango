@@ -83,9 +83,11 @@
                                             {{-- @dd("Asd") --}}
                                             <td  id="qty_td">
                                                 <div class="cart-quantity input-group">
-                                                    <button class="btn btn-outline-secondary dec qtybutton qty_decrease" data-id="{{ $item->rowId }}">-</button>
-                                                    <input class="qty-input form-control text-center qty_value" type="text" value="{{ $item->qty }}" readonly />
-                                                    <button class="btn btn-outline-secondary inc qtybutton qty_increase" data-id="{{ $item->rowId }}">+</button>
+                                                    <button class="btn btn-outline-secondary dec qtybutton qty_decrease"  data-type="-" data-id="{{ $item->rowId }}">-</button>
+                                                    <input class="qty-input cart-plus-minus-box form-control text-center qty_value"
+                                                    type="text" name="qtybutton" id="qty_value"
+                                                    value="{{ $item->qty }}" readonly   />
+                                                    <button class="btn btn-outline-secondary inc qtybutton qty_increase"  data-type="+" data-id="{{ $item->rowId }}">+</button>
                                                 </div>
                                             </td>
                                             <td >
@@ -144,6 +146,29 @@
         function decrement() {
             document.getElementById('input').stepDown();
         }
+
+            /*----------------------------
+      Cart Plus Minus Button
+    ------------------------------ */
+    $(".qtybutton").on("click", function() {
+
+var $button = $(this);
+//   console.log($button.data("type"));
+var oldValue = $button.parent().find("input").val();
+if ($button.data("type") === "+") {
+//   console.log(oldValue);
+
+    var newVal = parseFloat(oldValue) + 1;
+} else {
+    // Don't allow decrementing below zero
+    if (oldValue > 1) {
+        var newVal = parseFloat(oldValue) - 1;
+    } else {
+        newVal = 1;
+    }
+}
+$button.parent().find("input").val(newVal);
+});
     </script>
     {{-- <script>
 function adjustWidth() {

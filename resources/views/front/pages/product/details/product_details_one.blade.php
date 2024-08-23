@@ -454,10 +454,10 @@
     $(".qtybutton").on("click", function() {
 
       var $button = $(this);
-        console.log($button.data("type"));
+        // console.log($button.data("type"));
       var oldValue = $button.parent().find("input").val();
       if ($button.data("type") === "+") {
-        console.log(oldValue);
+        // console.log(oldValue);
 
           var newVal = parseFloat(oldValue) + 1;
       } else {
