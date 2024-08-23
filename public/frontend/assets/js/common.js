@@ -171,29 +171,29 @@
                     // let currsym = currencySymbol();
                     $('.totalCountItem').html(data[0]);
                     $('.totalAmount').html(currencyPrice(data[1]));
-                    let Img = $('#productImgAsset').data('url');
+                    // let Img = $('#productImgAsset').data('url');
                     let obj = data[2];
                     $this.parent().find('.qty_value').val(data[0])
-                    let bodyData = '';
-                    let bodyArray = [];
-                    let i = 1;
-                    Object.keys(obj).forEach(function (key) {
-                        bodyData = '<div class="product-item cart-product-item"><div class="single-grid-product"><div class="product-top"><a href="#"><img class="product-thumbnal" src="' + Img + '/' + obj[key]['options']['image'] + '" alt="cart"></a></div><div class="product-info"><div class="product-name-part"><h3 class="product-name"><a class="product-link" href="#">' + obj[key]['name'] + '</a></h3><div class="cart-quantity input-group"><div class="increase-btn dec qtybutton btn qty_decrease" data-id="' + obj[key]['rowId'] + '">-</div><input class="qty-input cart-plus-minus-box qty_value" type="text" name="qtybutton" id="qty_value" value="' + obj[key]['qty'] + '" readonly /><div class="increase-btn inc qtybutton btn qty_increase" data-id="' + obj[key]['rowId'] + '">+</div></div><button class="cart-remove-btn deleteItem" data-id="' + obj[key]['rowId'] + '">Remove</button></div><div class="product-price"><span class="regular-price mr-0">' + currencyPrice(obj[key]['weight'] * obj[key]['qty']) + '</span><span class="price">' + currencyPrice(obj[key]['price'] * obj[key]['qty']) + '</span></div></div></div></div>';
-                        bodyArray.push(bodyData);
-                    });
-                    $("#bodyData").html(bodyArray);
+                    // let bodyData = '';
+                    // let bodyArray = [];
+                    // let i = 1;
+                    // Object.keys(obj).forEach(function (key) {
+                    //     bodyData = '<div class="product-item cart-product-item"><div class="single-grid-product"><div class="product-top"><a href="#"><img class="product-thumbnal" src="' + Img + '/' + obj[key]['options']['image'] + '" alt="cart"></a></div><div class="product-info"><div class="product-name-part"><h3 class="product-name"><a class="product-link" href="#">' + obj[key]['name'] + '</a></h3><div class="cart-quantity input-group"><div class="increase-btn dec qtybutton btn qty_decrease" data-id="' + obj[key]['rowId'] + '">-</div><input class="qty-input cart-plus-minus-box qty_value" type="text" name="qtybutton" id="qty_value" value="' + obj[key]['qty'] + '" readonly /><div class="increase-btn inc qtybutton btn qty_increase" data-id="' + obj[key]['rowId'] + '">+</div></div><button class="cart-remove-btn deleteItem" data-id="' + obj[key]['rowId'] + '">Remove</button></div><div class="product-price"><span class="regular-price mr-0">' + currencyPrice(obj[key]['weight'] * obj[key]['qty']) + '</span><span class="price">' + currencyPrice(obj[key]['price'] * obj[key]['qty']) + '</span></div></div></div></div>';
+                    //     bodyArray.push(bodyData);
+                    // });
+                    // $("#bodyData").html(bodyArray);
 
-                    const Toast = Swal.mixin({
-                        toast: true,
-                        position: 'bottom-end',
-                        showConfirmButton: false,
-                        timer: 3000,
-                        timerProgressBar: true,
-                        didOpen: (toast) => {
-                            toast.addEventListener('mouseenter', Swal.stopTimer)
-                            toast.addEventListener('mouseleave', Swal.resumeTimer)
-                        }
-                    })
+                    // const Toast = Swal.mixin({
+                    //     toast: true,
+                    //     position: 'bottom-end',
+                    //     showConfirmButton: false,
+                    //     timer: 3000,
+                    //     timerProgressBar: true,
+                    //     didOpen: (toast) => {
+                    //         toast.addEventListener('mouseenter', Swal.stopTimer)
+                    //         toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    //     }
+                    // })
                     Toast.fire({
                         icon: 'success',
                         title: 'Product Added to Cart Successfully'
@@ -254,25 +254,25 @@
                     let Img = $('#productImgAsset').data('url');
                     let obj = data[2];
                     $this.parent().find('.qty_value').val(data[0])
-                    let bodyData = '';
-                    let bodyArray = [];
-                    let i = 1;
-                    Object.keys(obj).forEach(function (key) {
-                        bodyData = '<div class="product-item cart-product-item"><div class="single-grid-product"><div class="product-top"><a href="#"><img class="product-thumbnal" src="' + Img + '/' + obj[key]['options']['image'] + '" alt="cart"></a></div><div class="product-info"><div class="product-name-part"><h3 class="product-name"><a class="product-link" href="#">' + obj[key]['name'] + '</a></h3><div class="cart-quantity input-group"><div class="increase-btn dec qtybutton btn qty_decrease" data-id="' + obj[key]['rowId'] + '">-</div><input class="qty-input cart-plus-minus-box qty_value" type="text" name="qtybutton" id="qty_value" value="' + obj[key]['qty'] + '" readonly /><div class="increase-btn inc qtybutton btn qty_increase" data-id="' + obj[key]['rowId'] + '">+</div></div><button class="cart-remove-btn deleteItem" data-id="' + obj[key]['rowId'] + '">Remove</button></div><div class="product-price"><span class="regular-price mr-0">' + currencyPrice(obj[key]['weight'] * obj[key]['qty']) + '</span><span class="price">' + currencyPrice(obj[key]['price'] * obj[key]['qty']) + '</span></div></div></div></div>';
-                        bodyArray.push(bodyData);
-                    });
-                    $("#bodyData").html(bodyArray);
-                    let Toast = Swal.mixin({
-                        toast: true,
-                        position: 'bottom-end',
-                        showConfirmButton: false,
-                        timer: 3000,
-                        timerProgressBar: true,
-                        didOpen: (toast) => {
-                            toast.addEventListener('mouseenter', Swal.stopTimer)
-                            toast.addEventListener('mouseleave', Swal.resumeTimer)
-                        }
-                    })
+                    // let bodyData = '';
+                    // let bodyArray = [];
+                    // let i = 1;
+                    // Object.keys(obj).forEach(function (key) {
+                    //     bodyData = '<div class="product-item cart-product-item"><div class="single-grid-product"><div class="product-top"><a href="#"><img class="product-thumbnal" src="' + Img + '/' + obj[key]['options']['image'] + '" alt="cart"></a></div><div class="product-info"><div class="product-name-part"><h3 class="product-name"><a class="product-link" href="#">' + obj[key]['name'] + '</a></h3><div class="cart-quantity input-group"><div class="increase-btn dec qtybutton btn qty_decrease" data-id="' + obj[key]['rowId'] + '">-</div><input class="qty-input cart-plus-minus-box qty_value" type="text" name="qtybutton" id="qty_value" value="' + obj[key]['qty'] + '" readonly /><div class="increase-btn inc qtybutton btn qty_increase" data-id="' + obj[key]['rowId'] + '">+</div></div><button class="cart-remove-btn deleteItem" data-id="' + obj[key]['rowId'] + '">Remove</button></div><div class="product-price"><span class="regular-price mr-0">' + currencyPrice(obj[key]['weight'] * obj[key]['qty']) + '</span><span class="price">' + currencyPrice(obj[key]['price'] * obj[key]['qty']) + '</span></div></div></div></div>';
+                    //     bodyArray.push(bodyData);
+                    // });
+                    // $("#bodyData").html(bodyArray);
+                    // let Toast = Swal.mixin({
+                    //     toast: true,
+                    //     position: 'bottom-end',
+                    //     showConfirmButton: false,
+                    //     timer: 3000,
+                    //     timerProgressBar: true,
+                    //     didOpen: (toast) => {
+                    //         toast.addEventListener('mouseenter', Swal.stopTimer)
+                    //         toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    //     }
+                    // })
                     Toast.fire({
                         icon: 'success',
                         title: 'Cart Quantity Decrement'
@@ -317,26 +317,26 @@
                 $('.totalAmount').html(currencyPrice(data[1]));
                 let Img = $('#productImgAsset').data('url');
                 $this.parent().find('.qty_value').val(data[0])
-                let obj = data[2];
-                let bodyData = '';
-                let bodyArray = [];
-                let i = 1;
-                Object.keys(obj).forEach(function (key) {
-                    bodyData = '<div class="product-item cart-product-item"><div class="single-grid-product"><div class="product-top"><a href="#"><img class="product-thumbnal" src="' + Img + '/' + obj[key]['options']['image'] + '" alt="cart"></a></div><div class="product-info"><div class="product-name-part"><h3 class="product-name"><a class="product-link" href="#">' + obj[key]['name'] + '</a></h3><div class="cart-quantity input-group"><div class="increase-btn dec qtybutton btn qty_decrease" data-id="' + obj[key]['rowId'] + '">-</div><input class="qty-input cart-plus-minus-box qty_value" type="text" name="qtybutton" id="qty_value" value="' + obj[key]['qty'] + '" readonly /><div class="increase-btn inc qtybutton btn qty_increase" data-id="' + obj[key]['rowId'] + '">+</div></div><button class="cart-remove-btn deleteItem" data-id="' + obj[key]['rowId'] + '">Remove</button></div><div class="product-price"><span class="regular-price mr-0">' + currencyPrice(obj[key]['weight'] * obj[key]['qty']) + '</span><span class="price">' + currencyPrice(obj[key]['price'] * obj[key]['qty']) + '</span></div></div></div></div>';
-                    bodyArray.push(bodyData);
-                });
-                $("#bodyData").html(bodyArray);
-                let Toast = Swal.mixin({
-                    toast: true,
-                    position: 'bottom-end',
-                    showConfirmButton: false,
-                    timer: 3000,
-                    timerProgressBar: true,
-                    didOpen: (toast) => {
-                        toast.addEventListener('mouseenter', Swal.stopTimer)
-                        toast.addEventListener('mouseleave', Swal.resumeTimer)
-                    }
-                })
+                // let obj = data[2];
+                // let bodyData = '';
+                // let bodyArray = [];
+                // let i = 1;
+                // Object.keys(obj).forEach(function (key) {
+                //     bodyData = '<div class="product-item cart-product-item"><div class="single-grid-product"><div class="product-top"><a href="#"><img class="product-thumbnal" src="' + Img + '/' + obj[key]['options']['image'] + '" alt="cart"></a></div><div class="product-info"><div class="product-name-part"><h3 class="product-name"><a class="product-link" href="#">' + obj[key]['name'] + '</a></h3><div class="cart-quantity input-group"><div class="increase-btn dec qtybutton btn qty_decrease" data-id="' + obj[key]['rowId'] + '">-</div><input class="qty-input cart-plus-minus-box qty_value" type="text" name="qtybutton" id="qty_value" value="' + obj[key]['qty'] + '" readonly /><div class="increase-btn inc qtybutton btn qty_increase" data-id="' + obj[key]['rowId'] + '">+</div></div><button class="cart-remove-btn deleteItem" data-id="' + obj[key]['rowId'] + '">Remove</button></div><div class="product-price"><span class="regular-price mr-0">' + currencyPrice(obj[key]['weight'] * obj[key]['qty']) + '</span><span class="price">' + currencyPrice(obj[key]['price'] * obj[key]['qty']) + '</span></div></div></div></div>';
+                //     bodyArray.push(bodyData);
+                // });
+                // $("#bodyData").html(bodyArray);
+                // let Toast = Swal.mixin({
+                //     toast: true,
+                //     position: 'bottom-end',
+                //     showConfirmButton: false,
+                //     timer: 3000,
+                //     timerProgressBar: true,
+                //     didOpen: (toast) => {
+                //         toast.addEventListener('mouseenter', Swal.stopTimer)
+                //         toast.addEventListener('mouseleave', Swal.resumeTimer)
+                //     }
+                // })
                 Toast.fire({
                     icon: 'success',
                     title: 'Cart Quantity Increment'
@@ -359,26 +359,26 @@
                 $('.totalCountItem').html(data[0]);
                 $('.totalAmount').html(currencyPrice(data[1]));
                 let Img = $('#productImgAsset').data('url');
-                let obj = data[2];
-                let bodyData = '';
-                let bodyArray = [];
-                let i = 1;
-                Object.keys(obj).forEach(function (key) {
-                    bodyData = '<div class="product-item cart-product-item"><div class="single-grid-product"><div class="product-top"><a href="#"><img class="product-thumbnal" src="' + Img + '/' + obj[key]['options']['image'] + '" alt="cart"></a></div><div class="product-info"><div class="product-name-part"><h3 class="product-name"><a class="product-link" href="#">' + obj[key]['name'] + '</a></h3><div class="cart-quantity input-group"><div class="increase-btn dec qtybutton btn qty_decrease" data-id="' + obj[key]['rowId'] + '">-</div><input class="qty-input cart-plus-minus-box qty_value" type="text" name="qtybutton" id="qty_value" value="' + obj[key]['qty'] + '" readonly /><div class="increase-btn inc qtybutton btn qty_increase" data-id="' + obj[key]['rowId'] + '">+</div></div><button class="cart-remove-btn deleteItem" data-id="' + obj[key]['rowId'] + '">Remove</button></div><div class="product-price"><span class="regular-price mr-0">' + currencyPrice(obj[key]['weight'] * obj[key]['qty']) + '</span><span class="price">' + currencyPrice(obj[key]['price'] * obj[key]['qty']) + '</span></div></div></div></div>';
-                    bodyArray.push(bodyData);
-                });
-                $("#bodyData").html(bodyArray);
-                let Toast = Swal.mixin({
-                    toast: true,
-                    position: 'bottom-end',
-                    showConfirmButton: false,
-                    timer: 3000,
-                    timerProgressBar: true,
-                    didOpen: (toast) => {
-                        toast.addEventListener('mouseenter', Swal.stopTimer)
-                        toast.addEventListener('mouseleave', Swal.resumeTimer)
-                    }
-                })
+                // let obj = data[2];
+                // let bodyData = '';
+                // let bodyArray = [];
+                // let i = 1;
+                // Object.keys(obj).forEach(function (key) {
+                //     bodyData = '<div class="product-item cart-product-item"><div class="single-grid-product"><div class="product-top"><a href="#"><img class="product-thumbnal" src="' + Img + '/' + obj[key]['options']['image'] + '" alt="cart"></a></div><div class="product-info"><div class="product-name-part"><h3 class="product-name"><a class="product-link" href="#">' + obj[key]['name'] + '</a></h3><div class="cart-quantity input-group"><div class="increase-btn dec qtybutton btn qty_decrease" data-id="' + obj[key]['rowId'] + '">-</div><input class="qty-input cart-plus-minus-box qty_value" type="text" name="qtybutton" id="qty_value" value="' + obj[key]['qty'] + '" readonly /><div class="increase-btn inc qtybutton btn qty_increase" data-id="' + obj[key]['rowId'] + '">+</div></div><button class="cart-remove-btn deleteItem" data-id="' + obj[key]['rowId'] + '">Remove</button></div><div class="product-price"><span class="regular-price mr-0">' + currencyPrice(obj[key]['weight'] * obj[key]['qty']) + '</span><span class="price">' + currencyPrice(obj[key]['price'] * obj[key]['qty']) + '</span></div></div></div></div>';
+                //     bodyArray.push(bodyData);
+                // });
+                // $("#bodyData").html(bodyArray);
+                // let Toast = Swal.mixin({
+                //     toast: true,
+                //     position: 'bottom-end',
+                //     showConfirmButton: false,
+                //     timer: 3000,
+                //     timerProgressBar: true,
+                //     didOpen: (toast) => {
+                //         toast.addEventListener('mouseenter', Swal.stopTimer)
+                //         toast.addEventListener('mouseleave', Swal.resumeTimer)
+                //     }
+                // })
                 Toast.fire({
                     icon: 'success',
                     title: 'Cart Product Removed'
