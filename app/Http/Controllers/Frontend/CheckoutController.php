@@ -86,7 +86,7 @@ class CheckoutController extends Controller
                 'shipping_country.required' => 'The country field is required.',
             ]);
 
-            $user_id = Auth::id();
+            $user_id = Auth::id()??null;
             try {
                 $subtotal = Cart::subtotal();
                 $tax = tax_amount($subtotal, $request->billing_country);

@@ -180,24 +180,24 @@
 
                                 <div class="prdouct-btn-wrapper d-flex align-items-center">
                                     <div class="cart-plus-minus d-flex align-items-center">
-                                        <div class="dec qtybutton btn fs-5 fw-bold"><i class="fa-solid fa-minus"></i></div>
-                                        <input class="cart-plus-minus-box w-25 form-control text-center" type="text" name="qtybutton"
+                                        <div class="dec qtybutton btn fs-5 fw-bold " data-type="-"><i class="fa-solid fa-minus"></i></div>
+                                        <input class="cart-plus-minus-box w-25 form-control text-center qty_value" type="number" name="qtybutton"
                                             id="product_quantity" value="1" readonly />
-                                        <div class="inc qtybutton btn fs-5 fw-bold"><i class="fa-solid fa-plus"></i></div>
+                                        <div class="inc qtybutton btn fs-5 fw-bold " data-type="+"><i class="fa-solid fa-plus"></i></div>
                                     </div>
                                     <a class="product-btn MyWishList" data-id="{{ $products->id }}"
                                         title="{{ __('Add To Wishlist') }}"><i class="icon flaticon-like"></i></a>
                                     <a class="product-btn CompareList" data-id="{{ $products->id }}"
                                         title="{{ __('Add To Compare') }}"><i class="icon flaticon-bar-chart"></i></a>
                                 </div>
-                                {{-- <div class="product-bottom-button d-flex gap-2 my-2">
+                               {{-- <div class="product-bottom-button d-flex gap-2 my-2">
                                     <a href="javascript:void(0)" class="btn btn-primary r-bg-blue buyNow"
                                         data-id="{{ $products->id }}">{{ __('Buy Now') }}</a>
-                                    <a href="javascript:void(0)" title="{{ __('Add To Cart') }}"
+                                     <a href="javascript:void(0)" title="{{ __('Add To Cart') }}"
                                         class="add-cart btn btn-success r-bg-green border-0 addCart"
                                         data-id="{{ $products->id }}">{{ __('Add To Cart') }}
                                         <i class="icon fas fa-plus-circle"></i></a>
-                                </div> --}}
+                                </div>  --}}
                             </div>
                             <div class="product-right-bottom mt-3">
                                 <ul class="features list-unstyled">
@@ -230,8 +230,8 @@
                                     </div>
                                 @endif --}}
                                 <div class="product-bottom-button my-2">
-                                    {{-- <a href="javascript:void(0)" class="btn btn-primary my-2 r-bg-blue buyNow d-block"
-                                        data-id="{{ $products->id }}">{{ __('Buy Now') }}</a> --}}
+                                    <a href="javascript:void(0)" class="btn btn-primary my-2 r-bg-blue buyNow d-block"
+                                        data-id="{{ $products->id }}">{{ __('Buy Now') }}</a>
                                     <a href="javascript:void(0)" title="{{ __('Add To Cart') }}"
                                         class="add-cart btn btn-success r-bg-green border-0 addCart d-block"
                                         data-id="{{ $products->id }}">{{ __('Add To Cart') }}
@@ -398,7 +398,7 @@
                         @endif
                         <hr>
                         <div class="d-flex justify-content-center gap-3">
-                            <input type="hidden" name="quantity" value="1" id="product_quantity">
+                            {{-- <input type="hidden" name="quantity" value="1" id="product_quantity"> --}}
                             <a href="javascript:void(0)" title="{{ __('Add to cart') }}"
                                 data-id="{{ $product->id }}"
                                 class="add-cart addCart price-label w-fit small r-bg-green rounded-pill py-1 px-3 text-white">{{ __('Add To Cart') }}</a>
@@ -447,5 +447,56 @@
         p.remove();
     }
 });
+
+    /*----------------------------
+      Cart Plus Minus Button
+    ------------------------------ */
+    $(".qtybutton").on("click", function() {
+
+      var $button = $(this);
+        console.log($button.data("type"));
+      var oldValue = $button.parent().find("input").val();
+      if ($button.data("type") === "+") {
+        console.log(oldValue);
+
+          var newVal = parseFloat(oldValue) + 1;
+      } else {
+          // Don't allow decrementing below zero
+          if (oldValue > 1) {
+              var newVal = parseFloat(oldValue) - 1;
+          } else {
+              newVal = 1;
+          }
+      }
+      $button.parent().find("input").val(newVal);
+    });
+    //buy now
+    $('.buyNow').on('click', function () {
+        console.log("asd");
+
+        let product_id = $(this).attr("data-id");
+        let quantity = $('#product_quantity').val();
+        let color =null;
+        let size=null;
+        let _token = $('meta[name="csrf-token"]').attr('content')
+
+        $.ajax({
+            url: $('#AddToCartIntoSession').data('url'),
+            method: "POST",
+            data: {
+                product_id: product_id,
+                quantity: quantity,
+                color_id: color,
+                size_id: size,
+                _token: _token,
+            },
+            success: function (data) {
+                console.log(data);
+                $('.totalCountItem').html(data[0]);
+                $('.totalAmount').html(data[1]);
+                window.location.href = '/checkout'
+            }
+        });
+    });
     </script>
 @endsection

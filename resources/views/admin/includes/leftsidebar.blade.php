@@ -531,14 +531,14 @@
                 </a>
             </li>
         @endcanany --}}
-        {{-- @canany(['payment-gateway-list'])
+        @canany(['payment-gateway-list'])
             <li class="{{ isset($menu) && $menu == 'payment' ? 'mm-active' : '' }}">
                 <a href="{{ route('admin.payment_gateway_list') }}">
                     <i class="fa fa-money-bill"></i>
                     <span>{{ __('Payment Gateway') }}</span>
                 </a>
             </li>
-        @endcanany --}}
+        @endcanany
         {{-- @canany(['cms-list'])
             <li class="{{ isset($menu) && $menu == 'company' ? 'mm-active' : '' }}">
                 <a class="has-arrow" href="#">

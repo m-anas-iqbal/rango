@@ -145,8 +145,6 @@
             {
                 let min = $('#minPrice').val();
                 let max = $('#maxPrice').val();
-                console.log(min);
-                console.log(max);
                 $.ajax({
                     url: $('#minMaxPriceFilter').data("url"),
                     type:'get',
@@ -198,8 +196,6 @@
             {
                 let min = $('#minPriceMobile').val();
                 let max = $('#maxPriceMobile').val();
-                console.log(min);
-                console.log(max);
                 $.ajax({
                     url: $('#minMaxPriceFilter').data("url"),
                     type:'get',

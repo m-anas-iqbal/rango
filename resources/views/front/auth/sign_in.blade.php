@@ -42,19 +42,19 @@
                                         class="form-control btn btn-primary submit px-3 w-fit primary-btn auth-btn">{{ __('Login') }}</button>
                                 </div>
                             </div>
-                            <hr>
+                           {{-- <hr>
                             <div class="d-flex justify-content-center gap-3">
                                 <div class="form-group mb-2">
                                     <a href="{{ route('user.redirect_google') }}"
                                         class="form-control btn btn-primary py-2 rounded-pill btn-sm submit px-3 google-btn"><i
                                             class="fab fa-google"></i> {{ __('Login With Google') }}</a>
                                 </div>
-                                {{-- <div class="form-group mb-2">
+                                 <div class="form-group mb-2">
                                     <a href="{{ route('user.redirect_facebook') }}"
                                         class="form-control btn btn-primary py-2 rounded-pill btn-sm submit px-3 facebook-btn"><i
                                             class="fab fa-facebook-f fa-fw"></i> {{ __('Login With Facebook') }}</a>
-                                </div> --}}
-                            </div>
+                                </div>
+                            </div>--}}
                             <hr>
                             <div class="remember-box form-group d-md-flex justify-content-between mb-4">
                                 <div class="already-have-account small">
