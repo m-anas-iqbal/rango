@@ -180,10 +180,10 @@
 
                                 <div class="prdouct-btn-wrapper d-flex align-items-center">
                                     <div class="cart-plus-minus d-flex align-items-center">
-                                        <div class="dec qtybutton btn fs-5 fw-bold qty_decrease"><i class="fa-solid fa-minus"></i></div>
+                                        <div class="dec qtybutton btn fs-5 fw-bold " data-type="-"><i class="fa-solid fa-minus"></i></div>
                                         <input class="cart-plus-minus-box w-25 form-control text-center qty_value" type="number" name="qtybutton"
                                             id="product_quantity" value="1" readonly />
-                                        <div class="inc qtybutton btn fs-5 fw-bold qty_increase"><i class="fa-solid fa-plus"></i></div>
+                                        <div class="inc qtybutton btn fs-5 fw-bold " data-type="+"><i class="fa-solid fa-plus"></i></div>
                                     </div>
                                     <a class="product-btn MyWishList" data-id="{{ $products->id }}"
                                         title="{{ __('Add To Wishlist') }}"><i class="icon flaticon-like"></i></a>
@@ -447,5 +447,56 @@
         p.remove();
     }
 });
+
+    /*----------------------------
+      Cart Plus Minus Button
+    ------------------------------ */
+    $(".qtybutton").on("click", function() {
+
+      var $button = $(this);
+        console.log($button.data("type"));
+      var oldValue = $button.parent().find("input").val();
+      if ($button.data("type") === "+") {
+        console.log(oldValue);
+
+          var newVal = parseFloat(oldValue) + 1;
+      } else {
+          // Don't allow decrementing below zero
+          if (oldValue > 1) {
+              var newVal = parseFloat(oldValue) - 1;
+          } else {
+              newVal = 1;
+          }
+      }
+      $button.parent().find("input").val(newVal);
+    });
+    //buy now
+    $('.buyNow').on('click', function () {
+        console.log("asd");
+
+        let product_id = $(this).attr("data-id");
+        let quantity = $('#product_quantity').val();
+        let color =null;
+        let size=null;
+        let _token = $('meta[name="csrf-token"]').attr('content')
+
+        $.ajax({
+            url: $('#AddToCartIntoSession').data('url'),
+            method: "POST",
+            data: {
+                product_id: product_id,
+                quantity: quantity,
+                color_id: color,
+                size_id: size,
+                _token: _token,
+            },
+            success: function (data) {
+                console.log(data);
+                $('.totalCountItem').html(data[0]);
+                $('.totalAmount').html(data[1]);
+                window.location.href = '/checkout'
+            }
+        });
+    });
     </script>
 @endsection

@@ -1,13 +1,13 @@
 <!-- Js file  -->
 
 <script src="{{ asset('frontend/assets/js/bootstrap.min.js') }}"></script>
-<script src="{{ asset('frontend/assets/js/common.js') }}"></script>
+
 <script src="{{ asset('frontend/assets/dist/js/suggestion-box.min.js') }}"></script>
 <script src="{{ asset('frontend/assets/js/pages/wishlist.js') }}"></script>
-<script src="{{ asset('frontend/assets/js/pages/cart.js') }}"></script>
+{{-- <script src="{{ asset('frontend/assets/js/pages/cart.js') }}"></script> --}}
 <script src="{{ asset('frontend/assets/js/pages/checkout.js') }}"></script>
 <script src="{{ asset('frontend/assets/js/pages/single_product.js') }}"></script>
-
+<script src="{{ asset('frontend/assets/js/common.js') }}"></script>
 
 <script>
     $(document).ready(function() {

@@ -183,17 +183,17 @@
                     // });
                     // $("#bodyData").html(bodyArray);
 
-                    // const Toast = Swal.mixin({
-                    //     toast: true,
-                    //     position: 'bottom-end',
-                    //     showConfirmButton: false,
-                    //     timer: 3000,
-                    //     timerProgressBar: true,
-                    //     didOpen: (toast) => {
-                    //         toast.addEventListener('mouseenter', Swal.stopTimer)
-                    //         toast.addEventListener('mouseleave', Swal.resumeTimer)
-                    //     }
-                    // })
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'bottom-end',
+                        showConfirmButton: false,
+                        timer: 3000,
+                        timerProgressBar: true,
+                        didOpen: (toast) => {
+                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                        }
+                    })
                     Toast.fire({
                         icon: 'success',
                         title: 'Product Added to Cart Successfully'
@@ -238,7 +238,7 @@
         let id = ($(this).attr("data-id"));
         let $this = $(this);
         let quantity = $this.parent().find('.qty_value').val();
-        if (quantity > 1) {
+        if (quantity < 1) {
             $.ajax({
                 method: "GET",
                 url: $('#CartDecrementFromSession').data("url"),
@@ -262,17 +262,17 @@
                     //     bodyArray.push(bodyData);
                     // });
                     // $("#bodyData").html(bodyArray);
-                    // let Toast = Swal.mixin({
-                    //     toast: true,
-                    //     position: 'bottom-end',
-                    //     showConfirmButton: false,
-                    //     timer: 3000,
-                    //     timerProgressBar: true,
-                    //     didOpen: (toast) => {
-                    //         toast.addEventListener('mouseenter', Swal.stopTimer)
-                    //         toast.addEventListener('mouseleave', Swal.resumeTimer)
-                    //     }
-                    // })
+                    let Toast = Swal.mixin({
+                        toast: true,
+                        position: 'bottom-end',
+                        showConfirmButton: false,
+                        timer: 3000,
+                        timerProgressBar: true,
+                        didOpen: (toast) => {
+                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                        }
+                    })
                     Toast.fire({
                         icon: 'success',
                         title: 'Cart Quantity Decrement'
@@ -326,17 +326,17 @@
                 //     bodyArray.push(bodyData);
                 // });
                 // $("#bodyData").html(bodyArray);
-                // let Toast = Swal.mixin({
-                //     toast: true,
-                //     position: 'bottom-end',
-                //     showConfirmButton: false,
-                //     timer: 3000,
-                //     timerProgressBar: true,
-                //     didOpen: (toast) => {
-                //         toast.addEventListener('mouseenter', Swal.stopTimer)
-                //         toast.addEventListener('mouseleave', Swal.resumeTimer)
-                //     }
-                // })
+                let Toast = Swal.mixin({
+                    toast: true,
+                    position: 'bottom-end',
+                    showConfirmButton: false,
+                    timer: 3000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                })
                 Toast.fire({
                     icon: 'success',
                     title: 'Cart Quantity Increment'
@@ -368,17 +368,17 @@
                 //     bodyArray.push(bodyData);
                 // });
                 // $("#bodyData").html(bodyArray);
-                // let Toast = Swal.mixin({
-                //     toast: true,
-                //     position: 'bottom-end',
-                //     showConfirmButton: false,
-                //     timer: 3000,
-                //     timerProgressBar: true,
-                //     didOpen: (toast) => {
-                //         toast.addEventListener('mouseenter', Swal.stopTimer)
-                //         toast.addEventListener('mouseleave', Swal.resumeTimer)
-                //     }
-                // })
+                let Toast = Swal.mixin({
+                    toast: true,
+                    position: 'bottom-end',
+                    showConfirmButton: false,
+                    timer: 3000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                })
                 Toast.fire({
                     icon: 'success',
                     title: 'Cart Product Removed'
