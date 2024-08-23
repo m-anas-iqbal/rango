@@ -163,8 +163,6 @@
             {
                 let min = $('#minPrice').val();
                 let max = $('#maxPrice').val();
-                console.log(min);
-                console.log(max);
                 $.ajax({
                     url: $('#leftSideMinMaxPriceFilter').data("url"),
                     type:'get',
@@ -216,8 +214,6 @@
             {
                 let min = $('#minPriceMobile').val();
                 let max = $('#maxPriceMobile').val();
-                console.log(min);
-                console.log(max);
                 $.ajax({
                     url: $('#compareListDelete').data("url"),
                     type:'get',

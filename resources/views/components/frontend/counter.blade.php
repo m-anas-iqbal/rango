@@ -3,7 +3,7 @@
 @php
 $specialoffer = SpecialOffer();
 @endphp
-@if($specialoffer->status == ACTIVE)
+@if(isset($specialoffer->status)&&$specialoffer->status == ACTIVE)
 
 
     <style>

@@ -1,5 +1,5 @@
-@extends('front.layouts.master')
-@section('title', isset($title) ? $title : 'Home')
+@extends('front.layouts.new-layout')
+@section('title', isset($title) ? $title : 'Checkout')
 @section('description', isset($description) ? $description : '')
 @section('keywords', isset($keywords) ? $keywords : '')
 @section('content')

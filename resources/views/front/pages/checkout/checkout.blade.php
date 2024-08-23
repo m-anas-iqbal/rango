@@ -31,7 +31,7 @@
             <div class="row">
                 <div class="col-lg-6 col-md-6">
                     <div class="checkout-form">
-                        <form method="post" {{-- action="{{ auth()->check() ? route('checkout.order') : route('guest.checkout.order') }}" --}} action="{{ route('checkout.order') }}"
+                        <form method="post" action="{{ auth()->check() ? route('checkout.order') : route('guest.checkout.order') }}"
                             id="paymentForm">
                             @csrf
                             <div class="row mt-3">
@@ -348,15 +348,15 @@
                                                 <a
                                                     href="{{ route('terms') }}" class="fw-bold">{{ __('Terms & Conditions') }}</a></label>
                                         </div>
-                                        @if (auth()->check())
+                                        {{-- @if (auth()->check()) --}}
                                             <button type="submit" id="payButton"
                                                 class="checkout-btn form-btn button button02 text-white w-100 form-btn proceed-to-checkout-btn btn my-3">{{ __('Place Order') }}</button>
                                             <button type="button" id="payButtonN"
                                                 class="checkout-btn form-btn d-none buy_now button button02 text-white w-100 form-btn proceed-to-checkout-btn my-3 btn ">{{ __('Place Order') }}</button>
-                                        @else
+                                        {{-- @else
                                             <button type="button" id = "payButton_modal" class=" checkout-btn button button02 text-white w-100 form-btn proceed-to-checkout-btn btn my-3" data-bs-toggle="modal"
                                                 data-bs-target="#loginModal">{{ __('Place Order') }}</button>
-                                        @endif
+                                        @endif --}}
                                         <p id="error_msg" style="color: red; display : none"></p>
                                     </div>
                                 </div>

@@ -80,11 +80,12 @@
                                                     @endif
                                                 </div>
                                             </td>
+                                            {{-- @dd("Asd") --}}
                                             <td  id="qty_td">
                                                 <div class="cart-quantity input-group">
-                                                    <button class="btn btn-outline-secondary qty_decrease" data-id="{{ $item->rowId }}">-</button>
-                                                    <input class="qty-input form-control text-center" type="text" value="{{ $item->qty }}" readonly />
-                                                    <button class="btn btn-outline-secondary qty_increase" data-id="{{ $item->rowId }}">+</button>
+                                                    <button class="btn btn-outline-secondary dec qtybutton qty_decrease" data-id="{{ $item->rowId }}">-</button>
+                                                    <input class="qty-input form-control text-center qty_value" type="text" value="{{ $item->qty }}" readonly />
+                                                    <button class="btn btn-outline-secondary inc qtybutton qty_increase" data-id="{{ $item->rowId }}">+</button>
                                                 </div>
                                             </td>
                                             <td >
