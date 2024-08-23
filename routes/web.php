@@ -30,7 +30,7 @@ Route::group(['middleware' => ['is_user']], function () {
     Route::get('/theme-set/{theme}', [HomeController::class, 'theme_set']);
     Route::get('locale/{lang}', [HomeController::class, 'localeSwitch'])->name('locale.switch');
     Route::get('currency/{amount}', [HomeController::class, 'currencySwitch'])->name('currency.switch');
-    Route::post('subscribe', [SubscribeController::class, 'subscribe'])->name('subscribe');
+    Route::post('subscribe', [SubscribeController::class, 'subscribeStore'])->name('subscribe');
 
     //session value store get and delete
     Route::get('do_not_subscribe', [SubscribeSessionController::class, 'doNotSubscribe'])->name('do.not.subscribe');
@@ -122,6 +122,7 @@ Route::group(['middleware' => ['is_user']], function () {
         Route::get('category/left/{id}', [ProductController::class, 'CategoryWiseProductLeft'])->name('category.product_left');
         Route::get('brand/{id}', [ProductController::class, 'BrandWiseProduct'])->name('brand.product');
         Route::get('brand/left/{id}', [ProductController::class, 'BrandWiseProductLeft'])->name('brand.product_left');
+
     });
 
     Route::get('terms/conditions', [ServiceCustomerController::class, 'termsConditions'])->name('terms.conditions');
@@ -160,4 +161,5 @@ Route::post('/ipn', [SslCommerzPaymentController::class, 'ipn']);
 Route::get('/product-safety-and-certifications', [PageController::class, 'safety'])->name('safety');
 Route::get('/terms-and-conditions', [PageController::class, 'terms'])->name('terms');
 Route::get('/privacy-policy', [PageController::class, 'privacy'])->name('privacy');
+Route::get('/return-refund-policies', [PageController::class, 'return'])->name('return');
 

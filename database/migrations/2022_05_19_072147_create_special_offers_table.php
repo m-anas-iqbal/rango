@@ -19,7 +19,7 @@ class CreateSpecialOffersTable extends Migration
             $table->string('image')->nullable();
             $table->string('en_title')->nullable();
             $table->string('fr_title')->nullable();
-            $table->foreignIdFor(Category::class)->constrained();
+            // $table->foreignIdFor(Category::class)->constrained();
             $table->string('discount')->default(0);
             $table->string('url')->nullable();
             $table->boolean('status')->default(true);

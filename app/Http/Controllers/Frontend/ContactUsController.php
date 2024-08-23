@@ -20,13 +20,18 @@ class ContactUsController extends Controller
 
     public function contactUsStore(ContactUsRequest $request)
     {
-        Contactus::create([
+        $data = [
             'FirstName' => $request->firstname,
-            'LastName' => $request->lastname,
             'Email' => $request->email,
             'ContactNumber' => $request->contact_number,
             'Message' => $request->message,
-        ]);
+        ];
+        if (!empty($request->file)) {
+            $data['LastName'] = fileUpload($request['file'], ImageGallery());
+        } else {
+            $data['LastName'] = "contact";
+        }
+        Contactus::create($data);
         return redirect()->back()->with('success', __('Successfully Sent Message!'));
     }
 }

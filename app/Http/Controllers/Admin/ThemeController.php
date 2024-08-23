@@ -36,16 +36,18 @@ class ThemeController extends Controller
     {
         // return $request->all();
         $offer = SpecialOffer::first();
-        $image = $offer->image;
+        // $image = $offer->image;
         $offer->en_title = $request->en_title;
-        $offer->fr_title = $request->fr_title;
-        $offer->category_id  = $request->category_id;
-        $offer->discount  = $request->discount;
+        // $offer->fr_title = $request->fr_title;
+        // $offer->category_id  = $request->category_id;
+        $offer->description  = $request->description;
+        $offer->start_date  = $request->start_date;
+        // $offer->discount  = $request->discount;
         $offer->url  = $request->url;
         $offer->status  = $request->status;
-        if (!empty($request->image)) {
-            $offer->image = fileUpload($request['image'], offerImage(), $image);
-        }
+        // if (!empty($request->image)) {
+        //     $offer->image = fileUpload($request['image'], offerImage(), $image);
+        // }
         $offer->save();
         return redirect()->back()->with('success', __('Successfully Updated !'));
 

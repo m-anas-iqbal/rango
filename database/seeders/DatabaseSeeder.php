@@ -45,7 +45,7 @@ class DatabaseSeeder extends Seeder
         $this->call(PagesTableSeeder::class);
         $this->call(MenusTableSeeder::class);
         $this->call(SeoSettingsTableSeeder::class);
-        // $this->call(SpecialOfferTableSeeder::class);
+        $this->call(SpecialOfferTableSeeder::class);
         // $this->call(BannerSeeder::class);
     }
 }

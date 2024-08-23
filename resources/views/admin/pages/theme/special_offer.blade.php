@@ -39,19 +39,24 @@
                                                 <input type="text" class="form-control" id="en_title" name="en_title"
                                                     required="" value="{{ $specialOffer->en_title }}">
                                             </div>
-                                            <div class="input__group mb-25">
+                                            {{-- <div class="input__group mb-25">
                                                 <label for="fr_title">{{ __('Title') }}
                                                     ({{ langString('fr', false) }})</label>
                                                 <input type="text" class="form-control" id="fr_title" name="fr_title"
                                                     required="" value="{{ $specialOffer->fr_title }}">
-                                            </div>
+                                            </div> --}}
                                             <div class="input__group mb-25">
                                                 <label for="url">{{ __('Url') }}</label>
                                                 <input type="text" class="form-control" id="url" name="url"
                                                     required="" value="{{ $specialOffer->url }}">
                                             </div>
+                                            <div class="input__group mb-25">
+                                                <label for="start_date">{{ __('Date') }}</label>
+                                                <input type="date" class="form-control" id="start_date" min="{{ date("Y-m-d") }}" name="start_date"
+                                                    required="" value="{{ $specialOffer->start_date }}">
+                                            </div>
 
-                                            @if ($specialOffer->image)
+                                            {{-- @if ($specialOffer->image)
                                                 <div class="input__group mb-25">
                                                     <label for="exampleInputEmail1">{{ __('image') }}</label>
                                                     <input type="file" class="form-control putImage5" name="image"
@@ -60,7 +65,7 @@
                                                         src="{{ asset(offerImage() . $specialOffer->image) }}"
                                                         id="target5" />
                                                 </div>
-                                            @endif
+                                            @endif --}}
                                             <div class="input__button">
                                                 <button type="submit" class="btn btn-blue">{{ __('Update') }}</button>
                                             </div>
@@ -68,7 +73,7 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-vertical__item bg-style">
-                                            <div class="input__group mb-25">
+                                            {{-- <div class="input__group mb-25">
                                                 <label for="category_id">{{ __('Category') }}</label>
                                                 <select name="category_id" id="category_id" class="form-control">
                                                     @foreach ($categories as $category)
@@ -76,11 +81,12 @@
                                                             {{ $category->en_Category_Name }}</option>
                                                     @endforeach
                                                 </select>
-                                            </div>
+                                            </div> --}}
                                             <div class="input__group mb-25">
-                                                <label for="discount">{{ __('Discount') }}</label>
-                                                <input type="text" class="form-control" id="discount" name="discount"
-                                                    required="" value="{{ $specialOffer->discount }}">
+                                                <label for="description">{{ __('Description') }}</label>
+                                                <textarea class="form-control" id="description" name="description"
+                                                required=""  cols="30" rows="10">{{ $specialOffer->description }}</textarea>
+
                                             </div>
 
                                             <div class="input__group mb-25">

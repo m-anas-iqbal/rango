@@ -29,9 +29,9 @@
                         <thead>
                         <tr>
                             <th>{{ __('Facebook')}}</th>
-                            <th>{{ __('Skype')}}</th>
+                            <th>{{ __('Pinterest')}}</th>
                             <th>{{ __('Twitter')}}</th>
-                            <th>{{ __('Linkedin')}}</th>
+                            <th>{{ __('Youtube')}}</th>
                             <th>{{ __('Instagram')}}</th>
                             <th>{{ __('Action')}}</th>
                         </tr>

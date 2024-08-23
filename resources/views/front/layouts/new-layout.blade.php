@@ -18,14 +18,14 @@
             <div class="wrap text-center small">
                 Email: <a href="mailto:info@rangocart.com">info@rangocart.com</a>
                 |
-                Call: <a href="tel:">123 123 1231</a>
+                Call: <a href="tel:+1 (437) 985-3601">+1 (437) 985-3601</a>
             </div>
             <div class="wrap d-flex gap-4 justify-content-center justify-content-md-end mt-2 mt-md-0">
-                <a href="{{getSocialLink()->Twitter}}"><i class="fa-brands fa-x-twitter"></i></a>
-                <a href="{{getSocialLink()->Facebook}}"><i class="fa-brands fa-facebook-f"></i></a>
-                <a href="{{getSocialLink()->Instagram}}"><i class="fa-brands fa-instagram"></i></a>
-                <a href="{{getSocialLink()->Linkedin}}"><i class="fa-brands fa-youtube"></i></a>
-                <a href="{{getSocialLink()->Skype}}"><i class="fa-brands fa-pinterest"></i></a>
+                <a href="{{getSocialLink()->Twitter}}" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
+                <a href="{{getSocialLink()->Facebook}}" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="{{getSocialLink()->Instagram}}" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                <a href="{{getSocialLink()->Linkedin}}" target="_blank"><i class="fa-brands fa-youtube"></i></a>
+                <a href="{{getSocialLink()->Skype}}" target="_blank"><i class="fa-brands fa-pinterest"></i></a>
                 @if (Auth::user())
                     <div class="dropdown">
                         <button class="bg-transparent text-white border-0 dropdown-toggle" type="button"
@@ -71,8 +71,15 @@
                 <li class="nav-item">
                     <a class="" href="{{ route('front') }}">Home</a>
                 </li>
-                <li class="nav-item">
-                    <a class="" href="{{ route('all.product') }}">Products</a>
+                <li class="nav-item dropdown">
+                    <a class="dropdown-toggle" href="{{ route('all.product') }}" role="button" id="navbarDropdown" data-bs-toggle="dropdown" aria-expanded="false">Categories</a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        @forelse (Category_Des_Icon() as $item)
+                        <li><a class="dropdown-item" href="{{ route('category.product', $item->id) }}">{{ langConverter($item->en_Category_Name, $item->fr_Category_Name) }}</a></li>
+                    @empty
+                    @endforelse
+
+                      </ul>
                 </li>
                 <li class="nav-item">
                     <a class="" href="{{ route('about.us') }}">About</a>
@@ -95,8 +102,14 @@
                 <li class="nav-item">
                     <a class="" href="{{ route('front') }}">Home</a>
                 </li>
-                <li class="nav-item">
-                    <a class="" href="{{ route('all.product') }}">Categories</a>
+                <li class="nav-item dropdown">
+                    <a class="" href="{{ route('all.product') }}" role="button" id="navbarDropdown" data-bs-toggle="dropdown" aria-expanded="false">Categories</a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        @forelse (Category_Des_Icon() as $item)
+                            <li><a class="dropdown-item" href="{{ route('category.product', $item->id) }}">{{ langConverter($item->en_Category_Name, $item->fr_Category_Name) }}</a></li>
+                        @empty
+                        @endforelse
+                    </ul>
                 </li>
                 <li class="nav-item">
                     <a class="" href="{{ route('about.us') }}">About</a>
@@ -108,7 +121,8 @@
                     <a class="" href="#">Blog</a>
                 </li> --}}
                 <li>
-                    <a href=""><i class="fa-solid fa-cart-shopping r-text-blue fs-4"></i></a>
+                    <a href="{{ route('cart.content') }}" class="position-relative cart_icon"><span class="badge bg-success count_checkout totalCountItem">{{ Cart::count() }}</span><i
+                        class="fa-solid fa-cart-shopping r-text-blue fs-4"></i></a>
                 </li>
             </ul>
         </div>

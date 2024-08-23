@@ -137,6 +137,7 @@ input:focus-visible {
     left: 100vw;
     padding: 20px;
     backdrop-filter: blur(5px);
+    z-index: 9;
 }
 
 .mobile-nav li {
@@ -190,10 +191,10 @@ input:focus-visible {
 
 .cate_card img {
     right: -52px;
-    width: 15vw;
+    width: 10vw;
     aspect-ratio: 1;
     object-fit: contain;
-    top: 8vh;
+    top: 6vh;
 }
 hr.start-border {
     position: relative;
@@ -482,4 +483,96 @@ hr.start-border::before {
 }
 .social-media li a{
     color: #fff !important;
+}
+.cat_card h1 {
+    font-size: 20px;
+}
+.newsletter {
+    background-color: #ffffff00;
+    color: #fff;
+    padding: 15px;
+    border-radius: 40px;
+    &:focus{
+        box-shadow: unset;
+        background-color: #ffffff00;
+        color: #fff;
+    }
+
+}
+.btn-newsletter{
+    background-color: var(--color-yellow);
+    border-radius: 40px;
+    color: #fff;
+    padding: 15px 25px;
+    margin-left: 15px;
+    &:focus{
+        box-shadow: unset !important;
+        background-color: var(--color-yellow);
+        color: #fff;
+    }
+}
+.prev {
+    position: absolute;
+    top: 50%;
+    left: -5%;
+    font-size: 20px;
+    color: #fff;
+    transform: translateY(-50%);
+    width: fit-content;
+    background-color: var(--color-blue);
+    border-radius: 50%;
+    padding: 7px 15px;
+    & :hover{
+        color: #fff;
+    }
+}
+.next {
+    position: absolute;
+    top: 50%;
+    right: -5%;
+    font-size: 20px;
+    color: #fff;
+    transform: translateY(-50%);
+    width: fit-content;
+    background-color: var(--color-blue);
+    border-radius: 50%;
+    padding: 7px 15px;
+    & :hover{
+        color: #fff;
+    }
+}
+
+#terms h2 {
+    font-size: 20px !important;
+}
+#terms h3 {
+    font-size: 17px !important;
+    margin: 25px 0px 0px !important;
+}
+.text-underline{
+    text-decoration: underline;
+}
+.checkout-form .form-group, .checkout-form .form-select{
+    margin-top: 10px;
+}
+@media (max-width : 500px) {
+    .cate_card img {
+        right: 0px;
+        width: 25vw;
+        aspect-ratio: 1;
+        object-fit: contain;
+        top: 1vh;
+    }
+    .count_checkout {
+        position: absolute;
+        right: 0;
+        top: 0;
+        margin: -3px -15px;
+        border-radius: 50%;
+        height: 20px;
+        width: 20px;
+        text-align: center;
+        line-height: 20px;
+        font-size: 14px;
+    }
 }

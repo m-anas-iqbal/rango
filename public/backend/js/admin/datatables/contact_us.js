@@ -11,6 +11,11 @@
                     name: 'Name'
                 },
                 {
+                    data: 'image',
+                    name: 'image',
+                    orderable: false
+                },
+                {
                     data: 'Email',
                     name: 'Email'
                 },

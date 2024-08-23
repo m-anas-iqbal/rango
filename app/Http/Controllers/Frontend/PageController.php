@@ -29,4 +29,7 @@ class PageController extends Controller
     public function privacy(){
         return view('front.pages.privacy-policy');
     }
+    public function return(){
+        return view('front.pages.return');
+    }
 }

@@ -24,6 +24,17 @@
             </div>
         </div>
     </section>
+    <section class="text-center my-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2>{{$category_m->en_Category_Name }}</h2>
+                    <p class="mb-0">{{$category_m->en_Description }}</p>
+                    <hr>
+                </div>
+            </div>
+        </div>
+    </section>
 <!-- Product Area Start -->
 
 {{-- @dd($products) --}}
@@ -37,9 +48,9 @@
                         @forelse ($products as $product)
 
                         <div class="col-md-3 p-3">
-                            <div class="card text-center p-3 shadow rounded-10px border-0">
+                            <div class="card text-center p-3 shadow rounded-10px h-100 border-0">
                                 <img src="{{ asset(ProductImage() . $product->Primary_Image) }}" alt="product" class="img-fluid" >
-                                <h4 class="w-fit mx-auto"><a class="product-link"
+                                <h4 class="w-fit mx-auto mt-3 fs-6"><a class="product-link"
                                     href="{{ route('single.product', $product->en_Product_Slug) }}">{{ langConverter($product->en_Product_Name, $product->fr_Product_Name) }}</a></h4>
                                 <div class="d-flex justify-content-center">
 

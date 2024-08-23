@@ -25,7 +25,7 @@
     </div>
 </section>
 <!-- checkout page area start here  -->
-<section class="page-content section">
+<section class="page-content section mt-3">
     <div class="checkout">
         <div class="container">
             <div class="row">
@@ -34,13 +34,13 @@
                         <form method="post" {{-- action="{{ auth()->check() ? route('checkout.order') : route('guest.checkout.order') }}" --}} action="{{ route('checkout.order') }}"
                             id="paymentForm">
                             @csrf
-                            <div class="row">
+                            <div class="row mt-3">
                                 @if (!auth()->check())
                                     <div class="col-lg-12 mb-3">
                                         <div
                                             class="checkout-page-login-box d-flex justify-content-between align-items-center mb-30">
                                             <h2 class="mb-0 text-capitalize fw-bold">Returning buyer? Please login:</h2>
-                                            <button type="button" class="primary-btn" data-bs-toggle="modal"
+                                            <button type="button" class="primary-btn btn btn-primary" data-bs-toggle="modal"
                                                 data-bs-target="#loginModal">Login</button>
                                         </div>
                                     </div>
@@ -173,7 +173,7 @@
                                     @enderror
                                 </div>
                             </div>
-                            <div class="payment-method">
+                            <div class="payment-method mt-5">
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <h2 class="checkout-title">{{ __('Payment Method') }}</h2>
@@ -194,7 +194,7 @@
                                                     </div>
                                                 </div>
                                             @else
-                                                @if ($payment->slug == 'stripe')
+                                                {{-- @if ($payment->slug == 'stripe')
                                                     <div class="form-group">
                                                         <div class="form-check card-check">
                                                             <input class="form-check-input" type="radio"
@@ -226,7 +226,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                @endif
+                                                @endif --}}
                                                 {{-- @if ($payment->slug == 'sslcommerz')
                                                     <div class="form-group">
                                                         <div class="form-check card-check">
@@ -249,8 +249,8 @@
                                                             <label class="form-check-label"
                                                                 for="paypal">{{ $payment->name }}</label>
                                                             <div class="input-icon">
-                                                                <img src="{{ asset(IMG_PAYMENT_GATEWAY . $payment->image) }}"
-                                                                    alt="paypal" />
+                                                                {{-- <img src="{{ asset(IMG_PAYMENT_GATEWAY . $payment->image) }}"
+                                                                    alt="paypal" /> --}}
                                                             </div>
                                                         </div>
                                                     </div>
@@ -325,7 +325,7 @@
                                             @endif
                                         @endforeach
 
-                                        @if (env('COD_STATUS') == '1')
+                                        {{-- @if (env('COD_STATUS') == '1')
                                             <div class="form-group">
                                                 <div class="form-check card-check">
                                                     <input class="form-check-input" type="radio" name="payment"
@@ -338,7 +338,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        @endif
+                                        @endif --}}
 
                                         <div class="form-group form-check terms-agree">
                                             <input type="checkbox" class="form-check-input" id="agree"
@@ -346,18 +346,18 @@
                                             <label class="form-check-label"
                                                 for="agree">{{ __('By clicking the button you agree to our') }}
                                                 <a
-                                                    href="{{ route('terms.conditions') }}">{{ __('Terms & Conditions') }}</a></label>
+                                                    href="{{ route('terms') }}" class="fw-bold">{{ __('Terms & Conditions') }}</a></label>
                                         </div>
                                         @if (auth()->check())
                                             <button type="submit" id="payButton"
-                                                class="checkout-btn form-btn">{{ __('Place Order') }}</button>
+                                                class="checkout-btn form-btn button button02 text-white w-100 form-btn proceed-to-checkout-btn btn my-3">{{ __('Place Order') }}</button>
                                             <button type="button" id="payButtonN"
-                                                class="checkout-btn form-btn d-none buy_now">{{ __('Place Order') }}</button>
+                                                class="checkout-btn form-btn d-none buy_now button button02 text-white w-100 form-btn proceed-to-checkout-btn my-3 btn ">{{ __('Place Order') }}</button>
                                         @else
-                                            <button type="button" class="checkout-btn" data-bs-toggle="modal"
+                                            <button type="button" id = "payButton_modal" class=" checkout-btn button button02 text-white w-100 form-btn proceed-to-checkout-btn btn my-3" data-bs-toggle="modal"
                                                 data-bs-target="#loginModal">{{ __('Place Order') }}</button>
                                         @endif
-
+                                        <p id="error_msg" style="color: red; display : none"></p>
                                     </div>
                                 </div>
                             </div>
@@ -384,7 +384,7 @@
                         </form>
                     </div>
                 </div>
-                <div class="col-lg-6 col-md-6">
+                <div class="col-lg-6 col-md-6 mt-3">
                     <div class="cart-summary">
                         {{-- <div class="summary-top d-flex"> --}}
                             {{-- <h2>{{ __('Cart Summary') }}</h2> --}}
@@ -459,8 +459,8 @@
                                 </div>
                             </li> --}}
                         </ul>
-                        <div class="total-amount">
-                            <h3>
+                        <div class="total-amount text-center text-white mt-3 button02 p-3 rounded-3">
+                            <h3 class="fs-2 mb-0">
                                 {{ __('Total Cost') }}
                                 <span class="float-right" id="total-cost-curr">
                                     {{ currencyConverter(\Cart::subtotal() + allsetting()['shipping_charge'] + tax_amount(\Cart::subtotal()) - Session::get('CouponAmount')) }}
@@ -480,8 +480,27 @@
 <div id="get-tax-amount" data-url="{{ route('checkout.get_tax_amount') }}"></div>
 <!-- checkout page area end here  -->
 @push('post_script')
+<script>
+
+    setTimeout(function() {
+        let totalCost = $('#total-cost-curr').html();
+    let threshold = 50;
+    totalCost = totalCost.replace('$', '');
+    console.log(totalCost)
+    if(totalCost < threshold){
+        $('#payButton_modal, #payButton, #payButtonN').addClass('disabled');
+        $('#error_msg').css('display', "block")
+        $('#error_msg').html('Shipping is available for orders over CAD 50. Please add more items to your cart to proceed with shipping.')
+    }
+    else{
+        $('#payButton_modal, #payButton, #payButtonN').remove('disabled');
+        $('#error_msg').html('')
+    }
+            }, 3000);
+</script>
     <script src="https://js.stripe.com/v3/"></script>
     <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
     <script src="{{ asset('frontend/assets/js/pages/checkout.js') }}"></script>
+
 @endpush
 @endsection

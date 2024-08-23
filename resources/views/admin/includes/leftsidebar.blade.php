@@ -5,9 +5,11 @@
             <i class="fa fa-close"></i>
         </button>
     </div>
-    <div class="sidebar__brand">
+    <div class="sidebar__brand my-5">
         <a href="{{ route('admin.dashboard') }}">
-            <img src="{{ asset('frontend/assets/images/logo/logo.png') }}" alt="icon">
+            <h2 class="text-white fs-2">
+                Rango Cart
+            </h2>
         </a>
     </div>
     <ul id="sidebar-menu" class="sidebar__menu">
@@ -36,12 +38,12 @@
                             <span>{{ __('Add Admin') }}</span>
                         </a>
                     </li>
-                    <li class="{{ isset($submenu) && $submenu == 'roles' ? 'mm-active' : '' }}">
+                    {{-- <li class="{{ isset($submenu) && $submenu == 'roles' ? 'mm-active' : '' }}">
                         <a href="{{ route('admin.role_list') }}">
                             <i class="fa fa-circle"></i>
                             <span>{{ __('Roles') }}</span>
                         </a>
-                    </li>
+                    </li> --}}
                 </ul>
             </li>
         @endcanany
@@ -255,7 +257,7 @@
                 </ul>
             </li>
         @endcanany --}}
-        {{-- @canany(['crm-list'])
+        @canany(['crm-list'])
             <li class="{{ isset($menu) && $menu == 'cms' ? 'mm-active' : '' }}">
                 <a class="has-arrow" href="#">
                     <i class="fas fa-blog"></i>
@@ -276,15 +278,15 @@
                     </li>
                 </ul>
             </li>
-        @endcanany --}}
-        @canany(['cms-list'])
+        @endcanany
+        {{-- @canany(['cms-list'])
             <li class="{{ isset($submenu) && $submenu == 'contact_us' ? 'mm-active' : '' }}">
                 <a href="{{ route('admin.contact.us.index') }}">
                     <i class="fa fa-circle"></i>
                     <span>{{ __('Contact Us') }}</span>
                 </a>
             </li>
-        @endcanany
+        @endcanany --}}
         @canany(['user-list'])
             <li class="{{ isset($menu) && $menu == 'users' ? 'mm-active' : '' }}">
                 <a class="has-arrow" href="#">
@@ -307,6 +309,10 @@
                 <i class="fa fa-circle"></i>
                 <span>{{ __('Social Link') }}</span>
             </a>
+        </li>
+        <li class="{{ isset($submenu) && $submenu == 'special_offer' ? 'mm-active' : '' }}">
+
+            <a href="{{ route('admin.theme.special.offer') }}"> <i class="fa fa-circle"></i>{{ __('Special Offer') }}</a>
         </li>
         @endcanany
         {{-- @canany(['cms-list'])

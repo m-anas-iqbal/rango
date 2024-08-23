@@ -25,7 +25,7 @@ class ContactUsRequest extends FormRequest
     {
         return [
            'firstname'=>'required',
-           'lastname'=>'required',
+        //    'lastname'=>'required',
            'email'=>'required|email',
            'contact_number'=>'required',
            'message'=>'required',

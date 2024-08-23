@@ -29,6 +29,7 @@
                         <thead>
                         <tr>
                             <th>{{ __('Name')}}</th>
+                            <th>{{ __('Image')}}</th>
                             <th>{{ __('Email')}}</th>
                             <th>{{ __('Contact Number')}}</th>
                             <th>{{ __('Message')}}</th>
@@ -55,7 +56,8 @@
                     </div>
                     <div class="modal-body">
                         <p>
-                            <b>{{__('Name:')}}</b> {{$cl->FirstName.' '.$cl->LastName}}<br>
+                            <b>{{__('Name:')}}</b> {{$cl->FirstName}}<br>
+                            <b>{{__('Image:')}}</b><img src={{ ImageGallery().$cl->LastName }} alt=""><br>
                             <b>{{__('Email:')}}</b> {{$cl->Email}}<br>
                             <b>{{__('Contact Number:')}}</b> {{$cl->ContactNumber}}<br>
                             <b>{{__('Message:')}}</b><br>

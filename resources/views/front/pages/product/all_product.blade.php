@@ -40,6 +40,12 @@
             </div>
         </div>
     </section>
+    {{-- <section>
+        <div class="text-center">
+            <h2>{{$en_Category_Name}}</h2>
+            <p>{{$en_Description}}</p>
+        </div>
+    </section> --}}
     <section class="products">
         <div class="container">
             <div class="container-fluid">

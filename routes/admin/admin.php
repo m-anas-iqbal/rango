@@ -50,6 +50,7 @@ Route::group(['prefix' => 'subscribe'], function () {
     Route::get('/list', [SubscribeController::class, 'index'])->name('admin.subscribe.index');
     Route::post('promote', [SubscribeController::class, 'promote'])->name('admin.subscribe.promote')->middleware(['isDemo']);;
 });
+Route::post('/product/remove-media', [ProductController::class, 'removeMedia'])->name('product.remove.media');
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'is_admin', 'en.locale'], 'as' => 'admin.'], function () {
 

@@ -1,4 +1,11 @@
 @section('counter')
+
+@php
+$specialoffer = SpecialOffer();
+@endphp
+@if($specialoffer->status == ACTIVE)
+
+
     <style>
         #countdown {
             display: flex;
@@ -24,6 +31,16 @@
             border-radius: 5px
         }
     </style>
+    <div class="py-5 r-bg-blue text-white parallax"
+    style="--bg-image:url('https://www.proglobalevents.com/wp-content/uploads/bigstock-People-Planning-Concept-Entre-327380749-1-1024x576.jpg')">
+    <div class="container py-5">
+        <div class=" mb-5 text-center" id="msg_counter">
+            <h2>
+                It's Almost Here
+            </h2>
+            <p class="mb-0">Stay tuned for exciting news toys Arriving soon! </p>
+            <p>Count Down Begins now</p>
+        </div>
     <div id="countdown">
         <div class="cd">
             <span id="days"></span> Days
@@ -39,9 +56,15 @@
         </div>
     </div>
 
-    <script>
-        // Set the date we're counting down to
-        var countDownDate = new Date("Jul 12, 2024 02:33:00").getTime();
+</div>
+</div>
+@php
+$specialoffer = SpecialOffer();
+@endphp
+<script>
+    let msg_counter = document.getElementById('msg_counter');
+    // Set the date we're counting down to
+        var countDownDate = new Date("{{ $specialoffer->start_date }}").getTime();
 
         // Update the count down every 1 second
         var x = setInterval(function() {
@@ -69,13 +92,14 @@
                 clearInterval(x);
                 document.getElementById("countdown").innerHTML = `
                 <div class="wrap">
-                <h4>Lorem, ipsum dolor.</h4>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor mollitia, aperiam est quos cum nisi explicabo, id
-                    debitis officia necessitatibus, iste a rem non nesciunt.</p>
-                <a href="" class="btn btn-outline-light">Click Here</a>
+                <h4>{{ $specialoffer->en_title }}</h4>
+                <p{{ $specialoffer->description }}</p>
+                <a href="{{ $specialoffer->url }}" class="btn btn-outline-light">Click Here</a>
                 </div>
                 `;
+                msg_counter.classlist.add('d-none');
             }
         }, 1000);
     </script>
+@endif
 @endsection
