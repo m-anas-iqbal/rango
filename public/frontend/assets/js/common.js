@@ -172,8 +172,8 @@
                     $('.totalCountItem').html(data[0]);
                     $('.totalAmount').html(currencyPrice(data[1]));
                     // let Img = $('#productImgAsset').data('url');
-                    let obj = data[2];
-                    $this.parent().find('.qty_value').val(data[0])
+                    // let obj = data[2];
+                    // $this.parent().find('.qty_value').val(data[0])
                     // let bodyData = '';
                     // let bodyArray = [];
                     // let i = 1;
@@ -252,9 +252,9 @@
                     $(this).closest('tr').find('.SubTotalAmount').html(currencyPrice(data[3]));
                     $('.totalCountItem').html(data[0]);
                     $('.totalAmount').html(currencyPrice(data[1]));
-                    let Img = $('#productImgAsset').data('url');
-                    let obj = data[2];
-                    $this.parent().find('.qty_value').val(data[0])
+                    // let Img = $('#productImgAsset').data('url');
+                    // let obj = data[2];
+                    // $this.parent().find('.qty_value').val(data[0])
                     // let bodyData = '';
                     // let bodyArray = [];
                     // let i = 1;
@@ -316,8 +316,8 @@
                 $(this).closest('tr').find('.SubTotalAmount').html(currencyPrice(data[3]));
                 $('.totalCountItem').html(data[0]);
                 $('.totalAmount').html(currencyPrice(data[1]));
-                let Img = $('#productImgAsset').data('url');
-                $this.parent().find('.qty_value').val(data[0])
+                // let Img = $('#productImgAsset').data('url');
+                // $this.parent().find('.qty_value').val(data[0])
                 // let obj = data[2];
                 // let bodyData = '';
                 // let bodyArray = [];
@@ -359,7 +359,7 @@
                 // let currsym = currencySymbol();
                 $('.totalCountItem').html(data[0]);
                 $('.totalAmount').html(currencyPrice(data[1]));
-                let Img = $('#productImgAsset').data('url');
+                // let Img = $('#productImgAsset').data('url');
                 // let obj = data[2];
                 // let bodyData = '';
                 // let bodyArray = [];

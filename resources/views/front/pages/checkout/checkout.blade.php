@@ -443,7 +443,7 @@
                             <li class="list-group-item">
                                 <div class="d-flex justify-content-between">
                                     <p class="fw-bold mb-0">Sales Tax : </p>
-                                    <p class="fw-bold mb-0"><span>{{ currencyConverter(tax_amount(\Cart::subtotal())) }}</span></p>
+                                    <p class="fw-bold mb-0"><span id="tax-show-curr">{{ currencyConverter(tax_amount(\Cart::subtotal())) }}</span></p>
                                 </div>
                             </li>
                             <li class="list-group-item">
