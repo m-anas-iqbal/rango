@@ -568,6 +568,9 @@ hr.start-border::before {
     line-height: 60px;
     z-index: 999;
 }
+.slide-arrow{
+    color: #fff;
+}
 @media (max-width : 500px) {
     .cate_card img {
         right: 0px;

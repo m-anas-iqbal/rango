@@ -91,6 +91,10 @@
                 <li class="nav-item">
                     <a class="" href="{{ route('contact.us') }}">Contact</a>
                 </li>
+                <li>
+                    <a href="{{ route('cart.content') }}" class="position-relative cart_icon"><span class="badge bg-success count_checkout totalCountItem">{{ Cart::count() }}</span><i
+                        class="fa-solid fa-cart-shopping r-text-blue fs-4"></i></a>
+                </li>
                 {{-- <li class="nav-item">
                     <a class="" href="#">Blog</a>
                 </li> --}}
