@@ -604,3 +604,22 @@ hr.start-border::before {
         font-size: 13px;
     }
 }
+.text_slide > div {
+    display: none;
+}
+
+.text_slide > div.active {
+    display: block;
+    animation: slide 1s ease-in-out;
+}
+
+@keyframes slide {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

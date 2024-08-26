@@ -16,10 +16,14 @@
     <section class="topbar r-bg-red text-white py-2">
         <div class="d-flex justify-content-between container px-md-0 px-5">
             <div class="wrap text-center small d-md-block d-none">
-
-                Email: <a href="mailto:info@rangocart.com">info@rangocart.com</a>
-                |
-                Call: <a href="tel:+1 (437) 985-3601">+1 (437) 985-3601</a>
+                <div class="text_slide">
+                    <div>
+                        Discover Unbeatable prices on eco-friendly educational toys.
+                    </div>
+                    <div>
+                        Shipping available for orders above CAD 50
+                    </div>
+                </div>
             </div>
             <div class="wrap d-flex gap-4 justify-content-center justify-content-md-end mt-2 mt-md-0">
 
@@ -282,11 +286,32 @@
             });
         });
     </script>
-    <script>
-        $(document).ready(function() {
-            if(document.innerWidth === 500){}
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const slides = document.querySelectorAll(".text_slide > div");
+        let currentSlide = 0;
+
+        // Function to show the current slide
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.remove("active");
+                if (i === index) {
+                    slide.classList.add("active");
+                }
+            });
         }
+
+        // Show the first slide initially
+        showSlide(currentSlide);
+
+        // Change slides every 3 seconds
+        setInterval(() => {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }, 3000); // 3000ms = 3 seconds
+    });
     </script>
+
 </body>
 
 </html>
