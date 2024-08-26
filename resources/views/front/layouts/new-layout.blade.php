@@ -14,6 +14,14 @@
     <!-- Preloader Area End -->
 
     <section class="topbar r-bg-red text-white py-2">
+        <div class="text_slide text-center d-md-none d-block">
+            <div>
+                Discover Unbeatable prices on eco-friendly educational toys.
+            </div>
+            <div>
+                Shipping available for orders above CAD 50
+            </div>
+        </div>
         <div class="d-flex justify-content-between container px-md-0 px-5">
             <div class="wrap text-center small d-md-block d-none">
                 <div class="text_slide">
