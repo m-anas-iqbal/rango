@@ -25,10 +25,10 @@
         <div class="d-flex justify-content-between container px-md-0 px-5">
             <div class="wrap text-center small d-md-block d-none">
                 <div class="text_slide">
-                    <div>
+                    <div class="fs-12">
                         Discover Unbeatable prices on eco-friendly educational toys.
                     </div>
-                    <div>
+                    <div class="fs-12">
                         Shipping available for orders above CAD 50
                     </div>
                 </div>
