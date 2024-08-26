@@ -14,13 +14,13 @@
     <!-- Preloader Area End -->
 
     <section class="topbar r-bg-red text-white py-2">
-        <div class="d-md-flex justify-content-between container">
-            <div class="wrap text-center small">
+        <div class="d-flex justify-content-between container px-md-0 px-5">
+            {{-- <div class="wrap text-center small">
 
-                {{-- Email: <a href="mailto:info@rangocart.com">info@rangocart.com</a>
+                Email: <a href="mailto:info@rangocart.com">info@rangocart.com</a>
                 |
-                Call: <a href="tel:+1 (437) 985-3601">+1 (437) 985-3601</a> --}}
-            </div>
+                Call: <a href="tel:+1 (437) 985-3601">+1 (437) 985-3601</a>
+            </div> --}}
             <div class="wrap d-flex gap-4 justify-content-center justify-content-md-end mt-2 mt-md-0">
 
                 {{-- <a href="https://wa.me/14379853601" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
@@ -57,6 +57,11 @@
                 @else
                     <a href="{{ route('login') }}">My Account</a>
                 @endif
+
+            </div>
+            <div class="d-md-none d-flex align-items-center">
+                <a href="{{ route('cart.content') }}" class="position-relative cart_icon"><span class="badge bg-success count_checkout totalCountItem">{{ Cart::count() }}</span><i
+                    class="fa-solid fa-cart-shopping r-text-yellow fs-4"></i></a>
             </div>
         </div>
     </section>
