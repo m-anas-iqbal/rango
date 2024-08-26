@@ -15,12 +15,12 @@
 
     <section class="topbar r-bg-red text-white py-2">
         <div class="d-flex justify-content-between container px-md-0 px-5">
-            {{-- <div class="wrap text-center small">
+            <div class="wrap text-center small d-md-block d-none">
 
                 Email: <a href="mailto:info@rangocart.com">info@rangocart.com</a>
                 |
                 Call: <a href="tel:+1 (437) 985-3601">+1 (437) 985-3601</a>
-            </div> --}}
+            </div>
             <div class="wrap d-flex gap-4 justify-content-center justify-content-md-end mt-2 mt-md-0">
 
                 {{-- <a href="https://wa.me/14379853601" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
