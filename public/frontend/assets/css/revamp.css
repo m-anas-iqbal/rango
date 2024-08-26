@@ -600,4 +600,7 @@ hr.start-border::before {
             font-size: 14px;
         }
     }
+    .cat_card h1 {
+        font-size: 14px;
+    }
 }

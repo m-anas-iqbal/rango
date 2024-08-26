@@ -32,7 +32,7 @@
     <div class="row">
         @forelse (Category_Des_Icon() as $item)
             <div class="col-md-6 p-4">
-                <a class="card p-5 cat_card rounded-20px" href="{{ route('category.product', $item->id) }}">
+                <a class="card p-md-5 p-3 cat_card rounded-20px" href="{{ route('category.product', $item->id) }}">
                     <h1 class="fw-bold py-3 text-white mb-0">
                         {{ langConverter($item->en_Category_Name, $item->fr_Category_Name) }}</h1>
                     <img src="{{ asset(CategoryImage() . $item->Category_Icon) }}"

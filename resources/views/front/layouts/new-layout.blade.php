@@ -16,18 +16,20 @@
     <section class="topbar r-bg-red text-white py-2">
         <div class="d-md-flex justify-content-between container">
             <div class="wrap text-center small">
-                Email: <a href="mailto:info@rangocart.com">info@rangocart.com</a>
+
+                {{-- Email: <a href="mailto:info@rangocart.com">info@rangocart.com</a>
                 |
-                Call: <a href="tel:+1 (437) 985-3601">+1 (437) 985-3601</a>
+                Call: <a href="tel:+1 (437) 985-3601">+1 (437) 985-3601</a> --}}
             </div>
             <div class="wrap d-flex gap-4 justify-content-center justify-content-md-end mt-2 mt-md-0">
-                <a href="https://wa.me/14379853601" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+
+                {{-- <a href="https://wa.me/14379853601" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
 
                 <a href="{{getSocialLink()->Twitter}}" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
                 <a href="{{getSocialLink()->Facebook}}" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
                 <a href="{{getSocialLink()->Instagram}}" target="_blank"><i class="fa-brands fa-instagram"></i></a>
                 <a href="{{getSocialLink()->Linkedin}}" target="_blank"><i class="fa-brands fa-youtube"></i></a>
-                <a href="{{getSocialLink()->Skype}}" target="_blank"><i class="fa-brands fa-pinterest"></i></a>
+                <a href="{{getSocialLink()->Skype}}" target="_blank"><i class="fa-brands fa-pinterest"></i></a> --}}
                 @if (Auth::user())
                     <div class="dropdown">
                         <button class="bg-transparent text-white border-0 dropdown-toggle" type="button"
