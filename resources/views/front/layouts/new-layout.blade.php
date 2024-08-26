@@ -21,6 +21,8 @@
                 Call: <a href="tel:+1 (437) 985-3601">+1 (437) 985-3601</a>
             </div>
             <div class="wrap d-flex gap-4 justify-content-center justify-content-md-end mt-2 mt-md-0">
+                <a href="https://wa.me/14379853601" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+
                 <a href="{{getSocialLink()->Twitter}}" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
                 <a href="{{getSocialLink()->Facebook}}" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
                 <a href="{{getSocialLink()->Instagram}}" target="_blank"><i class="fa-brands fa-instagram"></i></a>
@@ -61,12 +63,14 @@
             <a class="navbar-brand" href="{{ route('front') }}"><img
                     src="{{ asset('frontend/assets/images/logo/logo.png') }}" class="img-fluid logo"
                     alt="logo rango"></a>
+
             <button class="btn d-md-none btn-mobile-nav"><i class="fa-solid fa-bars-staggered"></i></button>
             <div class="searchGroup d-none d-md-flex">
                 {{-- <form  action="{{ route('category.search') }}" method="get" class="searchGroup d-none d-md-flex"> --}}
                 <input type="text" placeholder="Search" id="searchBar" class="small">
                 <button class=""><i class="fa-solid fa-magnifying-glass"></i></button>
             </div>
+
             <ul class="list-unstyled gap-4 m-0 d-none d-md-flex">
                 <li class="nav-item">
                     <a class="" href="{{ route('front') }}">Home</a>
@@ -91,10 +95,15 @@
                     <a class="" href="#">Blog</a>
                 </li> --}}
                 <li>
-                    <a href="{{ route('cart.content') }}" class="position-relative cart_icon"><span class="badge bg-success count_checkout totalCountItem">{{ Cart::count() }}</span><i
-                            class="fa-solid fa-cart-shopping r-text-blue fs-4"></i></a>
+
                 </li>
             </ul>
+
+        </div>
+        <div class="searchGroup d-flex w-100 d-md-none mb-2 mb-md-0">
+            {{-- <form  action="{{ route('category.search') }}" method="get" class="searchGroup d-none d-md-flex"> --}}
+            <input type="text" placeholder="Search" id="searchBar" class="small">
+            <button class=""><i class="fa-solid fa-magnifying-glass"></i></button>
         </div>
         <div class="mobile-nav">
             <p class="mobile-close position-absolute end-0 top-0 m-3 fs-1 fw-bold text-danger">✕</p>
@@ -104,7 +113,7 @@
                 </li>
                 <li class="nav-item dropdown">
                     <a class="" href="{{ route('all.product') }}" role="button" id="navbarDropdown" data-bs-toggle="dropdown" aria-expanded="false">Categories</a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <ul class="dropdown-menu menu_item_mobile" aria-labelledby="navbarDropdown">
                         @forelse (Category_Des_Icon() as $item)
                             <li><a class="dropdown-item" href="{{ route('category.product', $item->id) }}">{{ langConverter($item->en_Category_Name, $item->fr_Category_Name) }}</a></li>
                         @empty
@@ -261,6 +270,11 @@
                 $(this).css('background-color', color); // Apply color to the card
             });
         });
+    </script>
+    <script>
+        $(document).ready(function() {
+            if(document.innerWidth === 500){}
+        }
     </script>
 </body>
 

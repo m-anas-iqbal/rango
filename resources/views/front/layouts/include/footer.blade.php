@@ -1,3 +1,10 @@
+<section id="chat">
+    <a href="https://wa.me/14379853601" target="_blank">
+        <div class="r-bg-red chat_btn position-fixed end-0 bottom-0 m-4">
+            <span><i class="fas fa-comment-dots"></i></span>
+        </div>
+    </a>
+</section>
 <footer class="r-bg-gradient">
     <div class="container">
         <div class="row align-items-center text-white pt-4">

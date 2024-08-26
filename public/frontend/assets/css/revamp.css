@@ -555,6 +555,19 @@ hr.start-border::before {
 .checkout-form .form-group, .checkout-form .form-select{
     margin-top: 10px;
 }
+.chat_btn{
+    display: flex;
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    color: #fff;
+    font-size: 30px;
+    line-height: 60px;
+    z-index: 999;
+}
 @media (max-width : 500px) {
     .cate_card img {
         right: 0px;
@@ -574,5 +587,14 @@ hr.start-border::before {
         text-align: center;
         line-height: 20px;
         font-size: 14px;
+    }
+    ul.dropdown-menu.show {
+        position: relative !important;
+        transform: unset !important;
+        background: transparent;
+        border: none;
+        & a{
+            font-size: 14px;
+        }
     }
 }
