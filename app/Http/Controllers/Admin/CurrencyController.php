@@ -25,7 +25,7 @@ class CurrencyController extends Controller
                     return $data->currency . ' ' . $comment;
                 })
                 ->addColumn('action', function ($data) {
-                    if ($data->currency == 'USD') {
+                    if ($data->currency == 'CAD') {
                         return '<span class="status active">Main Currency</span>';
                     } else {
                         $btn = '<div class="action__buttons">';
@@ -50,7 +50,7 @@ class CurrencyController extends Controller
             'iso' => $request->iso,
             'symbol' => $request->symbol,
             'position' => $request->position,
-            'convert_from_usd' => $request->convert_from_usd,
+            'convert_from_CAD' => $request->convert_from_CAD,
         ]);
 
         if (!empty($create)) {
@@ -68,7 +68,7 @@ class CurrencyController extends Controller
                 'currency' => is_null($request->currency) ? $currency->currency : $request->currency,
                 'iso' => is_null($request->iso) ? $currency->iso : $request->iso,
                 'symbol' => is_null($request->symbol) ? $currency->symbol : $request->symbol,
-                'convert_from_usd' => is_null($request->convert_from_usd) ? $currency->convert_from_usd : $request->convert_from_usd,
+                'convert_from_CAD' => is_null($request->convert_from_CAD) ? $currency->convert_from_CAD : $request->convert_from_CAD,
                 'position' => $request->position,
             ]);
             if (!empty($update)) {

@@ -131,7 +131,7 @@
                     </table>
                 </div>
                 <div class="card-footer">
-                    <small class="text-danger">{{ __('*All the amount is in USD currency.') }}</small>
+                    <small class="text-danger">{{ __('*All the amount is in CAD currency.') }}</small>
                 </div>
             </div>
         </div>

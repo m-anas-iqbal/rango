@@ -70,6 +70,7 @@ class CheckoutController extends Controller
                 'billing_street_address' => 'required',
                 'billing_zipcode' => 'required',
                 'billing_country' => 'required',
+                'billing_state' => 'required',
 
                 'shipping_name' => 'required',
                 'shipping_email' => 'required|email',
@@ -89,7 +90,7 @@ class CheckoutController extends Controller
             $user_id = Auth::id()??null;
             try {
                 $subtotal = Cart::subtotal();
-                $tax = tax_amount($subtotal, $request->billing_country);
+                $tax = tax_amount($subtotal, $request->billing_country, $request->billing_state);
                 $shipping_charge = delivery_charge($request->billing_country);
                 $this->grand_total = $subtotal + $tax + $shipping_charge;
 
@@ -151,7 +152,7 @@ class CheckoutController extends Controller
                 session()->put('tax', $tax);
                 if ($request->payment == 'creditcard') {
                     session()->put('payment_method_name', STRIPE);
-                    return  $this->pay($this->grand_total, $this->discount, 'USD', 2, $request->payment_method);
+                    return  $this->pay($this->grand_total, $this->discount, 'CAD', 2, $request->payment_method);
                 } elseif ($request->payment == 'sslcommerz') {
                     $tran_id = uniqid();
                     $post_data = array();
@@ -196,7 +197,7 @@ class CheckoutController extends Controller
                     }
                 } elseif ($request->payment == 'paypal') {
                     session()->put('payment_method_name', PAYPAL);
-                    return  $this->pay($this->grand_total, $this->discount, 'USD', 1, $request->payment_method);
+                    return  $this->pay($this->grand_total, $this->discount, 'CAD', 1, $request->payment_method);
                 } elseif ($request->payment == 'COD') {
                     return $this->orderCreateCall($order_number, $shipping_charge, $tax, $subtotal, $this->discount, $this->grand_total, COD);
                 } elseif ($request->payment == 'bank') {
@@ -233,6 +234,7 @@ class CheckoutController extends Controller
             'billing_street_address' => 'required',
             'billing_zipcode' => 'required',
             'billing_country' => 'required',
+            'billing_state' => 'required',
 
             'shipping_name' => 'required',
             'shipping_email' => 'required|email',
@@ -248,7 +250,7 @@ class CheckoutController extends Controller
             'shipping_zipcode' => 'The zip code field is required.',
             'shipping_country' => 'The country field is required.',
         ]);
-
+        // dd($request->all());
         $billing_address = [
             'name' => $request->billing_name,
             'email' => $request->billing_email,
@@ -271,7 +273,7 @@ class CheckoutController extends Controller
         Session::put('checkout_email', $request->billing_email);
 
         $subtotal = Cart::subtotal();
-        $tax = tax_amount($subtotal, $request->billing_country);
+        $tax = tax_amount($subtotal, $request->billing_country, $request->billing_state);
         $shipping_charge = delivery_charge($request->billing_country);
         $this->grand_total = $subtotal + $tax + $shipping_charge;
 
@@ -313,7 +315,7 @@ class CheckoutController extends Controller
 
         if ($request->payment == 'creditcard') {
             session()->put('payment_method_name', STRIPE);
-            return  $this->pay($this->grand_total, $this->discount, 'USD', 2, $request->payment_method);
+            return  $this->pay($this->grand_total, $this->discount, 'CAD', 2, $request->payment_method);
         } elseif ($request->payment == 'sslcommerz') {
             $tran_id = uniqid();
             $post_data = array();
@@ -357,8 +359,10 @@ class CheckoutController extends Controller
                 $payment_options = array();
             }
         } elseif ($request->payment == 'paypal') {
+
             session()->put('payment_method_name', PAYPAL);
-            return  $this->pay($this->grand_total, $this->discount, 'USD', 1, $request->payment_method);
+            // dd($request->all(),"sad");
+            return  $this->pay($this->grand_total, $this->discount, 'CAD', 1, $request->payment_method);
         } elseif ($request->payment == 'COD') {
             return $this->orderCreateCall($order_number, $shipping_charge, $tax, $subtotal, $this->discount, $this->grand_total, COD);
         } elseif ($request->payment == 'bank') {
@@ -604,12 +608,12 @@ class CheckoutController extends Controller
             'delivery_charge_curr' => 0,
         ];
         $data['tax_rate'] = tax_rate($request->country);
-        $data['tax_amount'] = tax_amount(Cart::subtotal(), $request->country);
-        $data['tax_show'] =   currencyConverter(tax_amount(Cart::subtotal(), $request->country));
+        $data['tax_amount'] = tax_amount(Cart::subtotal(), $request->country, $request->state ?? null);
+        $data['tax_show'] =   currencyConverter(tax_amount(Cart::subtotal(), $request->country, $request->state ?? null));
         $data['delivery_charge'] = delivery_charge($request->country);
         $data['delivery_charge_curr'] =  currencyConverter(delivery_charge($request->country));
-        $data['total_cost'] = Cart::subtotal() + delivery_charge($request->country) + tax_amount(Cart::subtotal(), $request->country) - Session::get('CouponAmount');
-        $data['total_cost_curr'] =  currencyConverter(Cart::subtotal() + delivery_charge($request->country) + tax_amount(Cart::subtotal(), $request->country) - Session::get('CouponAmount'));
+        $data['total_cost'] = Cart::subtotal() + delivery_charge($request->country) + tax_amount(Cart::subtotal(), $request->country,$request->state ?? null) - Session::get('CouponAmount');
+        $data['total_cost_curr'] =  currencyConverter(Cart::subtotal() + delivery_charge($request->country) + tax_amount(Cart::subtotal(), $request->country, $request->state ?? null) - Session::get('CouponAmount'));
         $data['success'] = true;
         return $data;
     }

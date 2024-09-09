@@ -26,7 +26,7 @@ class CouponController extends Controller
                     return redirect()->back()->with('error', __('Coupon Code is Expired !'));
                 }
                 if($subtotal < $couponDetails->Min_Expenses) {
-                    return redirect()->back()->with('error', __('You have to expense minimum '.$couponDetails->Min_Expenses.' USD'));
+                    return redirect()->back()->with('error', __('You have to expense minimum '.$couponDetails->Min_Expenses.' CAD'));
                 }
                 $total_amount=0;
 //                     $cart=Cart::content();

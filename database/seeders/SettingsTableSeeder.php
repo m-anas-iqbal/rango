@@ -43,7 +43,7 @@ class SettingsTableSeeder extends Seeder
         Setting::create(['slug' => 'best_selling', 'value' => 1,]);
         Setting::create(['slug' => 'on_sale', 'value' => 1,]);
         Setting::create(['slug' => 'featured_items', 'value' => 1,]);
-        Setting::create(['slug' => 'default_currency', 'value' => 'USD',]);
+        Setting::create(['slug' => 'default_currency', 'value' => 'CAD',]);
         Setting::create(['slug' => 'default_language', 'value' => 'en',]);
         Setting::create(['slug' => 'theme', 'value' => 'one',]);
         Setting::create(['slug' => 'news_letter_img', 'value' => 'accepts-image.png',]);

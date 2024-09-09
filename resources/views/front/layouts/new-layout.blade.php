@@ -54,9 +54,11 @@
                                         href="{{ route('admin.dashboard') }}">{{ __('Dashboard') }}</a>
                                 </li>
                             @else
-                                <li class="single-lang dropdown-item"><a class="lang-text"
+                                {{-- <li class="single-lang dropdown-item"><a class="lang-text"
                                         href="{{ route('user.profile') }}">{{ __('Profile') }}</a>
-                                </li>
+                                </li> --}}
+                                {{-- <li class="single-lang dropdown-item">  <a class="lang-text" href="javascript:void(0)" data-bs-toggle="modal"
+                                    data-bs-target="#trackOrderModal">{{ __('Track Order') }}</a> </li> --}}
                             @endif
                             <li class="single-lang dropdown-item"><a class="lang-text"
                                     href="{{ route('user.logout') }}">{{ __('Logout') }}</a></li>

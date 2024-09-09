@@ -299,7 +299,7 @@ if (!function_exists('currency')) {
         if (session()->has('currency')) {
             return session()->get('currency');
         }
-        return 'USD';
+        return 'CAD';
     }
 }
 
@@ -528,14 +528,17 @@ if (!function_exists('subtotal')) {
 }
 
 if (!function_exists('tax_amount')) {
-    function tax_amount($subtotal, $country = null)
+    function tax_amount($subtotal, $country = null,$state = null)
     {
         $tax = 0;
         if ($country != null) {
             $tax_percentage = Tax::where('country', $country)->where('status', ACTIVE)->first();
-            if (!is_null($tax_percentage)) {
+             if (!is_null($tax_percentage)) {
                 $tax = ($subtotal * $tax_percentage->percentage) / 100;
             }
+        }
+        if (strtolower($state) == "ontario") {
+                $tax = ($subtotal * 15) / 100;
         }
         return $tax;
     }

@@ -2,7 +2,13 @@
     "use strict";
     let _token = $('meta[name="csrf-token"]').attr('content')
     $(document).ready(function () {
-        taxAmount($('#billing_country').val())
+        setTimeout(function() {
+
+            let state = $("#billing_state").val();
+            let country = $("#billing_country").val();
+            taxAmount(country,state);
+                }, 3000);
+        // taxAmount($('#billing_country').val())
         $('#copy_address').on('click', function () {
             if ($('#copy_address').is(':checked')) {
                 $('#shipping_name').val($('#billing_name').val());
@@ -116,15 +122,22 @@
 
     $('#billing_country').on('change', function () {
         let country = $(this).val();
-        taxAmount(country);
+        let state = $("#billing_state").val();
+        taxAmount(country, state);
+    })
+    $('#billing_state').on('change', function () {
+        let state = $(this).val();
+        let country = $("#billing_country").val();
+        taxAmount(country,state);
     })
 
-    function taxAmount(country) {
+    function taxAmount(country,state = null) {
         $.ajax({
             url: $('#get-tax-amount').data('url'),
             method: "POST",
             data: {
                 country: country,
+                state: state,
                 _token: _token,
             },
             success: function (data) {

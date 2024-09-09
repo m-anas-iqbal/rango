@@ -27,7 +27,7 @@ class HomeController extends Controller
     {
         if (file_exists(storage_path('installed'))) {
             if (!Session::has('currency')) {
-                Session::put('currency', Setting::where('slug', 'default_currency')->first()->value ?? 'USD');
+                Session::put('currency', Setting::where('slug', 'default_currency')->first()->value ?? 'CAD');
             }
             $data['sliders'] = Slider::latest()->get();
             $data['banner'] = Banner::first();

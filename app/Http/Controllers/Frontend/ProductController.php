@@ -42,12 +42,14 @@ class ProductController extends Controller
         $data['sizes'] = Size::with('products')->latest()->get();
         $data['category'] = Category::with('products')->where('en_Description', null)->orWhere('Category_Icon', null)->get();
         $data['brands'] = Brand::with('products')->get();
+        $data['productCount'] = Product::where('status', 1)->count();
         $products = Product::with('brand', 'category', 'colors', 'sizes', 'product_tags')->where('status', 1)->latest()->paginate(12);
         $data['products'] = $products;
         $seo = SeoSetting::where('slug', 'all-products')->first();
         $data['title'] = $seo->title;
         $data['description'] = $seo->description;
         $data['keywords'] = $seo->keywords;
+        
         if ($products) {
             return view('front.pages.product.all_product', $data);
         }

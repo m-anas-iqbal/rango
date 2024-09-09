@@ -35,7 +35,7 @@
                             id="paymentForm">
                             @csrf
                             <div class="row mt-3">
-                                @if (!auth()->check())
+                                {{-- @if (!auth()->check())
                                     <div class="col-lg-12 mb-3">
                                         <div
                                             class="checkout-page-login-box d-flex justify-content-between align-items-center mb-30">
@@ -44,7 +44,7 @@
                                                 data-bs-target="#loginModal">Login</button>
                                         </div>
                                     </div>
-                                @endif
+                                @endif --}}
 
                                 <div class="col-lg-12">
                                     <h2 class="checkout-title">{{ __('Billing Address') }}</h2>
@@ -483,10 +483,14 @@
 <script>
 
     setTimeout(function() {
+
+        // let state = $("#billing_state").val();
+        // let country = $("#billing_country").val();
+        // console.log(country, state);
+        // taxAmount(country,state);
         let totalCost = $('#total-cost-curr').html();
     let threshold = 50;
     totalCost = totalCost.replace('$', '');
-    console.log(totalCost)
     if(totalCost < threshold){
         $('#payButton_modal, #payButton, #payButtonN').addClass('disabled');
         $('#error_msg').css('display', "block")
@@ -501,6 +505,5 @@
     <script src="https://js.stripe.com/v3/"></script>
     <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
     <script src="{{ asset('frontend/assets/js/pages/checkout.js') }}"></script>
-
 @endpush
 @endsection
