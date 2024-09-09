@@ -71,10 +71,12 @@
                                 </h2>
                                 <div class="divider"></div>
                                 <div class="mt-md-5 mt-3">
-                                    <a href="tel:+1 (437) 985-3601" class="fs-13 d-block fw-bold green transition mb-2">+1 (437) 985-3601</a>
-                                    <a href="mailto:info@rangocart.com" class="fs-13 fw-bold green transition underline">info@rangocart.com</a>
+                                    <a href="tel:+1 (437) 985-3601" class="fs-13 d-block fw-bold green transition mb-2"><span class="me-2 r-text-red"><i class="fa-solid fa-phone"></i></span> +1 (437) 985-3601</a>
+                                    <a href="mailto:info@rangocart.com" class="fs-13 fw-bold green transition"><span class="me-2 r-text-red"><i class="fa-solid fa-envelope"></i></span>info@rangocart.com</a>
+                                    <a href="mailto:info@rangocart.com" class="fs-13 fw-bold green d-block transition mt-2"> <span class="me-2 r-text-red"><i class="fa-solid fa-location-dot"></i></span>3368 Scotch Pine Gate, Mississauga, Ontario, Canada. L5N7M9 (Corporate Office)</a>
+
                                 </div>
-                                <div class="socials mt-md-5 mt-3">
+                                {{-- <div class="socials mt-md-5 mt-3">
                                     <h5 class="fs-17">Follow Us On:</h5>
                                     <a href="{{getSocialLink()->Facebook}}" class="mt-3 me-2" target="_blank"><img src="{{asset('frontend/assets/images/socials/facebook.png')}}" alt="" class="img-fluid"></a>
                                     <a href="{{getSocialLink()->Instagram}}" class="mt-3 me-2" target="_blank"><img src="{{asset('frontend/assets/images/socials/instagram.png')}}" alt="" class="img-fluid"></a>
@@ -82,7 +84,7 @@
                                     <a href="{{getSocialLink()->Skype}}" class="mt-3 me-2" target="_blank"><img src="{{asset('frontend/assets/images/socials/pinterest.png')}}" alt="" class="img-fluid"></a>
                                     <a href="{{getSocialLink()->Linkedin}}" class="mt-3 me-2" target="_blank"><img src="{{asset('frontend/assets/images/socials/youtube.png')}}" alt="" class="img-fluid"></a>
 
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
 

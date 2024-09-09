@@ -14,18 +14,34 @@
     <!-- Preloader Area End -->
 
     <section class="topbar r-bg-red text-white py-2">
-        <div class="d-md-flex justify-content-between container">
-            <div class="wrap text-center small">
-                Email: <a href="mailto:info@rangocart.com">info@rangocart.com</a>
-                |
-                Call: <a href="tel:+1 (437) 985-3601">+1 (437) 985-3601</a>
+        <div class="text_slide text-center d-md-none d-block">
+            <div>
+                Discover Unbeatable prices on eco-friendly educational toys.
+            </div>
+            <div>
+                Shipping available for orders above CAD 50
+            </div>
+        </div>
+        <div class="d-flex justify-content-between container px-md-0 px-5">
+            <div class="wrap text-center small d-md-block d-none">
+                <div class="text_slide">
+                    <div class="fs-12">
+                        Discover Unbeatable prices on eco-friendly educational toys.
+                    </div>
+                    <div class="fs-12">
+                        Shipping available for orders above CAD 50
+                    </div>
+                </div>
             </div>
             <div class="wrap d-flex gap-4 justify-content-center justify-content-md-end mt-2 mt-md-0">
+
+                {{-- <a href="https://wa.me/14379853601" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+
                 <a href="{{getSocialLink()->Twitter}}" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
                 <a href="{{getSocialLink()->Facebook}}" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
                 <a href="{{getSocialLink()->Instagram}}" target="_blank"><i class="fa-brands fa-instagram"></i></a>
                 <a href="{{getSocialLink()->Linkedin}}" target="_blank"><i class="fa-brands fa-youtube"></i></a>
-                <a href="{{getSocialLink()->Skype}}" target="_blank"><i class="fa-brands fa-pinterest"></i></a>
+                <a href="{{getSocialLink()->Skype}}" target="_blank"><i class="fa-brands fa-pinterest"></i></a> --}}
                 @if (Auth::user())
                     <div class="dropdown">
                         <button class="bg-transparent text-white border-0 dropdown-toggle" type="button"
@@ -53,6 +69,11 @@
                 @else
                     <a href="{{ route('login') }}">My Account</a>
                 @endif
+
+            </div>
+            <div class="d-md-none d-flex align-items-center">
+                <a href="{{ route('cart.content') }}" class="position-relative cart_icon"><span class="badge bg-success count_checkout totalCountItem">{{ Cart::count() }}</span><i
+                    class="fa-solid fa-cart-shopping r-text-yellow fs-4"></i></a>
             </div>
         </div>
     </section>
@@ -61,12 +82,14 @@
             <a class="navbar-brand" href="{{ route('front') }}"><img
                     src="{{ asset('frontend/assets/images/logo/logo.png') }}" class="img-fluid logo"
                     alt="logo rango"></a>
+
             <button class="btn d-md-none btn-mobile-nav"><i class="fa-solid fa-bars-staggered"></i></button>
             <div class="searchGroup d-none d-md-flex">
                 {{-- <form  action="{{ route('category.search') }}" method="get" class="searchGroup d-none d-md-flex"> --}}
                 <input type="text" placeholder="Search" id="searchBar" class="small">
                 <button class=""><i class="fa-solid fa-magnifying-glass"></i></button>
             </div>
+
             <ul class="list-unstyled gap-4 m-0 d-none d-md-flex">
                 <li class="nav-item">
                     <a class="" href="{{ route('front') }}">Home</a>
@@ -87,14 +110,23 @@
                 <li class="nav-item">
                     <a class="" href="{{ route('contact.us') }}">Contact</a>
                 </li>
+                <li>
+                    <a href="{{ route('cart.content') }}" class="position-relative cart_icon"><span class="badge bg-success count_checkout totalCountItem">{{ Cart::count() }}</span><i
+                        class="fa-solid fa-cart-shopping r-text-blue fs-4"></i></a>
+                </li>
                 {{-- <li class="nav-item">
                     <a class="" href="#">Blog</a>
                 </li> --}}
                 <li>
-                    <a href="{{ route('cart.content') }}" class="position-relative cart_icon"><span class="badge bg-success count_checkout totalCountItem">{{ Cart::count() }}</span><i
-                            class="fa-solid fa-cart-shopping r-text-blue fs-4"></i></a>
+
                 </li>
             </ul>
+
+        </div>
+        <div class="searchGroup d-flex w-100 d-md-none mb-2 mb-md-0">
+            {{-- <form  action="{{ route('category.search') }}" method="get" class="searchGroup d-none d-md-flex"> --}}
+            <input type="text" placeholder="Search" id="searchBar" class="small">
+            <button class=""><i class="fa-solid fa-magnifying-glass"></i></button>
         </div>
         <div class="mobile-nav">
             <p class="mobile-close position-absolute end-0 top-0 m-3 fs-1 fw-bold text-danger">✕</p>
@@ -104,7 +136,7 @@
                 </li>
                 <li class="nav-item dropdown">
                     <a class="" href="{{ route('all.product') }}" role="button" id="navbarDropdown" data-bs-toggle="dropdown" aria-expanded="false">Categories</a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <ul class="dropdown-menu menu_item_mobile" aria-labelledby="navbarDropdown">
                         @forelse (Category_Des_Icon() as $item)
                             <li><a class="dropdown-item" href="{{ route('category.product', $item->id) }}">{{ langConverter($item->en_Category_Name, $item->fr_Category_Name) }}</a></li>
                         @empty
@@ -262,6 +294,32 @@
             });
         });
     </script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const slides = document.querySelectorAll(".text_slide > div");
+        let currentSlide = 0;
+
+        // Function to show the current slide
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.remove("active");
+                if (i === index) {
+                    slide.classList.add("active");
+                }
+            });
+        }
+
+        // Show the first slide initially
+        showSlide(currentSlide);
+
+        // Change slides every 3 seconds
+        setInterval(() => {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }, 3000); // 3000ms = 3 seconds
+    });
+    </script>
+
 </body>
 
 </html>
