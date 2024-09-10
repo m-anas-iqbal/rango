@@ -55,14 +55,13 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <p>
-                            <b>{{__('Name:')}}</b> {{$cl->FirstName}}<br>
-                            <b>{{__('Image:')}}</b><img src={{ ImageGallery().$cl->LastName }} alt=""><br>
-                            <b>{{__('Email:')}}</b> {{$cl->Email}}<br>
-                            <b>{{__('Contact Number:')}}</b> {{$cl->ContactNumber}}<br>
-                            <b>{{__('Message:')}}</b><br>
-                            {{$cl->Message}}
-                        </p>
+                        <div class="row">
+                            <div class="col-6"><b>{{__('Name:')}}</b> {{$cl->FirstName}}</div>
+                            <div class="col-6">{{__('Email:')}}</b> {{$cl->Email}}</div>
+                            <div class="col-6">{{__('Contact Number:')}}</b> {{$cl->ContactNumber}}</div>
+                            <div class="col-6">{{__('Image:')}}</b><img src={{ asset(ImageGallery().$cl->LastName) }} alt=""></div>
+                            <div class="col-6"><b>{{__('Message:')}}</b>{{$cl->Message}}</div>
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger" data-bs-dismiss="modal">{{__('Close')}}</button>

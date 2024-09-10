@@ -30,11 +30,11 @@
         @yield('counter')
 <div class="container cate_card my-5">
     <div class="row">
-        @forelse (Category_Des_Icon() as $item)
+        @forelse (Category() as $item)
             <div class="col-md-6 p-4">
                 <a class="card p-md-5 p-3 cat_card rounded-20px" href="{{ route('category.product', $item->id) }}">
                     <h1 class="fw-bold py-3 text-white mb-0">
-                        {{ langConverter($item->en_Category_Name, $item->fr_Category_Name) }}</h1>
+                        {{ langConverter($item->en_Category_Name, $item->fr_Category_Name) }} <small style="font-size: 13px">({{ $item->products->count() }} Products)</small></h1>
                     <img src="{{ asset(CategoryImage() . $item->Category_Icon) }}"
                         class="position-absolute translate-middle-y"
                         alt="{{ langConverter($item->en_Category_Name, $item->fr_Category_Name) }}">
@@ -49,7 +49,7 @@
 @if ($allsettings['new_arrival'] == ACTIVE)
     <div class="container home_products my-5" id="newArrivals">
         <div class="d-flex justify-content-between">
-            <h3 class="fw-bold">New Arrivals</h3>
+            <h3 class="fw-bold">New Arrivals <small style="font-size: 13px">({{ $new_arrivals->count()  }} Products)</small></h3>
             {{-- <a href="" class="fw-bold">See All <i class="fa-solid fa-arrow-right"></i></a> --}}
         </div>
         <hr class="start-border">
@@ -72,27 +72,35 @@
                                 <span class="price">
                                     {{ currencyConverter($product->Discount_Price) }}</span>
                             </div> --}}
-                            @if (currencyConverter($product->Price) == currencyConverter($product->Discount_Price))
-                                <span
-                                    class="price fw-bold fs-4">{{ currencyConverter($product->Discount_Price) }}</span>
-                            @else
-                                <div class="d-flex justify-content-center gap-2 align-items-end">
+
+                                @if (currencyConverter($product->Price) == currencyConverter($product->Discount_Price))
                                     <span
                                         class="price fw-bold fs-4">{{ currencyConverter($product->Discount_Price) }}</span>
-                                    <span
-                                        class="regular-price text-danger text-decoration-line-through fw-bold fs-6">{{ currencyConverter($product->Price) }}</span>
-                                </div>
-                            @endif
-                            <hr>
-                            <div class="d-flex justify-content-center gap-3">
-                                <input type="hidden" name="quantity" value="1" id="product_quantity">
-                                <a href="javascript:void(0)" title="{{ __('Add to cart') }}"
-                                    data-id="{{ $product->id }}"
-                                    class="add-cart addCart price-label w-fit small r-bg-green rounded-pill py-1 px-3 text-white">{{ __('Add To Cart') }}</a>
-                                <a
-                                    href="javascript:void(0)"class="price-label w-fit small r-bg-red rounded-pill  py-1 px-2 text-white"><i
-                                        class="fa-solid fa-heart"></i></a>
-                            </div>
+                                @else
+                                    <div class="d-flex justify-content-center gap-2 align-items-end">
+                                        <span
+                                            class="price fw-bold fs-4">{{ currencyConverter($product->Discount_Price) }}</span>
+                                        <span
+                                            class="regular-price text-danger text-decoration-line-through fw-bold fs-6">{{ currencyConverter($product->Price) }}</span>
+                                    </div>
+                                @endif
+                                <hr>
+                                @if ($product->Quantity>0)
+                                    <div class="d-flex justify-content-center gap-3">
+                                        <input type="hidden" name="quantity" value="1" id="product_quantity">
+                                        <a href="javascript:void(0)" title="{{ __('Add to cart') }}"
+                                            data-id="{{ $product->id }}"
+                                            class="add-cart addCart price-label w-fit small r-bg-green rounded-pill py-1 px-3 text-white">{{ __('Add To Cart') }}</a>
+                                        <a
+                                            href="javascript:void(0)"class="price-label w-fit small r-bg-red rounded-pill  py-1 px-2 text-white MyWishList" data-id="{{$product->id}}" title="{{__('Add To Wishlist')}}"><i
+                                                class="fa-solid fa-heart"></i></a>
+                                    </div>
+                                    @else
+                                    <div class="d-flex justify-content-center gap-2 align-items-end">
+                                        <span class="regular-price text-danger fw-bold fs-6">Sold out</span>
+                                    </div>
+                                @endif
+
                         </div>
 
                     </div>
@@ -107,7 +115,7 @@
 @if ($allsettings['best_selling'] == ACTIVE)
     <div class="container home_products my-5">
         <div class="d-flex justify-content-between">
-            <h3 class="fw-bold">Best Selling</h3>
+            <h3 class="fw-bold">Best Selling <small style="font-size: 13px">({{ $best_sellings->count()  }} Products)</small></h3>
         </div>
         <hr class="start-border">
         <div class="product-items">
@@ -134,15 +142,21 @@
                                 </div>
                             @endif
                             <hr>
-                            <div class="d-flex justify-content-center gap-3">
-                                <input type="hidden" name="quantity" value="1" id="product_quantity">
-                                <a href="javascript:void(0)" title="{{ __('Add to cart') }}"
-                                    data-id="{{ $product->id }}"
-                                    class="add-cart addCart price-label w-fit small r-bg-green rounded-pill py-1 px-3 text-white">{{ __('Add To Cart') }}</a>
-                                <a
-                                    href="javascript:void(0)"class="price-label w-fit small r-bg-red rounded-pill  py-1 px-2 text-white"><i
-                                        class="fa-solid fa-heart"></i></a>
-                            </div>
+                            @if ($product->Quantity>0)
+                                    <div class="d-flex justify-content-center gap-3">
+                                        <input type="hidden" name="quantity" value="1" id="product_quantity">
+                                        <a href="javascript:void(0)" title="{{ __('Add to cart') }}"
+                                            data-id="{{ $product->id }}"
+                                            class="add-cart addCart price-label w-fit small r-bg-green rounded-pill py-1 px-3 text-white">{{ __('Add To Cart') }}</a>
+                                        <a
+                                            href="javascript:void(0)"class="price-label w-fit small r-bg-red rounded-pill  py-1 px-2 text-white MyWishList" data-id="{{$product->id}}" title="{{__('Add To Wishlist')}}"><i
+                                                class="fa-solid fa-heart"></i></a>
+                                    </div>
+                                    @else
+                                    <div class="d-flex justify-content-center gap-2 align-items-end">
+                                        <span class="regular-price text-danger fw-bold fs-6">Sold out</span>
+                                    </div>
+                                @endif
                         </div>
                     </div>
                 @empty
@@ -154,7 +168,7 @@
 @if ($allsettings['featured_items'] == ACTIVE)
     <div class="container home_products my-5">
         <div class="d-flex justify-content-between">
-            <h3 class="fw-bold">Featured Products</h3>
+            <h3 class="fw-bold">Featured Products <small style="font-size: 13px">({{ $featured_products->count()  }} Products)</small></h3>
             {{-- <a href="" class="fw-bold">See All <i class="fa-solid fa-arrow-right"></i></a> --}}
         </div>
         <hr class="start-border">
@@ -182,15 +196,21 @@
                                 </div>
                             @endif
                             <hr>
-                            <div class="d-flex justify-content-center gap-3">
-                                <input type="hidden" name="quantity" value="1" id="product_quantity">
-                                <a href="javascript:void(0)" title="{{ __('Add to cart') }}"
-                                    data-id="{{ $product->id }}"
-                                    class="add-cart addCart price-label w-fit small r-bg-green rounded-pill py-1 px-3 text-white">{{ __('Add To Cart') }}</a>
-                                <a
-                                    href="javascript:void(0)"class="price-label w-fit small r-bg-red rounded-pill  py-1 px-2 text-white"><i
-                                        class="fa-solid fa-heart"></i></a>
-                            </div>
+                            @if ($product->Quantity>0)
+                                    <div class="d-flex justify-content-center gap-3">
+                                        <input type="hidden" name="quantity" value="1" id="product_quantity">
+                                        <a href="javascript:void(0)" title="{{ __('Add to cart') }}"
+                                            data-id="{{ $product->id }}"
+                                            class="add-cart addCart price-label w-fit small r-bg-green rounded-pill py-1 px-3 text-white">{{ __('Add To Cart') }}</a>
+                                        <a
+                                            href="javascript:void(0)"class="price-label w-fit small r-bg-red rounded-pill  py-1 px-2 text-white MyWishList" data-id="{{$product->id}}" title="{{__('Add To Wishlist')}}"><i
+                                                class="fa-solid fa-heart"></i></a>
+                                    </div>
+                                    @else
+                                    <div class="d-flex justify-content-center gap-2 align-items-end">
+                                        <span class="regular-price text-danger fw-bold fs-6">Sold out</span>
+                                    </div>
+                                @endif
                         </div>
                     </div>
                 @empty

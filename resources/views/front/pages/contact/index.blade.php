@@ -50,7 +50,7 @@
 
                                         <div class="mt-3">
                                             <label for="file" class="fs-13 fw-bold mb-2">Share Image:</label>
-                                            <input type="file" class="form-control max-width-670" name="file" id="file">
+                                            <input type="file" class="form-control max-width-670" name="file" accept="image/*" id="file">
                                         </div>
 
                                         <div class="mt-3">
@@ -73,7 +73,7 @@
                                 <div class="mt-md-5 mt-3">
                                     <a href="tel:+1 (437) 985-3601" class="fs-13 d-block fw-bold green transition mb-2"><span class="me-2 r-text-red"><i class="fa-solid fa-phone"></i></span> +1 (437) 985-3601</a>
                                     <a href="mailto:info@rangocart.com" class="fs-13 fw-bold green transition"><span class="me-2 r-text-red"><i class="fa-solid fa-envelope"></i></span>info@rangocart.com</a>
-                                    <a href="mailto:info@rangocart.com" class="fs-13 fw-bold green d-block transition mt-2"> <span class="me-2 r-text-red"><i class="fa-solid fa-location-dot"></i></span>3368 Scotch Pine Gate, Mississauga, Ontario, Canada. L5N7M9 (Corporate Office)</a>
+                                    <a href="#" class="fs-13 fw-bold green d-block transition mt-2"> <span class="me-2 r-text-red"><i class="fa-solid fa-location-dot"></i></span>3368 Scotch Pine Gate, Mississauga, Ontario, Canada. L5N7M9 (Corporate Office)</a>
 
                                 </div>
                                 {{-- <div class="socials mt-md-5 mt-3">

@@ -32,7 +32,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12">
-                        <h2 class="m-0">All Products</h2>
+                        <h2 class="m-0">All Products ({{$productCount." products"}})</h2>
 
                         <hr class="start-border">
                     </div>
@@ -73,15 +73,21 @@
                                         </div>
                                     @endif
                                     <hr>
+                                    @if ($product->Quantity>0)
                                     <div class="d-flex justify-content-center gap-3">
                                         <input type="hidden" name="quantity" value="1" id="product_quantity">
                                         <a href="javascript:void(0)" title="{{ __('Add to cart') }}"
                                             data-id="{{ $product->id }}"
                                             class="add-cart addCart price-label w-fit small r-bg-green rounded-pill py-1 px-3 text-white">{{ __('Add To Cart') }}</a>
                                         <a
-                                            href="javascript:void(0)"class="price-label w-fit small r-bg-red rounded-pill  py-1 px-2 text-white"><i
+                                            href="javascript:void(0)"class="price-label w-fit small r-bg-red rounded-pill  py-1 px-2 text-white MyWishList" data-id="{{$product->id}}" title="{{__('Add To Wishlist')}}"><i
                                                 class="fa-solid fa-heart"></i></a>
                                     </div>
+                                    @else
+                                    <div class="d-flex justify-content-center gap-2 align-items-end">
+                                        <span class="regular-price text-danger fw-bold fs-6">Sold out</span>
+                                    </div>
+                                @endif
                                 </div>
                             </div>
                         @empty

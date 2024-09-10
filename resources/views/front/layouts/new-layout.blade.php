@@ -99,8 +99,8 @@
                 <li class="nav-item dropdown">
                     <a class="dropdown-toggle" href="{{ route('all.product') }}" role="button" id="navbarDropdown" data-bs-toggle="dropdown" aria-expanded="false">Categories</a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        @forelse (Category_Des_Icon() as $item)
-                        <li><a class="dropdown-item" href="{{ route('category.product', $item->id) }}">{{ langConverter($item->en_Category_Name, $item->fr_Category_Name) }}</a></li>
+                        @forelse (Category() as $item)
+                        <li><a class="dropdown-item" href="{{ route('category.product', $item->id) }}">{{ langConverter($item->en_Category_Name, $item->fr_Category_Name)  }} ({{ $item->products->count() }})</a></li>
                     @empty
                     @endforelse
 

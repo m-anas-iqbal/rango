@@ -18,9 +18,7 @@ class CartController extends Controller
     public function addToCart(Request $request)
     {
         if ($request->ajax()) {
-            // return Cart::destroy();
-            $product = Product::with('colors', 'sizes',)
-                ->where('id', $request->product_id)
+            $product = Product::where('id', $request->product_id)
                 ->first();
             $cd = Cart::content();
             $ta = 0;

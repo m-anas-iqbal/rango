@@ -229,6 +229,7 @@
                                             alt="payment-method-image" />
                                     </div>
                                 @endif --}}
+                                @if ($products->Quantity>0)
                                 <div class="product-bottom-button my-2">
                                     <a href="javascript:void(0)" class="btn btn-primary my-2 r-bg-blue buyNow d-block"
                                         data-id="{{ $products->id }}">{{ __('Buy Now') }}</a>
@@ -237,6 +238,12 @@
                                         data-id="{{ $products->id }}">{{ __('Add To Cart') }}
                                         <i class="icon fas fa-plus-circle"></i></a>
                                 </div>
+                                @else
+                                <div class="d-flex justify-content-center gap-2 align-items-end">
+                                    <span class="regular-price text-danger fw-bold fs-6">Sold out</span>
+                                </div>
+                            @endif
+
                                 <div class="share-area mt-2">
                                     <h5 class="share-title fw-bold">{{ __('SHARE:') }}</h5>
                                     <ul class="social-media a2a_kit list-unstyled d-flex gap-3">
@@ -397,15 +404,21 @@
                             </div>
                         @endif
                         <hr>
+                        @if ($product->Quantity>0)
                         <div class="d-flex justify-content-center gap-3">
-                            {{-- <input type="hidden" name="quantity" value="1" id="product_quantity"> --}}
+                            <input type="hidden" name="quantity" value="1" id="product_quantity">
                             <a href="javascript:void(0)" title="{{ __('Add to cart') }}"
                                 data-id="{{ $product->id }}"
                                 class="add-cart addCart price-label w-fit small r-bg-green rounded-pill py-1 px-3 text-white">{{ __('Add To Cart') }}</a>
                             <a
-                                href="javascript:void(0)"class="price-label w-fit small r-bg-red rounded-pill  py-1 px-2 text-white"><i
+                                href="javascript:void(0)"class="price-label w-fit small r-bg-red rounded-pill  py-1 px-2 text-white MyWishList" data-id="{{$product->id}}" title="{{__('Add To Wishlist')}}"><i
                                     class="fa-solid fa-heart"></i></a>
                         </div>
+                        @else
+                        <div class="d-flex justify-content-center gap-2 align-items-end">
+                            <span class="regular-price text-danger fw-bold fs-6">Sold out</span>
+                        </div>
+                    @endif
                     </div>
                 </div>
                 @empty

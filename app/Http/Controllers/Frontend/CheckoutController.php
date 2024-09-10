@@ -277,6 +277,10 @@ class CheckoutController extends Controller
         $shipping_charge = delivery_charge($request->billing_country);
         $this->grand_total = $subtotal + $tax + $shipping_charge;
 
+        // $cart_data = Cart::get()
+        // foreach ($cart_data as $key => $value) {
+        //     # code...
+        // }
         do {
             $order_number = $this->generateRandomString(6);
             $exists_order_number = Order::where('Order_Number', $order_number)->exists();

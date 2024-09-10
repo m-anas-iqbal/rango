@@ -122,6 +122,7 @@
                                 </li>
                             </ul>
                         </div>
+                        <small style="font-size: 13px;color:red">Shipping is available for orders over CAD 50. Please add more items to your cart to proceed with shipping.</small>
                         <div class="checkout">
                             @if (count($content) > 0)
                                 <a href="{{ route('checkout') }}"

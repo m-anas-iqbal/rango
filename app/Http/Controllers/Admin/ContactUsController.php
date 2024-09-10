@@ -30,8 +30,8 @@ class ContactUsController extends Controller
                     return $data->FirstName;
                 })
                 ->addColumn('image', function ($data) {
-                    if ($data->LastName == 'contact') {
-                        '<img src="' . $data->LastName. '" height="100" class="img-fluid" alt=""/>';
+                    if ($data->LastName != 'contact') {
+                        return  '<img src="' . asset(ImageGallery().$data->LastName). '" height="100" class="img-fluid" alt=""/>';
                     }
                     return  'not found';
                 })
