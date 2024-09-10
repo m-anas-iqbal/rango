@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ContactUsRequest;
+use App\Notifications\ContactUsNotification;
 use App\Models\Front\Contactus;
 use App\Models\SeoSetting;
+use App\Models\User;
 
 class ContactUsController extends Controller
 {
@@ -32,6 +34,10 @@ class ContactUsController extends Controller
             $data['LastName'] = "contact";
         }
         Contactus::create($data);
+        $adminUsers = User::where('is_admin', 1)->get();
+        foreach ($adminUsers as $admin) {
+            $admin->notify(new ContactUsNotification($request->firstname, $request->email));
+        }
         return redirect()->back()->with('success', __('Successfully Sent Message!'));
     }
 }

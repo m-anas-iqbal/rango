@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Mail\SendMail;
 use App\Models\Admin\Subscribe;
+use App\Models\User;
+use App\Notifications\NewsletterNotification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
@@ -26,6 +28,10 @@ class SubscribeController extends Controller
             $store = Subscribe::create([
                 'Subscribe' => $request->subscribe
             ]);
+            $adminUsers = User::where('is_admin', 1)->get();
+            foreach ($adminUsers as $admin) {
+                $admin->notify(new NewsletterNotification( $request->subscribe));
+            }
             if ($store) {
                 return response()->json($store);
             }

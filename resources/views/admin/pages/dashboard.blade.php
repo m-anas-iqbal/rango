@@ -400,7 +400,7 @@
     </div>
 
     <div class="row">
-        <div class="col-md-6 mb-3">
+        {{-- <div class="col-md-6 mb-3">
             <div class="card transactions-chart-card">
                 <div class="item-top card-header mb-30">
                     <h2 class="card-title">{{ __('Transactions') }}</h2>
@@ -408,6 +408,18 @@
                 <div class="card-body">
                     <div class="chart-container">
                         <canvas id="earnSource"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div> --}}
+        <div class="col-md-12 mb-3">
+            <div class="card">
+                <div class="item-top card-header mb-30">
+                    <h2 class="card-title">{{\Carbon\Carbon::now()->format('F').__(' Sales')}}</h2>
+                </div>
+                <div class="card-body">
+                    <div class="chart-container">
+                        <canvas id="multipleLineChart"></canvas>
                     </div>
                 </div>
             </div>
@@ -420,18 +432,6 @@
                 <div class="card-body">
                     <div class="chart-container">
                         <canvas id="salesRatio"></canvas>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6 mb-3">
-            <div class="card">
-                <div class="item-top card-header mb-30">
-                    <h2 class="card-title">{{\Carbon\Carbon::now()->format('F').__(' Sales')}}</h2>
-                </div>
-                <div class="card-body">
-                    <div class="chart-container">
-                        <canvas id="multipleLineChart"></canvas>
                     </div>
                 </div>
             </div>
