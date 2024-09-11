@@ -14,24 +14,31 @@
     <!-- Preloader Area End -->
 
     <section class="topbar r-bg-red text-white py-2">
-        <div class="text_slide text-center d-md-none d-block">
-            <div>
-                Discover Unbeatable prices on eco-friendly educational toys.
+        <marquee class="w-100 d-md-none d-block">
+            <div class="d-flex gap-4">
+               <div>
+                   <p class="fs-12">Discover Unbeatable prices on eco-friendly educational toys.</p>
+               </div>
+               <div>
+                   <p class="fs-12">Shipping available for orders above CAD 50</p>
+               </div>
             </div>
-            <div>
-                Shipping available for orders above CAD 50
-            </div>
-        </div>
+       </marquee>
         <div class="d-flex justify-content-between container px-md-0 px-5">
             <div class="wrap text-center small d-md-block d-none">
-                <div class="text_slide">
-                    <div class="fs-12">
-                        Discover Unbeatable prices on eco-friendly educational toys.
-                    </div>
-                    <div class="fs-12">
-                        Shipping available for orders above CAD 50
-                    </div>
-                </div>
+                {{-- <div class="text_slide"> --}}
+                    <marquee class="w-100">
+                         <div class="d-flex gap-4">
+                            <div>
+                                <p class="fs-12">Discover Unbeatable prices on eco-friendly educational toys.</p>
+                            </div>
+                            <div>
+                                <p class="fs-12">Shipping available for orders above CAD 50</p>
+                            </div>
+                         </div>
+                    </marquee>
+
+                {{-- </div> --}}
             </div>
             <div class="wrap d-flex gap-4 justify-content-center justify-content-md-end mt-2 mt-md-0">
 
@@ -296,7 +303,7 @@
             });
         });
     </script>
-<script>
+{{-- <script>
     document.addEventListener("DOMContentLoaded", function () {
         const slides = document.querySelectorAll(".text_slide > div");
         let currentSlide = 0;
@@ -320,7 +327,7 @@
             showSlide(currentSlide);
         }, 3000); // 3000ms = 3 seconds
     });
-    </script>
+    </script> --}}
 
 </body>
 
