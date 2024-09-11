@@ -40,7 +40,7 @@ class HomeController extends Controller
             // dd($data['products']);
             $data['new_arrivals'] = Product::with('category')->where('New_Arrival', ACTIVE)->where('Status', ACTIVE)->get();
             $data['best_sellings'] = Product::with('category')->where('Best_Selling', ACTIVE)->where('Status', ACTIVE)->get();
-            // $data['on_sales'] = $all_products->where('On_Sale', ACTIVE)->limit(allsetting('home_products_page'))->get();
+            $data['on_sales'] = Product::with('category')->where('On_Sale', ACTIVE)->where('Status', ACTIVE)->get();
             $data['featured_products'] =Product::with('category')->where('Featured_Product', ACTIVE)->where('Status', ACTIVE)->get();
             $data['testimonial'] = Testimonial::get();
             $seo = SeoSetting::where('slug', 'home')->first();

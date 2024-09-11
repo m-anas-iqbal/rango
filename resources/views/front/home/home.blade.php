@@ -47,16 +47,82 @@
 </div>
 {{-- @dd(ACTIVE) --}}
 @if ($allsettings['new_arrival'] == ACTIVE)
+<div class="container home_products my-5" id="newArrivals">
+    <div class="d-flex justify-content-between">
+        <h3 class="fw-bold">New Arrivals <small style="font-size: 13px">({{ $new_arrivals->count()  }} Products)</small></h3>
+        {{-- <a href="" class="fw-bold">See All <i class="fa-solid fa-arrow-right"></i></a> --}}
+    </div>
+    <hr class="start-border">
+    <div class="product-items">
+        <div class="row newArrivls position-relative">
+            {{-- @dd($new_arrivals) --}}
+            @forelse ($new_arrivals as $product)
+                <div class="col-md-3 p-3 ">
+                    <div class="card product_card text-center p-3 shadow rounded-10px border-0">
+                        <a class="product-link" href="{{ route('single.product', $product->en_Product_Slug) }}">
+                            <img src="{{ asset(ProductImage() . $product->Primary_Image) }}"
+                                class="img-fluid shadow rounded" alt="{{ __('product') }}">
+                            <h5 class="w-fit mx-auto fw-bold mt-3 mb-0 fs-6">
+                                {{ langConverter($product->en_Product_Name, $product->fr_Product_Name) }}
+                            </h5>
+                        </a>
+                        {{-- <div class="price-label w-fit small r-bg-green rounded-pill mx-auto py-1 px-2 text-white">
+                            <span class="regular-price">
+                                {{ currencyConverter($product->Price) }}</span>
+                            <span class="price">
+                                {{ currencyConverter($product->Discount_Price) }}</span>
+                        </div> --}}
+
+                            @if (currencyConverter($product->Price) == currencyConverter($product->Discount_Price))
+                                <span
+                                    class="price fw-bold fs-4">{{ currencyConverter($product->Discount_Price) }}</span>
+                            @else
+                                <div class="d-flex justify-content-center gap-2 align-items-end">
+                                    <span
+                                        class="price fw-bold fs-4">{{ currencyConverter($product->Discount_Price) }}</span>
+                                    <span
+                                        class="regular-price text-danger text-decoration-line-through fw-bold fs-6">{{ currencyConverter($product->Price) }}</span>
+                                </div>
+                            @endif
+                            <hr>
+                            @if ($product->Quantity>0)
+                                <div class="d-flex justify-content-center gap-3">
+                                    <input type="hidden" name="quantity" value="1" id="product_quantity">
+                                    <a href="javascript:void(0)" title="{{ __('Add to cart') }}"
+                                        data-id="{{ $product->id }}"
+                                        class="add-cart addCart price-label w-fit small r-bg-green rounded-pill py-1 px-3 text-white">{{ __('Add To Cart') }}</a>
+                                    <a
+                                        href="javascript:void(0)"class="price-label w-fit small r-bg-red rounded-pill  py-1 px-2 text-white MyWishList" data-id="{{$product->id}}" title="{{__('Add To Wishlist')}}"><i
+                                            class="fa-solid fa-heart"></i></a>
+                                </div>
+                                @else
+                                <div class="d-flex justify-content-center gap-2 align-items-end">
+                                    <span class="regular-price text-danger fw-bold fs-6">Sold out</span>
+                                </div>
+                            @endif
+
+                    </div>
+
+                </div>
+            @empty
+            @endforelse
+
+
+        </div>
+    </div>
+</div>
+@endif
+@if ($allsettings['on_sale'] == ACTIVE)
     <div class="container home_products my-5" id="newArrivals">
         <div class="d-flex justify-content-between">
-            <h3 class="fw-bold">New Arrivals <small style="font-size: 13px">({{ $new_arrivals->count()  }} Products)</small></h3>
+            <h3 class="fw-bold">On Sale <small style="font-size: 13px">({{ $on_sales->count()  }} Products)</small></h3>
             {{-- <a href="" class="fw-bold">See All <i class="fa-solid fa-arrow-right"></i></a> --}}
         </div>
         <hr class="start-border">
         <div class="product-items">
             <div class="row newArrivls position-relative">
                 {{-- @dd($new_arrivals) --}}
-                @forelse ($new_arrivals as $product)
+                @forelse ($on_sales as $product)
                     <div class="col-md-3 p-3 ">
                         <div class="card product_card text-center p-3 shadow rounded-10px border-0">
                             <a class="product-link" href="{{ route('single.product', $product->en_Product_Slug) }}">
@@ -66,13 +132,6 @@
                                     {{ langConverter($product->en_Product_Name, $product->fr_Product_Name) }}
                                 </h5>
                             </a>
-                            {{-- <div class="price-label w-fit small r-bg-green rounded-pill mx-auto py-1 px-2 text-white">
-                                <span class="regular-price">
-                                    {{ currencyConverter($product->Price) }}</span>
-                                <span class="price">
-                                    {{ currencyConverter($product->Discount_Price) }}</span>
-                            </div> --}}
-
                                 @if (currencyConverter($product->Price) == currencyConverter($product->Discount_Price))
                                     <span
                                         class="price fw-bold fs-4">{{ currencyConverter($product->Discount_Price) }}</span>
