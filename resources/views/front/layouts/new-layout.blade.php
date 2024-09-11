@@ -17,10 +17,10 @@
         <marquee class="w-100 d-md-none d-block">
             <div class="d-flex gap-4">
                <div>
-                   <p class="fs-12">Discover Unbeatable prices on eco-friendly educational toys.</p>
+                   <p class="fs-12 mb-0">Discover Unbeatable prices on eco-friendly educational toys.</p>
                </div>
                <div>
-                   <p class="fs-12">Shipping available for orders above CAD 50</p>
+                   <p class="fs-12 mb-0">Shipping available for orders above CAD 50</p>
                </div>
             </div>
        </marquee>
@@ -30,10 +30,10 @@
                     <marquee class="w-100">
                          <div class="d-flex gap-4">
                             <div>
-                                <p class="fs-12">Discover Unbeatable prices on eco-friendly educational toys.</p>
+                                <p class="fs-12 mb-0">Discover Unbeatable prices on eco-friendly educational toys.</p>
                             </div>
                             <div>
-                                <p class="fs-12">Shipping available for orders above CAD 50</p>
+                                <p class="fs-12 mb-0">Shipping available for orders above CAD 50</p>
                             </div>
                          </div>
                     </marquee>
