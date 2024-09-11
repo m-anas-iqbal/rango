@@ -28,7 +28,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <h2>{{$category_m->en_Category_Name }} <small style="font-size: 13px">({{$category_m->products->count()}} Products)</small></h2>
+                    <h2>{{$category_m->en_Category_Name }} <small style="font-size: 13px; color : red">({{$category_m->products->count()}} Products)</small></h2>
                     <p class="mb-0">{{$category_m->en_Description }}</p>
                     <hr>
                 </div>

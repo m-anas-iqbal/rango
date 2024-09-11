@@ -10,25 +10,25 @@
                         </button>
                         <a href="{{route('front')}}" target="_blank" class="btn btn-primary text-white">{{__('Visit Site')}}</a>
                     </div>
-                    <div class="header__navbar__left nav-item dropdown">
-                        <a id="navbarDropdown" class="nav-link " href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                            <i class="fa fa-bell"></i>
-                            <span class="badge badge-light bg-success badge-xs">{{auth()->user()->unreadNotifications->count()}}</span>
-                        </a>
-                        <ul class="dropdown-menu">
-                                    @if (auth()->user()->unreadNotifications)
-                                    <li class="d-flex justify-content-end mx-1 my-2">
-                                        <a href="{{route('mark-as-read')}}" class="btn btn-success btn-sm">Mark All as Read</a>
-                                    </li>
-                                    @endif
 
-                                    @foreach (auth()->user()->unreadNotifications as $notification)
-                                    <a href="#" class="text-success"><li class="p-1 text-success"> {{$notification->data['data']}}</li></a>
-                                    @endforeach
-                        </ul>
-                </div>
-                    <div class="header__navbar__right">
+                    <div class="header__navbar__right d-flex">
+                        <div class="header__navbar__left me-3 nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link btn btn-dropdown bg-white rounded-circle p-3 lh-1 user-profile text-primary" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <i class="fa fa-bell"></i>
+                                <span class="badge badge-light badge-xs bg-danger position-absolute start-50">{{auth()->user()->unreadNotifications->count()}}</span>
+                            </a>
+                            <ul class="dropdown-menu text-center">
+                                        @if (auth()->user()->unreadNotifications)
+                                        <li class=" mx-1 my-2">
+                                            <a href="{{route('mark-as-read')}}" class="text-dark border-bottom" style="font-size: 10px">Mark All as Read</a>
+                                        </li>
+                                        @endif
 
+                                        @foreach (auth()->user()->unreadNotifications as $notification)
+                                        <a href="#" class="text-success"><li class="p-1 text-success"> {{$notification->data['data']}}</li></a>
+                                        @endforeach
+                            </ul>
+                        </div>
                         <ul class="header__menu">
                             <li>
                                 <a href="#" class="btn btn-dropdown bg-white rounded-circle p-3  lh-1 user-profile text-primary" data-bs-toggle="dropdown">

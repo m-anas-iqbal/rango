@@ -3,7 +3,13 @@
 @section('description', isset($description) ? $description : '')
 @section('keywords', isset($keywords) ? $keywords : '')
 @section('content')
-
+    <style>
+        @media (max-width : 500px){
+            .cart-quantity .btn{
+            padding: 0px 6px !important
+        }
+        }
+    </style>
     {{-- breadcrumbs --}}
     <section id="breadcrumbs">
         <div class="container">

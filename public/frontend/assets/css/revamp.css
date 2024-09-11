@@ -605,12 +605,17 @@ hr.start-border::before {
     }
 }
 .text_slide > div {
+    /* opacity: 0; */
+    /* transition: opacity 1s ease; Adjust the duration for smoothness */
+
     display: none;
 }
 
 .text_slide > div.active {
     display: block;
     animation: slide 1s ease-in-out;
+    /* opacity: 1; */
+
 }
 
 @keyframes slide {
