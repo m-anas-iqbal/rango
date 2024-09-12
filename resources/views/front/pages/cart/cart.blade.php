@@ -89,11 +89,11 @@
                                             {{-- @dd("Asd") --}}
                                             <td  id="qty_td">
                                                 <div class="cart-quantity input-group">
-                                                    <button class="btn btn-outline-secondary dec qtybutton qty_decrease"  data-type="-" data-id="{{ $item->rowId }}">-</button>
-                                                    <input class="qty-input cart-plus-minus-box form-control text-center qty_value"
+                                                    <button class="btn btn-outline-secondary dec qtybutton qty_decrease totalAmount_hidden"  data-type="-" data-id="{{ $item->rowId }}">-</button>
+                                                    <input class="qty-input cart-plus-minus-box form-control text-center qty_value totalAmount_hidden"
                                                     type="text" name="qtybutton" id="qty_value"
                                                     value="{{ $item->qty }}" readonly   />
-                                                    <button class="btn btn-outline-secondary inc qtybutton qty_increase"  data-type="+" data-id="{{ $item->rowId }}">+</button>
+                                                    <button class="btn btn-outline-secondary inc qtybutton qty_increase totalAmount_hidden"  data-type="+" data-id="{{ $item->rowId }}">+</button>
                                                 </div>
                                             </td>
                                             <td >
@@ -128,7 +128,6 @@
                                 </li>
                             </ul>
                         </div>
-                        <small style="font-size: 13px;color:red">Shipping is available for orders over CAD 50. Please add more items to your cart to proceed with shipping.</small>
                         <div class="checkout">
                             @if (count($content) > 0)
                                 <a href="{{ route('checkout') }}"
@@ -136,6 +135,7 @@
                             @endif
 
                         </div>
+                        <small style="font-size: 13px;color:red" id="error_msg"></small>
                     </div>
                 </div>
             </div>
@@ -177,16 +177,29 @@ if ($button.data("type") === "+") {
 $button.parent().find("input").val(newVal);
 });
     </script>
-    {{-- <script>
-function adjustWidth() {
-    const element = document.getElementById('qty_td');
-    if (window.innerWidth < 500) {
-        element.style.width = '30%';
-    } else {
-        element.style.width = '20%%';
+<script>
+$(document).ready(function(){
+    function checkTotal() {
+        let totalAmount = $('.totalAmount').text().replace('$', '').trim();
+        totalAmount = parseFloat(totalAmount);
+        let threshold = 50;
+        if (totalAmount < threshold) {
+            $('#error_msg').css('display', 'block').html('Shipping is available for orders over CAD 50. Please add more items to your cart to proceed.');
+            $('.proceed-to-checkout-btn').addClass('disabled');
+        } else {
+            $('#error_msg').css('display', 'none').html('');
+            $('.proceed-to-checkout-btn').removeClass('disabled');
+        }
     }
-}
-window.addEventListener('resize', adjustWidth);
-adjustWidth();
-    </script> --}}
+
+    checkTotal();
+
+    $(document).on('click', '.qty_increase, .qty_decrease', function(){
+        setTimeout(function() {
+            checkTotal();
+        }, 500);
+    });
+});
+
+</script>
 @endsection

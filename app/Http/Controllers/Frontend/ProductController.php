@@ -49,7 +49,7 @@ class ProductController extends Controller
         $data['title'] = $seo->title;
         $data['description'] = $seo->description;
         $data['keywords'] = $seo->keywords;
-        
+
         if ($products) {
             return view('front.pages.product.all_product', $data);
         }

@@ -34,7 +34,7 @@
             <div class="col-md-6 p-4">
                 <a class="card p-md-5 p-3 cat_card rounded-20px" href="{{ route('category.product', $item->id) }}">
                     <h1 class="fw-bold py-3 text-white mb-0">
-                        {{ langConverter($item->en_Category_Name, $item->fr_Category_Name) }} <small style="font-size: 13px">({{ $item->products->count() }} Products)</small></h1>
+                        {{ langConverter($item->en_Category_Name, $item->fr_Category_Name) }} </h1>
                     <img src="{{ asset(CategoryImage() . $item->Category_Icon) }}"
                         class="position-absolute translate-middle-y"
                         alt="{{ langConverter($item->en_Category_Name, $item->fr_Category_Name) }}">
@@ -120,7 +120,7 @@
         </div>
         <hr class="start-border">
         <div class="product-items">
-            <div class="row newArrivls position-relative">
+            <div class="row onSale position-relative">
                 {{-- @dd($new_arrivals) --}}
                 @forelse ($on_sales as $product)
                     <div class="col-md-3 p-3 ">
@@ -431,6 +431,43 @@ $('.bestSelling').slick({
 
 
 $('.featured').slick({
+  dots: false,
+  infinite: true,
+  speed: 300,
+  slidesToShow: 4,
+  autoplay: true,
+  autoplaySpeed: 2000,
+  slidesToScroll: 1,
+  prevArrow: '<button class="slide-arrow btn prev d-md-block d-none"><i class="fa-solid fa-less-than"></i></button>',
+  nextArrow: '<button class="slide-arrow btn next d-md-block d-none"><i class="fa-solid fa-greater-than"></i></button>',
+
+  responsive: [
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 3,
+        infinite: false,
+        dots: false
+      }
+    },
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 2
+      }
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1
+      }
+    }
+  ]
+});
+$('.onSale').slick({
   dots: false,
   infinite: true,
   speed: 300,

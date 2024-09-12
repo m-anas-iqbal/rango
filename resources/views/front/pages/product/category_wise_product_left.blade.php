@@ -73,10 +73,8 @@
 
       @endforelse
                     </div>
-                    <div class="pagination-area mt-30">
-                        <ul class="paginations text-center">
-                            {{ $products->links('vendor.pagination.custom') }}
-                        </ul>
+                    <div class="pagination-area mt-30 testing">
+                        {{ $products->links('vendor.pagination.custom') }}
                     </div>
 
                     </div>

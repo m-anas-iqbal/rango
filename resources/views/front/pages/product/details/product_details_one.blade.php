@@ -31,8 +31,10 @@
                         <div class="imagesSection">
                             <div class="product-thumbnail-image p-3">
                                 @if($products->video)
-                                <div class="embed-responsive embed-responsive-16by9">
-                                    <video src="{{ asset(ProductVideo() . $products->video) }}" height="120" width="300" class="embed-responsive-item" preload="" controls id="targetvideo"></video>
+                                <div class="main-img-wrap">
+                                    <video class="embed-responsive-item h-100 w-100" autoplay id="targetvideo">
+                                        <source src="{{ asset(ProductVideo() . $products->video) }}" type="video/mp4"></source>
+                                    </video>
                                 </div>
                                 @endif
                                 @foreach (['Primary_Image', 'Image4', 'Image3', 'Image5', 'Image2'] as $image)
@@ -46,10 +48,17 @@
                                 @endforeach
                             </div>
                             <div class="product-images">
+                                @if($products->video)
+                                <div class="main-img-wrap border border-dark p-2 rounded">
+                                    <video class="embed-responsive-item h-100 w-100" autoplay id="targetvideo">
+                                        <source src="{{ asset(ProductVideo() . $products->video) }}" type="video/mp4"></source>
+                                    </video>
+                                </div>
+                                @endif
                                 @foreach (['Primary_Image', 'Image4', 'Image3', 'Image5', 'Image2'] as $image)
                                     @if ($products->$image)
                                         <div class="p-1 wrap">
-                                            <div class="border border-dark p-2 rounded h-100 w-100">
+                                            <div class="border border-dark p-2 rounded h-100 w-100 overflow-hidden">
                                                 <img class="img-fluid w-100 h-100 object-fit-contain"
                                                     src="{{ asset(ProductImage() . $products->$image) }}"
                                                     alt="{{ __('product') }}" />

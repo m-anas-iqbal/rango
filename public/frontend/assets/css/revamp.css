@@ -617,7 +617,18 @@ hr.start-border::before {
     /* opacity: 1; */
 
 }
-
+.card.product_card{
+    height: 460px;
+}
+.pagination-page {
+    padding: 10px 25px;
+    background: var(--color-blue);
+    color: #fff;
+}
+.pagination-page.active {
+    background: var(--color-green);
+    text-decoration: underline;
+}
 @keyframes slide {
     from {
         opacity: 0;
