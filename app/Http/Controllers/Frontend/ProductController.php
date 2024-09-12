@@ -17,11 +17,11 @@ class ProductController extends Controller
 {
     public function singleProduct($slug)
     {
-        $product = Product::where('en_Product_Slug', $slug)->with('category')->where('status', 1)->first();
+        $product = Product::where('en_Product_Slug', $slug)->with('category')->where('Status', 1)->first();
         if (!empty($product)) {
             $cat_id = $product->category->id;
 
-            $data['similar_product'] =  Product::with('brand', 'category', 'colors', 'sizes', 'product_tags')->where('status', 1)
+            $data['similar_product'] =  Product::with('brand', 'category', 'colors', 'sizes', 'product_tags')->where('Status', 1)
                 ->where('Category_Id', $cat_id)
                 ->where('id', '!=', $product->id)
                 ->latest()->take(4)->get();
@@ -40,10 +40,10 @@ class ProductController extends Controller
         $data['tags'] = ProductTag::with('product')->latest()->get();
         $data['colors'] = Color::with('products')->latest()->get();
         $data['sizes'] = Size::with('products')->latest()->get();
-        $data['category'] = Category::with('products')->where('en_Description', null)->orWhere('Category_Icon', null)->get();
+        $data['category'] = Category::with('products')->where('Status', 1)->where('en_Description', null)->orWhere('Category_Icon', null)->get();
         $data['brands'] = Brand::with('products')->get();
-        $data['productCount'] = Product::where('status', 1)->count();
-        $products = Product::with('brand', 'category', 'colors', 'sizes', 'product_tags')->where('status', 1)->latest()->paginate(12);
+        $data['productCount'] = Product::where('Status', 1)->count();
+        $products = Product::with('brand', 'category', 'colors', 'sizes', 'product_tags')->where('Status', 1)->latest()->paginate(12);
         $data['products'] = $products;
         $seo = SeoSetting::where('slug', 'all-products')->first();
         $data['title'] = $seo->title;
@@ -62,7 +62,7 @@ class ProductController extends Controller
         $data['sizes'] = Size::with('products')->latest()->get();
         $data['category'] = Category::with('products')->where('en_Description', null)->orWhere('Category_Icon', null)->get();
         $data['brands'] = Brand::with('products')->get();
-        $products = Product::with('brand', 'category', 'colors', 'sizes', 'product_tags')->where('status', 1)->latest()->paginate(12);
+        $products = Product::with('brand', 'category', 'colors', 'sizes', 'product_tags')->where('Status', 1)->latest()->paginate(12);
         $data['products'] = $products;
         $seo = SeoSetting::where('slug', 'all-products')->first();
         $data['title'] = $seo->title;
@@ -89,7 +89,7 @@ class ProductController extends Controller
             //         return view('front.pages.product.filter_product', compact('filters'));
             //     }
             } elseif ($value == 'Products') {
-                $filters = Product::get();
+                $filters = Product::where('Status', 1)->get();
                 if ($filters) {
                     return view('front.pages.product.filter_product', compact('filters'));
                 }
@@ -104,12 +104,12 @@ class ProductController extends Controller
             return json_encode(['results' => []]);
         }
             if ($request->search) {
-                $filters = Product::where('en_Product_Name', 'LIKE', "%{$request->search}%")->get();
+                $filters = Product::where('en_Product_Name', 'LIKE', "%{$request->search}%")->where('Status', 1)->get();
 
         $url= "en_Product_Name";
             }
             if ($request->search && count($filters)==0) {
-                $filters = Category::where('en_Category_Name', 'LIKE', "%{$request->search}%")->get();
+                $filters = Category::where('en_Category_Name', 'LIKE', "%{$request->search}%")->where('Status', 1)->get();
 
         $url= "en_Category_Name";
             }
@@ -229,7 +229,7 @@ class ProductController extends Controller
         $data['colors'] = Color::with('products')->latest()->get();
         $data['sizes'] = Size::with('products')->latest()->get();
         $data['brands'] = Brand::with('products')->get();
-        $products = Product::with('brand', 'category', 'colors', 'sizes', 'product_tags')->where('status', 1)->where('Category_Id', $id)->latest()->paginate(12);
+        $products = Product::with('brand', 'category', 'colors', 'sizes', 'product_tags')->where('Status', 1)->where('Category_Id', $id)->latest()->paginate(12);
         $data['products'] = $products;
         $seo = SeoSetting::where('slug', 'all-products')->first();
         $data['title'] = $seo->title;
@@ -249,7 +249,7 @@ class ProductController extends Controller
         $data['sizes'] = Size::with('products')->latest()->get();
         $data['category'] = Category::with('products')->where('en_Description', null)->orWhere('Category_Icon', null)->get();
         $data['brands'] = Brand::with('products')->get();
-        $products = Product::with('brand', 'category', 'colors', 'sizes', 'product_tags')->where('status', 1)->where('Category_Id', $id)->latest()->paginate(9);
+        $products = Product::with('brand', 'category', 'colors', 'sizes', 'product_tags')->where('Status', 1)->where('Category_Id', $id)->latest()->paginate(9);
         $data['products'] = $products;
         $seo = SeoSetting::where('slug', 'all-products')->first();
         $data['title'] = $seo->title;
@@ -268,7 +268,7 @@ class ProductController extends Controller
         $data['sizes'] = Size::with('products')->latest()->get();
         $data['category'] = Category::with('products')->where('en_Description', null)->orWhere('Category_Icon', null)->get();
         $data['brands'] = Brand::with('products')->get();
-        $products = Product::with('brand', 'category', 'colors', 'sizes', 'product_tags')->where('status', 1)->where('Brand_Id', $id)->latest()->paginate(9);
+        $products = Product::with('brand', 'category', 'colors', 'sizes', 'product_tags')->where('Status', 1)->where('Brand_Id', $id)->latest()->paginate(9);
         $data['products'] = $products;
         $seo = SeoSetting::where('slug', 'all-products')->first();
         $data['title'] = $seo->title;
@@ -287,7 +287,7 @@ class ProductController extends Controller
         $data['sizes'] = Size::with('products')->latest()->get();
         $data['category'] = Category::with('products')->where('en_Description', null)->orWhere('Category_Icon', null)->get();
         $data['brands'] = Brand::with('products')->get();
-        $products = Product::with('brand', 'category', 'colors', 'sizes', 'product_tags')->where('status', 1)->where('Brand_Id', $id)->latest()->paginate(9);
+        $products = Product::with('brand', 'category', 'colors', 'sizes', 'product_tags')->where('Status', 1)->where('Brand_Id', $id)->latest()->paginate(9);
         $data['products'] = $products;
         $seo = SeoSetting::where('slug', 'all-products')->first();
         $data['title'] = $seo->title;
@@ -309,7 +309,7 @@ class ProductController extends Controller
         $category = Category::with('products')->where('en_Description', null)->orWhere('Category_Icon', null)->get();
         $brands = Brand::with('products')->get();
         $products = Product::query();
-        $products = $products->with('brand', 'category', 'colors', 'sizes', 'product_tags')->where('status', 1);
+        $products = $products->with('brand', 'category', 'colors', 'sizes', 'product_tags')->where('Status', 1);
 
         if ($search) {
             $products = $products->where('en_Product_Name', 'LIKE', "%{$search}%")
