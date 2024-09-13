@@ -110,7 +110,7 @@
                       </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="" href="{{ route('onSale') }}">Sale</a>
+                    <a class="" href="{{ route('sale') }}">Sale</a>
                 </li>
                 <li class="nav-item">
                     <a class="" href="{{ route('about.us') }}">About</a>
@@ -152,7 +152,7 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="" href="{{ route('onSale') }}">Sale</a>
+                    <a class="" href="{{ route('sale') }}">Sale</a>
                 </li>
                 <li class="nav-item">
                     <a class="" href="{{ route('about.us') }}">About</a>

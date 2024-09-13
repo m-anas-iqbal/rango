@@ -70,9 +70,9 @@ class HomeController extends Controller
         Session::put('currency', $currency);
         return redirect()->back();
     }
-    public function onSale(){
+    public function sale(){
         $data['on_sales'] = Product::with('category')->where('On_Sale', ACTIVE)->where('Status', ACTIVE)->get();
         // @dd($data);
-        return view('front.pages.onSale' , $data);
+        return view('front.pages.sale' , $data);
     }
 }
