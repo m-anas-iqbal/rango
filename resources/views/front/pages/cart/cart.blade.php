@@ -146,36 +146,7 @@
         <div id="CartDecrementFromSession" data-url="{{ route('cart.decrease') }}"></div>
     </section>
     <script>
-        function increment() {
-            document.getElementById('input').stepUp();
-        }
 
-        function decrement() {
-            document.getElementById('input').stepDown();
-        }
-
-            /*----------------------------
-      Cart Plus Minus Button
-    ------------------------------ */
-    $(".qtybutton").on("click", function() {
-
-var $button = $(this);
-//   console.log($button.data("type"));
-var oldValue = $button.parent().find("input").val();
-if ($button.data("type") === "+") {
-//   console.log(oldValue);
-
-    var newVal = parseFloat(oldValue) + 1;
-} else {
-    // Don't allow decrementing below zero
-    if (oldValue > 1) {
-        var newVal = parseFloat(oldValue) - 1;
-    } else {
-        newVal = 1;
-    }
-}
-$button.parent().find("input").val(newVal);
-});
     </script>
 <script>
 $(document).ready(function(){

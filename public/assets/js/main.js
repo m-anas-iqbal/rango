@@ -510,6 +510,7 @@
     $(".qtybutton").on("click", function() {
       var $button = $(this);
       var oldValue = $button.parent().find("input").val();
+      console.log(oldValue);
       if ($button.text() === "+") {
         console.log(oldValue);
 
