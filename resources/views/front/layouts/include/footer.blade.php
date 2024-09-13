@@ -26,6 +26,9 @@
                         </ul>
                     </li>
                     <li class="nav-item">
+                        <a class="" href="{{route('onSale')}}">Sale</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="" href="{{route('about.us')}}">About</a>
                     </li>
                     <li class="nav-item">
