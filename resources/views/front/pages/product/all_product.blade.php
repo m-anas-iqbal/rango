@@ -53,7 +53,7 @@
                     <div class="row">
                         @forelse ($products as $product)
                             <div class="col-md-3 p-3 h-100">
-                                <div class="card product_card h-100 text-center p-3 shadow rounded-10px border-0">
+                                <div class="card product_card h-100 text-center p-3 shadow rounded-10px border-0 testing">
                                     <a class="product-link" href="{{ route('single.product', $product->en_Product_Slug) }}">
                                         <img src="{{ asset(ProductImage() . $product->Primary_Image) }}"
                                             class="img-fluid shadow rounded" alt="{{ __('product') }}">

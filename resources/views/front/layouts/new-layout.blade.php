@@ -110,6 +110,9 @@
                       </ul>
                 </li>
                 <li class="nav-item">
+                    <a class="" href="{{ route('onSale') }}">Sale</a>
+                </li>
+                <li class="nav-item">
                     <a class="" href="{{ route('about.us') }}">About</a>
                 </li>
                 <li class="nav-item">
@@ -149,6 +152,9 @@
                     </ul>
                 </li>
                 <li class="nav-item">
+                    <a class="" href="{{ route('onSale') }}">Sale</a>
+                </li>
+                <li class="nav-item">
                     <a class="" href="{{ route('about.us') }}">About</a>
                 </li>
                 <li class="nav-item">
@@ -172,7 +178,7 @@
     <div id="productImgAsset" data-url="{{ asset(ProductImage()) }}"></div>
 
     @include('front.layouts.include.footer')
-
+{{--
     <div class="modal fade common-modal" id="trackOrderModal" tabindex="-1" aria-labelledby="trackOrderModalLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
@@ -251,7 +257,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 
     {{-- route url --}}
     <div id="DoNotSubscribe" data-url="{{ route('do.not.subscribe') }}"></div>
