@@ -122,7 +122,7 @@ Route::group(['middleware' => ['is_user']], function () {
         Route::get('category/left/{id}', [ProductController::class, 'CategoryWiseProductLeft'])->name('category.product_left');
         Route::get('brand/{id}', [ProductController::class, 'BrandWiseProduct'])->name('brand.product');
         Route::get('brand/left/{id}', [ProductController::class, 'BrandWiseProductLeft'])->name('brand.product_left');
-        Route::get('on-sale', [HomeController::class, 'Onsale'])->name('onSale');
+        Route::get('on-sale', [HomeController::class, 'onSale'])->name('onSale');
 
     });
 
