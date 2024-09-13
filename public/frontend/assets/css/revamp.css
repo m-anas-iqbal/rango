@@ -617,9 +617,9 @@ hr.start-border::before {
     /* opacity: 1; */
 
 }
-.card.product_card{
+/* .card.product_card{
     height: 460px;
-}
+} */
 .pagination-page {
     padding: 10px 25px;
     background: var(--color-blue);

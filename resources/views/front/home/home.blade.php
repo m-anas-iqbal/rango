@@ -54,11 +54,11 @@
     </div>
     <hr class="start-border">
     <div class="product-items">
-        <div class="row newArrivls position-relative">
+        <div class="row  position-relative newArrivls">
             {{-- @dd($new_arrivals) --}}
             @forelse ($new_arrivals as $product)
-                <div class="col-md-3 p-3 ">
-                    <div class="card product_card text-center p-3 shadow rounded-10px border-0">
+                <div class="col-md-3 p-3 h-100">
+                    <div class="card product_card h-100 text-center p-3 shadow rounded-10px border-0">
                         <a class="product-link" href="{{ route('single.product', $product->en_Product_Slug) }}">
                             <img src="{{ asset(ProductImage() . $product->Primary_Image) }}"
                                 class="img-fluid shadow rounded" alt="{{ __('product') }}">
@@ -123,8 +123,8 @@
             <div class="row onSale position-relative">
                 {{-- @dd($new_arrivals) --}}
                 @forelse ($on_sales as $product)
-                    <div class="col-md-3 p-3 ">
-                        <div class="card product_card text-center p-3 shadow rounded-10px border-0">
+                    <div class="col-md-3 p-3 h-100">
+                        <div class="card product_card text-center p-3 h-100 shadow rounded-10px border-0">
                             <a class="product-link" href="{{ route('single.product', $product->en_Product_Slug) }}">
                                 <img src="{{ asset(ProductImage() . $product->Primary_Image) }}"
                                     class="img-fluid shadow rounded" alt="{{ __('product') }}">
@@ -180,8 +180,8 @@
         <div class="product-items">
             <div class="row bestSelling position-relative">
                 @forelse ($best_sellings as $product)
-                    <div class="col-md-3 p-3">
-                        <div class="card product_card text-center p-3 shadow rounded-10px border-0">
+                    <div class="col-md-3 p-3 h-100">
+                        <div class="card product_card h-100 text-center p-3 shadow rounded-10px border-0">
                             <a class="product-link" href="{{ route('single.product', $product->en_Product_Slug) }}">
                                 <img src="{{ asset(ProductImage() . $product->Primary_Image) }}"
                                     class="img-fluid shadow rounded" alt="{{ __('product') }}">
@@ -234,8 +234,8 @@
         <div class="product-items">
             <div class="row featured position-relative">
                 @forelse ($featured_products as $product)
-                    <div class="col-md-3 p-3">
-                        <div class="card product_card text-center p-3 shadow rounded-10px border-0">
+                    <div class="col-md-3 p-3 h-100">
+                        <div class="card product_card h-100 text-center p-3 shadow rounded-10px border-0">
                             <a class="product-link" href="{{ route('single.product', $product->en_Product_Slug) }}">
                                 <img src="{{ asset(ProductImage() . $product->Primary_Image) }}"
                                     class="img-fluid shadow rounded" alt="{{ __('product') }}">
@@ -280,7 +280,7 @@
 @endif
 
 <div class="parallax d-grid place-content-center r-bg-red text-white py-5"
-    style="--bg-image: url('https://t3.ftcdn.net/jpg/03/23/24/82/360_F_323248211_HNMfkovpijljYs15WasG0XPCTYY2TKrb.jpg');">
+    style="--bg-image: url('https://t3.ftcdn.net/jpg/03/23/24/82/360_F_323248211_HNMfkovpijljYs15WasG0XPCTYY2TKrb.jpg');" id="newsletter">
     <div class="container p-5 text-center">
         <h2>Subscribe To Newsletter</h2>
         <p>Sign up for Rango Cart emails or follow the Rango Cart Instagram page to receive activity ideas, helpful child development info, free giveaways announcements, exciting deals, and latest product updates </p>

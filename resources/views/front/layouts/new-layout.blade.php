@@ -24,7 +24,7 @@
                </div>
             </div>
        </marquee>
-        <div class="d-flex justify-content-between container px-md-0 px-5">
+        <div class="container">
             <div class="wrap text-center small d-md-block d-none">
                 {{-- <div class="text_slide"> --}}
                     <marquee class="w-100">
@@ -40,7 +40,7 @@
 
                 {{-- </div> --}}
             </div>
-            <div class="wrap d-flex gap-4 justify-content-center justify-content-md-end mt-2 mt-md-0">
+            {{-- <div class="wrap d-flex gap-4 justify-content-center justify-content-md-end mt-2 mt-md-0">
 
                 {{-- <a href="https://wa.me/14379853601" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
 
@@ -49,7 +49,7 @@
                 <a href="{{getSocialLink()->Instagram}}" target="_blank"><i class="fa-brands fa-instagram"></i></a>
                 <a href="{{getSocialLink()->Linkedin}}" target="_blank"><i class="fa-brands fa-youtube"></i></a>
                 <a href="{{getSocialLink()->Skype}}" target="_blank"><i class="fa-brands fa-pinterest"></i></a> --}}
-                @if (Auth::user())
+                {{-- @if (Auth::user())
                     <div class="dropdown">
                         <button class="bg-transparent text-white border-0 dropdown-toggle" type="button"
                             id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
@@ -61,11 +61,6 @@
                                         href="{{ route('admin.dashboard') }}">{{ __('Dashboard') }}</a>
                                 </li>
                             @else
-                                {{-- <li class="single-lang dropdown-item"><a class="lang-text"
-                                        href="{{ route('user.profile') }}">{{ __('Profile') }}</a>
-                                </li> --}}
-                                {{-- <li class="single-lang dropdown-item">  <a class="lang-text" href="javascript:void(0)" data-bs-toggle="modal"
-                                    data-bs-target="#trackOrderModal">{{ __('Track Order') }}</a> </li> --}}
                             @endif
                             <li class="single-lang dropdown-item"><a class="lang-text"
                                     href="{{ route('user.logout') }}">{{ __('Logout') }}</a></li>
@@ -77,9 +72,10 @@
                     </div>
                 @else
                     <a href="{{ route('login') }}">My Account</a>
-                @endif
+                @endif --}}
+                {{-- <a href="#newsletter" class="btn text-white fs-12 text-decoration-underline">Subscribe</a> --}}
 
-            </div>
+            {{-- </div> --}}
             <div class="d-md-none d-flex align-items-center">
                 <a href="{{ route('cart.content') }}" class="position-relative cart_icon"><span class="badge bg-success count_checkout totalCountItem">{{ Cart::count() }}</span><i
                     class="fa-solid fa-cart-shopping r-text-yellow fs-4"></i></a>
