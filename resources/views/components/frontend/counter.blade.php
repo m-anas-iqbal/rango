@@ -94,12 +94,13 @@ $specialoffer = SpecialOffer();
                 <div class="wrap">
                 <h4>{{ $specialoffer->en_title }}</h4>
                 <p{{ $specialoffer->description }}</p>
-                // <a href="{{ $specialoffer->url }}" class="btn btn-outline-light">Shop Now</a>
                 </div>
                 `;
                 msg_counter.classlist.add('d-none');
             }
         }, 1000);
+                        // <a href="{{ $specialoffer->url }}" class="btn btn-outline-light">Shop Now</a>
+
     </script>
 @endif
 @endsection
