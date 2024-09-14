@@ -34,13 +34,13 @@ $specialoffer = SpecialOffer();
     <div class="py-5 r-bg-blue text-white parallax"
     style="--bg-image:url('https://www.proglobalevents.com/wp-content/uploads/bigstock-People-Planning-Concept-Entre-327380749-1-1024x576.jpg')">
     <div class="container py-5">
-        <div class=" mb-5 text-center" id="msg_counter">
+        {{-- <div class=" mb-5 text-center" id="msg_counter">
             <h2>
                 It's Almost Here
             </h2>
             <p class="mb-0">Stay tuned for exciting news toys Arriving soon! </p>
             <p>Count Down Begins now</p>
-        </div>
+        </div> --}}
     <div id="countdown">
         <div class="cd">
             <span id="days"></span> Days
