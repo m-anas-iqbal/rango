@@ -60,6 +60,7 @@ $specialoffer = SpecialOffer();
 </div>
 @php
 $specialoffer = SpecialOffer();
+// dd($specialoffer);
 @endphp
 <script>
     let msg_counter = document.getElementById('msg_counter');
@@ -93,8 +94,8 @@ $specialoffer = SpecialOffer();
                 document.getElementById("countdown").innerHTML = `
                 <div class="wrap">
                 <h4>{{ $specialoffer->en_title }}</h4>
-                <p{{ $specialoffer->description }}</p>
-                <a href="{{ $specialoffer->url }}" class="btn btn-outline-light">Shop Now</a>
+                <p>{{ $specialoffer->description }}</p>
+                <a href="{{ $specialoffer->url }}" class="btn btn-outline-light">Reserve Now</a>
 
                 </div>
                 `;

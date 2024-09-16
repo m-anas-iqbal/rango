@@ -268,6 +268,10 @@
                                         <li class="media-item"><a
                                                 class="media-link r-text-blue pinterest a2a_button_pinterest"
                                                 href="javascript:void(0)"><i class="fab fa-pinterest-p"></i></a></li>
+                                                <li class="media-item"><a
+                                                    class="media-link r-text-blue copy"
+                                                    href="javascript:void(0)"><i class="fa fa-copy"></i></a></li>
+
                                     </ul>
                                     <script async src="https://static.addtoany.com/menu/page.js"></script>
                                 </div>
@@ -520,5 +524,22 @@
             }
         });
     });
+    </script>
+
+    <script>
+$('.media-link.copy').on('click', function() {
+    var $tempInput = $('<input>');
+    $('body').append($tempInput);
+    $tempInput.val(window.location.href).select();
+    document.execCommand('copy');
+    $tempInput.remove();
+    Swal.fire({
+        icon: 'success',
+        title: 'Copied!',
+        text: 'Page URL copied to clipboard!',
+        confirmButtonText: 'OK'
+    });
+});
+
     </script>
 @endsection
