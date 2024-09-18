@@ -297,6 +297,7 @@ if (!function_exists('currency')) {
     function currency()
     {
         if (session()->has('currency')) {
+        dd(session()->get('currency'));
             return session()->get('currency');
         }
         return 'CAD';
