@@ -4,11 +4,13 @@ use App\Models\Currency;
 
 function currency_array($currency = null)
 {
+    dd($currency);
     if ($currency == null) {
         return Currency::get();
     } else {
         return Currency::where('currency', '!=', $currency)->get();
     }
+
 }
 
 function country($input = null)
