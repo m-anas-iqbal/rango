@@ -1,35 +1,44 @@
-@extends('errors.layout')
+{{-- @extends('errors.layout') --}}
+@extends('front.layouts.new-layout')
 @section('title', __('Error'))
 @section('content')
-    <!-- breadcrumb area start here  -->
-    <div class="breadcrumb-area">
-        <div class="container">
-            <div class="breadcrumb-wrap text-center">
-                <h2 class="page-title">{{__('Error')}}</h2>
-                <ul class="breadcrumb-pages">
-                    <li class="page-item"><a class="page-item-link" href="{{route('front')}}">{{__('Home')}}</a></li>
-                    <li class="page-item">{{__('Error')}}</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <!-- breadcrumb area end here  -->
+    <style>
+        .error-content {
+            padding: 50px 0;
+            text-align: center;
 
-    <!-- Error Page area start here  -->
-    <div class="error-page-area section">
-        <div class="container">
-            <div class="row">
-                <div class="col-12 text-center">
-                    <h1 class="fw-bold">{{__('ERROR 500 SERVER ERROR')}}</h1>
-                    <p>
-                        {{__('Problem was found in server. Please check your server. Click on the button below
-                        to do something, Thanks!')}}
-                    </p>
-                    <a href="{{route('front')}}" class="primary-btn">{{__('Back to Home')}}</a>
-                </div>
+            & h1 {
+                font-size: 10vw
+            }
+
+            & p {
+                font-size: 1.5vw;
+            }
+        }
+
+        @media (max-width:500px) {
+            .error-content {
+                text-align: center;
+
+                & h1 {
+                    font-size: 20vw
+                }
+
+                & p {
+                    font-size: 3.5vw;
+                }
+            }
+        }
+    </style>
+    <div class="error-content">
+        <div class="row align-items-center">
+            <div class="col-md-12">
+                <h1 class="fw-bold text-uppercase font-zilla text-blue p-0 m-0">OOOps! 500</h1>
+        <p class="bg-blue fw-bold w-fit mx-auto px-md-5 m-0 px-3 py-2">Something Went wrong. </p>
+
             </div>
+
         </div>
+
     </div>
-    <!-- Error Page area end here  -->
 @endsection
-
