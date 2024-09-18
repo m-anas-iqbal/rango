@@ -204,7 +204,7 @@ if (!function_exists('BlogImage')) {
 if (!function_exists('Category')) {
     function Category()
     {
-        return Category::where("status",1)->with('products')->get();
+        return Category::with('products')->get();
     }
 }
 if (!function_exists('Category_Des_Icon')) {
@@ -297,7 +297,6 @@ if (!function_exists('currency')) {
     function currency()
     {
         if (session()->has('currency')) {
-        dd(session()->get('currency'));
             return session()->get('currency');
         }
         return 'CAD';
@@ -323,14 +322,11 @@ if (!function_exists('currencyConverter')) {
 if (!function_exists('format_price')) {
     function format_price($convert_price)
     {
-        // $currency = Currency::where('currency', currency())->first();
-        $currency = Currency::first();
-        if ($currency) {
-            if ($currency->position == 'before') {
-                return currencySymbol()[currency()] . ' ' . $convert_price;
-            } else {
-                return $convert_price . ' ' . currencySymbol()[currency()];
-            }
+        $currency = Currency::where('currency', currency())->first();
+        if ($currency->position == 'before') {
+            return currencySymbol()[currency()] . ' ' . $convert_price;
+        } else {
+            return $convert_price . ' ' . currencySymbol()[currency()];
         }
     }
 }
