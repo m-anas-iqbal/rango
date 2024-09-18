@@ -322,7 +322,8 @@ if (!function_exists('currencyConverter')) {
 if (!function_exists('format_price')) {
     function format_price($convert_price)
     {
-        $currency = Currency::where('currency', currency())->first();
+        // $currency = Currency::where('currency', currency())->first();
+        $currency = Currency::first();
         if ($currency) {
             if ($currency->position == 'before') {
                 return currencySymbol()[currency()] . ' ' . $convert_price;
