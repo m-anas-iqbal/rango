@@ -25,6 +25,7 @@ class HomeController extends Controller
 
     public  function index()
     {
+        // dd(currency)
         if (file_exists(storage_path('installed'))) {
             if (!Session::has('currency')) {
                 Session::put('currency', Setting::where('slug', 'default_currency')->first()->value ?? 'CAD');

@@ -323,11 +323,12 @@ if (!function_exists('format_price')) {
     function format_price($convert_price)
     {
         $currency = Currency::where('currency', currency())->first();
-
-        if ($currency->position == 'before') {
-            return currencySymbol()[currency()] . ' ' . $convert_price;
-        } else {
-            return $convert_price . ' ' . currencySymbol()[currency()];
+        if ($currency) {
+            if ($currency->position == 'before') {
+                return currencySymbol()[currency()] . ' ' . $convert_price;
+            } else {
+                return $convert_price . ' ' . currencySymbol()[currency()];
+            }
         }
     }
 }
