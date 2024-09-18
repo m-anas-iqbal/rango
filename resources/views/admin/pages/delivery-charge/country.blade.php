@@ -99,7 +99,7 @@
                                 <input name="country" id="country" value="{{$dc->country}}" readonly>
                             </div>
                             <div class="input__group mb-25">
-                                <label for="exampleInputEmail1">{{ __('Tax Rate (In Percentage)')}}</label>
+                                <label for="exampleInputEmail1">{{ __('Delivery Charges')}}</label>
                                 <input type="number" min="0" step="0.01" name="charge" placeholder="{{__('Delivery Charge')}}" value="{{$dc->charge}}" required>
                             </div>
                             <div class="input__group mb-25">

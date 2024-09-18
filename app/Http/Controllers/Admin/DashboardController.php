@@ -69,4 +69,8 @@ class DashboardController extends Controller
         }
         return redirect()->route('login')->with('error', __('Wrong Credential'));
     }
+    public function markAsRead(){
+        Auth::user()->unreadNotifications->markAsRead();
+        return redirect()->back();
+    }
 }

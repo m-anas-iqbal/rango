@@ -52,8 +52,10 @@ Route::group(['prefix' => 'subscribe'], function () {
 });
 Route::post('/product/remove-media', [ProductController::class, 'removeMedia'])->name('product.remove.media');
 
+Route::get('/mark-as-read', [DashboardController::class, 'markAsRead'])->name('mark-as-read');
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'is_admin', 'en.locale'], 'as' => 'admin.'], function () {
 
+    // Route::get('/mark-as-read', [DashboardController::class, 'markAsRead'])->name('mark-as-read');
     Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 

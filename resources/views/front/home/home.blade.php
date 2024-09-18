@@ -34,7 +34,7 @@
             <div class="col-md-6 p-4">
                 <a class="card p-md-5 p-3 cat_card rounded-20px" href="{{ route('category.product', $item->id) }}">
                     <h1 class="fw-bold py-3 text-white mb-0">
-                        {{ langConverter($item->en_Category_Name, $item->fr_Category_Name) }} <small style="font-size: 13px">({{ $item->products->count() }} Products)</small></h1>
+                        {{ langConverter($item->en_Category_Name, $item->fr_Category_Name) }} </h1>
                     <img src="{{ asset(CategoryImage() . $item->Category_Icon) }}"
                         class="position-absolute translate-middle-y"
                         alt="{{ langConverter($item->en_Category_Name, $item->fr_Category_Name) }}">
@@ -47,18 +47,84 @@
 </div>
 {{-- @dd(ACTIVE) --}}
 @if ($allsettings['new_arrival'] == ACTIVE)
+<div class="container home_products my-5" id="newArrivals">
+    <div class="d-flex justify-content-between">
+        <h3 class="fw-bold">New Arrivals <small style="font-size: 13px">({{ $new_arrivals->count()  }} Products)</small></h3>
+        {{-- <a href="" class="fw-bold">See All <i class="fa-solid fa-arrow-right"></i></a> --}}
+    </div>
+    <hr class="start-border">
+    <div class="product-items">
+        <div class="row  position-relative newArrivls">
+            {{-- @dd($new_arrivals) --}}
+            @forelse ($new_arrivals as $product)
+                <div class="col-md-3 p-3 h-100">
+                    <div class="card product_card h-100 text-center p-3 shadow rounded-10px border-0">
+                        <a class="product-link" href="{{ route('single.product', $product->en_Product_Slug) }}">
+                            <img src="{{ asset(ProductImage() . $product->Primary_Image) }}"
+                                class="img-fluid shadow rounded" alt="{{ __('product') }}">
+                            <h5 class="w-fit mx-auto fw-bold mt-3 mb-0 fs-6">
+                                {{ langConverter($product->en_Product_Name, $product->fr_Product_Name) }}
+                            </h5>
+                        </a>
+                        {{-- <div class="price-label w-fit small r-bg-green rounded-pill mx-auto py-1 px-2 text-white">
+                            <span class="regular-price">
+                                {{ currencyConverter($product->Price) }}</span>
+                            <span class="price">
+                                {{ currencyConverter($product->Discount_Price) }}</span>
+                        </div> --}}
+
+                            @if (currencyConverter($product->Price) == currencyConverter($product->Discount_Price))
+                                <span
+                                    class="price fw-bold fs-4">{{ currencyConverter($product->Discount_Price) }}</span>
+                            @else
+                                <div class="d-flex justify-content-center gap-2 align-items-end">
+                                    <span
+                                        class="price fw-bold fs-4">{{ currencyConverter($product->Discount_Price) }}</span>
+                                    <span
+                                        class="regular-price text-danger text-decoration-line-through fw-bold fs-6">{{ currencyConverter($product->Price) }}</span>
+                                </div>
+                            @endif
+                            <hr>
+                            @if ($product->Quantity>0)
+                                <div class="d-flex justify-content-center gap-3">
+                                    <input type="hidden" name="quantity" value="1" id="product_quantity">
+                                    <a href="javascript:void(0)" title="{{ __('Add to cart') }}"
+                                        data-id="{{ $product->id }}"
+                                        class="add-cart addCart price-label w-fit small r-bg-green rounded-pill py-1 px-3 text-white">{{ __('Add To Cart') }}</a>
+                                    <a
+                                        href="javascript:void(0)"class="price-label w-fit small r-bg-red rounded-pill  py-1 px-2 text-white MyWishList" data-id="{{$product->id}}" title="{{__('Add To Wishlist')}}"><i
+                                            class="fa-solid fa-heart"></i></a>
+                                </div>
+                                @else
+                                <div class="d-flex justify-content-center gap-2 align-items-end">
+                                    <span class="regular-price text-danger fw-bold fs-6">Sold out</span>
+                                </div>
+                            @endif
+
+                    </div>
+
+                </div>
+            @empty
+            @endforelse
+
+
+        </div>
+    </div>
+</div>
+@endif
+@if ($allsettings['on_sale'] == ACTIVE)
     <div class="container home_products my-5" id="newArrivals">
         <div class="d-flex justify-content-between">
-            <h3 class="fw-bold">New Arrivals <small style="font-size: 13px">({{ $new_arrivals->count()  }} Products)</small></h3>
+            <h3 class="fw-bold">On Sale <small style="font-size: 13px">({{ $on_sales->count()  }} Products)</small></h3>
             {{-- <a href="" class="fw-bold">See All <i class="fa-solid fa-arrow-right"></i></a> --}}
         </div>
         <hr class="start-border">
         <div class="product-items">
-            <div class="row newArrivls position-relative">
+            <div class="row onSale position-relative">
                 {{-- @dd($new_arrivals) --}}
-                @forelse ($new_arrivals as $product)
-                    <div class="col-md-3 p-3 ">
-                        <div class="card product_card text-center p-3 shadow rounded-10px border-0">
+                @forelse ($on_sales as $product)
+                    <div class="col-md-3 p-3 h-100">
+                        <div class="card product_card text-center p-3 h-100 shadow rounded-10px border-0">
                             <a class="product-link" href="{{ route('single.product', $product->en_Product_Slug) }}">
                                 <img src="{{ asset(ProductImage() . $product->Primary_Image) }}"
                                     class="img-fluid shadow rounded" alt="{{ __('product') }}">
@@ -66,13 +132,6 @@
                                     {{ langConverter($product->en_Product_Name, $product->fr_Product_Name) }}
                                 </h5>
                             </a>
-                            {{-- <div class="price-label w-fit small r-bg-green rounded-pill mx-auto py-1 px-2 text-white">
-                                <span class="regular-price">
-                                    {{ currencyConverter($product->Price) }}</span>
-                                <span class="price">
-                                    {{ currencyConverter($product->Discount_Price) }}</span>
-                            </div> --}}
-
                                 @if (currencyConverter($product->Price) == currencyConverter($product->Discount_Price))
                                     <span
                                         class="price fw-bold fs-4">{{ currencyConverter($product->Discount_Price) }}</span>
@@ -121,8 +180,8 @@
         <div class="product-items">
             <div class="row bestSelling position-relative">
                 @forelse ($best_sellings as $product)
-                    <div class="col-md-3 p-3">
-                        <div class="card product_card text-center p-3 shadow rounded-10px border-0">
+                    <div class="col-md-3 p-3 h-100">
+                        <div class="card product_card h-100 text-center p-3 shadow rounded-10px border-0">
                             <a class="product-link" href="{{ route('single.product', $product->en_Product_Slug) }}">
                                 <img src="{{ asset(ProductImage() . $product->Primary_Image) }}"
                                     class="img-fluid shadow rounded" alt="{{ __('product') }}">
@@ -175,8 +234,8 @@
         <div class="product-items">
             <div class="row featured position-relative">
                 @forelse ($featured_products as $product)
-                    <div class="col-md-3 p-3">
-                        <div class="card product_card text-center p-3 shadow rounded-10px border-0">
+                    <div class="col-md-3 p-3 h-100">
+                        <div class="card product_card h-100 text-center p-3 shadow rounded-10px border-0">
                             <a class="product-link" href="{{ route('single.product', $product->en_Product_Slug) }}">
                                 <img src="{{ asset(ProductImage() . $product->Primary_Image) }}"
                                     class="img-fluid shadow rounded" alt="{{ __('product') }}">
@@ -221,7 +280,7 @@
 @endif
 
 <div class="parallax d-grid place-content-center r-bg-red text-white py-5"
-    style="--bg-image: url('https://t3.ftcdn.net/jpg/03/23/24/82/360_F_323248211_HNMfkovpijljYs15WasG0XPCTYY2TKrb.jpg');">
+    style="--bg-image: url('https://t3.ftcdn.net/jpg/03/23/24/82/360_F_323248211_HNMfkovpijljYs15WasG0XPCTYY2TKrb.jpg');" id="newsletter">
     <div class="container p-5 text-center">
         <h2>Subscribe To Newsletter</h2>
         <p>Sign up for Rango Cart emails or follow the Rango Cart Instagram page to receive activity ideas, helpful child development info, free giveaways announcements, exciting deals, and latest product updates </p>
@@ -297,6 +356,8 @@
   dots: false,
   infinite: true,
   speed: 300,
+  autoplay: true,
+  autoplaySpeed: 2000,
   slidesToShow: 4,
   slidesToScroll: 1,
   prevArrow: '<button class="slide-arrow btn prev d-md-block d-none"><i class="fa-solid fa-less-than"></i></button>',
@@ -334,6 +395,8 @@ $('.bestSelling').slick({
   dots: false,
   infinite: true,
   speed: 300,
+  autoplay: true,
+  autoplaySpeed: 2000,
   slidesToShow: 4,
   slidesToScroll: 1,
   prevArrow: '<button class="slide-arrow btn prev d-md-block d-none"><i class="fa-solid fa-less-than"></i></button>',
@@ -372,6 +435,45 @@ $('.featured').slick({
   infinite: true,
   speed: 300,
   slidesToShow: 4,
+  autoplay: true,
+  autoplaySpeed: 2000,
+  slidesToScroll: 1,
+  prevArrow: '<button class="slide-arrow btn prev d-md-block d-none"><i class="fa-solid fa-less-than"></i></button>',
+  nextArrow: '<button class="slide-arrow btn next d-md-block d-none"><i class="fa-solid fa-greater-than"></i></button>',
+
+  responsive: [
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 3,
+        infinite: false,
+        dots: false
+      }
+    },
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 2
+      }
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1
+      }
+    }
+  ]
+});
+$('.onSale').slick({
+  dots: false,
+  infinite: true,
+  speed: 300,
+  slidesToShow: 4,
+  autoplay: true,
+  autoplaySpeed: 2000,
   slidesToScroll: 1,
   prevArrow: '<button class="slide-arrow btn prev d-md-block d-none"><i class="fa-solid fa-less-than"></i></button>',
   nextArrow: '<button class="slide-arrow btn next d-md-block d-none"><i class="fa-solid fa-greater-than"></i></button>',

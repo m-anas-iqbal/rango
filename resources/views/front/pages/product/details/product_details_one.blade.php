@@ -31,14 +31,16 @@
                         <div class="imagesSection">
                             <div class="product-thumbnail-image p-3">
                                 @if($products->video)
-                                <div class="embed-responsive embed-responsive-16by9">
-                                    <video src="{{ asset(ProductVideo() . $products->video) }}" height="120" width="300" class="embed-responsive-item" preload="" controls id="targetvideo"></video>
+                                <div class="main-img-wrap overflow-hidden">
+                                    <video class="embed-responsive-item h-100 w-100" controls id="targetvideo">
+                                        <source src="{{ asset(ProductVideo() . $products->video) }}" type="video/mp4"></source>
+                                    </video>
                                 </div>
                                 @endif
                                 @foreach (['Primary_Image', 'Image4', 'Image3', 'Image5', 'Image2'] as $image)
                                     @if ($products->$image)
-                                        <div class="main-img-wrap ">
-                                            <img class="img-fluid w-100 h-100 object-fit-contain"
+                                        <div class="main-img-wrap overflow-hidden">
+                                            <img class="img-fluid w-100 h-100 object-fit-contain "
                                                 src="{{ asset(ProductImage() . $products->$image) }}"
                                                 alt="{{ __('product') }}" />
                                         </div>
@@ -46,10 +48,17 @@
                                 @endforeach
                             </div>
                             <div class="product-images">
+                                @if($products->video)
+                                <div class="main-img-wrap border border-dark p-2 rounded">
+                                    <video class="embed-responsive-item h-100 w-100" autoplay id="targetvideo">
+                                        <source src="{{ asset(ProductVideo() . $products->video) }}" type="video/mp4"></source>
+                                    </video>
+                                </div>
+                                @endif
                                 @foreach (['Primary_Image', 'Image4', 'Image3', 'Image5', 'Image2'] as $image)
                                     @if ($products->$image)
-                                        <div class="p-1 wrap">
-                                            <div class="border border-dark p-2 rounded h-100 w-100">
+                                        <div class="p-1 wrap ">
+                                            <div class="border border-dark p-2 rounded h-100 w-100 overflow-hidden">
                                                 <img class="img-fluid w-100 h-100 object-fit-contain"
                                                     src="{{ asset(ProductImage() . $products->$image) }}"
                                                     alt="{{ __('product') }}" />
@@ -211,7 +220,7 @@
                                         <strong class="feature-title"><img src="{{asset('frontend/assets/images/coin.png')}}" alt="" class="img-fluid">
                                             {{ __('Shipping Charge:') }}
                                         </strong><span class="feature-text">{{ __('On all orders over') }}
-                                            {{ currencyConverter(allsetting()['shipping_charge']) }}</span>
+                                            $ 50</span>
                                     </li>
                                     <li class="single-feature">
                                         <strong class="feature-title"><img src="{{asset('frontend/assets/images/shield.png')}}" alt="" class="img-fluid">
@@ -259,6 +268,10 @@
                                         <li class="media-item"><a
                                                 class="media-link r-text-blue pinterest a2a_button_pinterest"
                                                 href="javascript:void(0)"><i class="fab fa-pinterest-p"></i></a></li>
+                                                <li class="media-item"><a
+                                                    class="media-link r-text-blue copy"
+                                                    href="javascript:void(0)"><i class="fa fa-copy"></i></a></li>
+
                                     </ul>
                                     <script async src="https://static.addtoany.com/menu/page.js"></script>
                                 </div>
@@ -382,8 +395,8 @@
             </div>
             <div class="row">
                 @forelse($similar_product as $product)
-                <div class="col-md-3 p-3">
-                    <div class="card product_card text-center p-3 shadow rounded-10px border-0">
+                <div class="col-md-3 p-3 h-100">
+                    <div class="card product_card h-100 text-center p-3 shadow rounded-10px border-0">
                         <a class="product-link" href="{{ route('single.product', $product->en_Product_Slug) }}">
                             <img src="{{ asset(ProductImage() . $product->Primary_Image) }}"
                                 class="img-fluid shadow rounded" alt="{{ __('product') }}">
@@ -511,5 +524,22 @@
             }
         });
     });
+    </script>
+
+    <script>
+$('.media-link.copy').on('click', function() {
+    var $tempInput = $('<input>');
+    $('body').append($tempInput);
+    $tempInput.val(window.location.href).select();
+    document.execCommand('copy');
+    $tempInput.remove();
+    Swal.fire({
+        icon: 'success',
+        title: 'Copied!',
+        text: 'Page URL copied to clipboard!',
+        confirmButtonText: 'OK'
+    });
+});
+
     </script>
 @endsection

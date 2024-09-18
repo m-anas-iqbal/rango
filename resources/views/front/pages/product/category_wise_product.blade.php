@@ -28,7 +28,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <h2>{{$category_m->en_Category_Name }} <small style="font-size: 13px">({{$category_m->products->count()}} Products)</small></h2>
+                    <h2>{{$category_m->en_Category_Name }} <small style="font-size: 13px; color : red">({{$category_m->products->count()}} Products)</small></h2>
                     <p class="mb-0">{{$category_m->en_Description }}</p>
                     <hr>
                 </div>
@@ -47,8 +47,8 @@
 
                         @forelse ($products as $product)
 
-                        <div class="col-md-3 p-3">
-                            <div class="card product_card text-center p-3 shadow rounded-10px border-0">
+                        <div class="col-md-3 p-3 h-100 ">
+                            <div class="card product_card h-100 text-center p-3 shadow rounded-10px border-0">
                                 <a class="product-link" href="{{ route('single.product', $product->en_Product_Slug) }}">
                                     <img src="{{ asset(ProductImage() . $product->Primary_Image) }}"
                                         class="img-fluid shadow rounded" alt="{{ __('product') }}">

@@ -55,11 +55,11 @@ Route::group(['middleware' => ['is_user']], function () {
 
     Route::group(['prefix' => 'user/'], function () {
         //User Sign-in and Sign-up
-        Route::get('sign-in', [AuthController::class, 'userSignIn'])->name('login');
-        Route::post('sign-in', [AuthController::class, 'userSignInPost'])->name('user.sign.in.post');
-        Route::post('login-modal', [AuthController::class, 'loginModal'])->name('user.sign.modal');
-        Route::get('sign-up', [AuthController::class, 'userSignUp'])->name('user.sign.up');
-        Route::post('sign-up', [AuthController::class, 'userSignUpPost'])->name('user.sign.up.post');
+        // Route::get('sign-in', [AuthController::class, 'userSignIn'])->name('login');
+        // Route::post('sign-in', [AuthController::class, 'userSignInPost'])->name('user.sign.in.post');
+        // Route::post('login-modal', [AuthController::class, 'loginModal'])->name('user.sign.modal');
+        // Route::get('sign-up', [AuthController::class, 'userSignUp'])->name('user.sign.up');
+        // Route::post('sign-up', [AuthController::class, 'userSignUpPost'])->name('user.sign.up.post');
         Route::get('auth/google', [AuthController::class, 'redirectToGoogle'])->name('user.redirect_google');
         Route::get('auth/google/callback', [AuthController::class, 'handleGoogleCallback'])->name('user.handle_google_callback');
         Route::get('auth/facebook', [AuthController::class, 'redirectToFacebook'])->name('user.redirect_facebook');
@@ -122,6 +122,7 @@ Route::group(['middleware' => ['is_user']], function () {
         Route::get('category/left/{id}', [ProductController::class, 'CategoryWiseProductLeft'])->name('category.product_left');
         Route::get('brand/{id}', [ProductController::class, 'BrandWiseProduct'])->name('brand.product');
         Route::get('brand/left/{id}', [ProductController::class, 'BrandWiseProductLeft'])->name('brand.product_left');
+        Route::get('on-sale', [HomeController::class, 'sale'])->name('sale');
 
     });
 

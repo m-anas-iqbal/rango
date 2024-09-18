@@ -14,26 +14,33 @@
     <!-- Preloader Area End -->
 
     <section class="topbar r-bg-red text-white py-2">
-        <div class="text_slide text-center d-md-none d-block">
-            <div>
-                Discover Unbeatable prices on eco-friendly educational toys.
+        <marquee class="w-100 d-md-none d-block">
+            <div class="d-flex gap-4">
+               <div>
+                   <p class="fs-12 mb-0">Discover Unbeatable prices on eco-friendly educational toys.</p>
+               </div>
+               <div>
+                   <p class="fs-12 mb-0">Shipping available for orders above CAD 50</p>
+               </div>
             </div>
-            <div>
-                Shipping available for orders above CAD 50
-            </div>
-        </div>
-        <div class="d-flex justify-content-between container px-md-0 px-5">
+       </marquee>
+        <div class="container">
             <div class="wrap text-center small d-md-block d-none">
-                <div class="text_slide">
-                    <div class="fs-12">
-                        Discover Unbeatable prices on eco-friendly educational toys.
-                    </div>
-                    <div class="fs-12">
-                        Shipping available for orders above CAD 50
-                    </div>
-                </div>
+                {{-- <div class="text_slide"> --}}
+                    <marquee class="w-100">
+                         <div class="d-flex gap-4">
+                            <div>
+                                <p class="fs-12 mb-0">Discover Unbeatable prices on eco-friendly educational toys.</p>
+                            </div>
+                            <div>
+                                <p class="fs-12 mb-0">Shipping available for orders above CAD 50</p>
+                            </div>
+                         </div>
+                    </marquee>
+
+                {{-- </div> --}}
             </div>
-            <div class="wrap d-flex gap-4 justify-content-center justify-content-md-end mt-2 mt-md-0">
+            {{-- <div class="wrap d-flex gap-4 justify-content-center justify-content-md-end mt-2 mt-md-0">
 
                 {{-- <a href="https://wa.me/14379853601" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
 
@@ -42,7 +49,7 @@
                 <a href="{{getSocialLink()->Instagram}}" target="_blank"><i class="fa-brands fa-instagram"></i></a>
                 <a href="{{getSocialLink()->Linkedin}}" target="_blank"><i class="fa-brands fa-youtube"></i></a>
                 <a href="{{getSocialLink()->Skype}}" target="_blank"><i class="fa-brands fa-pinterest"></i></a> --}}
-                @if (Auth::user())
+                {{-- @if (Auth::user())
                     <div class="dropdown">
                         <button class="bg-transparent text-white border-0 dropdown-toggle" type="button"
                             id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
@@ -54,11 +61,6 @@
                                         href="{{ route('admin.dashboard') }}">{{ __('Dashboard') }}</a>
                                 </li>
                             @else
-                                {{-- <li class="single-lang dropdown-item"><a class="lang-text"
-                                        href="{{ route('user.profile') }}">{{ __('Profile') }}</a>
-                                </li> --}}
-                                {{-- <li class="single-lang dropdown-item">  <a class="lang-text" href="javascript:void(0)" data-bs-toggle="modal"
-                                    data-bs-target="#trackOrderModal">{{ __('Track Order') }}</a> </li> --}}
                             @endif
                             <li class="single-lang dropdown-item"><a class="lang-text"
                                     href="{{ route('user.logout') }}">{{ __('Logout') }}</a></li>
@@ -70,9 +72,10 @@
                     </div>
                 @else
                     <a href="{{ route('login') }}">My Account</a>
-                @endif
+                @endif --}}
+                {{-- <a href="#newsletter" class="btn text-white fs-12 text-decoration-underline">Subscribe</a> --}}
 
-            </div>
+            {{-- </div> --}}
             <div class="d-md-none d-flex align-items-center">
                 <a href="{{ route('cart.content') }}" class="position-relative cart_icon"><span class="badge bg-success count_checkout totalCountItem">{{ Cart::count() }}</span><i
                     class="fa-solid fa-cart-shopping r-text-yellow fs-4"></i></a>
@@ -105,6 +108,9 @@
                     @endforelse
 
                       </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="" href="{{ route('sale') }}">Sale</a>
                 </li>
                 <li class="nav-item">
                     <a class="" href="{{ route('about.us') }}">About</a>
@@ -146,6 +152,9 @@
                     </ul>
                 </li>
                 <li class="nav-item">
+                    <a class="" href="{{ route('sale') }}">Sale</a>
+                </li>
+                <li class="nav-item">
                     <a class="" href="{{ route('about.us') }}">About</a>
                 </li>
                 <li class="nav-item">
@@ -169,7 +178,7 @@
     <div id="productImgAsset" data-url="{{ asset(ProductImage()) }}"></div>
 
     @include('front.layouts.include.footer')
-
+{{--
     <div class="modal fade common-modal" id="trackOrderModal" tabindex="-1" aria-labelledby="trackOrderModalLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
@@ -248,7 +257,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 
     {{-- route url --}}
     <div id="DoNotSubscribe" data-url="{{ route('do.not.subscribe') }}"></div>
@@ -296,7 +305,7 @@
             });
         });
     </script>
-<script>
+{{-- <script>
     document.addEventListener("DOMContentLoaded", function () {
         const slides = document.querySelectorAll(".text_slide > div");
         let currentSlide = 0;
@@ -320,7 +329,7 @@
             showSlide(currentSlide);
         }, 3000); // 3000ms = 3 seconds
     });
-    </script>
+    </script> --}}
 
 </body>
 

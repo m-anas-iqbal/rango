@@ -203,7 +203,9 @@
 
         })
     });
-
+    // function QTYUpdate(val) {
+    //     // $("#qty_value").val(val);
+    // }
     function currencyPrice(price) {
         let result = 0;
         $.ajax({
@@ -240,6 +242,7 @@
         let quantity = $this.parent().find('.qty_value').val();
         // console.log(quantity);
         if (quantity > 1) {
+
             $.ajax({
                 method: "GET",
                 url: $('#CartDecrementFromSession').data("url"),
@@ -249,6 +252,7 @@
                 },
                 success: (data) => {
                     // let currsym = currencySymbol();
+                $this.parent().find('.qty_value').val(parseFloat(quantity)-1);
                     $(this).closest('tr').find('.SubTotalAmount').html(currencyPrice(data[3]));
                     $('.totalCountItem').html(data[0]);
                     $('.totalAmount').html(currencyPrice(data[1]));
@@ -312,6 +316,7 @@
                 quantity: quantity2,
             },
             success: (data) => {
+                $this.parent().find('.qty_value').val(parseFloat(quantity2)+1);
                 // let currsym = currencySymbol();
                 $(this).closest('tr').find('.SubTotalAmount').html(currencyPrice(data[3]));
                 $('.totalCountItem').html(data[0]);

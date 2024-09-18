@@ -31,8 +31,8 @@
 
                         @forelse ($products as $product)
 
-                        <div class="col-md-3 p-3">
-                            <div class="card product_card text-center p-3 shadow rounded-10px border-0">
+                        <div class="col-md-3 p-3 h-100">
+                            <div class="card product_card h-100 text-center p-3 shadow rounded-10px border-0">
                                 <a class="product-link" href="{{ route('single.product', $product->en_Product_Slug) }}">
                                     <img src="{{ asset(ProductImage() . $product->Primary_Image) }}"
                                         class="img-fluid shadow rounded" alt="{{ __('product') }}">
@@ -73,10 +73,8 @@
 
       @endforelse
                     </div>
-                    <div class="pagination-area mt-30">
-                        <ul class="paginations text-center">
-                            {{ $products->links('vendor.pagination.custom') }}
-                        </ul>
+                    <div class="pagination-area mt-30 testing">
+                        {{ $products->links('vendor.pagination.custom') }}
                     </div>
 
                     </div>

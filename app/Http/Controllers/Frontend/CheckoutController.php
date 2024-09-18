@@ -8,12 +8,14 @@ use App\Http\Services\PaymentService;
 use App\Jobs\OrderConfirmMail;
 use App\Library\SslCommerz\SslCommerzNotification;
 use App\Models\Admin\Billing;
+use App\Notifications\OrderNotification;
 use App\Models\Admin\Coupon;
 use App\Models\Admin\Order;
 use App\Models\Admin\OrderDetails;
 use App\Models\Admin\Product;
 use App\Models\Admin\Shipping;
 use App\Models\Currency;
+use App\Models\User;
 use App\Models\PaymentPlatform;
 use App\Models\SeoSetting;
 use App\Resolvers\PaymentPlatformResolver;
@@ -363,9 +365,7 @@ class CheckoutController extends Controller
                 $payment_options = array();
             }
         } elseif ($request->payment == 'paypal') {
-
             session()->put('payment_method_name', PAYPAL);
-            // dd($request->all(),"sad");
             return  $this->pay($this->grand_total, $this->discount, 'CAD', 1, $request->payment_method);
         } elseif ($request->payment == 'COD') {
             return $this->orderCreateCall($order_number, $shipping_charge, $tax, $subtotal, $this->discount, $this->grand_total, COD);
@@ -450,6 +450,11 @@ class CheckoutController extends Controller
         $data['subject'] = __('Order Confirm Mail');
         $data['data'] = $order->Order_Number;
         $data['template'] = 'email.order-confirm';
+
+        $adminUsers = User::where('is_admin', 1)->get();
+        foreach ($adminUsers as $admin) {
+            $admin->notify(new OrderNotification($ship['name'], $order->Order_Number));
+        }
         dispatch(new OrderConfirmMail($data))->onQueue('email-send');
     }
 

@@ -204,7 +204,7 @@ if (!function_exists('BlogImage')) {
 if (!function_exists('Category')) {
     function Category()
     {
-        return Category::with('products')->get();
+        return Category::where("status",1)->with('products')->get();
     }
 }
 if (!function_exists('Category_Des_Icon')) {

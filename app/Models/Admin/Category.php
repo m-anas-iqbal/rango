@@ -13,6 +13,6 @@ class Category extends Model
     ];
     public function products()
     {
-        return $this->hasMany(Product::class,'Category_Id');
+        return $this->hasMany(Product::class,'Category_Id')->where('status', 1);
     }
 }

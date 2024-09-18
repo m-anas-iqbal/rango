@@ -8,8 +8,8 @@
 <script src="{{ asset('backend/vendor/select2/js/select2.min.js') }}"></script>
 <script src="{{ asset('admin/js/metisMenu.min.js') }}"></script>
 <script src="{{ asset('admin/js/image-preview.js') }}"></script>
-<script src="{{ asset('admin/js/main.js') }}"></script>
 <script src="{{ asset('admin/js/custom.js') }}"></script>
+<script src="{{ asset('admin/js/main.js') }}"></script>
 <script src="{{ asset('admin/js/summernote-lite.min.js') }}"></script>
 <script src="{{ asset('admin/js/toastr.min.js') }}"></script>
 
