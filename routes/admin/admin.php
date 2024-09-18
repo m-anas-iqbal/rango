@@ -43,7 +43,7 @@ use App\Http\Controllers\Admin\SitemapController;
 
 Route::get('/admin/login', [AuthController::class, 'login'])->name('admin.login')->middleware('guest');
 Route::post('/admin/login', [AuthController::class, 'LoginDashboard'])->name('login.post');
-
+Route::get('/admin/logout', [AuthController::class, 'logout'])->name('logout');
 Route::group(['prefix' => 'subscribe'], function () {
     Route::post('/store', [SubscribeController::class, 'subscribeStore'])->name('admin.subscribe.store');
     Route::get('/delete/{id}', [SubscribeController::class, 'subscribeDelete'])->name('admin.subscribe.delete');

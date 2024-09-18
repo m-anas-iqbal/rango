@@ -41,10 +41,10 @@ class AuthController extends Controller
     }
     public function logout()
     {
-        if (Auth::check()) {
+        // if (Auth::check()) {
             Auth::logout();
-            return redirect()->route('login');
-        }
-        return redirect()->back()->with('error', __('Something went wrong!'));
+            return redirect()->route('front');
+        // }
+        // return redirect()->back()->with('error', __('Something went wrong!'));
     }
 }
